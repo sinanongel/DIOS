@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6252DA71-45BF-44A0-9217-1A7AEF908F3D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KargazImalatTakip</RootNamespace>
+    <AssemblyName>DİOS - Doğalgaz İmalat Otomasyon Sistemi</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>haticon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.CodeParser.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmAnaSayfa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAnaSayfa.Designer.cs">
+      <DependentUpon>FrmAnaSayfa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBolgeRegulatoru.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBolgeRegulatoru.Designer.cs">
+      <DependentUpon>FrmBolgeRegulatoru.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCelikHatlar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCelikHatlar.Designer.cs">
+      <DependentUpon>FrmCelikHatlar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCelikVana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCelikVana.Designer.cs">
+      <DependentUpon>FrmCelikVana.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPeFormDuzelt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPeFormDuzelt.Designer.cs">
+      <DependentUpon>FrmPeFormDuzelt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPeHatRaporu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPeHatRaporu.Designer.cs">
+      <DependentUpon>FrmPeHatRaporu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPeKayitDuzeltme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPeKayitDuzeltme.Designer.cs">
+      <DependentUpon>FrmPeKayitDuzeltme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPeHatlar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPeHatlar.Designer.cs">
+      <DependentUpon>FrmPeHatlar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPeVana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPeVana.Designer.cs">
+      <DependentUpon>FrmPeVana.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmServisHatlar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmServisHatlar.Designer.cs">
+      <DependentUpon>FrmServisHatlar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmShFormDuzeltme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmShFormDuzeltme.Designer.cs">
+      <DependentUpon>FrmShFormDuzeltme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmShKayitDuzelt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmShKayitDuzelt.Designer.cs">
+      <DependentUpon>FrmShKayitDuzelt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmStFormDuzeltme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStFormDuzeltme.Designer.cs">
+      <DependentUpon>FrmStFormDuzeltme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTumImalat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTumImalat.Designer.cs">
+      <DependentUpon>FrmTumImalat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlBaglanti.cs" />
+    <EmbeddedResource Include="FrmAnaSayfa.resx">
+      <DependentUpon>FrmAnaSayfa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBolgeRegulatoru.resx">
+      <DependentUpon>FrmBolgeRegulatoru.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCelikHatlar.resx">
+      <DependentUpon>FrmCelikHatlar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCelikVana.resx">
+      <DependentUpon>FrmCelikVana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPeFormDuzelt.resx">
+      <DependentUpon>FrmPeFormDuzelt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPeHatRaporu.resx">
+      <DependentUpon>FrmPeHatRaporu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPeKayitDuzeltme.resx">
+      <DependentUpon>FrmPeKayitDuzeltme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPeHatlar.resx">
+      <DependentUpon>FrmPeHatlar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPeVana.resx">
+      <DependentUpon>FrmPeVana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmServisHatlar.resx">
+      <DependentUpon>FrmServisHatlar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmShFormDuzeltme.resx">
+      <DependentUpon>FrmShFormDuzeltme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmShKayitDuzelt.resx">
+      <DependentUpon>FrmShKayitDuzelt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStFormDuzeltme.resx">
+      <DependentUpon>FrmStFormDuzeltme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTumImalat.resx">
+      <DependentUpon>FrmTumImalat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="haticon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
