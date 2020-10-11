@@ -25,7 +25,14 @@ namespace KargazImalatTakip
             {
                 try
                 {
-                    SqlDataAdapter da = new SqlDataAdapter("select ROW_NUMBER() OVER(ORDER BY dbo.ilce.ILCE_ADI) AS SIRANO, DBO.SERVIS_HATLARI.MSLINK, DBO.SERVIS_HATLARI.SEKTOR, DBO.SERVIS_HATLARI.HAT_MSLINK, dbo.ilce.ILCE_ADI, MAHALLE_ADI AS MAHALLE, YOL_ADI AS YOL, dbo.yol.YOL_TIPI AS YOL_TIPI, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) as IMALAT_TARIHI,FORMNO, CAP, KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, DBO.SERVIS_HATLARI.EKIPNO as EKIPNO from dbo.SERVIS_HATLARI, dbo.yol, dbo.mahalle, dbo.ilce where dbo.SERVIS_HATLARI.YOL_MSLINK = dbo.yol.mslink and dbo.SERVIS_HATLARI.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.SERVIS_HATLARI.ILCE_KODU = dbo.ilce.ilce_kodu order by ilce_adi, mahalle_adi, yol_adi, YATIRIMYILI, FORMNO", bgl.kargazBaglanti());
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT ROW_NUMBER() OVER(ORDER BY I.ILCE_ADI) AS SIRANO, SH.MSLINK, SEKTOR, HAT_MSLINK, I.ILCE_ADI, "
+                                                            + "M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI AS YOL, Y.YOL_TIPI AS YOL_TIPI, YATIRIMYILI, "
+                                                            + "CONVERT(VARCHAR, IMALATTARIHI, 104) AS IMALAT_TARIHI, FORMNO, CAP, KAZIBOYU, BORUBOYU, "
+                                                            + "YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, SH.EKIPNO as EKIPNO FROM dbo.SERVIS_HATLARI SH "
+                                                            + "LEFT JOIN DBO.YOL Y ON SH.YOL_MSLINK = Y.MSLINK "
+                                                            + "LEFT JOIN DBO.MAHALLE M ON SH.MAHALLE_KODU = M.MAHALLE_KODU "
+                                                            + "LEFT JOIN DBO.ILCE I ON SH.ILCE_KODU = I.ILCE_KODU "
+                                                            + "ORDER BY SH.MSLINK DESC", bgl.serhatgazBaglanti());
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     gridControl1.DataSource = dt;
@@ -61,7 +68,14 @@ namespace KargazImalatTakip
             {
                 try
                 {
-                    SqlDataAdapter da = new SqlDataAdapter("select ROW_NUMBER() OVER(ORDER BY dbo.ilce.ILCE_ADI) AS SIRANO, DBO.SERVIS_HATLARI.MSLINK, DBO.SERVIS_HATLARI.SEKTOR, DBO.SERVIS_HATLARI.HAT_MSLINK, dbo.ilce.ILCE_ADI, MAHALLE_ADI AS MAHALLE, YOL_ADI AS YOL, dbo.yol.YOL_TIPI AS YOL_TIPI, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) as IMALAT_TARIHI,FORMNO, CAP, KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, DBO.SERVIS_HATLARI.EKIPNO as EKIPNO from dbo.SERVIS_HATLARI, dbo.yol, dbo.mahalle, dbo.ilce where dbo.SERVIS_HATLARI.YOL_MSLINK = dbo.yol.mslink and dbo.SERVIS_HATLARI.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.SERVIS_HATLARI.ILCE_KODU = dbo.ilce.ilce_kodu order by mslink desc", bgl.serhatgazBaglanti());
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT ROW_NUMBER() OVER(ORDER BY I.ILCE_ADI) AS SIRANO, SH.MSLINK, SEKTOR, HAT_MSLINK, I.ILCE_ADI, "
+                                                            + "M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI AS YOL, Y.YOL_TIPI AS YOL_TIPI, YATIRIMYILI, "
+                                                            + "CONVERT(VARCHAR, IMALATTARIHI, 104) AS IMALAT_TARIHI, FORMNO, CAP, KAZIBOYU, BORUBOYU, "
+                                                            + "YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, SH.EKIPNO as EKIPNO FROM dbo.SERVIS_HATLARI SH "
+                                                            + "LEFT JOIN DBO.YOL Y ON SH.YOL_MSLINK = Y.MSLINK "
+                                                            + "LEFT JOIN DBO.MAHALLE M ON SH.MAHALLE_KODU = M.MAHALLE_KODU "
+                                                            + "LEFT JOIN DBO.ILCE I ON SH.ILCE_KODU = I.ILCE_KODU "
+                                                            + "ORDER BY SH.MSLINK DESC", bgl.serhatgazBaglanti());
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     gridControl1.DataSource = dt;
