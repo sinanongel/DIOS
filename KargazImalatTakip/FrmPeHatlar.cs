@@ -27,9 +27,15 @@ namespace KargazImalatTakip
                 //try
                 //{
 
-                //if (CmbBolge.Text == "Bölge Seçiniz")
-                //{
-                SqlDataAdapter da = new SqlDataAdapter("select ROW_NUMBER() OVER(ORDER BY dbo.ilce.ILCE_ADI) AS SIRANO, dbo.HATLAR.MSLINK, dbo.HATLAR.SEKTOR, dbo.ilce.ilce_adi AS ILCE_ADI, mahalle_adi AS MAHALLE, yol_adi AS YOL, dbo.yol.yol_tipi AS YOL_TIPI, YATIRIMYILI, convert(varchar, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, FORMNO, NET_BORU_CAPI, BORU_UZUNLUGU, YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU from dbo.HATLAR, dbo.yol, dbo.mahalle, dbo.ilce where dbo.HATLAR.YOL_MSLINK = dbo.yol.mslink and dbo.HATLAR.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.HATLAR.ILCE_KODU = dbo.ilce.ilce_kodu and MALZEME_CINSI='Polietilen' order by ilce_adi, mahalle_adi, yol_adi, YATIRIMYILI, FORMNO", bgl.kargazBaglanti());
+                
+                SqlDataAdapter da = new SqlDataAdapter("SELECT ROW_NUMBER() OVER(ORDER BY I.ILCE_ADI) AS SIRANO, H.MSLINK, H.SEKTOR, I.ILCE_ADI AS ILCE_ADI, " +
+                        "M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI AS YOL, Y.YOL_TIPI AS YOL_TIPI, YATIRIMYILI, CONVERT(VARCHAR, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, " +
+                        "FORMNO, NET_BORU_CAPI, BORU_UZUNLUGU, YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU " +
+                        "FROM dbo.HATLAR H " +
+                        "LEFT JOIN DBO.YOL Y ON H.YOL_MSLINK = Y.MSLINK " +
+                        "LEFT JOIN DBO.MAHALLE M ON H.MAHALLE_KODU = M.MAHALLE_KODU " +
+                        "LEFT JOIN DBO.ILCE I ON H.ILCE_KODU = I.ILCE_KODU " +
+                        "ORDER BY H.MSLINK DESC", bgl.serhatgazBaglanti());
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 gridControl1.DataSource = dt;
@@ -78,14 +84,6 @@ namespace KargazImalatTakip
                         "LEFT JOIN DBO.MAHALLE M ON H.MAHALLE_KODU = M.MAHALLE_KODU " +
                         "LEFT JOIN DBO.ILCE I ON H.ILCE_KODU = I.ILCE_KODU " +
                         "ORDER BY H.MSLINK DESC", bgl.serhatgazBaglanti());
-                    //SqlDataAdapter da = new SqlDataAdapter("SELECT ROW_NUMBER() OVER(ORDER BY I.ILCE_ADI) AS SIRANO, H.MSLINK, H.SEKTOR, I.ILCE_ADI AS ILCE_ADI, "
-                    //    + "M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI AS YOL, Y.YOL_TIPI AS YOL_TIPI, YATIRIMYILI, CONVERT(VARCHAR, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, "
-                    //    + "FORMNO, NET_BORU_CAPI, BORU_UZUNLUGU, YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU "
-                    //    + "FROM dbo.HATLAR H "
-                    //    + "LEFT JOIN DBO.YOL Y ON H.YOL_MSLINK = Y.MSLINK "
-                    //    + "LEFT JOIN DBO.MAHALLE M ON H.MAHALLE_KODU = M.MAHALLE_KODU "
-                    //    + "LEFT JOIN DBO.ILCE I ON H.ILCE_KODU = I.ILCE_KODU "
-                    //    + "ORDER BY H.MSLINK DESC", bgl.serhatgazBaglanti());
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     gridControl1.DataSource = dt;
