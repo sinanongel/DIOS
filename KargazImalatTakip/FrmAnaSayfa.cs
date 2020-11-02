@@ -183,5 +183,17 @@ namespace KargazImalatTakip
                 fr14.Show();
             }
         }
+
+        FrmFittingsHat fr15;
+
+        private void BtnFittingsHat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (fr15 == null || fr15.IsDisposed)
+            {
+                fr15 = new FrmFittingsHat();
+                //fr15.MdiParent = this;
+                fr15.Show();
+            }
+        }
     }
 }

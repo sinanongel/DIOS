@@ -25,7 +25,15 @@ namespace KargazImalatTakip
             {
                 try
                 {
-                    SqlDataAdapter daVana = new SqlDataAdapter("SELECT dbo.VANA.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, IMALAT_TARIHI, 104) as IMALAT_TARIHI, dbo.ilce.ILCE_ADI, MAHALLE_ADI AS MAHALLE, YOL_ADI + ' ' +yol_tipi AS YOL, VANA_NO, BOLGE, SEKTOR, VANA_TIPI, CAP FROM dbo.VANA, dbo.yol, dbo.mahalle, dbo.ilce where dbo.VANA.YOL_MSLINK = dbo.yol.mslink and dbo.VANA.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.VANA.ILCE_KODU = dbo.ilce.ilce_kodu and FORMNO NOT LIKE 'C%' ORDER BY MSLINK ", bgl.kargazBaglanti());
+                    SqlDataAdapter daVana = new SqlDataAdapter("SELECT V.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, IMALAT_TARIHI, 104) as IMALAT_TARIHI, "
+                                                            + "I.ILCE_ADI, MAHALLE_ADI AS MAHALLE, YOL_ADI + ' ' +yol_tipi AS YOL, VANA_NO, BOLGE, SEKTOR, "
+                                                            + "VANA_TIPI, CAP FROM DBO.VANA V "
+                                                            + "LEFT JOIN DBO.YOL Y ON V.YOL_MSLINK = Y.MSLINK "
+                                                            + "LEFT JOIN DBO.MAHALLE M ON V.MAHALLE_KODU = M.MAHALLE_KODU "
+                                                            + "LEFT JOIN DBO.ILCE I ON V.ILCE_KODU = I.ILCE_KODU "
+                                                            + "WHERE V.FORMNO NOT LIKE 'C%' "
+                                                            + "ORDER BY V.MSLINK DESC", bgl.kargazBaglanti()); 
+                    //("SELECT dbo.VANA.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, IMALAT_TARIHI, 104) as IMALAT_TARIHI, dbo.ilce.ILCE_ADI, MAHALLE_ADI AS MAHALLE, YOL_ADI + ' ' +yol_tipi AS YOL, VANA_NO, BOLGE, SEKTOR, VANA_TIPI, CAP FROM dbo.VANA, dbo.yol, dbo.mahalle, dbo.ilce where dbo.VANA.YOL_MSLINK = dbo.yol.mslink and dbo.VANA.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.VANA.ILCE_KODU = dbo.ilce.ilce_kodu and FORMNO NOT LIKE 'C%' ORDER BY MSLINK ", bgl.kargazBaglanti());
                     DataTable dtVana = new DataTable();
                     daVana.Fill(dtVana);
                     gridControl1.DataSource = dtVana;
@@ -61,7 +69,14 @@ namespace KargazImalatTakip
             {
                 try
                 {
-                    SqlDataAdapter daVana = new SqlDataAdapter("SELECT dbo.VANA.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, IMALAT_TARIHI, 104) as IMALAT_TARIHI, dbo.ilce.ILCE_ADI, MAHALLE_ADI AS MAHALLE, YOL_ADI + ' ' +yol_tipi AS YOL, VANA_NO, BOLGE, SEKTOR, VANA_TIPI, CAP FROM dbo.VANA, dbo.yol, dbo.mahalle, dbo.ilce where dbo.VANA.YOL_MSLINK = dbo.yol.mslink and dbo.VANA.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.VANA.ILCE_KODU = dbo.ilce.ilce_kodu and FORMNO NOT LIKE 'C%' ORDER BY MSLINK ", bgl.serhatgazBaglanti());
+                    SqlDataAdapter daVana = new SqlDataAdapter("SELECT V.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, IMALAT_TARIHI, 104) as IMALAT_TARIHI, "
+                                                            + "I.ILCE_ADI, MAHALLE_ADI AS MAHALLE, YOL_ADI + ' ' +yol_tipi AS YOL, VANA_NO, BOLGE, SEKTOR, "
+                                                            + "VANA_TIPI, CAP FROM DBO.VANA V "
+                                                            + "LEFT JOIN DBO.YOL Y ON V.YOL_MSLINK = Y.MSLINK "
+                                                            + "LEFT JOIN DBO.MAHALLE M ON V.MAHALLE_KODU = M.MAHALLE_KODU "
+                                                            + "LEFT JOIN DBO.ILCE I ON V.ILCE_KODU = I.ILCE_KODU "
+                                                            + "WHERE V.FORMNO NOT LIKE 'C%' "
+                                                            + "ORDER BY V.MSLINK DESC", bgl.serhatgazBaglanti());
                     DataTable dtVana = new DataTable();
                     daVana.Fill(dtVana);
                     gridControl1.DataSource = dtVana;

@@ -17,8 +17,8 @@ namespace KargazImalatTakip
 
         public SqlConnection serhatgazBaglanti()
         {
-            //SqlConnection baglan = new SqlConnection(@"Data Source=192.168.0.251;Initial Catalog=SerhatgazHarita;Persist Security Info=True;User ID=cbs;Password=cbs");
-            SqlConnection baglan = new SqlConnection(@"Data Source=LENOVO-PC;Initial Catalog=SerhatgazHarita;Integrated Security=True");
+            SqlConnection baglan = new SqlConnection(@"Data Source=192.168.0.251;Initial Catalog=SerhatgazHarita;Persist Security Info=True;User ID=cbs;Password=cbs");
+            //SqlConnection baglan = new SqlConnection(@"Data Source=LENOVO-PC;Initial Catalog=SerhatgazHarita;Integrated Security=True");
             baglan.Open();
             return baglan;
         }

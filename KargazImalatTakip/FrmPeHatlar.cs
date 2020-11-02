@@ -35,7 +35,8 @@ namespace KargazImalatTakip
                         "LEFT JOIN DBO.YOL Y ON H.YOL_MSLINK = Y.MSLINK " +
                         "LEFT JOIN DBO.MAHALLE M ON H.MAHALLE_KODU = M.MAHALLE_KODU " +
                         "LEFT JOIN DBO.ILCE I ON H.ILCE_KODU = I.ILCE_KODU " +
-                        "ORDER BY H.MSLINK DESC", bgl.serhatgazBaglanti());
+                        "WHERE H.MALZEME_CINSI = 'Polietilen' " +
+                        "ORDER BY H.MSLINK DESC", bgl.kargazBaglanti());
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 gridControl1.DataSource = dt;
@@ -62,10 +63,10 @@ namespace KargazImalatTakip
                 gridView1.Columns["KAZI_BOYU"].Caption = "KAZI BOYU";
 
                 gridView1.Columns[0].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
-                gridView1.Columns[10].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                 gridView1.Columns[11].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                 gridView1.Columns[12].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                 gridView1.Columns[13].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                gridView1.Columns[14].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                 //}
                 //catch
                 //{
@@ -83,6 +84,7 @@ namespace KargazImalatTakip
                         "LEFT JOIN DBO.YOL Y ON H.YOL_MSLINK = Y.MSLINK " +
                         "LEFT JOIN DBO.MAHALLE M ON H.MAHALLE_KODU = M.MAHALLE_KODU " +
                         "LEFT JOIN DBO.ILCE I ON H.ILCE_KODU = I.ILCE_KODU " +
+                        "WHERE H.MALZEME_CINSI = 'Polietilen' " +
                         "ORDER BY H.MSLINK DESC", bgl.serhatgazBaglanti());
                     DataTable dt = new DataTable();
                     da.Fill(dt);
@@ -102,10 +104,10 @@ namespace KargazImalatTakip
                     gridView1.Columns["KAZI_BOYU"].Caption = "KAZI BOYU";
 
                     gridView1.Columns[0].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
-                    gridView1.Columns[10].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                     gridView1.Columns[11].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                     gridView1.Columns[12].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[12].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[13].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[14].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                 }
                 catch
                 {
