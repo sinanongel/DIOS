@@ -49,10 +49,6 @@
             this.TxtFormNoYeni = new DevExpress.XtraEditors.TextEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
-            this.CmbSokak = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.CmbMahalle = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.TxtBolge = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
@@ -83,8 +79,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtFormNoYeni.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CmbSokak.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CmbMahalle.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBolge.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
@@ -267,7 +261,7 @@
             this.BtnGuncelle.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.BtnGuncelle.Appearance.Options.UseFont = true;
             this.BtnGuncelle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnGuncelle.ImageOptions.Image")));
-            this.BtnGuncelle.Location = new System.Drawing.Point(23, 441);
+            this.BtnGuncelle.Location = new System.Drawing.Point(23, 388);
             this.BtnGuncelle.Name = "BtnGuncelle";
             this.BtnGuncelle.Size = new System.Drawing.Size(125, 23);
             this.BtnGuncelle.TabIndex = 31;
@@ -279,7 +273,7 @@
             this.BtnTemizle.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.BtnTemizle.Appearance.Options.UseFont = true;
             this.BtnTemizle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnTemizle.ImageOptions.Image")));
-            this.BtnTemizle.Location = new System.Drawing.Point(156, 441);
+            this.BtnTemizle.Location = new System.Drawing.Point(156, 388);
             this.BtnTemizle.Name = "BtnTemizle";
             this.BtnTemizle.Size = new System.Drawing.Size(125, 23);
             this.BtnTemizle.TabIndex = 34;
@@ -308,10 +302,6 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.labelControl14);
-            this.groupControl1.Controls.Add(this.CmbSokak);
-            this.groupControl1.Controls.Add(this.CmbMahalle);
-            this.groupControl1.Controls.Add(this.labelControl12);
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.TxtFormNoYeni);
             this.groupControl1.Controls.Add(this.TxtYatirimYili);
@@ -322,54 +312,9 @@
             this.groupControl1.Controls.Add(this.TxtSektor);
             this.groupControl1.Location = new System.Drawing.Point(9, 90);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(282, 216);
+            this.groupControl1.Size = new System.Drawing.Size(282, 158);
             this.groupControl1.TabIndex = 41;
             this.groupControl1.Text = "Ana Bilgiler";
-            // 
-            // labelControl14
-            // 
-            this.labelControl14.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelControl14.Appearance.Options.UseFont = true;
-            this.labelControl14.Location = new System.Drawing.Point(14, 178);
-            this.labelControl14.Name = "labelControl14";
-            this.labelControl14.Size = new System.Drawing.Size(75, 16);
-            this.labelControl14.TabIndex = 44;
-            this.labelControl14.Text = "Sokak/Cadde";
-            // 
-            // CmbSokak
-            // 
-            this.CmbSokak.Location = new System.Drawing.Point(94, 175);
-            this.CmbSokak.Name = "CmbSokak";
-            this.CmbSokak.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.CmbSokak.Properties.Appearance.Options.UseFont = true;
-            this.CmbSokak.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CmbSokak.Properties.Sorted = true;
-            this.CmbSokak.Size = new System.Drawing.Size(178, 22);
-            this.CmbSokak.TabIndex = 43;
-            // 
-            // CmbMahalle
-            // 
-            this.CmbMahalle.Location = new System.Drawing.Point(94, 147);
-            this.CmbMahalle.Name = "CmbMahalle";
-            this.CmbMahalle.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.CmbMahalle.Properties.Appearance.Options.UseFont = true;
-            this.CmbMahalle.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CmbMahalle.Properties.Sorted = true;
-            this.CmbMahalle.Size = new System.Drawing.Size(178, 22);
-            this.CmbMahalle.TabIndex = 42;
-            this.CmbMahalle.SelectedIndexChanged += new System.EventHandler(this.CmbMahalle_SelectedIndexChanged);
-            // 
-            // labelControl12
-            // 
-            this.labelControl12.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelControl12.Appearance.Options.UseFont = true;
-            this.labelControl12.Location = new System.Drawing.Point(14, 150);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(44, 16);
-            this.labelControl12.TabIndex = 39;
-            this.labelControl12.Text = "Mahalle";
             // 
             // TxtBolge
             // 
@@ -396,7 +341,7 @@
             this.groupControl3.Controls.Add(this.TxtVanaNo);
             this.groupControl3.Controls.Add(this.labelControl4);
             this.groupControl3.Controls.Add(this.TxtBolge);
-            this.groupControl3.Location = new System.Drawing.Point(9, 310);
+            this.groupControl3.Location = new System.Drawing.Point(9, 257);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(282, 99);
             this.groupControl3.TabIndex = 43;
@@ -526,7 +471,7 @@
             // 
             // CheTumunuSec
             // 
-            this.CheTumunuSec.Location = new System.Drawing.Point(23, 417);
+            this.CheTumunuSec.Location = new System.Drawing.Point(23, 362);
             this.CheTumunuSec.Name = "CheTumunuSec";
             this.CheTumunuSec.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
             this.CheTumunuSec.Properties.Appearance.Options.UseForeColor = true;
@@ -609,8 +554,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CmbSokak.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CmbMahalle.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBolge.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
@@ -669,12 +612,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.TextEdit TxtVanaNo;
         private DevExpress.XtraEditors.CheckEdit CheTumunuSec;
-        private DevExpress.XtraEditors.ComboBoxEdit CmbSokak;
-        private DevExpress.XtraEditors.ComboBoxEdit CmbMahalle;
         private DevExpress.XtraEditors.LabelControl labelControl13;
-        private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.ComboBoxEdit CmbBolge;
-        private DevExpress.XtraEditors.LabelControl labelControl14;
         private DevExpress.XtraEditors.LabelControl labelControl15;
     }
 }

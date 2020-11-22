@@ -42,7 +42,13 @@ namespace KargazImalatTakip
             {
                 if (CmbŞirket.Text == "KARGAZ")
                 {
-                    SqlDataAdapter daHat = new SqlDataAdapter("select dbo.SERVIS_HATLARI.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, dbo.ilce.ilce_adi AS ILCE_ADI, mahalle_adi AS MAHALLE, YOL_ADI + ' ' +yol_tipi AS YOL, SEKTOR, HAT_MSLINK, CAP, KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, EKIPNO from dbo.SERVIS_HATLARI, dbo.yol, dbo.mahalle, dbo.ilce where dbo.SERVIS_HATLARI.YOL_MSLINK = dbo.yol.mslink and dbo.SERVIS_HATLARI.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.SERVIS_HATLARI.ILCE_KODU = dbo.ilce.ilce_kodu and formno =" + TxtFormNo.Text, bgl.kargazBaglanti());
+                    SqlDataAdapter daHat = new SqlDataAdapter("SELECT SH.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, SH.IMALATTARIHI, 104) AS IMALAT_TARIHI, " +
+                        "I.ILCE_ADI AS ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, SEKTOR, HAT_MSLINK, CAP, KAZIBOYU, BORUBOYU, " +
+                        "YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, EKIPNO FROM dbo.SERVIS_HATLARI SH " +
+                        "LEFT JOIN DBO.YOL Y ON SH.YOL_MSLINK = Y.MSLINK " +
+                        "LEFT JOIN DBO.MAHALLE M ON SH.MAHALLE_KODU = M.MAHALLE_KODU " +
+                        "LEFT JOIN DBO.ILCE I ON SH.ILCE_KODU = I.ILCE_KODU " +
+                        "WHERE FORMNO = " + TxtFormNo.Text, bgl.kargazBaglanti());
                     DataTable dtHat = new DataTable();
                     daHat.Fill(dtHat);
                     GrCoHat.DataSource = dtHat;
@@ -60,7 +66,12 @@ namespace KargazImalatTakip
                     gridView1.Columns["SHATTIMETRAJ"].Caption = "EĞİK ASBUILT METRAJ";
                     gridView1.Columns["EKIPNO"].Caption = "MÜTEAHHİT";
 
-                    SqlDataAdapter daServisElemanı = new SqlDataAdapter("SELECT dbo.SERVIS_ELEMANLARI.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, IMALAT_TARIHI, 104) as IMALAT_TARIHI, dbo.ilce.ILCE_ADI, MAHALLE_ADI AS MAHALLE, YOL_ADI + ' ' +yol_tipi AS YOL, BOLGE, SEKTOR, HAT_MSLINK, TIPI, CAP FROM DBO.SERVIS_ELEMANLARI, dbo.yol, dbo.mahalle, dbo.ilce where dbo.SERVIS_ELEMANLARI.YOL_MSLINK = dbo.yol.mslink and dbo.SERVIS_ELEMANLARI.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.SERVIS_ELEMANLARI.ILCE_KODU = dbo.ilce.ilce_kodu and FORMNO = " + TxtFormNo.Text, bgl.kargazBaglanti());
+                    SqlDataAdapter daServisElemanı = new SqlDataAdapter("SELECT SE.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, SE.IMALAT_TARIHI, 104) AS IMALAT_TARIHI, " +
+                        "I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, BOLGE, SEKTOR, TIPI, CAP FROM DBO.SERVIS_ELEMANLARI SE " +
+                        "LEFT JOIN DBO.YOL Y ON SE.YOL_MSLINK = Y.MSLINK " +
+                        "LEFT JOIN DBO.MAHALLE M ON SE.MAHALLE_KODU = M.MAHALLE_KODU " +
+                        "LEFT JOIN DBO.ILCE I ON SE.ILCE_KODU = I.ILCE_KODU " +
+                        "WHERE FORMNO = '" + TxtFormNo.Text + "'", bgl.kargazBaglanti());
                     DataTable dtServisElemanı = new DataTable();
                     daServisElemanı.Fill(dtServisElemanı);
                     GrCoSaddle.DataSource = dtServisElemanı;
@@ -75,7 +86,12 @@ namespace KargazImalatTakip
                     gridView2.Columns["TIPI"].Caption = "TİPİ";
                     gridView2.Columns["CAP"].Caption = "ÇAP";
 
-                    SqlDataAdapter daMalzeme = new SqlDataAdapter("SELECT dbo.BAGLANTI_ELEMANLARI_PE.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) as IMALAT_TARIHI, dbo.ilce.ILCE_ADI, MAHALLE_ADI AS MAHALLE, YOL_ADI + ' ' +yol_tipi AS YOL, SEKTOR, TIPI, CAP, EKIPNO FROM dbo.BAGLANTI_ELEMANLARI_PE, dbo.yol, dbo.mahalle, dbo.ilce where dbo.BAGLANTI_ELEMANLARI_PE.YOL_MSLINK = dbo.yol.mslink and dbo.BAGLANTI_ELEMANLARI_PE.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.BAGLANTI_ELEMANLARI_PE.ILCE_KODU = dbo.ilce.ilce_kodu and FORMNO = 'S" + TxtFormNo.Text + "'", bgl.kargazBaglanti());
+                    SqlDataAdapter daMalzeme = new SqlDataAdapter("SELECT B.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, B.IMALATTARIHI, 104) AS IMALAT_TARIHI, " +
+                        "I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, SEKTOR, TIPI, CAP, EKIPNO FROM dbo.BAGLANTI_ELEMANLARI_PE B " +
+                        "LEFT JOIN DBO.YOL Y ON B.YOL_MSLINK = Y.MSLINK " +
+                        "LEFT JOIN DBO.MAHALLE M ON B.MAHALLE_KODU = M.MAHALLE_KODU " +
+                        "LEFT JOIN DBO.ILCE I ON B.ILCE_KODU = I.ILCE_KODU " +
+                        "WHERE FORMNO = 'S" + TxtFormNo.Text + "'", bgl.kargazBaglanti());
                     DataTable dtMalzeme = new DataTable();
                     daMalzeme.Fill(dtMalzeme);
                     GrCoMalzeme.DataSource = dtMalzeme;
@@ -89,7 +105,12 @@ namespace KargazImalatTakip
                     gridView4.Columns["CAP"].Caption = "ÇAP";
                     gridView4.Columns["EKIPNO"].Caption = "MÜTEAHHİT";
 
-                    SqlDataAdapter daServisKutusu = new SqlDataAdapter("SELECT dbo.SERVIS_KUTUSU.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) as IMALAT_TARIHI, dbo.ilce.ILCE_ADI, MAHALLE_ADI AS MAHALLE, YOL_ADI + ' ' +yol_tipi AS YOL ,KUTU_TIPI, CINSI, SKUTUVANASI FROM dbo.SERVIS_KUTUSU, dbo.yol, dbo.mahalle, dbo.ilce where dbo.SERVIS_KUTUSU.YOL_MSLINK = dbo.yol.mslink and dbo.SERVIS_KUTUSU.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.SERVIS_KUTUSU.ILCE_KODU = dbo.ilce.ilce_kodu and FORMNO = " + TxtFormNo.Text, bgl.kargazBaglanti());
+                    SqlDataAdapter daServisKutusu = new SqlDataAdapter("SELECT SK.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, SK.IMALATTARIHI, 104) as IMALAT_TARIHI, " +
+                        "I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, KUTU_TIPI, CINSI, SKUTUVANASI FROM dbo.SERVIS_KUTUSU SK " +
+                        "LEFT JOIN DBO.YOL Y ON SK.YOL_MSLINK = Y.MSLINK " +
+                        "LEFT JOIN DBO.MAHALLE M ON SK.MAHALLE_KODU = M.MAHALLE_KODU " +
+                        "LEFT JOIN DBO.ILCE I ON SK.ILCE_KODU = I.ILCE_KODU " +
+                        "WHERE FORMNO = " + TxtFormNo.Text, bgl.kargazBaglanti());
                     DataTable dtServisKutusu = new DataTable();
                     daServisKutusu.Fill(dtServisKutusu);
                     GrCoServisKutusu.DataSource = dtServisKutusu;
@@ -159,7 +180,13 @@ namespace KargazImalatTakip
                 }
                 else if (CmbŞirket.Text == "SERHATGAZ")
                 {
-                    SqlDataAdapter daHat = new SqlDataAdapter("select dbo.SERVIS_HATLARI.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, dbo.ilce.ilce_adi AS ILCE_ADI, mahalle_adi AS MAHALLE, YOL_ADI + ' ' +yol_tipi AS YOL, SEKTOR, CAP, KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, EKIPNO from dbo.SERVIS_HATLARI, dbo.yol, dbo.mahalle, dbo.ilce where dbo.SERVIS_HATLARI.YOL_MSLINK = dbo.yol.mslink and dbo.SERVIS_HATLARI.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.SERVIS_HATLARI.ILCE_KODU = dbo.ilce.ilce_kodu and formno =" + TxtFormNo.Text, bgl.serhatgazBaglanti());
+                    SqlDataAdapter daHat = new SqlDataAdapter("SELECT SH.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, IMALATTARIHI, 104) AS IMALAT_TARIHI, " +
+                        "I.ILCE_ADI AS ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, YOL_ADI + ' ' + YOL_TIPI AS YOL, SEKTOR, HAT_MSLINK, CAP, KAZIBOYU, BORUBOYU, " +
+                        "YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, EKIPNO FROM dbo.SERVIS_HATLARI SH " +
+                        "LEFT JOIN DBO.YOL Y ON SH.YOL_MSLINK = Y.MSLINK " +
+                        "LEFT JOIN DBO.MAHALLE M ON SH.MAHALLE_KODU = M.MAHALLE_KODU " +
+                        "LEFT JOIN DBO.ILCE I ON SH.ILCE_KODU = I.ILCE_KODU " +
+                        "WHERE FORMNO = " + TxtFormNo.Text, bgl.serhatgazBaglanti());
                     DataTable dtHat = new DataTable();
                     daHat.Fill(dtHat);
                     GrCoHat.DataSource = dtHat;
@@ -176,7 +203,12 @@ namespace KargazImalatTakip
                     gridView1.Columns["SHATTIMETRAJ"].Caption = "EĞİK ASBUILT METRAJ";
                     gridView1.Columns["EKIPNO"].Caption = "MÜTEAHHİT";
 
-                    SqlDataAdapter daServisElemanı = new SqlDataAdapter("SELECT dbo.SERVIS_ELEMANLARI.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, IMALAT_TARIHI, 104) as IMALAT_TARIHI, dbo.ilce.ILCE_ADI, MAHALLE_ADI AS MAHALLE, YOL_ADI + ' ' +yol_tipi AS YOL, BOLGE, SEKTOR, TIPI, CAP FROM DBO.SERVIS_ELEMANLARI, dbo.yol, dbo.mahalle, dbo.ilce where dbo.SERVIS_ELEMANLARI.YOL_MSLINK = dbo.yol.mslink and dbo.SERVIS_ELEMANLARI.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.SERVIS_ELEMANLARI.ILCE_KODU = dbo.ilce.ilce_kodu and FORMNO = '" + TxtFormNo.Text + "'", bgl.serhatgazBaglanti());
+                    SqlDataAdapter daServisElemanı = new SqlDataAdapter("SELECT SE.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, SE.IMALAT_TARIHI, 104) AS IMALAT_TARIHI, " +
+                        "I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, BOLGE, SEKTOR, TIPI, CAP FROM DBO.SERVIS_ELEMANLARI SE " +
+                        "LEFT JOIN DBO.YOL Y ON SE.YOL_MSLINK = Y.MSLINK " +
+                        "LEFT JOIN DBO.MAHALLE M ON SE.MAHALLE_KODU = M.MAHALLE_KODU " +
+                        "LEFT JOIN DBO.ILCE I ON SE.ILCE_KODU = I.ILCE_KODU " +
+                        "WHERE FORMNO = '" + TxtFormNo.Text + "'", bgl.serhatgazBaglanti());
                     DataTable dtServisElemanı = new DataTable();
                     daServisElemanı.Fill(dtServisElemanı);
                     GrCoSaddle.DataSource = dtServisElemanı;
@@ -190,7 +222,12 @@ namespace KargazImalatTakip
                     gridView2.Columns["TIPI"].Caption = "TİPİ";
                     gridView2.Columns["CAP"].Caption = "ÇAP";
 
-                    SqlDataAdapter daMalzeme = new SqlDataAdapter("SELECT dbo.BAGLANTI_ELEMANLARI_PE.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) as IMALAT_TARIHI, dbo.ilce.ILCE_ADI, MAHALLE_ADI AS MAHALLE, YOL_ADI + ' ' +yol_tipi AS YOL, SEKTOR, TIPI, CAP, EKIPNO FROM dbo.BAGLANTI_ELEMANLARI_PE, dbo.yol, dbo.mahalle, dbo.ilce where dbo.BAGLANTI_ELEMANLARI_PE.YOL_MSLINK = dbo.yol.mslink and dbo.BAGLANTI_ELEMANLARI_PE.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.BAGLANTI_ELEMANLARI_PE.ILCE_KODU = dbo.ilce.ilce_kodu and FORMNO = 'S" + TxtFormNo.Text + "'", bgl.serhatgazBaglanti());
+                    SqlDataAdapter daMalzeme = new SqlDataAdapter("SELECT B.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, B.IMALATTARIHI, 104) AS IMALAT_TARIHI, " +
+                        "I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, SEKTOR, TIPI, CAP, EKIPNO FROM dbo.BAGLANTI_ELEMANLARI_PE B " +
+                        "LEFT JOIN DBO.YOL Y ON B.YOL_MSLINK = Y.MSLINK " +
+                        "LEFT JOIN DBO.MAHALLE M ON B.MAHALLE_KODU = M.MAHALLE_KODU " +
+                        "LEFT JOIN DBO.ILCE I ON B.ILCE_KODU = I.ILCE_KODU " +
+                        "WHERE FORMNO = 'S" + TxtFormNo.Text + "'", bgl.serhatgazBaglanti());
                     DataTable dtMalzeme = new DataTable();
                     daMalzeme.Fill(dtMalzeme);
                     GrCoMalzeme.DataSource = dtMalzeme;
@@ -204,7 +241,12 @@ namespace KargazImalatTakip
                     gridView4.Columns["CAP"].Caption = "ÇAP";
                     gridView4.Columns["EKIPNO"].Caption = "MÜTEAHHİT";
 
-                    SqlDataAdapter daServisKutusu = new SqlDataAdapter("SELECT dbo.SERVIS_KUTUSU.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) as IMALAT_TARIHI, dbo.ilce.ILCE_ADI, MAHALLE_ADI AS MAHALLE, YOL_ADI + ' ' +yol_tipi AS YOL ,KUTU_TIPI, CINSI, SKUTUVANASI FROM dbo.SERVIS_KUTUSU, dbo.yol, dbo.mahalle, dbo.ilce where dbo.SERVIS_KUTUSU.YOL_MSLINK = dbo.yol.mslink and dbo.SERVIS_KUTUSU.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.SERVIS_KUTUSU.ILCE_KODU = dbo.ilce.ilce_kodu and FORMNO = " + TxtFormNo.Text, bgl.serhatgazBaglanti());
+                    SqlDataAdapter daServisKutusu = new SqlDataAdapter("SELECT SK.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, SK.IMALATTARIHI, 104) as IMALAT_TARIHI, " +
+                        "I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, KUTU_TIPI, CINSI, SKUTUVANASI FROM dbo.SERVIS_KUTUSU SK " +
+                        "LEFT JOIN DBO.YOL Y ON SK.YOL_MSLINK = Y.MSLINK " +
+                        "LEFT JOIN DBO.MAHALLE M ON SK.MAHALLE_KODU = M.MAHALLE_KODU " +
+                        "LEFT JOIN DBO.ILCE I ON SK.ILCE_KODU = I.ILCE_KODU " +
+                        "WHERE FORMNO = " + TxtFormNo.Text, bgl.serhatgazBaglanti());
                     DataTable dtServisKutusu = new DataTable();
                     daServisKutusu.Fill(dtServisKutusu);
                     GrCoServisKutusu.DataSource = dtServisKutusu;
@@ -216,6 +258,61 @@ namespace KargazImalatTakip
                     gridView3.Columns["KUTU_TIPI"].Caption = "KUTU TİPİ";
                     gridView3.Columns["CINSI"].Caption = "CİNSİ";
                     gridView3.Columns["SKUTUVANASI"].Caption = "KUTU VANASI";
+                }
+
+                if (gridView1.RowCount == 0 && gridView2.RowCount == 0 && gridView3.RowCount == 0 && gridView4.RowCount == 0)
+                {
+                    MessageBox.Show("Girilen Form Numarası ile ilgili herhangi bir kayıt bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    if (gridView1.RowCount != 0)
+                    {
+                        SqlCommand komutHat = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM DBO.SERVIS_HATLARI WHERE FORMNO=@P1", bgl.serhatgazBaglanti());
+                        komutHat.Parameters.AddWithValue("@P1", TxtFormNo.Text);
+                        SqlDataReader drHat = komutHat.ExecuteReader();
+                        while (drHat.Read())
+                        {
+                            TxtFormNoYeni.Text = drHat[0].ToString();
+                            TxtYatirimYili.Text = drHat[1].ToString();
+                            TxtImalatTarihi.Text = drHat[2].ToString();
+                            TxtSektor.Text = drHat[3].ToString();
+                        }
+                        bgl.kargazBaglanti().Close();
+
+                        SqlCommand komutSaddleBolge = new SqlCommand("SELECT BOLGE FROM DBO.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.serhatgazBaglanti());
+                        komutSaddleBolge.Parameters.AddWithValue("@P2", TxtFormNo.Text);
+                        SqlDataReader drSaddleBolge = komutSaddleBolge.ExecuteReader();
+                        while (drSaddleBolge.Read())
+                        {
+                            TxtBolge.Text = drSaddleBolge[0].ToString();
+                        }
+                        bgl.kargazBaglanti().Close();
+                    }
+                    else
+                    {
+                        SqlCommand komutSaddle = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM dbo.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.serhatgazBaglanti());
+                        komutSaddle.Parameters.AddWithValue("@P2", TxtFormNo.Text);
+                        SqlDataReader drSaddle = komutSaddle.ExecuteReader();
+                        while (drSaddle.Read())
+
+                        {
+                            TxtFormNoYeni.Text = drSaddle[0].ToString();
+                            TxtYatirimYili.Text = drSaddle[1].ToString();
+                            TxtImalatTarihi.Text = drSaddle[2].ToString();
+                            TxtSektor.Text = drSaddle[3].ToString();
+                        }
+                        bgl.kargazBaglanti().Close();
+
+                        SqlCommand komutSaddleBolge = new SqlCommand("SELECT BOLGE FROM DBO.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.serhatgazBaglanti());
+                        komutSaddleBolge.Parameters.AddWithValue("@P2", TxtFormNo.Text);
+                        SqlDataReader drSaddleBolge = komutSaddleBolge.ExecuteReader();
+                        while (drSaddleBolge.Read())
+                        {
+                            TxtBolge.Text = drSaddleBolge[0].ToString();
+                        }
+                        bgl.kargazBaglanti().Close();
+                    }
                 }
             }
             catch

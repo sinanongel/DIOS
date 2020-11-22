@@ -28,8 +28,8 @@ namespace KargazImalatTakip
             TxtBolge.Text = "";
             TxtSektor.Text = "";
             TxtVanaNo.Text = "";
-            CmbMahalle.Text = "";
-            CmbSokak.Text = "";
+            //CmbMahalle.Text = "";
+            //CmbSokak.Text = "";
 
             gridView1.Columns.Clear();
             gridView2.Columns.Clear();
@@ -134,8 +134,8 @@ namespace KargazImalatTakip
                             TxtYatirimYili.Text = drHat[1].ToString();
                             TxtImalatTarihi.Text = drHat[2].ToString();
                             TxtSektor.Text = drHat[3].ToString();
-                            CmbMahalle.Text = drHat[4].ToString();
-                            CmbSokak.Text = drHat[5].ToString();
+                            //CmbMahalle.Text = drHat[4].ToString();
+                            //CmbSokak.Text = drHat[5].ToString();
                         }
                         bgl.kargazBaglanti().Close();
 
@@ -258,8 +258,8 @@ namespace KargazImalatTakip
                             TxtYatirimYili.Text = drHat[1].ToString();
                             TxtImalatTarihi.Text = drHat[2].ToString();
                             TxtSektor.Text = drHat[3].ToString();
-                            CmbMahalle.Text = drHat[4].ToString();
-                            CmbSokak.Text = drHat[5].ToString();
+                            //CmbMahalle.Text = drHat[4].ToString();
+                            //CmbSokak.Text = drHat[5].ToString();
                         }
                         bgl.serhatgazBaglanti().Close();
 
@@ -317,10 +317,10 @@ namespace KargazImalatTakip
 
         private void BtnGuncelle_Click(object sender, EventArgs e)
         {
-            if (CmbŞirket.Text == "KARGAZ")
+            try
             {
-                //try
-                //{
+                if (CmbŞirket.Text == "KARGAZ")
+                {
                     var secHat = gridView1.GetSelectedRows();
                     List<int> secHatMslink = new List<int>();
                     foreach (int handle in secHat)
@@ -385,20 +385,15 @@ namespace KargazImalatTakip
                                 komutVana.ExecuteNonQuery();
                                 bgl.kargazBaglanti().Close();
                             }
-                            listele();
+                            
                             MessageBox.Show("Tüm Bilgiler Güncellendi..", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            listele();
                         }
                     }
-                //}
-                //catch
-                //{
-                //    MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //}
-            }
-            else if (CmbŞirket.Text == "SERHATGAZ")
-            {
-                //try
-                //{
+                
+                }
+                else if (CmbŞirket.Text == "SERHATGAZ")
+                {                
                     var secHat = gridView1.GetSelectedRows();
                     List<int> secHatMslink = new List<int>();
                     foreach (int handle in secHat)
@@ -471,11 +466,11 @@ namespace KargazImalatTakip
                             listele();
                         }                        
                     }
-                //}
-                //catch
-                //{
-                //    MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //}
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -572,8 +567,8 @@ namespace KargazImalatTakip
 
         private void CmbBolge_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CmbMahalle.Text = "";
-            CmbMahalle.Properties.Items.Clear();
+            //CmbMahalle.Text = "";
+            //CmbMahalle.Properties.Items.Clear();
 
             try
             {
@@ -587,13 +582,13 @@ namespace KargazImalatTakip
                         labelControl15.Text = drBolge[0].ToString();
                     }
 
-                    SqlCommand komut = new SqlCommand("SELECT MAHALLE_ADI FROM DBO.MAHALLE WHERE ILCE_KODU = @P1", bgl.kargazBaglanti());
-                    komut.Parameters.AddWithValue("@p1", labelControl15.Text);
-                    SqlDataReader dr = komut.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        CmbMahalle.Properties.Items.Add(dr[0]);
-                    }
+                    //SqlCommand komut = new SqlCommand("SELECT MAHALLE_ADI FROM DBO.MAHALLE WHERE ILCE_KODU = @P1", bgl.kargazBaglanti());
+                    //komut.Parameters.AddWithValue("@p1", labelControl15.Text);
+                    //SqlDataReader dr = komut.ExecuteReader();
+                    //while (dr.Read())
+                    //{
+                    //    CmbMahalle.Properties.Items.Add(dr[0]);
+                    //}
                     bgl.kargazBaglanti().Close();
                 }
                 else if (CmbŞirket.Text == "SERHATGAZ")
@@ -606,13 +601,13 @@ namespace KargazImalatTakip
                         labelControl15.Text = drBolge[0].ToString();
                     }
 
-                    SqlCommand komut = new SqlCommand("SELECT MAHALLE_ADI FROM DBO.MAHALLE WHERE ILCE_KODU = @P1", bgl.serhatgazBaglanti());
-                    komut.Parameters.AddWithValue("@p1", labelControl15.Text);
-                    SqlDataReader dr = komut.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        CmbMahalle.Properties.Items.Add(dr[0]);
-                    }
+                    //SqlCommand komut = new SqlCommand("SELECT MAHALLE_ADI FROM DBO.MAHALLE WHERE ILCE_KODU = @P1", bgl.serhatgazBaglanti());
+                    //komut.Parameters.AddWithValue("@p1", labelControl15.Text);
+                    //SqlDataReader dr = komut.ExecuteReader();
+                    //while (dr.Read())
+                    //{
+                    //    CmbMahalle.Properties.Items.Add(dr[0]);
+                    //}
                     bgl.serhatgazBaglanti().Close();
                 }
             }
@@ -622,41 +617,41 @@ namespace KargazImalatTakip
             }
         }
 
-        private void CmbMahalle_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CmbSokak.Properties.Items.Clear();
+        //private void CmbMahalle_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    //CmbSokak.Properties.Items.Clear();
 
-            try
-            {
-                if (CmbŞirket.Text == "KARGAZ")
-                {
-                    SqlCommand komut = new SqlCommand("SELECT yol_adi + ' ' + YOL_TIPI FROM dbo.yol, DBO.mahalle, dbo.yol_mahalle WHERE DBO.yol.mslink=DBO.yol_mahalle.yol_mslink AND DBO.yol_mahalle.mahalle_mslink=DBO.mahalle.mslink AND mahalle_adi =@P1 AND DBO.YOL.ILCE_KODU =@P2", bgl.kargazBaglanti());
-                    komut.Parameters.AddWithValue("@p1", CmbMahalle.Text);
-                    komut.Parameters.AddWithValue("@p2", labelControl15.Text);
-                    SqlDataReader dr = komut.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        CmbSokak.Properties.Items.Add(dr[0]);
-                    }
-                    bgl.kargazBaglanti().Close();
-                }
-                else if (CmbŞirket.Text == "SERHATGAZ")
-                {
-                    SqlCommand komut = new SqlCommand("SELECT yol_adi FROM dbo.yol, DBO.mahalle, dbo.yol_mahalle WHERE DBO.yol.mslink=DBO.yol_mahalle.yol_mslink AND DBO.yol_mahalle.mahalle_mslink=DBO.mahalle.mslink AND mahalle_adi =@P1 AND DBO.YOL.ILCE_KODU =@P2", bgl.serhatgazBaglanti());
-                    komut.Parameters.AddWithValue("@p1", CmbMahalle.Text);
-                    komut.Parameters.AddWithValue("@p2", labelControl15.Text);
-                    SqlDataReader dr = komut.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        CmbSokak.Properties.Items.Add(dr[0]);
-                    }
-                    bgl.serhatgazBaglanti().Close();
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }            
-        }
+        //    try
+        //    {
+        //        if (CmbŞirket.Text == "KARGAZ")
+        //        {
+        //            SqlCommand komut = new SqlCommand("SELECT yol_adi + ' ' + YOL_TIPI FROM dbo.yol, DBO.mahalle, dbo.yol_mahalle WHERE DBO.yol.mslink=DBO.yol_mahalle.yol_mslink AND DBO.yol_mahalle.mahalle_mslink=DBO.mahalle.mslink AND mahalle_adi =@P1 AND DBO.YOL.ILCE_KODU =@P2", bgl.kargazBaglanti());
+        //            komut.Parameters.AddWithValue("@p1", CmbMahalle.Text);
+        //            komut.Parameters.AddWithValue("@p2", labelControl15.Text);
+        //            SqlDataReader dr = komut.ExecuteReader();
+        //            while (dr.Read())
+        //            {
+        //                CmbSokak.Properties.Items.Add(dr[0]);
+        //            }
+        //            bgl.kargazBaglanti().Close();
+        //        }
+        //        else if (CmbŞirket.Text == "SERHATGAZ")
+        //        {
+        //            SqlCommand komut = new SqlCommand("SELECT yol_adi FROM dbo.yol, DBO.mahalle, dbo.yol_mahalle WHERE DBO.yol.mslink=DBO.yol_mahalle.yol_mslink AND DBO.yol_mahalle.mahalle_mslink=DBO.mahalle.mslink AND mahalle_adi =@P1 AND DBO.YOL.ILCE_KODU =@P2", bgl.serhatgazBaglanti());
+        //            komut.Parameters.AddWithValue("@p1", CmbMahalle.Text);
+        //            komut.Parameters.AddWithValue("@p2", labelControl15.Text);
+        //            SqlDataReader dr = komut.ExecuteReader();
+        //            while (dr.Read())
+        //            {
+        //                CmbSokak.Properties.Items.Add(dr[0]);
+        //            }
+        //            bgl.serhatgazBaglanti().Close();
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //    }            
+        //}
     }
 }
