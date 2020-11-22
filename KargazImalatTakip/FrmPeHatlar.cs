@@ -43,10 +43,7 @@ namespace KargazImalatTakip
                 //}
                 //else
                 //{
-                //SqlDataAdapter da = new SqlDataAdapter("select ROW_NUMBER() OVER(ORDER BY dbo.ilce.ILCE_ADI) AS SIRANO, dbo.HATLAR.MSLINK, dbo.ilce.ilce_adi AS ILCE_ADI, mahalle_adi AS MAHALLE, yol_adi AS YOL, dbo.yol.yol_tipi AS YOL_TIPI, YATIRIMYILI, convert(varchar, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, FORMNO, NET_BORU_CAPI, BORU_UZUNLUGU, YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU from dbo.HATLAR, dbo.yol, dbo.mahalle, dbo.ilce where dbo.HATLAR.YOL_MSLINK = dbo.yol.mslink and dbo.HATLAR.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.HATLAR.ILCE_KODU = dbo.ilce.ilce_kodu and MALZEME_CINSI='Polietilen' and dbo.ilce.ilce_adi like '%" + CmbBolge.Text + "%' and dbo.mahalle.mahalle_adi like '%" + CmbMahalle.Text + "%'and dbo.yol.yol_adi like '%" + CmbSokak.Text + "%'and YATIRIMYILI like '%" + CmbYil.Text + "%' and NET_BORU_CAPI like '%" + CmbCap.Text + "%' order by ilce_adi, mahalle_adi, yol_adi, YATIRIMYILI, FORMNO", bgl.kargazBaglanti());
-                //                DataTable dt = new DataTable();
-                //                da.Fill(dt);
-                //                gridControl1.DataSource = dt;
+                
                 //}
 
                 gridView1.Columns["SIRANO"].Caption = "SIRA NO";

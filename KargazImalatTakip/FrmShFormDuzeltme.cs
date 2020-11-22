@@ -37,9 +37,10 @@ namespace KargazImalatTakip
 
         void listele()
         {
-            if (CmbŞirket.Text == "KARGAZ")
+            //Veri tabanına bağlanamama durumunda ikaz vermesi için try-catch bloğuna aldım.
+            try
             {
-                try
+                if (CmbŞirket.Text == "KARGAZ")
                 {
                     SqlDataAdapter daHat = new SqlDataAdapter("select dbo.SERVIS_HATLARI.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, dbo.ilce.ilce_adi AS ILCE_ADI, mahalle_adi AS MAHALLE, YOL_ADI + ' ' +yol_tipi AS YOL, SEKTOR, HAT_MSLINK, CAP, KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, EKIPNO from dbo.SERVIS_HATLARI, dbo.yol, dbo.mahalle, dbo.ilce where dbo.SERVIS_HATLARI.YOL_MSLINK = dbo.yol.mslink and dbo.SERVIS_HATLARI.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.SERVIS_HATLARI.ILCE_KODU = dbo.ilce.ilce_kodu and formno =" + TxtFormNo.Text, bgl.kargazBaglanti());
                     DataTable dtHat = new DataTable();
@@ -100,16 +101,64 @@ namespace KargazImalatTakip
                     gridView3.Columns["KUTU_TIPI"].Caption = "KUTU TİPİ";
                     gridView3.Columns["CINSI"].Caption = "CİNSİ";
                     gridView3.Columns["SKUTUVANASI"].Caption = "KUTU VANASI";
+
+                    if (gridView1.RowCount == 0 && gridView2.RowCount == 0 && gridView3.RowCount == 0 && gridView4.RowCount == 0)
+                    {
+                        MessageBox.Show("Girilen Form Numarası ile ilgili herhangi bir kayıt bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        if (gridView1.RowCount != 0)
+                        {
+                            SqlCommand komutHat = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM DBO.SERVIS_HATLARI WHERE FORMNO=@P1", bgl.kargazBaglanti());
+                            komutHat.Parameters.AddWithValue("@P1", TxtFormNo.Text);
+                            SqlDataReader drHat = komutHat.ExecuteReader();
+                            while (drHat.Read())
+                            {
+                                TxtFormNoYeni.Text = drHat[0].ToString();
+                                TxtYatirimYili.Text = drHat[1].ToString();
+                                TxtImalatTarihi.Text = drHat[2].ToString();
+                                TxtSektor.Text = drHat[3].ToString();
+                            }
+                            bgl.kargazBaglanti().Close();
+
+                            SqlCommand komutSaddleBolge = new SqlCommand("SELECT BOLGE FROM DBO.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.kargazBaglanti());
+                            komutSaddleBolge.Parameters.AddWithValue("@P2", TxtFormNo.Text);
+                            SqlDataReader drSaddleBolge = komutSaddleBolge.ExecuteReader();
+                            while (drSaddleBolge.Read())
+                            {
+                                TxtBolge.Text = drSaddleBolge[0].ToString();
+                            }
+                            bgl.kargazBaglanti().Close();
+                        }
+                        else
+                        {
+                            SqlCommand komutSaddle = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM dbo.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.kargazBaglanti());
+                            komutSaddle.Parameters.AddWithValue("@P2", TxtFormNo.Text);
+                            SqlDataReader drSaddle = komutSaddle.ExecuteReader();
+                            while (drSaddle.Read())
+
+                            {
+                                TxtFormNoYeni.Text = drSaddle[0].ToString();
+                                TxtYatirimYili.Text = drSaddle[1].ToString();
+                                TxtImalatTarihi.Text = drSaddle[2].ToString();
+                                TxtSektor.Text = drSaddle[3].ToString();
+                            }
+                            bgl.kargazBaglanti().Close();
+
+                            SqlCommand komutSaddleBolge = new SqlCommand("SELECT BOLGE FROM DBO.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.kargazBaglanti());
+                            komutSaddleBolge.Parameters.AddWithValue("@P2", TxtFormNo.Text);
+                            SqlDataReader drSaddleBolge = komutSaddleBolge.ExecuteReader();
+                            while (drSaddleBolge.Read())
+                            {
+                                TxtBolge.Text = drSaddleBolge[0].ToString();
+                            }
+                            bgl.kargazBaglanti().Close();
+                        }
+                    }
                 }
-                catch (System.Data.SqlClient.SqlException)
+                else if (CmbŞirket.Text == "SERHATGAZ")
                 {
-                    MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            else if (CmbŞirket.Text == "SERHATGAZ")
-            {
-                //try
-                //{
                     SqlDataAdapter daHat = new SqlDataAdapter("select dbo.SERVIS_HATLARI.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, dbo.ilce.ilce_adi AS ILCE_ADI, mahalle_adi AS MAHALLE, YOL_ADI + ' ' +yol_tipi AS YOL, SEKTOR, CAP, KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, EKIPNO from dbo.SERVIS_HATLARI, dbo.yol, dbo.mahalle, dbo.ilce where dbo.SERVIS_HATLARI.YOL_MSLINK = dbo.yol.mslink and dbo.SERVIS_HATLARI.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.SERVIS_HATLARI.ILCE_KODU = dbo.ilce.ilce_kodu and formno =" + TxtFormNo.Text, bgl.serhatgazBaglanti());
                     DataTable dtHat = new DataTable();
                     daHat.Fill(dtHat);
@@ -167,348 +216,210 @@ namespace KargazImalatTakip
                     gridView3.Columns["KUTU_TIPI"].Caption = "KUTU TİPİ";
                     gridView3.Columns["CINSI"].Caption = "CİNSİ";
                     gridView3.Columns["SKUTUVANASI"].Caption = "KUTU VANASI";
-                //}
-                //catch (System.Data.SqlClient.SqlException)
-                //{
-                //    MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //}
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void BtnBul_Click(object sender, EventArgs e)
         {
             listele();
-
-            if (CmbŞirket.Text == "KARGAZ")
-            {
-                if (gridView1.RowCount == 0 && gridView2.RowCount == 0 && gridView3.RowCount == 0 && gridView4.RowCount == 0)
-                {
-                    MessageBox.Show("Girilen Form Numarası ile ilgili herhangi bir kayıt bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    try
-                    {
-                        if (gridView1.RowCount != 0)
-                        {
-                            SqlCommand komutHat = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM DBO.SERVIS_HATLARI WHERE FORMNO=@P1", bgl.kargazBaglanti());
-                            komutHat.Parameters.AddWithValue("@P1", TxtFormNo.Text);
-                            SqlDataReader drHat = komutHat.ExecuteReader();
-                            while (drHat.Read())
-                            {
-                                TxtFormNoYeni.Text = drHat[0].ToString();
-                                TxtYatirimYili.Text = drHat[1].ToString();
-                                TxtImalatTarihi.Text = drHat[2].ToString();
-                                TxtSektor.Text = drHat[3].ToString();
-                            }
-                            bgl.kargazBaglanti().Close();
-
-                            SqlCommand komutSaddleBolge = new SqlCommand("SELECT BOLGE FROM DBO.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.kargazBaglanti());
-                            komutSaddleBolge.Parameters.AddWithValue("@P2", TxtFormNo.Text);
-                            SqlDataReader drSaddleBolge = komutSaddleBolge.ExecuteReader();
-                            while (drSaddleBolge.Read())
-                            {
-                                TxtBolge.Text = drSaddleBolge[0].ToString();
-                            }
-                            bgl.kargazBaglanti().Close();
-                        }
-                        else
-                        {
-                            SqlCommand komutSaddle = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM dbo.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.kargazBaglanti());
-                            komutSaddle.Parameters.AddWithValue("@P2", TxtFormNo.Text);
-                            SqlDataReader drSaddle = komutSaddle.ExecuteReader();
-                            while (drSaddle.Read())
-
-                            {
-                                TxtFormNoYeni.Text = drSaddle[0].ToString();
-                                TxtYatirimYili.Text = drSaddle[1].ToString();
-                                TxtImalatTarihi.Text = drSaddle[2].ToString();
-                                TxtSektor.Text = drSaddle[3].ToString();
-                            }
-                            bgl.kargazBaglanti().Close();
-
-                            SqlCommand komutSaddleBolge = new SqlCommand("SELECT BOLGE FROM DBO.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.kargazBaglanti());
-                            komutSaddleBolge.Parameters.AddWithValue("@P2", TxtFormNo.Text);
-                            SqlDataReader drSaddleBolge = komutSaddleBolge.ExecuteReader();
-                            while (drSaddleBolge.Read())
-                            {
-                                TxtBolge.Text = drSaddleBolge[0].ToString();
-                            }
-                            bgl.kargazBaglanti().Close();
-                        }
-                    }
-                    catch (System.Data.SqlClient.SqlException)
-                    {
-                        MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-                
-            }
-            else if (CmbŞirket.Text == "SERHATGAZ")
-            {
-                if (gridView1.RowCount == 0 && gridView2.RowCount == 0 && gridView3.RowCount == 0 && gridView4.RowCount == 0)
-                {
-                    MessageBox.Show("Girilen Form Numarası ile ilgili herhangi bir kayıt bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    try
-                    {
-                        if (gridView1.RowCount != 0)
-                        {
-                            SqlCommand komutHat = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM DBO.SERVIS_HATLARI WHERE FORMNO=@P1", bgl.serhatgazBaglanti());
-                            komutHat.Parameters.AddWithValue("@P1", TxtFormNo.Text);
-                            SqlDataReader drHat = komutHat.ExecuteReader();
-                            while (drHat.Read())
-                            {
-                                TxtFormNoYeni.Text = drHat[0].ToString();
-                                TxtYatirimYili.Text = drHat[1].ToString();
-                                TxtImalatTarihi.Text = drHat[2].ToString();
-                                TxtSektor.Text = drHat[3].ToString();
-                            }
-                            bgl.serhatgazBaglanti().Close();
-
-                            SqlCommand komutSaddleBolge = new SqlCommand("SELECT BOLGE FROM DBO.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.serhatgazBaglanti());
-                            komutSaddleBolge.Parameters.AddWithValue("@P2", TxtFormNo.Text);
-                            SqlDataReader drSaddleBolge = komutSaddleBolge.ExecuteReader();
-                            while (drSaddleBolge.Read())
-                            {
-                                TxtBolge.Text = drSaddleBolge[0].ToString();
-                            }
-                            bgl.serhatgazBaglanti().Close();
-                        }
-                        else
-                        {
-                            SqlCommand komutSaddle = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM dbo.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.serhatgazBaglanti());
-                            komutSaddle.Parameters.AddWithValue("@P2", TxtFormNo.Text);
-                            SqlDataReader drSaddle = komutSaddle.ExecuteReader();
-                            while (drSaddle.Read())
-
-                            {
-                                TxtFormNoYeni.Text = drSaddle[0].ToString();
-                                TxtYatirimYili.Text = drSaddle[1].ToString();
-                                TxtImalatTarihi.Text = drSaddle[2].ToString();
-                                TxtSektor.Text = drSaddle[3].ToString();
-                            }
-                            bgl.serhatgazBaglanti().Close();
-
-                            SqlCommand komutSaddleBolge = new SqlCommand("SELECT BOLGE FROM DBO.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.serhatgazBaglanti());
-                            komutSaddleBolge.Parameters.AddWithValue("@P2", TxtFormNo.Text);
-                            SqlDataReader drSaddleBolge = komutSaddleBolge.ExecuteReader();
-                            while (drSaddleBolge.Read())
-                            {
-                                TxtBolge.Text = drSaddleBolge[0].ToString();
-                            }
-                            bgl.serhatgazBaglanti().Close();
-                        }
-                    }
-                    catch (System.Data.SqlClient.SqlException)
-                    {
-                        //MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-            }
         }
 
         private void BtnGuncelle_Click(object sender, EventArgs e)
         {
-            if (CmbŞirket.Text == "KARGAZ")
+            try
             {
-                //try
-                //{
-                var secHat = gridView1.GetSelectedRows();
-                List<int> secHatMslink = new List<int>(); foreach (int handle in secHat)
+                if (CmbŞirket.Text == "KARGAZ")
                 {
-                    secHatMslink.Add(Convert.ToInt32(gridView1.GetRowCellValue(handle, "MSLINK")));
-                }
-
-                var secSaddle = gridView2.GetSelectedRows();
-                List<int> secSaddleMslink = new List<int>();
-                foreach (int handle in secSaddle)
-                {
-                    secSaddleMslink.Add(Convert.ToInt32(gridView2.GetRowCellValue(handle, "MSLINK")));
-                }
-
-                var secServisKutusu = gridView3.GetSelectedRows();
-                List<int> secServisKutusuMslink = new List<int>();
-                foreach (int handle in secServisKutusu)
-                {
-                    secServisKutusuMslink.Add(Convert.ToInt32(gridView3.GetRowCellValue(handle, "MSLINK")));
-                }
-
-                var secMalzeme = gridView4.GetSelectedRows();
-                List<int> secMalzemeMslink = new List<int>();
-                foreach (int handle in secMalzeme)
-                {
-                    secMalzemeMslink.Add(Convert.ToInt32(gridView4.GetRowCellValue(handle, "MSLINK")));
-                }
-
-                if (secHatMslink.Count == 0 && secMalzemeMslink.Count == 0 && secSaddleMslink.Count == 0 && secServisKutusuMslink.Count == 0)
-                {
-                    MessageBox.Show("Lütfen bir seçim yapınız!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    DialogResult soru;
-                    soru = MessageBox.Show("Bu bilgileri güncellemek istediğinize emin misiniz?", "Uyarı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (soru == DialogResult.Yes)
+                    var secHat = gridView1.GetSelectedRows();
+                    List<int> secHatMslink = new List<int>(); foreach (int handle in secHat)
                     {
-                        foreach (int hatMslink in secHatMslink)
-                        {
-                            SqlCommand komutHat = new SqlCommand("UPDATE dbo.SERVIS_HATLARI SET FORMNO=@p1, YATIRIMYILI=@p2, IMALATTARIHI=@p3, SEKTOR=@p4 where MSLINK=" + hatMslink, bgl.kargazBaglanti());
-                            komutHat.Parameters.AddWithValue("@p1", TxtFormNoYeni.Text);
-                            komutHat.Parameters.AddWithValue("@p2", TxtYatirimYili.Text);
-                            komutHat.Parameters.AddWithValue("@p3", Convert.ToDateTime(TxtImalatTarihi.Text));
-                            komutHat.Parameters.AddWithValue("@p4", TxtSektor.Text);
-                            komutHat.ExecuteNonQuery();
-                            bgl.kargazBaglanti().Close();
-                        }
+                        secHatMslink.Add(Convert.ToInt32(gridView1.GetRowCellValue(handle, "MSLINK")));
+                    }
 
-                        foreach (int saddleMslink in secSaddleMslink)
-                        {
-                            SqlCommand komutSaddle = new SqlCommand("UPDATE dbo.SERVIS_ELEMANLARI SET FORMNO=@p5, YATIRIMYILI=@p6, IMALAT_TARIHI=@p7, SEKTOR=@p8, BOLGE=@p9 where MSLINK=" + saddleMslink, bgl.kargazBaglanti());
-                            komutSaddle.Parameters.AddWithValue("@p5", TxtFormNoYeni.Text);
-                            komutSaddle.Parameters.AddWithValue("@p6", TxtYatirimYili.Text);
-                            komutSaddle.Parameters.AddWithValue("@p7", Convert.ToDateTime(TxtImalatTarihi.Text));
-                            komutSaddle.Parameters.AddWithValue("@p8", TxtSektor.Text);
-                            komutSaddle.Parameters.AddWithValue("@p9", TxtBolge.Text);
-                            komutSaddle.ExecuteNonQuery();
-                            bgl.kargazBaglanti().Close();
-                        }
+                    var secSaddle = gridView2.GetSelectedRows();
+                    List<int> secSaddleMslink = new List<int>();
+                    foreach (int handle in secSaddle)
+                    {
+                        secSaddleMslink.Add(Convert.ToInt32(gridView2.GetRowCellValue(handle, "MSLINK")));
+                    }
 
-                        foreach (int malzemeMslink in secMalzemeMslink)
-                        {
-                            SqlCommand komutMalzeme = new SqlCommand("UPDATE dbo.BAGLANTI_ELEMANLARI_PE SET FORMNO=@p10, YATIRIMYILI=@p11, IMALATTARIHI=@p12, SEKTOR=@p13 where MSLINK=" + malzemeMslink, bgl.kargazBaglanti());
-                            komutMalzeme.Parameters.AddWithValue("@p10", "S" + TxtFormNoYeni.Text);
-                            komutMalzeme.Parameters.AddWithValue("@p11", TxtYatirimYili.Text);
-                            komutMalzeme.Parameters.AddWithValue("@p12", Convert.ToDateTime(TxtImalatTarihi.Text));
-                            komutMalzeme.Parameters.AddWithValue("@p13", TxtSektor.Text);
-                            komutMalzeme.ExecuteNonQuery();
-                            bgl.kargazBaglanti().Close();
-                        }
+                    var secServisKutusu = gridView3.GetSelectedRows();
+                    List<int> secServisKutusuMslink = new List<int>();
+                    foreach (int handle in secServisKutusu)
+                    {
+                        secServisKutusuMslink.Add(Convert.ToInt32(gridView3.GetRowCellValue(handle, "MSLINK")));
+                    }
 
-                        foreach (int servisKutusuMslink in secServisKutusuMslink)
-                        {
-                            SqlCommand komutServisKutusu = new SqlCommand("UPDATE dbo.SERVIS_KUTUSU SET FORMNO=@p14, YATIRIMYILI=@p15, IMALATTARIHI=@p16 where MSLINK=" + servisKutusuMslink, bgl.kargazBaglanti());
-                            komutServisKutusu.Parameters.AddWithValue("@p14", TxtFormNoYeni.Text);
-                            komutServisKutusu.Parameters.AddWithValue("@p15", TxtYatirimYili.Text);
-                            komutServisKutusu.Parameters.AddWithValue("@p16", Convert.ToDateTime(TxtImalatTarihi.Text));
-                            komutServisKutusu.ExecuteNonQuery();
-                            bgl.kargazBaglanti().Close();
-                        }
+                    var secMalzeme = gridView4.GetSelectedRows();
+                    List<int> secMalzemeMslink = new List<int>();
+                    foreach (int handle in secMalzeme)
+                    {
+                        secMalzemeMslink.Add(Convert.ToInt32(gridView4.GetRowCellValue(handle, "MSLINK")));
+                    }
 
-                        listele();
-                        MessageBox.Show("Tüm Bilgiler Güncellendi..", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (secHatMslink.Count == 0 && secMalzemeMslink.Count == 0 && secSaddleMslink.Count == 0 && secServisKutusuMslink.Count == 0)
+                    {
+                        MessageBox.Show("Lütfen bir seçim yapınız!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        DialogResult soru;
+                        soru = MessageBox.Show("Bu bilgileri güncellemek istediğinize emin misiniz?", "Uyarı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (soru == DialogResult.Yes)
+                        {
+                            foreach (int hatMslink in secHatMslink)
+                            {
+                                SqlCommand komutHat = new SqlCommand("UPDATE dbo.SERVIS_HATLARI SET FORMNO=@p1, YATIRIMYILI=@p2, IMALATTARIHI=@p3, SEKTOR=@p4 where MSLINK=" + hatMslink, bgl.kargazBaglanti());
+                                komutHat.Parameters.AddWithValue("@p1", TxtFormNoYeni.Text);
+                                komutHat.Parameters.AddWithValue("@p2", TxtYatirimYili.Text);
+                                komutHat.Parameters.AddWithValue("@p3", Convert.ToDateTime(TxtImalatTarihi.Text));
+                                komutHat.Parameters.AddWithValue("@p4", TxtSektor.Text);
+                                komutHat.ExecuteNonQuery();
+                                bgl.kargazBaglanti().Close();
+                            }
+
+                            foreach (int saddleMslink in secSaddleMslink)
+                            {
+                                SqlCommand komutSaddle = new SqlCommand("UPDATE dbo.SERVIS_ELEMANLARI SET FORMNO=@p5, YATIRIMYILI=@p6, IMALAT_TARIHI=@p7, SEKTOR=@p8, BOLGE=@p9 where MSLINK=" + saddleMslink, bgl.kargazBaglanti());
+                                komutSaddle.Parameters.AddWithValue("@p5", TxtFormNoYeni.Text);
+                                komutSaddle.Parameters.AddWithValue("@p6", TxtYatirimYili.Text);
+                                komutSaddle.Parameters.AddWithValue("@p7", Convert.ToDateTime(TxtImalatTarihi.Text));
+                                komutSaddle.Parameters.AddWithValue("@p8", TxtSektor.Text);
+                                komutSaddle.Parameters.AddWithValue("@p9", TxtBolge.Text);
+                                komutSaddle.ExecuteNonQuery();
+                                bgl.kargazBaglanti().Close();
+                            }
+
+                            foreach (int malzemeMslink in secMalzemeMslink)
+                            {
+                                SqlCommand komutMalzeme = new SqlCommand("UPDATE dbo.BAGLANTI_ELEMANLARI_PE SET FORMNO=@p10, YATIRIMYILI=@p11, IMALATTARIHI=@p12, SEKTOR=@p13 where MSLINK=" + malzemeMslink, bgl.kargazBaglanti());
+                                komutMalzeme.Parameters.AddWithValue("@p10", "S" + TxtFormNoYeni.Text);
+                                komutMalzeme.Parameters.AddWithValue("@p11", TxtYatirimYili.Text);
+                                komutMalzeme.Parameters.AddWithValue("@p12", Convert.ToDateTime(TxtImalatTarihi.Text));
+                                komutMalzeme.Parameters.AddWithValue("@p13", TxtSektor.Text);
+                                komutMalzeme.ExecuteNonQuery();
+                                bgl.kargazBaglanti().Close();
+                            }
+
+                            foreach (int servisKutusuMslink in secServisKutusuMslink)
+                            {
+                                SqlCommand komutServisKutusu = new SqlCommand("UPDATE dbo.SERVIS_KUTUSU SET FORMNO=@p14, YATIRIMYILI=@p15, IMALATTARIHI=@p16 where MSLINK=" + servisKutusuMslink, bgl.kargazBaglanti());
+                                komutServisKutusu.Parameters.AddWithValue("@p14", TxtFormNoYeni.Text);
+                                komutServisKutusu.Parameters.AddWithValue("@p15", TxtYatirimYili.Text);
+                                komutServisKutusu.Parameters.AddWithValue("@p16", Convert.ToDateTime(TxtImalatTarihi.Text));
+                                komutServisKutusu.ExecuteNonQuery();
+                                bgl.kargazBaglanti().Close();
+                            }
+
+                            listele();
+                            MessageBox.Show("Tüm Bilgiler Güncellendi..", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
-                //}
-                //catch
-                //{
-                //    MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //}
+                else if (CmbŞirket.Text == "SERHATGAZ")
+                {
+                    var secHat = gridView1.GetSelectedRows();
+                    List<int> secHatMslink = new List<int>(); foreach (int handle in secHat)
+                    {
+                        secHatMslink.Add(Convert.ToInt32(gridView1.GetRowCellValue(handle, "MSLINK")));
+                    }
+
+                    var secSaddle = gridView2.GetSelectedRows();
+                    List<int> secSaddleMslink = new List<int>();
+                    foreach (int handle in secSaddle)
+                    {
+                        secSaddleMslink.Add(Convert.ToInt32(gridView2.GetRowCellValue(handle, "MSLINK")));
+                    }
+
+                    var secServisKutusu = gridView3.GetSelectedRows();
+                    List<int> secServisKutusuMslink = new List<int>();
+                    foreach (int handle in secServisKutusu)
+                    {
+                        secServisKutusuMslink.Add(Convert.ToInt32(gridView3.GetRowCellValue(handle, "MSLINK")));
+                    }
+
+                    var secMalzeme = gridView4.GetSelectedRows();
+                    List<int> secMalzemeMslink = new List<int>();
+                    foreach (int handle in secMalzeme)
+                    {
+                        secMalzemeMslink.Add(Convert.ToInt32(gridView4.GetRowCellValue(handle, "MSLINK")));
+                    }
+
+                    if (secHatMslink.Count == 0 && secMalzemeMslink.Count == 0 && secSaddleMslink.Count == 0 && secServisKutusuMslink.Count == 0)
+                    {
+                        MessageBox.Show("Lütfen bir seçim yapınız!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        DialogResult soru;
+                        soru = MessageBox.Show("Bu bilgileri güncellemek istediğinize emin misiniz?", "Uyarı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (soru == DialogResult.Yes)
+                        {
+                            foreach (int hatMslink in secHatMslink)
+                            {
+                                SqlCommand komutHat = new SqlCommand("UPDATE dbo.SERVIS_HATLARI SET FORMNO=@p1, YATIRIMYILI=@p2, IMALATTARIHI=@p3, SEKTOR=@p4, ESKIFORMNO=@p5 where MSLINK=" + hatMslink, bgl.serhatgazBaglanti());
+                                komutHat.Parameters.AddWithValue("@p1", TxtFormNoYeni.Text);
+                                komutHat.Parameters.AddWithValue("@p2", TxtYatirimYili.Text);
+                                komutHat.Parameters.AddWithValue("@p3", Convert.ToDateTime(TxtImalatTarihi.Text));
+                                komutHat.Parameters.AddWithValue("@p4", TxtSektor.Text);
+                                komutHat.Parameters.AddWithValue("@p5", TxtFormNo.Text);
+                                komutHat.ExecuteNonQuery();
+                                bgl.serhatgazBaglanti().Close();
+                            }
+
+                            foreach (int saddleMslink in secSaddleMslink)
+                            {
+                                SqlCommand komutSaddle = new SqlCommand("UPDATE dbo.SERVIS_ELEMANLARI SET FORMNO=@p5, YATIRIMYILI=@p6, IMALAT_TARIHI=@p7, SEKTOR=@p8, BOLGE=@p9, ESKIFORMNO=@p10 where MSLINK=" + saddleMslink, bgl.serhatgazBaglanti());
+                                komutSaddle.Parameters.AddWithValue("@p5", TxtFormNoYeni.Text);
+                                komutSaddle.Parameters.AddWithValue("@p6", TxtYatirimYili.Text);
+                                komutSaddle.Parameters.AddWithValue("@p7", Convert.ToDateTime(TxtImalatTarihi.Text));
+                                komutSaddle.Parameters.AddWithValue("@p8", TxtSektor.Text);
+                                komutSaddle.Parameters.AddWithValue("@p9", TxtBolge.Text);
+                                komutSaddle.Parameters.AddWithValue("@p10", TxtFormNo.Text);
+
+                                komutSaddle.ExecuteNonQuery();
+                                bgl.serhatgazBaglanti().Close();
+                            }
+
+                            foreach (int malzemeMslink in secMalzemeMslink)
+                            {
+                                SqlCommand komutMalzeme = new SqlCommand("UPDATE dbo.BAGLANTI_ELEMANLARI_PE SET FORMNO=@p10, YATIRIMYILI=@p11, IMALATTARIHI=@p12, SEKTOR=@p13, ESKIFORMNO=@p14 where MSLINK=" + malzemeMslink, bgl.serhatgazBaglanti());
+                                komutMalzeme.Parameters.AddWithValue("@p10", "S" + TxtFormNoYeni.Text);
+                                komutMalzeme.Parameters.AddWithValue("@p11", TxtYatirimYili.Text);
+                                komutMalzeme.Parameters.AddWithValue("@p12", Convert.ToDateTime(TxtImalatTarihi.Text));
+                                komutMalzeme.Parameters.AddWithValue("@p13", TxtSektor.Text);
+                                komutMalzeme.Parameters.AddWithValue("@p14", "S" + TxtFormNo.Text);
+                                komutMalzeme.ExecuteNonQuery();
+                                bgl.serhatgazBaglanti().Close();
+                            }
+
+                            foreach (int servisKutusuMslink in secServisKutusuMslink)
+                            {
+                                SqlCommand komutServisKutusu = new SqlCommand("UPDATE dbo.SERVIS_KUTUSU SET FORMNO=@p14, YATIRIMYILI=@p15, IMALATTARIHI=@p16, ESKIFORMNO=@p17 where MSLINK=" + servisKutusuMslink, bgl.serhatgazBaglanti());
+                                komutServisKutusu.Parameters.AddWithValue("@p14", TxtFormNoYeni.Text);
+                                komutServisKutusu.Parameters.AddWithValue("@p15", TxtYatirimYili.Text);
+                                komutServisKutusu.Parameters.AddWithValue("@p16", Convert.ToDateTime(TxtImalatTarihi.Text));
+                                komutServisKutusu.Parameters.AddWithValue("@p17", TxtFormNo.Text);
+                                komutServisKutusu.ExecuteNonQuery();
+                                bgl.serhatgazBaglanti().Close();
+                            }
+
+                            listele();
+                            MessageBox.Show("Tüm Bilgiler Güncellendi..", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
             }
-            else if (CmbŞirket.Text == "SERHATGAZ")
+            catch
             {
-               
-                //try
-                //{
-                var secHat = gridView1.GetSelectedRows();
-                List<int> secHatMslink = new List<int>(); foreach (int handle in secHat)
-                {
-                    secHatMslink.Add(Convert.ToInt32(gridView1.GetRowCellValue(handle, "MSLINK")));
-                }
-
-                var secSaddle = gridView2.GetSelectedRows();
-                List<int> secSaddleMslink = new List<int>();
-                foreach (int handle in secSaddle)
-                {
-                    secSaddleMslink.Add(Convert.ToInt32(gridView2.GetRowCellValue(handle, "MSLINK")));
-                }
-
-                var secServisKutusu = gridView3.GetSelectedRows();
-                List<int> secServisKutusuMslink = new List<int>();
-                foreach (int handle in secServisKutusu)
-                {
-                    secServisKutusuMslink.Add(Convert.ToInt32(gridView3.GetRowCellValue(handle, "MSLINK")));
-                }
-
-                var secMalzeme = gridView4.GetSelectedRows();
-                List<int> secMalzemeMslink = new List<int>();
-                foreach (int handle in secMalzeme)
-                {
-                    secMalzemeMslink.Add(Convert.ToInt32(gridView4.GetRowCellValue(handle, "MSLINK")));
-                }
-
-                if (secHatMslink.Count == 0 && secMalzemeMslink.Count == 0 && secSaddleMslink.Count == 0 && secServisKutusuMslink.Count == 0)
-                {
-                    MessageBox.Show("Lütfen bir seçim yapınız!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    DialogResult soru;
-                    soru = MessageBox.Show("Bu bilgileri güncellemek istediğinize emin misiniz?", "Uyarı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (soru == DialogResult.Yes)
-                    {
-                        foreach (int hatMslink in secHatMslink)
-                        {
-                            SqlCommand komutHat = new SqlCommand("UPDATE dbo.SERVIS_HATLARI SET FORMNO=@p1, YATIRIMYILI=@p2, IMALATTARIHI=@p3, SEKTOR=@p4, ESKIFORMNO=@p5 where MSLINK=" + hatMslink, bgl.serhatgazBaglanti());
-                            komutHat.Parameters.AddWithValue("@p1", TxtFormNoYeni.Text);
-                            komutHat.Parameters.AddWithValue("@p2", TxtYatirimYili.Text);
-                            komutHat.Parameters.AddWithValue("@p3", Convert.ToDateTime(TxtImalatTarihi.Text));
-                            komutHat.Parameters.AddWithValue("@p4", TxtSektor.Text);
-                            komutHat.Parameters.AddWithValue("@p5", TxtFormNo.Text);
-                            komutHat.ExecuteNonQuery();
-                            bgl.serhatgazBaglanti().Close();
-                        }
-
-                        foreach (int saddleMslink in secSaddleMslink)
-                        {
-                            SqlCommand komutSaddle = new SqlCommand("UPDATE dbo.SERVIS_ELEMANLARI SET FORMNO=@p5, YATIRIMYILI=@p6, IMALAT_TARIHI=@p7, SEKTOR=@p8, BOLGE=@p9, ESKIFORMNO=@p10 where MSLINK=" + saddleMslink, bgl.serhatgazBaglanti());
-                            komutSaddle.Parameters.AddWithValue("@p5", TxtFormNoYeni.Text);
-                            komutSaddle.Parameters.AddWithValue("@p6", TxtYatirimYili.Text);
-                            komutSaddle.Parameters.AddWithValue("@p7", Convert.ToDateTime(TxtImalatTarihi.Text));
-                            komutSaddle.Parameters.AddWithValue("@p8", TxtSektor.Text);
-                            komutSaddle.Parameters.AddWithValue("@p9", TxtBolge.Text);
-                            komutSaddle.Parameters.AddWithValue("@p10", TxtFormNo.Text);
-                            
-                            komutSaddle.ExecuteNonQuery();
-                            bgl.serhatgazBaglanti().Close();
-                        }
-
-                        foreach (int malzemeMslink in secMalzemeMslink)
-                        {
-                            SqlCommand komutMalzeme = new SqlCommand("UPDATE dbo.BAGLANTI_ELEMANLARI_PE SET FORMNO=@p10, YATIRIMYILI=@p11, IMALATTARIHI=@p12, SEKTOR=@p13, ESKIFORMNO=@p14 where MSLINK=" + malzemeMslink, bgl.serhatgazBaglanti());
-                            komutMalzeme.Parameters.AddWithValue("@p10", "S" + TxtFormNoYeni.Text);
-                            komutMalzeme.Parameters.AddWithValue("@p11", TxtYatirimYili.Text);
-                            komutMalzeme.Parameters.AddWithValue("@p12", Convert.ToDateTime(TxtImalatTarihi.Text));
-                            komutMalzeme.Parameters.AddWithValue("@p13", TxtSektor.Text);
-                            komutMalzeme.Parameters.AddWithValue("@p14", "S" + TxtFormNo.Text);
-                            komutMalzeme.ExecuteNonQuery();
-                            bgl.serhatgazBaglanti().Close();
-                        }
-
-                        foreach (int servisKutusuMslink in secServisKutusuMslink)
-                        {
-                            SqlCommand komutServisKutusu = new SqlCommand("UPDATE dbo.SERVIS_KUTUSU SET FORMNO=@p14, YATIRIMYILI=@p15, IMALATTARIHI=@p16, ESKIFORMNO=@p17 where MSLINK=" + servisKutusuMslink, bgl.serhatgazBaglanti());
-                            komutServisKutusu.Parameters.AddWithValue("@p14", TxtFormNoYeni.Text);
-                            komutServisKutusu.Parameters.AddWithValue("@p15", TxtYatirimYili.Text);
-                            komutServisKutusu.Parameters.AddWithValue("@p16", Convert.ToDateTime(TxtImalatTarihi.Text));
-                            komutServisKutusu.Parameters.AddWithValue("@p17", TxtFormNo.Text);
-                            komutServisKutusu.ExecuteNonQuery();
-                            bgl.serhatgazBaglanti().Close();
-                        }
-
-                        listele();
-                        MessageBox.Show("Tüm Bilgiler Güncellendi..", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-                //}
-                //catch
-                //{
-                //    MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //}
+                MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

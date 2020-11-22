@@ -41,8 +41,6 @@ namespace KargazImalatTakip
         {
             if (CmbŞirket.Text == "KARGAZ")
             {
-                try
-                {
                     SqlDataAdapter daHat = new SqlDataAdapter("select dbo.HATLAR.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, dbo.ilce.ilce_adi AS ILCE_ADI, mahalle_adi AS MAHALLE, YOL_ADI + ' ' +yol_tipi AS YOL, SEKTOR, NET_BORU_CAPI, BORU_UZUNLUGU, YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU, EKIPNO from dbo.HATLAR, dbo.yol, dbo.mahalle, dbo.ilce where dbo.HATLAR.YOL_MSLINK = dbo.yol.mslink and dbo.HATLAR.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.HATLAR.ILCE_KODU = dbo.ilce.ilce_kodu and MALZEME_CINSI='Polietilen' and FORMNO =" + TxtFormNo.Text, bgl.kargazBaglanti());
                     DataTable dtHat = new DataTable();
                     daHat.Fill(dtHat);
@@ -118,11 +116,11 @@ namespace KargazImalatTakip
                     gridView2.Columns["206017"].Width = 100;
                     gridView2.Columns["206023"].Width = 100;
                     gridView2.Columns["203021"].Width = 100;
-                }
-                catch (System.Data.SqlClient.SqlException)
-                {
-                    MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                //}
+                //catch (System.Data.SqlClient.SqlException)
+                //{
+                //    MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
                 if (gridView1.RowCount == 0)
                 {
                     MessageBox.Show("Girilen Form Numarası ile ilgili herhangi bir kayıt bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -132,8 +130,8 @@ namespace KargazImalatTakip
             }
             else if (CmbŞirket.Text == "SERHATGAZ")
             {
-                try
-                {
+                //try
+                //{
                     SqlDataAdapter daHat = new SqlDataAdapter("select dbo.HATLAR.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, dbo.ilce.ilce_adi AS ILCE_ADI, mahalle_adi AS MAHALLE, YOL_ADI + ' ' +yol_tipi AS YOL, SEKTOR, NET_BORU_CAPI, BORU_UZUNLUGU, YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU, EKIPNO from dbo.HATLAR, dbo.yol, dbo.mahalle, dbo.ilce where dbo.HATLAR.YOL_MSLINK = dbo.yol.mslink and dbo.HATLAR.MAHALLE_KODU = dbo.mahalle.mahalle_kodu and dbo.HATLAR.ILCE_KODU = dbo.ilce.ilce_kodu and MALZEME_CINSI='Polietilen' and FORMNO =" + TxtFormNo.Text, bgl.serhatgazBaglanti());
                     DataTable dtHat = new DataTable();
                     daHat.Fill(dtHat);
@@ -209,11 +207,11 @@ namespace KargazImalatTakip
                     gridView2.Columns["206017"].Width = 100;
                     gridView2.Columns["206023"].Width = 100;
                     gridView2.Columns["203021"].Width = 100;
-                }
-                catch (System.Data.SqlClient.SqlException)
-            {
-                MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //    }
+            //    catch (System.Data.SqlClient.SqlException)
+            //{
+            //    MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
             if (gridView1.RowCount == 0)
                 {
                     MessageBox.Show("Girilen Form Numarası ile ilgili herhangi bir kayıt bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);

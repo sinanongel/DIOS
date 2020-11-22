@@ -505,7 +505,7 @@
             this.CheTumunuSec.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
             this.CheTumunuSec.Properties.Appearance.Options.UseForeColor = true;
             this.CheTumunuSec.Properties.Caption = "Tümünü Seç";
-            this.CheTumunuSec.Size = new System.Drawing.Size(96, 19);
+            this.CheTumunuSec.Size = new System.Drawing.Size(96, 20);
             this.CheTumunuSec.TabIndex = 9;
             this.CheTumunuSec.CheckedChanged += new System.EventHandler(this.CheTumunuSec_CheckedChanged);
             // 
