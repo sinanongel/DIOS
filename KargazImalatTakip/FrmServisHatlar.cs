@@ -58,10 +58,10 @@ namespace KargazImalatTakip
                     gridView1.Columns["EKIPNO"].Caption = "MÜTEAHHİT";
 
                     gridView1.Columns[0].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
-                    gridView1.Columns[11].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[12].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[13].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[14].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[15].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[16].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[17].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[18].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                 }
                 else if (CmbŞirket.Text == "SERHATGAZ")
                 {
