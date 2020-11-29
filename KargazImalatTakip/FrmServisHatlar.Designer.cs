@@ -54,9 +54,9 @@
             this.labelControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelControl1.Location = new System.Drawing.Point(370, 11);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(27, 13);
+            this.labelControl1.Size = new System.Drawing.Size(26, 13);
             this.labelControl1.TabIndex = 13;
-            this.labelControl1.Text = "Şirket";
+            this.labelControl1.Text = "Firma";
             // 
             // CmbŞirket
             // 

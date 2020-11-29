@@ -38,17 +38,17 @@ namespace KargazImalatTakip
         void listele()
         {
             //Veri tabanına bağlanamama durumunda ikaz vermesi için try-catch bloğuna aldım.
-            try
-            {
+            //try
+            //{
                 if (CmbŞirket.Text == "KARGAZ")
                 {
                     SqlDataAdapter daHat = new SqlDataAdapter("SELECT SH.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, SH.IMALATTARIHI, 104) AS IMALAT_TARIHI, " +
-                        "I.ILCE_ADI AS ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, SEKTOR, HAT_MSLINK, CAP, KAZIBOYU, BORUBOYU, " +
-                        "YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, EKIPNO FROM dbo.SERVIS_HATLARI SH " +
+                        "I.ILCE_ADI AS ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, YOL_ADI + ' ' + YOL_TIPI AS YOL, SEKTOR, HAT_MSLINK, FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, " +
+                        "CAP, KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, EKIPNO FROM dbo.SERVIS_HATLARI SH " +
                         "LEFT JOIN DBO.YOL Y ON SH.YOL_MSLINK = Y.MSLINK " +
                         "LEFT JOIN DBO.MAHALLE M ON SH.MAHALLE_KODU = M.MAHALLE_KODU " +
                         "LEFT JOIN DBO.ILCE I ON SH.ILCE_KODU = I.ILCE_KODU " +
-                        "WHERE FORMNO = " + TxtFormNo.Text, bgl.kargazBaglanti());
+                        "WHERE FORMNO = " + TxtFormNo.Text + " AND I.ILCE_ADI ='" + CmbBolge.Text + "'", bgl.kargazBaglanti());
                     DataTable dtHat = new DataTable();
                     daHat.Fill(dtHat);
                     GrCoHat.DataSource = dtHat;
@@ -57,6 +57,10 @@ namespace KargazImalatTakip
                     gridView1.Columns["YATIRIMYILI"].Caption = "YATIRIM YILI";
                     gridView1.Columns["IMALAT_TARIHI"].Caption = "İMALAT TARİHİ";
                     gridView1.Columns["FORMNO"].Caption = "FORM NO";
+                    gridView1.Columns["FROM_ID"].Caption = "FROM ID";
+                    gridView1.Columns["FROM_MSLINK"].Caption = "FROM MSLINK";
+                    gridView1.Columns["TO_ID"].Caption = "TO ID";
+                    gridView1.Columns["TO_MSLINK"].Caption = "TO MSLINK";
                     gridView1.Columns["SEKTOR"].Caption = "SEKTÖR";
                     gridView1.Columns["HAT_MSLINK"].Caption = "HAT MSLINK";
                     gridView1.Columns["CAP"].Caption = "BORU ÇAPI";
@@ -67,11 +71,11 @@ namespace KargazImalatTakip
                     gridView1.Columns["EKIPNO"].Caption = "MÜTEAHHİT";
 
                     SqlDataAdapter daServisElemanı = new SqlDataAdapter("SELECT SE.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, SE.IMALAT_TARIHI, 104) AS IMALAT_TARIHI, " +
-                        "I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, BOLGE, SEKTOR, TIPI, CAP FROM DBO.SERVIS_ELEMANLARI SE " +
+                        "I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, BOLGE, SEKTOR, HAT_MSLINK, TIPI, CAP FROM DBO.SERVIS_ELEMANLARI SE " +
                         "LEFT JOIN DBO.YOL Y ON SE.YOL_MSLINK = Y.MSLINK " +
                         "LEFT JOIN DBO.MAHALLE M ON SE.MAHALLE_KODU = M.MAHALLE_KODU " +
                         "LEFT JOIN DBO.ILCE I ON SE.ILCE_KODU = I.ILCE_KODU " +
-                        "WHERE FORMNO = '" + TxtFormNo.Text + "'", bgl.kargazBaglanti());
+                        "WHERE FORMNO = '" + TxtFormNo.Text + "' AND I.ILCE_ADI ='" + CmbBolge.Text + "'", bgl.kargazBaglanti());
                     DataTable dtServisElemanı = new DataTable();
                     daServisElemanı.Fill(dtServisElemanı);
                     GrCoSaddle.DataSource = dtServisElemanı;
@@ -91,7 +95,7 @@ namespace KargazImalatTakip
                         "LEFT JOIN DBO.YOL Y ON B.YOL_MSLINK = Y.MSLINK " +
                         "LEFT JOIN DBO.MAHALLE M ON B.MAHALLE_KODU = M.MAHALLE_KODU " +
                         "LEFT JOIN DBO.ILCE I ON B.ILCE_KODU = I.ILCE_KODU " +
-                        "WHERE FORMNO = 'S" + TxtFormNo.Text + "'", bgl.kargazBaglanti());
+                        "WHERE FORMNO = 'S" + TxtFormNo.Text + "' AND I.ILCE_ADI ='" + CmbBolge.Text + "'", bgl.kargazBaglanti());
                     DataTable dtMalzeme = new DataTable();
                     daMalzeme.Fill(dtMalzeme);
                     GrCoMalzeme.DataSource = dtMalzeme;
@@ -106,11 +110,11 @@ namespace KargazImalatTakip
                     gridView4.Columns["EKIPNO"].Caption = "MÜTEAHHİT";
 
                     SqlDataAdapter daServisKutusu = new SqlDataAdapter("SELECT SK.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, SK.IMALATTARIHI, 104) as IMALAT_TARIHI, " +
-                        "I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, KUTU_TIPI, CINSI, SKUTUVANASI FROM dbo.SERVIS_KUTUSU SK " +
+                        "I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, KUTU_TIPI, CINSI, SKUTUVANASI, HAT_MSLINK FROM dbo.SERVIS_KUTUSU SK " +
                         "LEFT JOIN DBO.YOL Y ON SK.YOL_MSLINK = Y.MSLINK " +
                         "LEFT JOIN DBO.MAHALLE M ON SK.MAHALLE_KODU = M.MAHALLE_KODU " +
                         "LEFT JOIN DBO.ILCE I ON SK.ILCE_KODU = I.ILCE_KODU " +
-                        "WHERE FORMNO = " + TxtFormNo.Text, bgl.kargazBaglanti());
+                        "WHERE FORMNO = " + TxtFormNo.Text + " AND I.ILCE_ADI ='" + CmbBolge.Text + "'", bgl.kargazBaglanti());
                     DataTable dtServisKutusu = new DataTable();
                     daServisKutusu.Fill(dtServisKutusu);
                     GrCoServisKutusu.DataSource = dtServisKutusu;
@@ -122,67 +126,65 @@ namespace KargazImalatTakip
                     gridView3.Columns["KUTU_TIPI"].Caption = "KUTU TİPİ";
                     gridView3.Columns["CINSI"].Caption = "CİNSİ";
                     gridView3.Columns["SKUTUVANASI"].Caption = "KUTU VANASI";
+                    gridView1.Columns["HAT_MSLINK"].Caption = "HAT MSLINK";
 
-                    if (gridView1.RowCount == 0 && gridView2.RowCount == 0 && gridView3.RowCount == 0 && gridView4.RowCount == 0)
+                if (gridView1.RowCount != 0)
                     {
-                        MessageBox.Show("Girilen Form Numarası ile ilgili herhangi bir kayıt bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        SqlCommand komutHat = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM DBO.SERVIS_HATLARI WHERE FORMNO=@P1", bgl.kargazBaglanti());
+                        komutHat.Parameters.AddWithValue("@P1", TxtFormNo.Text);
+                        SqlDataReader drHat = komutHat.ExecuteReader();
+                        while (drHat.Read())
+                        {
+                            TxtFormNoYeni.Text = drHat[0].ToString();
+                            TxtYatirimYili.Text = drHat[1].ToString();
+                            TxtImalatTarihi.Text = drHat[2].ToString();
+                            TxtSektor.Text = drHat[3].ToString();
+                        }
+                        bgl.kargazBaglanti().Close();
+
+                        SqlCommand komutSaddleBolge = new SqlCommand("SELECT BOLGE FROM DBO.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.kargazBaglanti());
+                        komutSaddleBolge.Parameters.AddWithValue("@P2", TxtFormNo.Text);
+                        SqlDataReader drSaddleBolge = komutSaddleBolge.ExecuteReader();
+                        while (drSaddleBolge.Read())
+                        {
+                            TxtBolge.Text = drSaddleBolge[0].ToString();
+                        }
+                        bgl.kargazBaglanti().Close();
                     }
                     else
                     {
-                        if (gridView1.RowCount != 0)
+                        SqlCommand komutSaddle = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM dbo.SERVIS_ELEMANLARI WHERE FORMNO=@P3", bgl.kargazBaglanti());
+                        komutSaddle.Parameters.AddWithValue("@P3", TxtFormNo.Text);
+                        SqlDataReader drSaddle = komutSaddle.ExecuteReader();
+                        while (drSaddle.Read())
+
                         {
-                            SqlCommand komutHat = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM DBO.SERVIS_HATLARI WHERE FORMNO=@P1", bgl.kargazBaglanti());
-                            komutHat.Parameters.AddWithValue("@P1", TxtFormNo.Text);
-                            SqlDataReader drHat = komutHat.ExecuteReader();
-                            while (drHat.Read())
-                            {
-                                TxtFormNoYeni.Text = drHat[0].ToString();
-                                TxtYatirimYili.Text = drHat[1].ToString();
-                                TxtImalatTarihi.Text = drHat[2].ToString();
-                                TxtSektor.Text = drHat[3].ToString();
-                            }
-                            bgl.kargazBaglanti().Close();
-
-                            SqlCommand komutSaddleBolge = new SqlCommand("SELECT BOLGE FROM DBO.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.kargazBaglanti());
-                            komutSaddleBolge.Parameters.AddWithValue("@P2", TxtFormNo.Text);
-                            SqlDataReader drSaddleBolge = komutSaddleBolge.ExecuteReader();
-                            while (drSaddleBolge.Read())
-                            {
-                                TxtBolge.Text = drSaddleBolge[0].ToString();
-                            }
-                            bgl.kargazBaglanti().Close();
+                            TxtFormNoYeni.Text = drSaddle[0].ToString();
+                            TxtYatirimYili.Text = drSaddle[1].ToString();
+                            TxtImalatTarihi.Text = drSaddle[2].ToString();
+                            TxtSektor.Text = drSaddle[3].ToString();
                         }
-                        else
+                        bgl.kargazBaglanti().Close();
+
+                        SqlCommand komutSaddleBolge = new SqlCommand("SELECT BOLGE FROM DBO.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.kargazBaglanti());
+                        komutSaddleBolge.Parameters.AddWithValue("@P2", TxtFormNo.Text);
+                        SqlDataReader drSaddleBolge = komutSaddleBolge.ExecuteReader();
+                        while (drSaddleBolge.Read())
                         {
-                            SqlCommand komutSaddle = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM dbo.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.kargazBaglanti());
-                            komutSaddle.Parameters.AddWithValue("@P2", TxtFormNo.Text);
-                            SqlDataReader drSaddle = komutSaddle.ExecuteReader();
-                            while (drSaddle.Read())
-
-                            {
-                                TxtFormNoYeni.Text = drSaddle[0].ToString();
-                                TxtYatirimYili.Text = drSaddle[1].ToString();
-                                TxtImalatTarihi.Text = drSaddle[2].ToString();
-                                TxtSektor.Text = drSaddle[3].ToString();
-                            }
-                            bgl.kargazBaglanti().Close();
-
-                            SqlCommand komutSaddleBolge = new SqlCommand("SELECT BOLGE FROM DBO.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.kargazBaglanti());
-                            komutSaddleBolge.Parameters.AddWithValue("@P2", TxtFormNo.Text);
-                            SqlDataReader drSaddleBolge = komutSaddleBolge.ExecuteReader();
-                            while (drSaddleBolge.Read())
-                            {
-                                TxtBolge.Text = drSaddleBolge[0].ToString();
-                            }
-                            bgl.kargazBaglanti().Close();
+                            TxtBolge.Text = drSaddleBolge[0].ToString();
                         }
+                        bgl.kargazBaglanti().Close();
+                    }
+                    if (gridView1.RowCount == 0 && gridView2.RowCount == 0 && gridView3.RowCount == 0 && gridView4.RowCount == 0)
+                    {
+                        MessageBox.Show("Girilen Form Numarası ile ilgili herhangi bir kayıt bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else if (CmbŞirket.Text == "SERHATGAZ")
                 {
                     SqlDataAdapter daHat = new SqlDataAdapter("SELECT SH.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, IMALATTARIHI, 104) AS IMALAT_TARIHI, " +
-                        "I.ILCE_ADI AS ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, YOL_ADI + ' ' + YOL_TIPI AS YOL, SEKTOR, HAT_MSLINK, CAP, KAZIBOYU, BORUBOYU, " +
-                        "YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, EKIPNO FROM dbo.SERVIS_HATLARI SH " +
+                        "I.ILCE_ADI AS ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, YOL_ADI + ' ' + YOL_TIPI AS YOL, SEKTOR, HAT_MSLINK, FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, " +
+                        "CAP, KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, EKIPNO FROM dbo.SERVIS_HATLARI SH " +
                         "LEFT JOIN DBO.YOL Y ON SH.YOL_MSLINK = Y.MSLINK " +
                         "LEFT JOIN DBO.MAHALLE M ON SH.MAHALLE_KODU = M.MAHALLE_KODU " +
                         "LEFT JOIN DBO.ILCE I ON SH.ILCE_KODU = I.ILCE_KODU " +
@@ -196,6 +198,7 @@ namespace KargazImalatTakip
                     gridView1.Columns["IMALAT_TARIHI"].Caption = "İMALAT TARİHİ";
                     gridView1.Columns["FORMNO"].Caption = "FORM NO";
                     gridView1.Columns["SEKTOR"].Caption = "SEKTÖR";
+                    gridView1.Columns["HAT_MSLINK"].Caption = "HAT MSLINK";
                     gridView1.Columns["CAP"].Caption = "BORU ÇAPI";
                     gridView1.Columns["KAZIBOYU"].Caption = "FORM KAZI BOYU";
                     gridView1.Columns["BORUBOYU"].Caption = "FORM BORU BOYU";
@@ -204,7 +207,7 @@ namespace KargazImalatTakip
                     gridView1.Columns["EKIPNO"].Caption = "MÜTEAHHİT";
 
                     SqlDataAdapter daServisElemanı = new SqlDataAdapter("SELECT SE.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, SE.IMALAT_TARIHI, 104) AS IMALAT_TARIHI, " +
-                        "I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, BOLGE, SEKTOR, TIPI, CAP FROM DBO.SERVIS_ELEMANLARI SE " +
+                        "I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, BOLGE, SEKTOR, HAT_MSLINK, TIPI, CAP FROM DBO.SERVIS_ELEMANLARI SE " +
                         "LEFT JOIN DBO.YOL Y ON SE.YOL_MSLINK = Y.MSLINK " +
                         "LEFT JOIN DBO.MAHALLE M ON SE.MAHALLE_KODU = M.MAHALLE_KODU " +
                         "LEFT JOIN DBO.ILCE I ON SE.ILCE_KODU = I.ILCE_KODU " +
@@ -219,6 +222,7 @@ namespace KargazImalatTakip
                     gridView2.Columns["FORMNO"].Caption = "FORM NO";
                     gridView2.Columns["BOLGE"].Caption = "BÖLGE";
                     gridView2.Columns["SEKTOR"].Caption = "SEKTÖR";
+                    gridView1.Columns["HAT_MSLINK"].Caption = "HAT MSLINK";
                     gridView2.Columns["TIPI"].Caption = "TİPİ";
                     gridView2.Columns["CAP"].Caption = "ÇAP";
 
@@ -242,7 +246,7 @@ namespace KargazImalatTakip
                     gridView4.Columns["EKIPNO"].Caption = "MÜTEAHHİT";
 
                     SqlDataAdapter daServisKutusu = new SqlDataAdapter("SELECT SK.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, SK.IMALATTARIHI, 104) as IMALAT_TARIHI, " +
-                        "I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, KUTU_TIPI, CINSI, SKUTUVANASI FROM dbo.SERVIS_KUTUSU SK " +
+                        "I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, KUTU_TIPI, CINSI, SKUTUVANASI, HAT_MSLINK FROM dbo.SERVIS_KUTUSU SK " +
                         "LEFT JOIN DBO.YOL Y ON SK.YOL_MSLINK = Y.MSLINK " +
                         "LEFT JOIN DBO.MAHALLE M ON SK.MAHALLE_KODU = M.MAHALLE_KODU " +
                         "LEFT JOIN DBO.ILCE I ON SK.ILCE_KODU = I.ILCE_KODU " +
@@ -258,15 +262,11 @@ namespace KargazImalatTakip
                     gridView3.Columns["KUTU_TIPI"].Caption = "KUTU TİPİ";
                     gridView3.Columns["CINSI"].Caption = "CİNSİ";
                     gridView3.Columns["SKUTUVANASI"].Caption = "KUTU VANASI";
-                }
+                    gridView1.Columns["HAT_MSLINK"].Caption = "HAT MSLINK";
 
-                if (gridView1.RowCount == 0 && gridView2.RowCount == 0 && gridView3.RowCount == 0 && gridView4.RowCount == 0)
-                {
-                    MessageBox.Show("Girilen Form Numarası ile ilgili herhangi bir kayıt bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    if (gridView1.RowCount != 0)
+
+
+                if (gridView1.RowCount != 0)
                     {
                         SqlCommand komutHat = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM DBO.SERVIS_HATLARI WHERE FORMNO=@P1", bgl.serhatgazBaglanti());
                         komutHat.Parameters.AddWithValue("@P1", TxtFormNo.Text);
@@ -278,7 +278,7 @@ namespace KargazImalatTakip
                             TxtImalatTarihi.Text = drHat[2].ToString();
                             TxtSektor.Text = drHat[3].ToString();
                         }
-                        bgl.kargazBaglanti().Close();
+                        bgl.serhatgazBaglanti().Close();
 
                         SqlCommand komutSaddleBolge = new SqlCommand("SELECT BOLGE FROM DBO.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.serhatgazBaglanti());
                         komutSaddleBolge.Parameters.AddWithValue("@P2", TxtFormNo.Text);
@@ -287,11 +287,11 @@ namespace KargazImalatTakip
                         {
                             TxtBolge.Text = drSaddleBolge[0].ToString();
                         }
-                        bgl.kargazBaglanti().Close();
+                        bgl.serhatgazBaglanti().Close();
                     }
                     else
                     {
-                        SqlCommand komutSaddle = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM dbo.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.serhatgazBaglanti());
+                        SqlCommand komutSaddle = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM dbo.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.serhatgazBaglanti());
                         komutSaddle.Parameters.AddWithValue("@P2", TxtFormNo.Text);
                         SqlDataReader drSaddle = komutSaddle.ExecuteReader();
                         while (drSaddle.Read())
@@ -302,7 +302,7 @@ namespace KargazImalatTakip
                             TxtImalatTarihi.Text = drSaddle[2].ToString();
                             TxtSektor.Text = drSaddle[3].ToString();
                         }
-                        bgl.kargazBaglanti().Close();
+                        bgl.serhatgazBaglanti().Close();
 
                         SqlCommand komutSaddleBolge = new SqlCommand("SELECT BOLGE FROM DBO.SERVIS_ELEMANLARI WHERE FORMNO=@P2", bgl.serhatgazBaglanti());
                         komutSaddleBolge.Parameters.AddWithValue("@P2", TxtFormNo.Text);
@@ -311,14 +311,18 @@ namespace KargazImalatTakip
                         {
                             TxtBolge.Text = drSaddleBolge[0].ToString();
                         }
-                        bgl.kargazBaglanti().Close();
+                        bgl.serhatgazBaglanti().Close();
+                    }
+                    if (gridView1.RowCount == 0 && gridView2.RowCount == 0 && gridView3.RowCount == 0 && gridView4.RowCount == 0)
+                    {
+                        MessageBox.Show("Girilen Form Numarası ile ilgili herhangi bir kayıt bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
 
         private void BtnBul_Click(object sender, EventArgs e)
@@ -543,14 +547,45 @@ namespace KargazImalatTakip
             }
         }
 
-        private void FrmShFormDuzeltme_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void TxtFormNoYeni_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void CmbŞirket_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CmbBolge.Text = "";
+            CmbBolge.Properties.Items.Clear();
+
+            try
+            {
+                if (CmbŞirket.Text == "KARGAZ")
+                {
+                    SqlCommand komut = new SqlCommand("SELECT ILCE_ADI FROM DBO.ILCE", bgl.kargazBaglanti());
+                    SqlDataReader dr = komut.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        CmbBolge.Properties.Items.Add(dr[0]);
+                    }
+                    bgl.kargazBaglanti().Close();
+                }
+                else if (CmbŞirket.Text == "SERHATGAZ")
+                {
+                    //CmbBolge.Properties.Items.Clear();
+
+                    SqlCommand komut = new SqlCommand("SELECT ILCE_ADI FROM DBO.ILCE", bgl.serhatgazBaglanti());
+                    SqlDataReader dr = komut.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        CmbBolge.Properties.Items.Add(dr[0]);
+                    }
+                    bgl.serhatgazBaglanti().Close();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

@@ -63,6 +63,8 @@
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.GrCoForm = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.CmbBolge = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBoruBoyu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtKaziBoyu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtYatirimYili.Properties)).BeginInit();
@@ -81,6 +83,7 @@
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrCoForm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CmbBolge.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl9
@@ -88,7 +91,7 @@
             this.labelControl9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl9.Appearance.Options.UseFont = true;
-            this.labelControl9.Location = new System.Drawing.Point(477, 180);
+            this.labelControl9.Location = new System.Drawing.Point(530, 178);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(22, 16);
             this.labelControl9.TabIndex = 72;
@@ -100,7 +103,7 @@
             this.BtnGuncelle.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.BtnGuncelle.Appearance.Options.UseFont = true;
             this.BtnGuncelle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnGuncelle.ImageOptions.Image")));
-            this.BtnGuncelle.Location = new System.Drawing.Point(614, 274);
+            this.BtnGuncelle.Location = new System.Drawing.Point(614, 247);
             this.BtnGuncelle.Name = "BtnGuncelle";
             this.BtnGuncelle.Size = new System.Drawing.Size(125, 23);
             this.BtnGuncelle.TabIndex = 71;
@@ -113,7 +116,7 @@
             this.BtnSil.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.BtnSil.Appearance.Options.UseFont = true;
             this.BtnSil.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnSil.ImageOptions.Image")));
-            this.BtnSil.Location = new System.Drawing.Point(745, 274);
+            this.BtnSil.Location = new System.Drawing.Point(745, 247);
             this.BtnSil.Name = "BtnSil";
             this.BtnSil.Size = new System.Drawing.Size(125, 23);
             this.BtnSil.TabIndex = 70;
@@ -125,7 +128,7 @@
             this.labelControl7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(630, 210);
+            this.labelControl7.Location = new System.Drawing.Point(683, 203);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(54, 16);
             this.labelControl7.TabIndex = 68;
@@ -134,7 +137,7 @@
             // TxtBoruBoyu
             // 
             this.TxtBoruBoyu.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.TxtBoruBoyu.Location = new System.Drawing.Point(506, 207);
+            this.TxtBoruBoyu.Location = new System.Drawing.Point(559, 200);
             this.TxtBoruBoyu.Name = "TxtBoruBoyu";
             this.TxtBoruBoyu.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtBoruBoyu.Properties.Appearance.Options.UseFont = true;
@@ -148,7 +151,7 @@
             this.labelControl6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(442, 210);
+            this.labelControl6.Location = new System.Drawing.Point(495, 203);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(57, 16);
             this.labelControl6.TabIndex = 66;
@@ -157,7 +160,7 @@
             // TxtKaziBoyu
             // 
             this.TxtKaziBoyu.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.TxtKaziBoyu.Location = new System.Drawing.Point(690, 207);
+            this.TxtKaziBoyu.Location = new System.Drawing.Point(743, 200);
             this.TxtKaziBoyu.Name = "TxtKaziBoyu";
             this.TxtKaziBoyu.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtKaziBoyu.Properties.Appearance.Options.UseFont = true;
@@ -171,7 +174,7 @@
             this.labelControl4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(439, 120);
+            this.labelControl4.Location = new System.Drawing.Point(492, 128);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(60, 16);
             this.labelControl4.TabIndex = 60;
@@ -181,7 +184,7 @@
             // 
             this.TxtYatirimYili.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.TxtYatirimYili.Enabled = false;
-            this.TxtYatirimYili.Location = new System.Drawing.Point(506, 117);
+            this.TxtYatirimYili.Location = new System.Drawing.Point(559, 125);
             this.TxtYatirimYili.Name = "TxtYatirimYili";
             this.TxtYatirimYili.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtYatirimYili.Properties.Appearance.Options.UseFont = true;
@@ -193,7 +196,7 @@
             this.labelControl5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(611, 120);
+            this.labelControl5.Location = new System.Drawing.Point(664, 128);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(73, 16);
             this.labelControl5.TabIndex = 62;
@@ -203,7 +206,7 @@
             // 
             this.TxtImalatTarihi.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.TxtImalatTarihi.Enabled = false;
-            this.TxtImalatTarihi.Location = new System.Drawing.Point(690, 117);
+            this.TxtImalatTarihi.Location = new System.Drawing.Point(743, 125);
             this.TxtImalatTarihi.Name = "TxtImalatTarihi";
             this.TxtImalatTarihi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtImalatTarihi.Properties.Appearance.Options.UseFont = true;
@@ -215,7 +218,7 @@
             this.labelControl8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl8.Appearance.Options.UseFont = true;
-            this.labelControl8.Location = new System.Drawing.Point(462, 150);
+            this.labelControl8.Location = new System.Drawing.Point(515, 153);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(37, 16);
             this.labelControl8.TabIndex = 64;
@@ -225,7 +228,7 @@
             // 
             this.TxtSektor.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.TxtSektor.Enabled = false;
-            this.TxtSektor.Location = new System.Drawing.Point(506, 147);
+            this.TxtSektor.Location = new System.Drawing.Point(559, 150);
             this.TxtSektor.Name = "TxtSektor";
             this.TxtSektor.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtSektor.Properties.Appearance.Options.UseFont = true;
@@ -238,9 +241,9 @@
             this.BtnListele.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.BtnListele.Appearance.Options.UseFont = true;
             this.BtnListele.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnListele.ImageOptions.Image")));
-            this.BtnListele.Location = new System.Drawing.Point(772, 36);
+            this.BtnListele.Location = new System.Drawing.Point(626, 49);
             this.BtnListele.Name = "BtnListele";
-            this.BtnListele.Size = new System.Drawing.Size(98, 23);
+            this.BtnListele.Size = new System.Drawing.Size(125, 23);
             this.BtnListele.TabIndex = 2;
             this.BtnListele.Text = "Listele";
             this.BtnListele.Click += new System.EventHandler(this.BtnListele_Click);
@@ -251,7 +254,7 @@
             this.BtnTemizle.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.BtnTemizle.Appearance.Options.UseFont = true;
             this.BtnTemizle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnTemizle.ImageOptions.Image")));
-            this.BtnTemizle.Location = new System.Drawing.Point(483, 274);
+            this.BtnTemizle.Location = new System.Drawing.Point(483, 247);
             this.BtnTemizle.Name = "BtnTemizle";
             this.BtnTemizle.Size = new System.Drawing.Size(125, 23);
             this.BtnTemizle.TabIndex = 3;
@@ -263,7 +266,7 @@
             this.labelControl3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(635, 40);
+            this.labelControl3.Location = new System.Drawing.Point(503, 53);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(49, 16);
             this.labelControl3.TabIndex = 56;
@@ -273,7 +276,7 @@
             // 
             this.TxtMslink.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.TxtMslink.Enabled = false;
-            this.TxtMslink.Location = new System.Drawing.Point(506, 87);
+            this.TxtMslink.Location = new System.Drawing.Point(559, 100);
             this.TxtMslink.Name = "TxtMslink";
             this.TxtMslink.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtMslink.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
@@ -289,7 +292,7 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Red;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(445, 90);
+            this.labelControl2.Location = new System.Drawing.Point(498, 103);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(54, 16);
             this.labelControl2.TabIndex = 54;
@@ -298,7 +301,7 @@
             // TxtFormNo
             // 
             this.TxtFormNo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.TxtFormNo.Location = new System.Drawing.Point(690, 37);
+            this.TxtFormNo.Location = new System.Drawing.Point(559, 50);
             this.TxtFormNo.Name = "TxtFormNo";
             this.TxtFormNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtFormNo.Properties.Appearance.Options.UseFont = true;
@@ -310,16 +313,16 @@
             this.labelControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(466, 40);
+            this.labelControl1.Location = new System.Drawing.Point(519, 28);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(33, 16);
             this.labelControl1.TabIndex = 53;
-            this.labelControl1.Text = "Şirket";
+            this.labelControl1.Text = "Firma";
             // 
             // CmbŞirket
             // 
             this.CmbŞirket.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.CmbŞirket.Location = new System.Drawing.Point(506, 37);
+            this.CmbŞirket.Location = new System.Drawing.Point(559, 25);
             this.CmbŞirket.Name = "CmbŞirket";
             this.CmbŞirket.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.CmbŞirket.Properties.Appearance.Options.UseFont = true;
@@ -330,6 +333,7 @@
             "SERHATGAZ"});
             this.CmbŞirket.Size = new System.Drawing.Size(109, 22);
             this.CmbŞirket.TabIndex = 0;
+            this.CmbŞirket.SelectedIndexChanged += new System.EventHandler(this.CmbŞirket_SelectedIndexChanged);
             // 
             // GrCoHat
             // 
@@ -358,7 +362,7 @@
             // CmbCap
             // 
             this.CmbCap.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.CmbCap.Location = new System.Drawing.Point(506, 179);
+            this.CmbCap.Location = new System.Drawing.Point(559, 177);
             this.CmbCap.Name = "CmbCap";
             this.CmbCap.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -374,7 +378,7 @@
             this.LblStokAd.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LblStokAd.Appearance.ForeColor = System.Drawing.Color.Red;
             this.LblStokAd.Appearance.Options.UseForeColor = true;
-            this.LblStokAd.Location = new System.Drawing.Point(627, 182);
+            this.LblStokAd.Location = new System.Drawing.Point(680, 180);
             this.LblStokAd.Name = "LblStokAd";
             this.LblStokAd.Size = new System.Drawing.Size(96, 13);
             this.LblStokAd.TabIndex = 75;
@@ -385,7 +389,7 @@
             this.labelControl11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelControl11.Appearance.ForeColor = System.Drawing.Color.Red;
             this.labelControl11.Appearance.Options.UseForeColor = true;
-            this.labelControl11.Location = new System.Drawing.Point(615, 182);
+            this.labelControl11.Location = new System.Drawing.Point(668, 180);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(4, 13);
             this.labelControl11.TabIndex = 74;
@@ -396,7 +400,7 @@
             this.LblStokKodu.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LblStokKodu.Appearance.ForeColor = System.Drawing.Color.Red;
             this.LblStokKodu.Appearance.Options.UseForeColor = true;
-            this.LblStokKodu.Location = new System.Drawing.Point(571, 182);
+            this.LblStokKodu.Location = new System.Drawing.Point(624, 180);
             this.LblStokKodu.Name = "LblStokKodu";
             this.LblStokKodu.Size = new System.Drawing.Size(36, 13);
             this.LblStokKodu.TabIndex = 73;
@@ -459,6 +463,7 @@
             this.groupControl4.Size = new System.Drawing.Size(1349, 26);
             this.groupControl4.TabIndex = 58;
             this.groupControl4.Text = "groupControl4";
+            this.groupControl4.Visible = false;
             // 
             // labelControl10
             // 
@@ -481,6 +486,7 @@
             this.GrCoForm.TabIndex = 57;
             this.GrCoForm.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
+            this.GrCoForm.Visible = false;
             // 
             // gridView2
             // 
@@ -494,12 +500,37 @@
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsView.ShowGroupPanel = false;
             // 
+            // CmbBolge
+            // 
+            this.CmbBolge.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CmbBolge.Location = new System.Drawing.Point(723, 25);
+            this.CmbBolge.Name = "CmbBolge";
+            this.CmbBolge.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.CmbBolge.Properties.Appearance.Options.UseFont = true;
+            this.CmbBolge.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.CmbBolge.Size = new System.Drawing.Size(144, 22);
+            this.CmbBolge.TabIndex = 79;
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelControl13.Appearance.Options.UseFont = true;
+            this.labelControl13.Location = new System.Drawing.Point(685, 28);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(31, 16);
+            this.labelControl13.TabIndex = 78;
+            this.labelControl13.Text = "Bölge";
+            // 
             // FrmShKayitDuzelt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1349, 591);
+            this.Controls.Add(this.CmbBolge);
+            this.Controls.Add(this.labelControl13);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.CmbCap);
             this.Controls.Add(this.LblStokAd);
@@ -549,6 +580,7 @@
             this.groupControl4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrCoForm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CmbBolge.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -590,5 +622,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraGrid.GridControl GrCoForm;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraEditors.ComboBoxEdit CmbBolge;
+        private DevExpress.XtraEditors.LabelControl labelControl13;
     }
 }

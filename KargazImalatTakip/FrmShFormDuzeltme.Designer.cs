@@ -65,6 +65,8 @@
             this.GrCoMalzeme = new DevExpress.XtraGrid.GridControl();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.CheTumunuSec = new DevExpress.XtraEditors.CheckEdit();
+            this.CmbBolge = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
@@ -93,6 +95,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GrCoMalzeme)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheTumunuSec.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CmbBolge.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl5
@@ -102,12 +105,12 @@
             this.groupControl5.Appearance.BackColor = System.Drawing.Color.White;
             this.groupControl5.Appearance.Options.UseBackColor = true;
             this.groupControl5.Controls.Add(this.labelControl10);
-            this.groupControl5.Location = new System.Drawing.Point(203, 443);
+            this.groupControl5.Location = new System.Drawing.Point(290, 443);
             this.groupControl5.LookAndFeel.SkinName = "Office 2010 Black";
             this.groupControl5.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupControl5.Name = "groupControl5";
             this.groupControl5.ShowCaption = false;
-            this.groupControl5.Size = new System.Drawing.Size(1144, 26);
+            this.groupControl5.Size = new System.Drawing.Size(1057, 26);
             this.groupControl5.TabIndex = 66;
             this.groupControl5.Text = "groupControl5";
             // 
@@ -128,12 +131,12 @@
             this.groupControl4.Appearance.BackColor = System.Drawing.Color.White;
             this.groupControl4.Appearance.Options.UseBackColor = true;
             this.groupControl4.Controls.Add(this.labelControl5);
-            this.groupControl4.Location = new System.Drawing.Point(203, 149);
+            this.groupControl4.Location = new System.Drawing.Point(290, 149);
             this.groupControl4.LookAndFeel.SkinName = "Office 2010 Black";
             this.groupControl4.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupControl4.Name = "groupControl4";
             this.groupControl4.ShowCaption = false;
-            this.groupControl4.Size = new System.Drawing.Size(1144, 26);
+            this.groupControl4.Size = new System.Drawing.Size(1057, 26);
             this.groupControl4.TabIndex = 65;
             this.groupControl4.Text = "groupControl4";
             // 
@@ -154,12 +157,12 @@
             this.groupControl2.Appearance.BackColor = System.Drawing.Color.White;
             this.groupControl2.Appearance.Options.UseBackColor = true;
             this.groupControl2.Controls.Add(this.labelControl7);
-            this.groupControl2.Location = new System.Drawing.Point(203, 2);
+            this.groupControl2.Location = new System.Drawing.Point(290, 2);
             this.groupControl2.LookAndFeel.SkinName = "Office 2010 Black";
             this.groupControl2.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.ShowCaption = false;
-            this.groupControl2.Size = new System.Drawing.Size(1144, 26);
+            this.groupControl2.Size = new System.Drawing.Size(1057, 26);
             this.groupControl2.TabIndex = 64;
             this.groupControl2.Text = "groupControl2";
             // 
@@ -177,15 +180,15 @@
             // 
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl9.Appearance.Options.UseFont = true;
-            this.labelControl9.Location = new System.Drawing.Point(23, 28);
+            this.labelControl9.Location = new System.Drawing.Point(19, 28);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(33, 16);
             this.labelControl9.TabIndex = 63;
-            this.labelControl9.Text = "Şirket";
+            this.labelControl9.Text = "Firma";
             // 
             // CmbŞirket
             // 
-            this.CmbŞirket.Location = new System.Drawing.Point(84, 25);
+            this.CmbŞirket.Location = new System.Drawing.Point(80, 25);
             this.CmbŞirket.Name = "CmbŞirket";
             this.CmbŞirket.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.CmbŞirket.Properties.Appearance.Options.UseFont = true;
@@ -196,14 +199,15 @@
             "SERHATGAZ"});
             this.CmbŞirket.Size = new System.Drawing.Size(95, 22);
             this.CmbŞirket.TabIndex = 62;
+            this.CmbŞirket.SelectedIndexChanged += new System.EventHandler(this.CmbŞirket_SelectedIndexChanged);
             // 
             // groupControl3
             // 
             this.groupControl3.Controls.Add(this.labelControl4);
             this.groupControl3.Controls.Add(this.TxtBolge);
-            this.groupControl3.Location = new System.Drawing.Point(9, 285);
+            this.groupControl3.Location = new System.Drawing.Point(5, 282);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(183, 70);
+            this.groupControl3.Size = new System.Drawing.Size(280, 70);
             this.groupControl3.TabIndex = 8;
             this.groupControl3.Text = "Saddle Bilgileri";
             // 
@@ -238,9 +242,9 @@
             this.groupControl1.Controls.Add(this.TxtImalatTarihi);
             this.groupControl1.Controls.Add(this.labelControl8);
             this.groupControl1.Controls.Add(this.TxtSektor);
-            this.groupControl1.Location = new System.Drawing.Point(9, 123);
+            this.groupControl1.Location = new System.Drawing.Point(5, 120);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(183, 159);
+            this.groupControl1.Size = new System.Drawing.Size(280, 159);
             this.groupControl1.TabIndex = 3;
             this.groupControl1.Text = "Ana Bilgiler";
             // 
@@ -326,7 +330,7 @@
             this.BtnTemizle.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.BtnTemizle.Appearance.Options.UseFont = true;
             this.BtnTemizle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnTemizle.ImageOptions.Image")));
-            this.BtnTemizle.Location = new System.Drawing.Point(38, 417);
+            this.BtnTemizle.Location = new System.Drawing.Point(147, 387);
             this.BtnTemizle.Name = "BtnTemizle";
             this.BtnTemizle.Size = new System.Drawing.Size(125, 23);
             this.BtnTemizle.TabIndex = 11;
@@ -337,7 +341,7 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(23, 52);
+            this.labelControl1.Location = new System.Drawing.Point(19, 76);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(49, 16);
             this.labelControl1.TabIndex = 55;
@@ -345,7 +349,7 @@
             // 
             // TxtFormNo
             // 
-            this.TxtFormNo.Location = new System.Drawing.Point(84, 49);
+            this.TxtFormNo.Location = new System.Drawing.Point(80, 73);
             this.TxtFormNo.Name = "TxtFormNo";
             this.TxtFormNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtFormNo.Properties.Appearance.Options.UseFont = true;
@@ -357,7 +361,7 @@
             this.BtnGuncelle.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.BtnGuncelle.Appearance.Options.UseFont = true;
             this.BtnGuncelle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnGuncelle.ImageOptions.Image")));
-            this.BtnGuncelle.Location = new System.Drawing.Point(38, 390);
+            this.BtnGuncelle.Location = new System.Drawing.Point(19, 387);
             this.BtnGuncelle.Name = "BtnGuncelle";
             this.BtnGuncelle.Size = new System.Drawing.Size(125, 23);
             this.BtnGuncelle.TabIndex = 10;
@@ -369,9 +373,9 @@
             this.BtnBul.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.BtnBul.Appearance.Options.UseFont = true;
             this.BtnBul.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnBul.ImageOptions.Image")));
-            this.BtnBul.Location = new System.Drawing.Point(38, 86);
+            this.BtnBul.Location = new System.Drawing.Point(147, 72);
             this.BtnBul.Name = "BtnBul";
-            this.BtnBul.Size = new System.Drawing.Size(125, 23);
+            this.BtnBul.Size = new System.Drawing.Size(130, 23);
             this.BtnBul.TabIndex = 2;
             this.BtnBul.Text = "Bul";
             this.BtnBul.Click += new System.EventHandler(this.BtnBul_Click);
@@ -380,10 +384,10 @@
             // 
             this.GrCoServisKutusu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.GrCoServisKutusu.Location = new System.Drawing.Point(203, 469);
+            this.GrCoServisKutusu.Location = new System.Drawing.Point(290, 469);
             this.GrCoServisKutusu.MainView = this.gridView3;
             this.GrCoServisKutusu.Name = "GrCoServisKutusu";
-            this.GrCoServisKutusu.Size = new System.Drawing.Size(1144, 119);
+            this.GrCoServisKutusu.Size = new System.Drawing.Size(1057, 119);
             this.GrCoServisKutusu.TabIndex = 54;
             this.GrCoServisKutusu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -404,10 +408,10 @@
             // 
             this.GrCoSaddle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.GrCoSaddle.Location = new System.Drawing.Point(203, 175);
+            this.GrCoSaddle.Location = new System.Drawing.Point(290, 175);
             this.GrCoSaddle.MainView = this.gridView2;
             this.GrCoSaddle.Name = "GrCoSaddle";
-            this.GrCoSaddle.Size = new System.Drawing.Size(1144, 119);
+            this.GrCoSaddle.Size = new System.Drawing.Size(1057, 119);
             this.GrCoSaddle.TabIndex = 53;
             this.GrCoSaddle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -428,10 +432,10 @@
             // 
             this.GrCoHat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.GrCoHat.Location = new System.Drawing.Point(203, 28);
+            this.GrCoHat.Location = new System.Drawing.Point(290, 28);
             this.GrCoHat.MainView = this.gridView1;
             this.GrCoHat.Name = "GrCoHat";
-            this.GrCoHat.Size = new System.Drawing.Size(1144, 119);
+            this.GrCoHat.Size = new System.Drawing.Size(1057, 119);
             this.GrCoHat.TabIndex = 52;
             this.GrCoHat.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -455,12 +459,12 @@
             this.groupControl6.Appearance.BackColor = System.Drawing.Color.White;
             this.groupControl6.Appearance.Options.UseBackColor = true;
             this.groupControl6.Controls.Add(this.labelControl11);
-            this.groupControl6.Location = new System.Drawing.Point(203, 296);
+            this.groupControl6.Location = new System.Drawing.Point(290, 296);
             this.groupControl6.LookAndFeel.SkinName = "Office 2010 Black";
             this.groupControl6.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupControl6.Name = "groupControl6";
             this.groupControl6.ShowCaption = false;
-            this.groupControl6.Size = new System.Drawing.Size(1144, 26);
+            this.groupControl6.Size = new System.Drawing.Size(1057, 26);
             this.groupControl6.TabIndex = 68;
             this.groupControl6.Text = "groupControl6";
             // 
@@ -478,10 +482,10 @@
             // 
             this.GrCoMalzeme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.GrCoMalzeme.Location = new System.Drawing.Point(203, 322);
+            this.GrCoMalzeme.Location = new System.Drawing.Point(290, 322);
             this.GrCoMalzeme.MainView = this.gridView4;
             this.GrCoMalzeme.Name = "GrCoMalzeme";
-            this.GrCoMalzeme.Size = new System.Drawing.Size(1144, 119);
+            this.GrCoMalzeme.Size = new System.Drawing.Size(1057, 119);
             this.GrCoMalzeme.TabIndex = 67;
             this.GrCoMalzeme.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
@@ -500,7 +504,7 @@
             // 
             // CheTumunuSec
             // 
-            this.CheTumunuSec.Location = new System.Drawing.Point(38, 366);
+            this.CheTumunuSec.Location = new System.Drawing.Point(19, 361);
             this.CheTumunuSec.Name = "CheTumunuSec";
             this.CheTumunuSec.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
             this.CheTumunuSec.Properties.Appearance.Options.UseForeColor = true;
@@ -509,12 +513,35 @@
             this.CheTumunuSec.TabIndex = 9;
             this.CheTumunuSec.CheckedChanged += new System.EventHandler(this.CheTumunuSec_CheckedChanged);
             // 
+            // CmbBolge
+            // 
+            this.CmbBolge.Location = new System.Drawing.Point(80, 49);
+            this.CmbBolge.Name = "CmbBolge";
+            this.CmbBolge.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.CmbBolge.Properties.Appearance.Options.UseFont = true;
+            this.CmbBolge.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.CmbBolge.Size = new System.Drawing.Size(197, 22);
+            this.CmbBolge.TabIndex = 70;
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelControl13.Appearance.Options.UseFont = true;
+            this.labelControl13.Location = new System.Drawing.Point(19, 52);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(31, 16);
+            this.labelControl13.TabIndex = 69;
+            this.labelControl13.Text = "Bölge";
+            // 
             // FrmShFormDuzeltme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1349, 591);
+            this.Controls.Add(this.CmbBolge);
+            this.Controls.Add(this.labelControl13);
             this.Controls.Add(this.CheTumunuSec);
             this.Controls.Add(this.groupControl6);
             this.Controls.Add(this.GrCoMalzeme);
@@ -536,7 +563,6 @@
             this.MinimumSize = new System.Drawing.Size(1365, 630);
             this.Name = "FrmShFormDuzeltme";
             this.Text = "SH Form Bilgileri Güncelleme";
-            this.Load += new System.EventHandler(this.FrmShFormDuzeltme_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             this.groupControl5.PerformLayout();
@@ -571,6 +597,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GrCoMalzeme)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheTumunuSec.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CmbBolge.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -614,5 +641,7 @@
         private DevExpress.XtraGrid.GridControl GrCoMalzeme;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
         private DevExpress.XtraEditors.CheckEdit CheTumunuSec;
+        private DevExpress.XtraEditors.ComboBoxEdit CmbBolge;
+        private DevExpress.XtraEditors.LabelControl labelControl13;
     }
 }

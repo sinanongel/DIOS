@@ -374,7 +374,7 @@
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(33, 16);
             this.labelControl9.TabIndex = 45;
-            this.labelControl9.Text = "Şirket";
+            this.labelControl9.Text = "Firma";
             // 
             // CmbŞirket
             // 

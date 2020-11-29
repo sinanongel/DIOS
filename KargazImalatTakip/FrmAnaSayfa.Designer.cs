@@ -322,6 +322,7 @@
             this.ribbonPageGroup7});
             this.ribbonPage4.Name = "ribbonPage4";
             this.ribbonPage4.Text = "ŞEBEKE ANALİZ";
+            this.ribbonPage4.Visible = false;
             // 
             // ribbonPageGroup7
             // 
@@ -351,9 +352,9 @@
             // 
             this.labelControl2.Location = new System.Drawing.Point(5, 7);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(119, 13);
+            this.labelControl2.Size = new System.Drawing.Size(34, 13);
             this.labelControl2.TabIndex = 3;
-            this.labelControl2.Text = "©2019 Kargaz Bilgi İşlem";
+            this.labelControl2.Text = "©2019";
             // 
             // labelControl1
             // 

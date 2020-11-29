@@ -28,8 +28,8 @@ namespace KargazImalatTakip
                 {
                     SqlDataAdapter da = new SqlDataAdapter("SELECT ROW_NUMBER() OVER(ORDER BY I.ILCE_ADI) AS SIRANO, SH.MSLINK, SEKTOR, HAT_MSLINK, I.ILCE_ADI, "
                                                             + "M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, YATIRIMYILI, "
-                                                            + "CONVERT(VARCHAR, IMALATTARIHI, 104) AS IMALAT_TARIHI, FORMNO, CAP, KAZIBOYU, BORUBOYU, "
-                                                            + "YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, SH.EKIPNO as EKIPNO FROM dbo.SERVIS_HATLARI SH "
+                                                            + "CONVERT(VARCHAR, IMALATTARIHI, 104) AS IMALAT_TARIHI, FORMNO, FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, CAP, "
+                                                            + "KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, SH.EKIPNO as EKIPNO FROM dbo.SERVIS_HATLARI SH "
                                                             + "LEFT JOIN DBO.YOL Y ON SH.YOL_MSLINK = Y.MSLINK "
                                                             + "LEFT JOIN DBO.MAHALLE M ON SH.MAHALLE_KODU = M.MAHALLE_KODU "
                                                             + "LEFT JOIN DBO.ILCE I ON SH.ILCE_KODU = I.ILCE_KODU "
@@ -46,6 +46,10 @@ namespace KargazImalatTakip
                     gridView1.Columns["YATIRIMYILI"].Caption = "YATIRIM YILI";
                     gridView1.Columns["IMALAT_TARIHI"].Caption = "İMALAT TARİHİ";
                     gridView1.Columns["FORMNO"].Caption = "FORM NO";
+                    gridView1.Columns["FROM_ID"].Caption = "FROM ID";
+                    gridView1.Columns["FROM_MSLINK"].Caption = "FROM MSLINK";
+                    gridView1.Columns["TO_ID"].Caption = "TO ID";
+                    gridView1.Columns["TO_MSLINK"].Caption = "TO MSLINK";
                     gridView1.Columns["CAP"].Caption = "BORU ÇAPI";
                     gridView1.Columns["KAZIBOYU"].Caption = "FORM KAZI BOYU";
                     gridView1.Columns["BORUBOYU"].Caption = "FORM BORU BOYU";
@@ -63,8 +67,8 @@ namespace KargazImalatTakip
                 {
                     SqlDataAdapter da = new SqlDataAdapter("SELECT ROW_NUMBER() OVER(ORDER BY I.ILCE_ADI) AS SIRANO, SH.MSLINK, SEKTOR, HAT_MSLINK, I.ILCE_ADI, "
                                                                 + "M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI AS YOL, Y.YOL_TIPI AS YOL_TIPI, YATIRIMYILI, "
-                                                                + "CONVERT(VARCHAR, IMALATTARIHI, 104) AS IMALAT_TARIHI, FORMNO, CAP, KAZIBOYU, BORUBOYU, "
-                                                                + "YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, SH.EKIPNO as EKIPNO FROM dbo.SERVIS_HATLARI SH "
+                                                                + "CONVERT(VARCHAR, IMALATTARIHI, 104) AS IMALAT_TARIHI, FORMNO, FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, CAP, "
+                                                                + "KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, SH.EKIPNO as EKIPNO FROM dbo.SERVIS_HATLARI SH "
                                                                 + "LEFT JOIN DBO.YOL Y ON SH.YOL_MSLINK = Y.MSLINK "
                                                                 + "LEFT JOIN DBO.MAHALLE M ON SH.MAHALLE_KODU = M.MAHALLE_KODU "
                                                                 + "LEFT JOIN DBO.ILCE I ON SH.ILCE_KODU = I.ILCE_KODU "
@@ -81,6 +85,10 @@ namespace KargazImalatTakip
                     gridView1.Columns["YATIRIMYILI"].Caption = "YATIRIM YILI";
                     gridView1.Columns["IMALAT_TARIHI"].Caption = "İMALAT TARİHİ";
                     gridView1.Columns["FORMNO"].Caption = "FORM NO";
+                    gridView1.Columns["FROM_ID"].Caption = "FROM ID";
+                    gridView1.Columns["FROM_MSLINK"].Caption = "FROM MSLINK";
+                    gridView1.Columns["TO_ID"].Caption = "TO ID";
+                    gridView1.Columns["TO_MSLINK"].Caption = "TO MSLINK";
                     gridView1.Columns["CAP"].Caption = "BORU ÇAPI";
                     gridView1.Columns["KAZIBOYU"].Caption = "FORM KAZI BOYU";
                     gridView1.Columns["BORUBOYU"].Caption = "FORM BORU BOYU";
