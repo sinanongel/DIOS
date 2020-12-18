@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace KargazImalatTakip
 {
@@ -97,12 +98,10 @@ namespace KargazImalatTakip
 
         private void BtnExcelAktar_Click(object sender, EventArgs e)
         {
-            SaveFileDialog kayit = new SaveFileDialog();
-            if (kayit.ShowDialog() == DialogResult.OK)
-            {
-                gridView1.ExportToXlsx(kayit.FileName + ".xlsx");
-            }
-
+            string yol = "Çelik Vana Listesi.xlsx";
+            gridControl1.ExportToXlsx(yol);
+            //Dosyayı direk varsayılan uygulamayla açmak için...
+            Process.Start(yol);
         }
     }
 }

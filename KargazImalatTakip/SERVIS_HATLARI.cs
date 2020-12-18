@@ -46,6 +46,6 @@ namespace KargazImalatTakip
         public string YUZEYKAPLAMA { get; set; }
         public Nullable<short> HAKEDISE_DAHIL { get; set; }
         public Nullable<double> YATAY_ASBUILT_METRAJ { get; set; }
-        public Nullable<double> ASFALT { get; set; }
+        public string ESKIFORMNO { get; set; }
     }
 }
