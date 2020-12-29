@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AybsPlusKargazModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tesisat">
+          <Key>
+            <PropertyRef Name="TesisatKod" />
+          </Key>
+          <Property Name="TesisatKod" Type="int" Nullable="false" />
+          <Property Name="BinaKod" Type="int" />
+          <Property Name="DaireNo" Type="varchar" MaxLength="10" />
+          <Property Name="SiteAdi" Type="varchar" MaxLength="100" />
+          <Property Name="BinaAdi" Type="varchar" MaxLength="100" />
+          <Property Name="EskiAdreskodu" Type="varchar" MaxLength="100" />
+          <Property Name="EskiGazAboneNo" Type="varchar" MaxLength="100" />
+          <Property Name="SayacNo" Type="varchar" MaxLength="100" />
+          <Property Name="BasvuruKod" Type="bigint" />
+          <Property Name="SozlesmeKod" Type="bigint" />
+          <Property Name="BasvuruTuketiciKod" Type="bigint" />
+          <Property Name="SozlesmeTuketiciKod" Type="bigint" />
+          <Property Name="TarifeTipKod" Type="varchar" MaxLength="100" />
+          <Property Name="TesisatDurumKod" Type="varchar" MaxLength="100" />
+          <Property Name="Alan" Type="int" Nullable="false" />
+          <Property Name="SayacTur" Type="varchar" MaxLength="100" />
+          <Property Name="SayacTipKod" Type="varchar" MaxLength="100" />
+          <Property Name="SayacBasinc" Type="int" />
+          <Property Name="SayacDebi" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ProjeAlanM2" Type="int" Nullable="false" />
+          <Property Name="BBS" Type="int" Nullable="false" />
+          <Property Name="Bilgi" Type="varchar" MaxLength="1000" />
+          <Property Name="ProjeBirimAlan" Type="int" />
+        </EntityType>
+        <EntityContainer Name="AybsPlusKargazModelStoreContainer">
+          <EntitySet Name="Tesisat" EntityType="Self.Tesisat" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AybsPlusKargazModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tesisat">
+          <Key>
+            <PropertyRef Name="TesisatKod" />
+          </Key>
+          <Property Name="TesisatKod" Type="Int32" Nullable="false" />
+          <Property Name="BinaKod" Type="Int32" />
+          <Property Name="DaireNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SiteAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BinaAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EskiAdreskodu" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EskiGazAboneNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SayacNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BasvuruKod" Type="Int64" />
+          <Property Name="SozlesmeKod" Type="Int64" />
+          <Property Name="BasvuruTuketiciKod" Type="Int64" />
+          <Property Name="SozlesmeTuketiciKod" Type="Int64" />
+          <Property Name="TarifeTipKod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TesisatDurumKod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Alan" Type="Int32" Nullable="false" />
+          <Property Name="SayacTur" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SayacTipKod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SayacBasinc" Type="Int32" />
+          <Property Name="SayacDebi" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ProjeAlanM2" Type="Int32" Nullable="false" />
+          <Property Name="BBS" Type="Int32" Nullable="false" />
+          <Property Name="Bilgi" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ProjeBirimAlan" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="AybsPlusKargazEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tesisat" EntityType="Self.Tesisat" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AybsPlusKargazModelStoreContainer" CdmEntityContainer="AybsPlusKargazEntities">
+          <EntitySetMapping Name="Tesisat">
+            <EntityTypeMapping TypeName="AybsPlusKargazModel.Tesisat">
+              <MappingFragment StoreEntitySet="Tesisat">
+                <ScalarProperty Name="TesisatKod" ColumnName="TesisatKod" />
+                <ScalarProperty Name="BinaKod" ColumnName="BinaKod" />
+                <ScalarProperty Name="DaireNo" ColumnName="DaireNo" />
+                <ScalarProperty Name="SiteAdi" ColumnName="SiteAdi" />
+                <ScalarProperty Name="BinaAdi" ColumnName="BinaAdi" />
+                <ScalarProperty Name="EskiAdreskodu" ColumnName="EskiAdreskodu" />
+                <ScalarProperty Name="EskiGazAboneNo" ColumnName="EskiGazAboneNo" />
+                <ScalarProperty Name="SayacNo" ColumnName="SayacNo" />
+                <ScalarProperty Name="BasvuruKod" ColumnName="BasvuruKod" />
+                <ScalarProperty Name="SozlesmeKod" ColumnName="SozlesmeKod" />
+                <ScalarProperty Name="BasvuruTuketiciKod" ColumnName="BasvuruTuketiciKod" />
+                <ScalarProperty Name="SozlesmeTuketiciKod" ColumnName="SozlesmeTuketiciKod" />
+                <ScalarProperty Name="TarifeTipKod" ColumnName="TarifeTipKod" />
+                <ScalarProperty Name="TesisatDurumKod" ColumnName="TesisatDurumKod" />
+                <ScalarProperty Name="Alan" ColumnName="Alan" />
+                <ScalarProperty Name="SayacTur" ColumnName="SayacTur" />
+                <ScalarProperty Name="SayacTipKod" ColumnName="SayacTipKod" />
+                <ScalarProperty Name="SayacBasinc" ColumnName="SayacBasinc" />
+                <ScalarProperty Name="SayacDebi" ColumnName="SayacDebi" />
+                <ScalarProperty Name="ProjeAlanM2" ColumnName="ProjeAlanM2" />
+                <ScalarProperty Name="BBS" ColumnName="BBS" />
+                <ScalarProperty Name="Bilgi" ColumnName="Bilgi" />
+                <ScalarProperty Name="ProjeBirimAlan" ColumnName="ProjeBirimAlan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

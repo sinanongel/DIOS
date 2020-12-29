@@ -460,7 +460,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "FrmIcmal";
-            this.Text = "FrmIcmal";
+            this.Text = "İcmal Raporu";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();

@@ -62,6 +62,5 @@ namespace KargazImalatTakip
         public Nullable<double> YATAY_ASBUILT_METRAJ { get; set; }
         public string KAZI_RUHSATNO { get; set; }
         public Nullable<double> KAZI_BOYU { get; set; }
-        public string ESKIFORMNO { get; set; }
     }
 }

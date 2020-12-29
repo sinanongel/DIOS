@@ -42,7 +42,7 @@
             // BtnExcelAktar
             // 
             this.BtnExcelAktar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnExcelAktar.Location = new System.Drawing.Point(712, 6);
+            this.BtnExcelAktar.Location = new System.Drawing.Point(712, 8);
             this.BtnExcelAktar.Name = "BtnExcelAktar";
             this.BtnExcelAktar.Size = new System.Drawing.Size(188, 24);
             this.BtnExcelAktar.TabIndex = 14;
@@ -52,7 +52,7 @@
             // labelControl1
             // 
             this.labelControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelControl1.Location = new System.Drawing.Point(370, 11);
+            this.labelControl1.Location = new System.Drawing.Point(370, 13);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(26, 13);
             this.labelControl1.TabIndex = 13;
@@ -61,7 +61,7 @@
             // CmbŞirket
             // 
             this.CmbŞirket.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.CmbŞirket.Location = new System.Drawing.Point(403, 8);
+            this.CmbŞirket.Location = new System.Drawing.Point(403, 10);
             this.CmbŞirket.Name = "CmbŞirket";
             this.CmbŞirket.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -74,7 +74,7 @@
             // BtnListele
             // 
             this.BtnListele.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnListele.Location = new System.Drawing.Point(518, 6);
+            this.BtnListele.Location = new System.Drawing.Point(518, 8);
             this.BtnListele.Name = "BtnListele";
             this.BtnListele.Size = new System.Drawing.Size(188, 24);
             this.BtnListele.TabIndex = 11;

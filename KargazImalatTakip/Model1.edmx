@@ -5,6 +5,41 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="KargazHaritaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="bina">
+          <Key>
+            <PropertyRef Name="bina_kodu" />
+          </Key>
+          <Property Name="mslink" Type="int" />
+          <Property Name="mapid" Type="int" />
+          <Property Name="bina_kodu" Type="int" Nullable="false" />
+          <Property Name="bina_adi" Type="nvarchar" MaxLength="30" />
+          <Property Name="yol_kodu" Type="int" />
+          <Property Name="adres_kodu" Type="nvarchar" MaxLength="50" />
+          <Property Name="dis_kapi_no" Type="nvarchar" MaxLength="10" />
+          <Property Name="kat_adedi" Type="int" />
+          <Property Name="daire_sayisi" Type="int" />
+          <Property Name="isyeri_sayisi" Type="int" />
+          <Property Name="isinma_sekli" Type="nvarchar" MaxLength="2" />
+          <Property Name="kazan_kap" Type="float" />
+          <Property Name="servis_kutusu_mslink" Type="int" />
+          <Property Name="blok_adi" Type="nvarchar" MaxLength="5" />
+          <Property Name="mahalle_kodu" Type="nvarchar" MaxLength="50" />
+          <Property Name="ilce_kodu" Type="nvarchar" MaxLength="2" />
+          <Property Name="alan" Type="float" />
+          <Property Name="sektor" Type="nvarchar" MaxLength="10" />
+          <Property Name="kullanim_tipi" Type="nvarchar" MaxLength="50" />
+          <Property Name="il_kodu" Type="nvarchar" MaxLength="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KargazHarita.dbo.bina_serviskutusu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="bina_serviskutusu">
+          <Key>
+            <PropertyRef Name="bina_mslink" />
+            <PropertyRef Name="serviskutusu_mslink" />
+          </Key>
+          <Property Name="bina_mslink" Type="int" Nullable="false" />
+          <Property Name="serviskutusu_mslink" Type="int" Nullable="false" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'KargazHarita.dbo.D_YATIRIM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="D_YATIRIM">
@@ -158,9 +193,16 @@ warning 6002: The table/view 'KargazHarita.dbo.ilce' does not have a primary key
           <Property Name="KUTU_YERI" Type="nvarchar" MaxLength="25" />
         </EntityType>
         <EntityContainer Name="KargazHaritaModelStoreContainer">
+          <EntitySet Name="bina" EntityType="Self.bina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HATLAR" EntityType="Self.HATLAR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SERVIS_HATLARI" EntityType="Self.SERVIS_HATLARI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SERVIS_KUTUSU" EntityType="Self.SERVIS_KUTUSU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bina_serviskutusu" EntityType="Self.bina_serviskutusu" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [bina_serviskutusu].[bina_mslink] AS [bina_mslink], 
+    [bina_serviskutusu].[serviskutusu_mslink] AS [serviskutusu_mslink]
+    FROM [dbo].[bina_serviskutusu] AS [bina_serviskutusu]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="D_YATIRIM" EntityType="Self.D_YATIRIM" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [D_YATIRIM].[KODU] AS [KODU], 
@@ -318,6 +360,8 @@ warning 6002: The table/view 'KargazHarita.dbo.ilce' does not have a primary key
           <EntitySet Name="SERVIS_KUTUSU" EntityType="Self.SERVIS_KUTUSU" />
           <EntitySet Name="ilce" EntityType="KargazHaritaModel.ilce" />
           <EntitySet Name="D_YATIRIM" EntityType="KargazHaritaModel.D_YATIRIM" />
+          <EntitySet Name="bina_serviskutusu" EntityType="KargazHaritaModel.bina_serviskutusu" />
+          <EntitySet Name="bina" EntityType="KargazHaritaModel.bina" />
         </EntityContainer>
         <EntityType Name="ilce">
           <Key>
@@ -335,6 +379,39 @@ warning 6002: The table/view 'KargazHarita.dbo.ilce' does not have a primary key
           </Key>
           <Property Name="KODU" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
           <Property Name="YATIRIMYILI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="bina_serviskutusu">
+          <Key>
+            <PropertyRef Name="bina_mslink" />
+            <PropertyRef Name="serviskutusu_mslink" />
+          </Key>
+          <Property Name="bina_mslink" Type="Int32" Nullable="false" />
+          <Property Name="serviskutusu_mslink" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bina">
+          <Key>
+            <PropertyRef Name="bina_kodu" />
+          </Key>
+          <Property Name="mslink" Type="Int32" />
+          <Property Name="mapid" Type="Int32" />
+          <Property Name="bina_kodu" Type="Int32" Nullable="false" />
+          <Property Name="bina_adi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="yol_kodu" Type="Int32" />
+          <Property Name="adres_kodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dis_kapi_no" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="kat_adedi" Type="Int32" />
+          <Property Name="daire_sayisi" Type="Int32" />
+          <Property Name="isyeri_sayisi" Type="Int32" />
+          <Property Name="isinma_sekli" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="kazan_kap" Type="Double" />
+          <Property Name="servis_kutusu_mslink" Type="Int32" />
+          <Property Name="blok_adi" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="mahalle_kodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ilce_kodu" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="alan" Type="Double" />
+          <Property Name="sektor" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="kullanim_tipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="il_kodu" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -492,6 +569,40 @@ warning 6002: The table/view 'KargazHarita.dbo.ilce' does not have a primary key
               <MappingFragment StoreEntitySet="D_YATIRIM">
                 <ScalarProperty Name="YATIRIMYILI" ColumnName="YATIRIMYILI" />
                 <ScalarProperty Name="KODU" ColumnName="KODU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bina_serviskutusu">
+            <EntityTypeMapping TypeName="KargazHaritaModel.bina_serviskutusu">
+              <MappingFragment StoreEntitySet="bina_serviskutusu">
+                <ScalarProperty Name="serviskutusu_mslink" ColumnName="serviskutusu_mslink" />
+                <ScalarProperty Name="bina_mslink" ColumnName="bina_mslink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bina">
+            <EntityTypeMapping TypeName="KargazHaritaModel.bina">
+              <MappingFragment StoreEntitySet="bina">
+                <ScalarProperty Name="il_kodu" ColumnName="il_kodu" />
+                <ScalarProperty Name="kullanim_tipi" ColumnName="kullanim_tipi" />
+                <ScalarProperty Name="sektor" ColumnName="sektor" />
+                <ScalarProperty Name="alan" ColumnName="alan" />
+                <ScalarProperty Name="ilce_kodu" ColumnName="ilce_kodu" />
+                <ScalarProperty Name="mahalle_kodu" ColumnName="mahalle_kodu" />
+                <ScalarProperty Name="blok_adi" ColumnName="blok_adi" />
+                <ScalarProperty Name="servis_kutusu_mslink" ColumnName="servis_kutusu_mslink" />
+                <ScalarProperty Name="kazan_kap" ColumnName="kazan_kap" />
+                <ScalarProperty Name="isinma_sekli" ColumnName="isinma_sekli" />
+                <ScalarProperty Name="isyeri_sayisi" ColumnName="isyeri_sayisi" />
+                <ScalarProperty Name="daire_sayisi" ColumnName="daire_sayisi" />
+                <ScalarProperty Name="kat_adedi" ColumnName="kat_adedi" />
+                <ScalarProperty Name="dis_kapi_no" ColumnName="dis_kapi_no" />
+                <ScalarProperty Name="adres_kodu" ColumnName="adres_kodu" />
+                <ScalarProperty Name="yol_kodu" ColumnName="yol_kodu" />
+                <ScalarProperty Name="bina_adi" ColumnName="bina_adi" />
+                <ScalarProperty Name="bina_kodu" ColumnName="bina_kodu" />
+                <ScalarProperty Name="mapid" ColumnName="mapid" />
+                <ScalarProperty Name="mslink" ColumnName="mslink" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -4,12 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3e3e0838b152453ca6d6045ef6362087" Name="Diagram1" ZoomLevel="80">
+      <Diagram DiagramId="3e3e0838b152453ca6d6045ef6362087" Name="Diagram1" ZoomLevel="77">
         <EntityTypeShape EntityType="KargazHaritaModel.HATLAR" Width="1.5" PointX="2.375" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="KargazHaritaModel.SERVIS_HATLARI" Width="1.5" PointX="4.875" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="KargazHaritaModel.SERVIS_KUTUSU" Width="1.5" PointX="7.125" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="KargazHaritaModel.ilce" Width="1.5" PointX="9.375" PointY="2.875" />
         <EntityTypeShape EntityType="KargazHaritaModel.D_YATIRIM" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="KargazHaritaModel.bina_serviskutusu" Width="1.5" PointX="12.125" PointY="2" />
+        <EntityTypeShape EntityType="KargazHaritaModel.bina" Width="1.5" PointX="15" PointY="1.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

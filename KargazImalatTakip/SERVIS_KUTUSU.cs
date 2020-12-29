@@ -49,6 +49,5 @@ namespace KargazImalatTakip
         public string MAHALLE_KODU { get; set; }
         public Nullable<short> HAKEDISE_DAHIL { get; set; }
         public string KUTU_YERI { get; set; }
-        public string ESKIFORMNO { get; set; }
     }
 }

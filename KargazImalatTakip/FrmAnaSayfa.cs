@@ -191,8 +191,20 @@ namespace KargazImalatTakip
             if (fr15 == null || fr15.IsDisposed)
             {
                 fr15 = new FrmFittingsHat();
-                //fr15.MdiParent = this;
+                fr15.MdiParent = this;
                 fr15.Show();
+            }
+        }
+
+        FrmAboOlanKutusuOlmayanBina fr16;
+
+        private void BtnAboneligiOlanKutusuOlmayanBinalar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (fr16 == null || fr15.IsDisposed)
+            {
+                fr16 = new FrmAboOlanKutusuOlmayanBina();
+                fr16.MdiParent = this;
+                fr16.Show();
             }
         }
     }
