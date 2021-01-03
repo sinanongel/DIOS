@@ -1,0 +1,1104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="KargazHaritaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KargazHarita.dbo.BAGLANTI_ELEMANLARI_CELIK' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BAGLANTI_ELEMANLARI_CELIK">
+          <Key>
+            <PropertyRef Name="MSLINK" />
+          </Key>
+          <Property Name="MSLINK" Type="int" Nullable="false" />
+          <Property Name="MAPID" Type="int" />
+          <Property Name="CINSI" Type="nvarchar" MaxLength="10" />
+          <Property Name="TIPI" Type="nvarchar" MaxLength="25" />
+          <Property Name="CAP" Type="nvarchar" MaxLength="15" />
+          <Property Name="SEBEKE_ELEMANI_MI" Type="nvarchar" MaxLength="2" />
+          <Property Name="YATIRIMYILI" Type="nvarchar" MaxLength="10" />
+          <Property Name="MUTEAHHITADI" Type="nvarchar" MaxLength="30" />
+          <Property Name="IMALATTARIHI" Type="smalldatetime" />
+          <Property Name="FORMNO" Type="nvarchar" MaxLength="20" />
+          <Property Name="VARLIK_KODU" Type="nvarchar" MaxLength="20" />
+          <Property Name="EKIPNO" Type="nvarchar" MaxLength="30" />
+          <Property Name="MARKA" Type="nvarchar" MaxLength="20" />
+          <Property Name="FORM_METRAJ" Type="float" />
+          <Property Name="ASBUILT_METRAJ" Type="float" />
+          <Property Name="HATNO" Type="nvarchar" MaxLength="10" />
+          <Property Name="KAPLAMA_TIPI" Type="nvarchar" MaxLength="10" />
+          <Property Name="FROM_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="FROM_MSLINK" Type="int" />
+          <Property Name="TO_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="TO_MSLINK" Type="int" />
+          <Property Name="YERI" Type="smallint" />
+          <Property Name="DERINLIK" Type="float" />
+          <Property Name="KONUM_X_KOOR" Type="float" />
+          <Property Name="KONUM_Y_KOOR" Type="float" />
+          <Property Name="SEKTOR" Type="nvarchar" MaxLength="10" />
+          <Property Name="GIRIS_BASINCI" Type="nvarchar" MaxLength="20" />
+          <Property Name="ISLETME_BASINCI" Type="nvarchar" MaxLength="20" />
+          <Property Name="SIZINTI_INCELEME_SON_TARIH" Type="smalldatetime" />
+          <Property Name="SIZINTI_INCELEME_ARALIGI" Type="int" />
+          <Property Name="TEST_TARIHI" Type="smalldatetime" />
+          <Property Name="TEST_SURESI" Type="nvarchar" MaxLength="10" />
+          <Property Name="TEST_BASINCI" Type="nvarchar" MaxLength="50" />
+          <Property Name="DURUM" Type="nvarchar" MaxLength="20" />
+          <Property Name="GAZLANMA_TARIHI" Type="smalldatetime" />
+          <Property Name="YOL_MSLINK" Type="decimal" Precision="19" Scale="0" />
+          <Property Name="IL_KODU" Type="int" />
+          <Property Name="ILCE_KODU" Type="int" />
+          <Property Name="MAHALLE_KODU" Type="nvarchar" MaxLength="3" />
+          <Property Name="KULLANILAN_ACI" Type="float" />
+          <Property Name="HAKEDISE_DAHIL" Type="smallint" />
+          <Property Name="FORM_METRAJ_TEE_KISA_KOL" Type="numeric" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="BAGLANTI_ELEMANLARI_PE">
+          <Key>
+            <PropertyRef Name="MSLINK" />
+          </Key>
+          <Property Name="MSLINK" Type="int" Nullable="false" />
+          <Property Name="MAPID" Type="int" />
+          <Property Name="TIPI" Type="nvarchar" MaxLength="25" />
+          <Property Name="CAP" Type="nvarchar" MaxLength="10" />
+          <Property Name="CINSI" Type="nvarchar" MaxLength="10" />
+          <Property Name="SEBEKE_ELEMANI_MI" Type="nvarchar" MaxLength="2" />
+          <Property Name="GAZLANMA_TARIHI" Type="smalldatetime" />
+          <Property Name="SERVIS_ID" Type="int" />
+          <Property Name="DERINLIK" Type="float" />
+          <Property Name="HAT_MSLINK" Type="decimal" Precision="19" Scale="0" />
+          <Property Name="ACIL_SISTEM_OBJE_ID" Type="int" />
+          <Property Name="ACIL_SISTEM_DURUM_TANIMI" Type="nvarchar" MaxLength="10" />
+          <Property Name="KONUM_X_KOOR" Type="float" />
+          <Property Name="KONUM_Y_KOOR" Type="float" />
+          <Property Name="KONUM_TESPIT_SEKLI" Type="nvarchar" MaxLength="20" />
+          <Property Name="KONUM_MESAFE" Type="float" />
+          <Property Name="MALZEME_DURUM" Type="nvarchar" MaxLength="10" />
+          <Property Name="BOLGE" Type="nvarchar" MaxLength="10" />
+          <Property Name="SEKTOR" Type="nvarchar" MaxLength="10" />
+          <Property Name="URETICI_FIRMA" Type="nvarchar" MaxLength="20" />
+          <Property Name="VARLIK_KODU" Type="nvarchar" MaxLength="20" />
+          <Property Name="WORKORDERID" Type="int" />
+          <Property Name="DURUM" Type="nvarchar" MaxLength="25" />
+          <Property Name="YATIRIMYILI" Type="nvarchar" MaxLength="10" />
+          <Property Name="MARKAMODEL" Type="nvarchar" MaxLength="30" />
+          <Property Name="MUTEAHHITADI" Type="nvarchar" MaxLength="30" />
+          <Property Name="TEDARIKCIFIRMA" Type="nvarchar" MaxLength="30" />
+          <Property Name="IMALATTARIHI" Type="smalldatetime" />
+          <Property Name="YOL_MSLINK" Type="decimal" Precision="19" Scale="0" />
+          <Property Name="IL_KODU" Type="int" />
+          <Property Name="ILCE_KODU" Type="int" />
+          <Property Name="FORMNO" Type="nvarchar" MaxLength="20" />
+          <Property Name="MAHALLE_KODU" Type="varchar" MaxLength="3" />
+          <Property Name="FUZYON" Type="nvarchar" MaxLength="10" />
+          <Property Name="EKIPNO" Type="nvarchar" MaxLength="30" />
+          <Property Name="KAYNAKCI1" Type="nvarchar" MaxLength="30" />
+          <Property Name="KAYNAKCI2" Type="nvarchar" MaxLength="30" />
+          <Property Name="GIRIS_BASINCI" Type="nvarchar" MaxLength="20" />
+          <Property Name="ISLETME_BASINCI" Type="nvarchar" MaxLength="20" />
+          <Property Name="TEST_TARIHI" Type="smalldatetime" />
+          <Property Name="TEST_SURESI" Type="nvarchar" MaxLength="10" />
+          <Property Name="TEST_BASINCI" Type="nvarchar" MaxLength="20" />
+          <Property Name="SIZINTI_INCELEME_SON_TARIH" Type="smalldatetime" />
+          <Property Name="SIZINTI_INCELEME_ARALIGI" Type="int" />
+          <Property Name="KULLANILAN_ACI" Type="float" />
+          <Property Name="HAKEDISE_DAHIL" Type="smallint" />
+        </EntityType>
+        <EntityType Name="HATLAR">
+          <Key>
+            <PropertyRef Name="MSLINK" />
+          </Key>
+          <Property Name="MSLINK" Type="int" Nullable="false" />
+          <Property Name="MAPID" Type="int" />
+          <Property Name="MALZEME_CINSI" Type="nvarchar" MaxLength="25" />
+          <Property Name="NET_BORU_CAPI" Type="nvarchar" MaxLength="10" />
+          <Property Name="GAZ_AKIS_YONU" Type="int" />
+          <Property Name="FROM_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="FROM_MSLINK" Type="int" />
+          <Property Name="TO_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="TO_MSLINK" Type="int" />
+          <Property Name="VERI_KAYNAGI" Type="nvarchar" MaxLength="20" />
+          <Property Name="DURUM" Type="nvarchar" MaxLength="20" />
+          <Property Name="IMALAT_TARIHI" Type="smalldatetime" />
+          <Property Name="GAZLANMA_TARIHI" Type="smalldatetime" />
+          <Property Name="SEKTOR" Type="nvarchar" MaxLength="10" />
+          <Property Name="KAPLAMA_TIPI" Type="nvarchar" MaxLength="10" />
+          <Property Name="SISTEM_GIRIS_BASINCI" Type="nvarchar" MaxLength="20" />
+          <Property Name="SISTEM_STANDART_BASINCI" Type="nvarchar" MaxLength="20" />
+          <Property Name="SISTEM_BASINC_ARALIGI" Type="float" />
+          <Property Name="SISTEM_STANDART_BASINC_BIRIMI" Type="nvarchar" MaxLength="10" />
+          <Property Name="ACIL_SISTEM_OBJE_ID" Type="int" />
+          <Property Name="ACIL_SISTEM_DURUM_TANIMI" Type="nvarchar" MaxLength="10" />
+          <Property Name="SIZINTI_INCELEME_SON_TARIH" Type="smalldatetime" />
+          <Property Name="SIZINTI_INCELEME_ARALIGI" Type="int" />
+          <Property Name="MARKA" Type="nvarchar" MaxLength="20" />
+          <Property Name="BORU_UZUNLUGU" Type="float" />
+          <Property Name="ASBUILT_METRAJ" Type="float" />
+          <Property Name="BORU_SON_TEST_TARIHI" Type="smalldatetime" />
+          <Property Name="BORU_SON_TEST_SURESI" Type="nvarchar" MaxLength="10" />
+          <Property Name="BORU_SON_TEST_BASINCI" Type="nvarchar" MaxLength="20" />
+          <Property Name="VARLIK_KODU" Type="nvarchar" MaxLength="20" />
+          <Property Name="WORKORDERID" Type="int" />
+          <Property Name="YATIRIMYILI" Type="varchar" MaxLength="10" />
+          <Property Name="MUTEAHHITADI" Type="nvarchar" MaxLength="30" />
+          <Property Name="TEDARIKCIFIRMA" Type="nvarchar" MaxLength="30" />
+          <Property Name="REGULATOR_MSLINK" Type="decimal" Precision="19" Scale="0" />
+          <Property Name="YOL_MSLINK" Type="decimal" Precision="19" Scale="0" />
+          <Property Name="IL_KODU" Type="int" />
+          <Property Name="ILCE_KODU" Type="int" />
+          <Property Name="FORMNO" Type="nvarchar" MaxLength="20" />
+          <Property Name="LOT" Type="nvarchar" MaxLength="10" />
+          <Property Name="MAHALLE_KODU" Type="varchar" MaxLength="3" />
+          <Property Name="EKIPNO" Type="varchar" MaxLength="30" />
+          <Property Name="HATNO" Type="varchar" MaxLength="10" />
+          <Property Name="YERI" Type="smallint" />
+          <Property Name="HAKEDISE_DAHIL" Type="smallint" />
+          <Property Name="YATAY_ASBUILT_METRAJ" Type="float" />
+          <Property Name="KAZI_RUHSATNO" Type="varchar" MaxLength="50" />
+          <Property Name="KAZI_BOYU" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KargazHarita.dbo.ilce' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ilce">
+          <Key>
+            <PropertyRef Name="ilce_kodu" />
+          </Key>
+          <Property Name="ilce_kodu" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="ilce_adi" Type="nvarchar" MaxLength="30" />
+          <Property Name="mslink" Type="bigint" />
+          <Property Name="mapid" Type="int" />
+          <Property Name="il_kodu" Type="nvarchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="SERVIS_ELEMANLARI">
+          <Key>
+            <PropertyRef Name="MSLINK" />
+          </Key>
+          <Property Name="MSLINK" Type="int" Nullable="false" />
+          <Property Name="MAPID" Type="int" />
+          <Property Name="TIPI" Type="nvarchar" MaxLength="25" />
+          <Property Name="CAP" Type="nvarchar" MaxLength="15" />
+          <Property Name="CINSI" Type="nvarchar" MaxLength="10" />
+          <Property Name="DERINLIK" Type="float" />
+          <Property Name="HAT_MSLINK" Type="bigint" />
+          <Property Name="KONUM_X_KOOR" Type="float" />
+          <Property Name="KONUM_Y_KOOR" Type="float" />
+          <Property Name="KONUM_TESPIT_SEKLI" Type="nvarchar" MaxLength="50" />
+          <Property Name="KONUM_MESAFE" Type="float" />
+          <Property Name="BOLGE" Type="nvarchar" MaxLength="10" />
+          <Property Name="SEKTOR" Type="nvarchar" MaxLength="10" />
+          <Property Name="VARLIK_KODU" Type="nvarchar" MaxLength="20" />
+          <Property Name="WORKORDERID" Type="int" />
+          <Property Name="DURUM" Type="nvarchar" MaxLength="25" />
+          <Property Name="MALZEME_DURUM" Type="nvarchar" MaxLength="10" />
+          <Property Name="YATIRIMYILI" Type="varchar" MaxLength="10" />
+          <Property Name="MARKAMODEL" Type="nvarchar" MaxLength="30" />
+          <Property Name="MUTEAHHITADI" Type="nvarchar" MaxLength="30" />
+          <Property Name="FORMNO" Type="varchar" MaxLength="20" />
+          <Property Name="YOL_MSLINK" Type="bigint" />
+          <Property Name="IL_KODU" Type="int" />
+          <Property Name="ILCE_KODU" Type="int" />
+          <Property Name="MAHALLE_KODU" Type="varchar" MaxLength="3" />
+          <Property Name="IMALAT_TARIHI" Type="smalldatetime" />
+          <Property Name="GAZ_STOP" Type="nvarchar" MaxLength="10" />
+          <Property Name="HAKEDISE_DAHIL" Type="smallint" />
+        </EntityType>
+        <EntityType Name="SERVIS_HATLARI">
+          <Key>
+            <PropertyRef Name="MSLINK" />
+          </Key>
+          <Property Name="MSLINK" Type="int" Nullable="false" />
+          <Property Name="MAPID" Type="int" />
+          <Property Name="TIPI" Type="nvarchar" MaxLength="25" />
+          <Property Name="CAP" Type="varchar" MaxLength="10" />
+          <Property Name="FROM_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="FROM_MSLINK" Type="int" />
+          <Property Name="TO_ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="TO_MSLINK" Type="int" />
+          <Property Name="VARLIK_KODU" Type="nvarchar" MaxLength="20" />
+          <Property Name="WORKORDERID" Type="int" />
+          <Property Name="DURUM" Type="nvarchar" MaxLength="25" />
+          <Property Name="YATIRIMYILI" Type="varchar" MaxLength="10" />
+          <Property Name="REGULATOR_MSLINK" Type="decimal" Precision="19" Scale="0" />
+          <Property Name="SEKTOR" Type="nvarchar" MaxLength="20" />
+          <Property Name="SHATTIMETRAJ" Type="float" />
+          <Property Name="IMALATTARIHI" Type="smalldatetime" />
+          <Property Name="MUTEAHHITADI" Type="nvarchar" MaxLength="30" />
+          <Property Name="MARKAMODEL" Type="nvarchar" MaxLength="30" />
+          <Property Name="LOTNO" Type="nvarchar" MaxLength="30" />
+          <Property Name="HAT_MSLINK" Type="bigint" />
+          <Property Name="YOL_MSLINK" Type="bigint" />
+          <Property Name="IL_KODU" Type="int" />
+          <Property Name="ILCE_KODU" Type="int" />
+          <Property Name="FORMNO" Type="varchar" MaxLength="20" />
+          <Property Name="MAHALLE_KODU" Type="varchar" MaxLength="3" />
+          <Property Name="EKIPNO" Type="varchar" MaxLength="30" />
+          <Property Name="KAZIBOYU" Type="float" />
+          <Property Name="BORUBOYU" Type="float" />
+          <Property Name="ASFALTBOYU" Type="float" />
+          <Property Name="YUZEYKAPLAMA" Type="varchar" MaxLength="20" />
+          <Property Name="HAKEDISE_DAHIL" Type="smallint" />
+          <Property Name="YATAY_ASBUILT_METRAJ" Type="float" />
+          <Property Name="ASFALT" Type="float" />
+        </EntityType>
+        <EntityType Name="SERVIS_KUTUSU">
+          <Key>
+            <PropertyRef Name="MSLINK" />
+          </Key>
+          <Property Name="MSLINK" Type="int" Nullable="false" />
+          <Property Name="MAPID" Type="int" />
+          <Property Name="KUTU_TIPI" Type="nvarchar" MaxLength="25" />
+          <Property Name="CINSI" Type="nvarchar" MaxLength="10" />
+          <Property Name="YOL_MSLINK" Type="int" />
+          <Property Name="AKTIF" Type="int" />
+          <Property Name="DURUM" Type="nvarchar" MaxLength="25" />
+          <Property Name="KUTU_MARKASI" Type="nvarchar" MaxLength="30" />
+          <Property Name="REG_NO" Type="nvarchar" MaxLength="16" />
+          <Property Name="REG_TUKETIM" Type="float" />
+          <Property Name="REG_BASINC" Type="nvarchar" MaxLength="10" />
+          <Property Name="REG_KUTUTIPI" Type="nvarchar" MaxLength="10" />
+          <Property Name="REG_KAPASITE" Type="nvarchar" MaxLength="20" />
+          <Property Name="REG_MONTAJTARIHI" Type="datetime" />
+          <Property Name="REG_KULLANIMTURU" Type="nvarchar" MaxLength="10" />
+          <Property Name="REG_TIPI" Type="nvarchar" MaxLength="20" />
+          <Property Name="REG_MARKASI" Type="nvarchar" MaxLength="20" />
+          <Property Name="REG_ADEDI" Type="int" />
+          <Property Name="VARLIK_KODU" Type="nvarchar" MaxLength="20" />
+          <Property Name="WORKORDERID" Type="int" />
+          <Property Name="YATIRIMYILI" Type="varchar" MaxLength="10" />
+          <Property Name="KUTU_NO" Type="nvarchar" MaxLength="10" />
+          <Property Name="SKUTUVANASI" Type="nvarchar" MaxLength="10" />
+          <Property Name="SKUTUVANAMARKASI" Type="nvarchar" MaxLength="20" />
+          <Property Name="CIKISBASINCI" Type="nvarchar" MaxLength="10" />
+          <Property Name="IMALATTARIHI" Type="datetime" />
+          <Property Name="MUTEAHHITADI" Type="nvarchar" MaxLength="30" />
+          <Property Name="TEDARIKCIFIRMAREG" Type="nvarchar" MaxLength="30" />
+          <Property Name="HAT_MSLINK" Type="bigint" />
+          <Property Name="IL_KODU" Type="int" />
+          <Property Name="ILCE_KODU" Type="int" />
+          <Property Name="FORMNO" Type="varchar" MaxLength="20" />
+          <Property Name="MAHALLE_KODU" Type="varchar" MaxLength="3" />
+          <Property Name="HAKEDISE_DAHIL" Type="smallint" />
+          <Property Name="KUTU_YERI" Type="nvarchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="VANA">
+          <Key>
+            <PropertyRef Name="MSLINK" />
+          </Key>
+          <Property Name="MSLINK" Type="int" Nullable="false" />
+          <Property Name="MAPID" Type="int" />
+          <Property Name="VANA_TIPI" Type="nvarchar" MaxLength="25" />
+          <Property Name="CAP" Type="nvarchar" MaxLength="10" />
+          <Property Name="MALZEME_CINSI" Type="nvarchar" MaxLength="10" />
+          <Property Name="VANA_NO" Type="nvarchar" MaxLength="30" />
+          <Property Name="VANA_ISLETME_DURUMU" Type="nvarchar" MaxLength="50" />
+          <Property Name="BASINC" Type="varchar" MaxLength="10" />
+          <Property Name="KAPATMA_YONU" Type="nvarchar" MaxLength="15" />
+          <Property Name="KAPATMA_TURU" Type="nvarchar" MaxLength="15" />
+          <Property Name="DERINLIK" Type="float" />
+          <Property Name="HAT_MSLINK" Type="bigint" />
+          <Property Name="ACIL_SISTEM_OBJE_ID" Type="bigint" />
+          <Property Name="ACIL_SISTEM_DURUM_TANIMI" Type="nvarchar" MaxLength="10" />
+          <Property Name="KONUM_X_KOOR" Type="float" />
+          <Property Name="KONUM_Y_KOOR" Type="float" />
+          <Property Name="KONUM_TESPIT_SEKLI" Type="nvarchar" MaxLength="10" />
+          <Property Name="KONUM_MESAFE" Type="float" />
+          <Property Name="MALZEME_DURUM" Type="nvarchar" MaxLength="10" />
+          <Property Name="VANA_ADRES" Type="nvarchar" MaxLength="50" />
+          <Property Name="URETIM_YILI" Type="smalldatetime" />
+          <Property Name="SERI_NO" Type="varchar" MaxLength="20" />
+          <Property Name="BOLGE" Type="nvarchar" MaxLength="10" />
+          <Property Name="SEKTOR" Type="nvarchar" MaxLength="10" />
+          <Property Name="URETICI_FIRMA" Type="nvarchar" MaxLength="30" />
+          <Property Name="GAZLANMA_TARIHI" Type="smalldatetime" />
+          <Property Name="SERVIS_ID" Type="int" />
+          <Property Name="VARLIK_KODU" Type="nvarchar" MaxLength="20" />
+          <Property Name="WORKORDERID" Type="int" />
+          <Property Name="DURUM" Type="nvarchar" MaxLength="25" />
+          <Property Name="BAKIM_PERIYODU" Type="int" />
+          <Property Name="YATIRIMYILI" Type="varchar" MaxLength="10" />
+          <Property Name="MUTEAHHITADI" Type="nvarchar" MaxLength="30" />
+          <Property Name="TEDARIKCIFIRMA" Type="nvarchar" MaxLength="30" />
+          <Property Name="MARKA" Type="nvarchar" MaxLength="30" />
+          <Property Name="YOL_MSLINK" Type="bigint" />
+          <Property Name="IL_KODU" Type="int" />
+          <Property Name="ILCE_KODU" Type="int" />
+          <Property Name="FORMNO" Type="nvarchar" MaxLength="20" />
+          <Property Name="MAHALLE_KODU" Type="varchar" MaxLength="3" />
+          <Property Name="IMALAT_TARIHI" Type="smalldatetime" />
+          <Property Name="KAIDE" Type="nvarchar" MaxLength="1" />
+          <Property Name="TUR_SAYISI" Type="int" />
+          <Property Name="ASBUILT_METRAJ" Type="float" />
+          <Property Name="HAKEDISE_DAHIL" Type="smallint" />
+          <Property Name="BLOFCAP1" Type="varchar" MaxLength="10" />
+          <Property Name="BLOFCAP2" Type="varchar" MaxLength="10" />
+          <Property Name="BLOFSERINO1" Type="varchar" MaxLength="20" />
+          <Property Name="BLOFSERINO2" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityContainer Name="KargazHaritaModelStoreContainer">
+          <EntitySet Name="BAGLANTI_ELEMANLARI_PE" EntityType="Self.BAGLANTI_ELEMANLARI_PE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HATLAR" EntityType="Self.HATLAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SERVIS_ELEMANLARI" EntityType="Self.SERVIS_ELEMANLARI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SERVIS_HATLARI" EntityType="Self.SERVIS_HATLARI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SERVIS_KUTUSU" EntityType="Self.SERVIS_KUTUSU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VANA" EntityType="Self.VANA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BAGLANTI_ELEMANLARI_CELIK" EntityType="Self.BAGLANTI_ELEMANLARI_CELIK" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BAGLANTI_ELEMANLARI_CELIK].[MSLINK] AS [MSLINK], 
+    [BAGLANTI_ELEMANLARI_CELIK].[MAPID] AS [MAPID], 
+    [BAGLANTI_ELEMANLARI_CELIK].[CINSI] AS [CINSI], 
+    [BAGLANTI_ELEMANLARI_CELIK].[TIPI] AS [TIPI], 
+    [BAGLANTI_ELEMANLARI_CELIK].[CAP] AS [CAP], 
+    [BAGLANTI_ELEMANLARI_CELIK].[SEBEKE_ELEMANI_MI] AS [SEBEKE_ELEMANI_MI], 
+    [BAGLANTI_ELEMANLARI_CELIK].[YATIRIMYILI] AS [YATIRIMYILI], 
+    [BAGLANTI_ELEMANLARI_CELIK].[MUTEAHHITADI] AS [MUTEAHHITADI], 
+    [BAGLANTI_ELEMANLARI_CELIK].[IMALATTARIHI] AS [IMALATTARIHI], 
+    [BAGLANTI_ELEMANLARI_CELIK].[FORMNO] AS [FORMNO], 
+    [BAGLANTI_ELEMANLARI_CELIK].[VARLIK_KODU] AS [VARLIK_KODU], 
+    [BAGLANTI_ELEMANLARI_CELIK].[EKIPNO] AS [EKIPNO], 
+    [BAGLANTI_ELEMANLARI_CELIK].[MARKA] AS [MARKA], 
+    [BAGLANTI_ELEMANLARI_CELIK].[FORM_METRAJ] AS [FORM_METRAJ], 
+    [BAGLANTI_ELEMANLARI_CELIK].[ASBUILT_METRAJ] AS [ASBUILT_METRAJ], 
+    [BAGLANTI_ELEMANLARI_CELIK].[HATNO] AS [HATNO], 
+    [BAGLANTI_ELEMANLARI_CELIK].[KAPLAMA_TIPI] AS [KAPLAMA_TIPI], 
+    [BAGLANTI_ELEMANLARI_CELIK].[FROM_ID] AS [FROM_ID], 
+    [BAGLANTI_ELEMANLARI_CELIK].[FROM_MSLINK] AS [FROM_MSLINK], 
+    [BAGLANTI_ELEMANLARI_CELIK].[TO_ID] AS [TO_ID], 
+    [BAGLANTI_ELEMANLARI_CELIK].[TO_MSLINK] AS [TO_MSLINK], 
+    [BAGLANTI_ELEMANLARI_CELIK].[YERI] AS [YERI], 
+    [BAGLANTI_ELEMANLARI_CELIK].[DERINLIK] AS [DERINLIK], 
+    [BAGLANTI_ELEMANLARI_CELIK].[KONUM_X_KOOR] AS [KONUM_X_KOOR], 
+    [BAGLANTI_ELEMANLARI_CELIK].[KONUM_Y_KOOR] AS [KONUM_Y_KOOR], 
+    [BAGLANTI_ELEMANLARI_CELIK].[SEKTOR] AS [SEKTOR], 
+    [BAGLANTI_ELEMANLARI_CELIK].[GIRIS_BASINCI] AS [GIRIS_BASINCI], 
+    [BAGLANTI_ELEMANLARI_CELIK].[ISLETME_BASINCI] AS [ISLETME_BASINCI], 
+    [BAGLANTI_ELEMANLARI_CELIK].[SIZINTI_INCELEME_SON_TARIH] AS [SIZINTI_INCELEME_SON_TARIH], 
+    [BAGLANTI_ELEMANLARI_CELIK].[SIZINTI_INCELEME_ARALIGI] AS [SIZINTI_INCELEME_ARALIGI], 
+    [BAGLANTI_ELEMANLARI_CELIK].[TEST_TARIHI] AS [TEST_TARIHI], 
+    [BAGLANTI_ELEMANLARI_CELIK].[TEST_SURESI] AS [TEST_SURESI], 
+    [BAGLANTI_ELEMANLARI_CELIK].[TEST_BASINCI] AS [TEST_BASINCI], 
+    [BAGLANTI_ELEMANLARI_CELIK].[DURUM] AS [DURUM], 
+    [BAGLANTI_ELEMANLARI_CELIK].[GAZLANMA_TARIHI] AS [GAZLANMA_TARIHI], 
+    [BAGLANTI_ELEMANLARI_CELIK].[YOL_MSLINK] AS [YOL_MSLINK], 
+    [BAGLANTI_ELEMANLARI_CELIK].[IL_KODU] AS [IL_KODU], 
+    [BAGLANTI_ELEMANLARI_CELIK].[ILCE_KODU] AS [ILCE_KODU], 
+    [BAGLANTI_ELEMANLARI_CELIK].[MAHALLE_KODU] AS [MAHALLE_KODU], 
+    [BAGLANTI_ELEMANLARI_CELIK].[KULLANILAN_ACI] AS [KULLANILAN_ACI], 
+    [BAGLANTI_ELEMANLARI_CELIK].[HAKEDISE_DAHIL] AS [HAKEDISE_DAHIL], 
+    [BAGLANTI_ELEMANLARI_CELIK].[FORM_METRAJ_TEE_KISA_KOL] AS [FORM_METRAJ_TEE_KISA_KOL]
+    FROM [dbo].[BAGLANTI_ELEMANLARI_CELIK] AS [BAGLANTI_ELEMANLARI_CELIK]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ilce" EntityType="Self.ilce" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ilce].[ilce_kodu] AS [ilce_kodu], 
+    [ilce].[ilce_adi] AS [ilce_adi], 
+    [ilce].[mslink] AS [mslink], 
+    [ilce].[mapid] AS [mapid], 
+    [ilce].[il_kodu] AS [il_kodu]
+    FROM [dbo].[ilce] AS [ilce]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KargazHaritaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BAGLANTI_ELEMANLARI_PE">
+          <Key>
+            <PropertyRef Name="MSLINK" />
+          </Key>
+          <Property Name="MSLINK" Type="Int32" Nullable="false" />
+          <Property Name="MAPID" Type="Int32" />
+          <Property Name="TIPI" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="CAP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CINSI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SEBEKE_ELEMANI_MI" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="GAZLANMA_TARIHI" Type="DateTime" Precision="0" />
+          <Property Name="SERVIS_ID" Type="Int32" />
+          <Property Name="DERINLIK" Type="Double" />
+          <Property Name="HAT_MSLINK" Type="Decimal" Precision="19" Scale="0" />
+          <Property Name="ACIL_SISTEM_OBJE_ID" Type="Int32" />
+          <Property Name="ACIL_SISTEM_DURUM_TANIMI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="KONUM_X_KOOR" Type="Double" />
+          <Property Name="KONUM_Y_KOOR" Type="Double" />
+          <Property Name="KONUM_TESPIT_SEKLI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="KONUM_MESAFE" Type="Double" />
+          <Property Name="MALZEME_DURUM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BOLGE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SEKTOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="URETICI_FIRMA" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VARLIK_KODU" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WORKORDERID" Type="Int32" />
+          <Property Name="DURUM" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="YATIRIMYILI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MARKAMODEL" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MUTEAHHITADI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TEDARIKCIFIRMA" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IMALATTARIHI" Type="DateTime" Precision="0" />
+          <Property Name="YOL_MSLINK" Type="Decimal" Precision="19" Scale="0" />
+          <Property Name="IL_KODU" Type="Int32" />
+          <Property Name="ILCE_KODU" Type="Int32" />
+          <Property Name="FORMNO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MAHALLE_KODU" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="FUZYON" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EKIPNO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="KAYNAKCI1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="KAYNAKCI2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="GIRIS_BASINCI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ISLETME_BASINCI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TEST_TARIHI" Type="DateTime" Precision="0" />
+          <Property Name="TEST_SURESI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TEST_BASINCI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SIZINTI_INCELEME_SON_TARIH" Type="DateTime" Precision="0" />
+          <Property Name="SIZINTI_INCELEME_ARALIGI" Type="Int32" />
+          <Property Name="KULLANILAN_ACI" Type="Double" />
+          <Property Name="HAKEDISE_DAHIL" Type="Int16" />
+        </EntityType>
+        <EntityType Name="SERVIS_ELEMANLARI">
+          <Key>
+            <PropertyRef Name="MSLINK" />
+          </Key>
+          <Property Name="MSLINK" Type="Int32" Nullable="false" />
+          <Property Name="MAPID" Type="Int32" />
+          <Property Name="TIPI" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="CAP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CINSI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DERINLIK" Type="Double" />
+          <Property Name="HAT_MSLINK" Type="Int64" />
+          <Property Name="KONUM_X_KOOR" Type="Double" />
+          <Property Name="KONUM_Y_KOOR" Type="Double" />
+          <Property Name="KONUM_TESPIT_SEKLI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KONUM_MESAFE" Type="Double" />
+          <Property Name="BOLGE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SEKTOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="VARLIK_KODU" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WORKORDERID" Type="Int32" />
+          <Property Name="DURUM" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="MALZEME_DURUM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="YATIRIMYILI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MARKAMODEL" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MUTEAHHITADI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="FORMNO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="YOL_MSLINK" Type="Int64" />
+          <Property Name="IL_KODU" Type="Int32" />
+          <Property Name="ILCE_KODU" Type="Int32" />
+          <Property Name="MAHALLE_KODU" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="IMALAT_TARIHI" Type="DateTime" Precision="0" />
+          <Property Name="GAZ_STOP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="HAKEDISE_DAHIL" Type="Int16" />
+        </EntityType>
+        <EntityType Name="SERVIS_KUTUSU">
+          <Key>
+            <PropertyRef Name="MSLINK" />
+          </Key>
+          <Property Name="MSLINK" Type="Int32" Nullable="false" />
+          <Property Name="MAPID" Type="Int32" />
+          <Property Name="KUTU_TIPI" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="CINSI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="YOL_MSLINK" Type="Int32" />
+          <Property Name="AKTIF" Type="Int32" />
+          <Property Name="DURUM" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="KUTU_MARKASI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="REG_NO" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="REG_TUKETIM" Type="Double" />
+          <Property Name="REG_BASINC" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="REG_KUTUTIPI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="REG_KAPASITE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="REG_MONTAJTARIHI" Type="DateTime" Precision="3" />
+          <Property Name="REG_KULLANIMTURU" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="REG_TIPI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="REG_MARKASI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="REG_ADEDI" Type="Int32" />
+          <Property Name="VARLIK_KODU" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WORKORDERID" Type="Int32" />
+          <Property Name="YATIRIMYILI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="KUTU_NO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SKUTUVANASI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SKUTUVANAMARKASI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CIKISBASINCI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IMALATTARIHI" Type="DateTime" Precision="3" />
+          <Property Name="MUTEAHHITADI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TEDARIKCIFIRMAREG" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="HAT_MSLINK" Type="Int64" />
+          <Property Name="IL_KODU" Type="Int32" />
+          <Property Name="ILCE_KODU" Type="Int32" />
+          <Property Name="FORMNO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MAHALLE_KODU" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="HAKEDISE_DAHIL" Type="Int16" />
+          <Property Name="KUTU_YERI" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VANA">
+          <Key>
+            <PropertyRef Name="MSLINK" />
+          </Key>
+          <Property Name="MSLINK" Type="Int32" Nullable="false" />
+          <Property Name="MAPID" Type="Int32" />
+          <Property Name="VANA_TIPI" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="CAP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MALZEME_CINSI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="VANA_NO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="VANA_ISLETME_DURUMU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BASINC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="KAPATMA_YONU" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="KAPATMA_TURU" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="DERINLIK" Type="Double" />
+          <Property Name="HAT_MSLINK" Type="Int64" />
+          <Property Name="ACIL_SISTEM_OBJE_ID" Type="Int64" />
+          <Property Name="ACIL_SISTEM_DURUM_TANIMI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="KONUM_X_KOOR" Type="Double" />
+          <Property Name="KONUM_Y_KOOR" Type="Double" />
+          <Property Name="KONUM_TESPIT_SEKLI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="KONUM_MESAFE" Type="Double" />
+          <Property Name="MALZEME_DURUM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="VANA_ADRES" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="URETIM_YILI" Type="DateTime" Precision="0" />
+          <Property Name="SERI_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BOLGE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SEKTOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="URETICI_FIRMA" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="GAZLANMA_TARIHI" Type="DateTime" Precision="0" />
+          <Property Name="SERVIS_ID" Type="Int32" />
+          <Property Name="VARLIK_KODU" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WORKORDERID" Type="Int32" />
+          <Property Name="DURUM" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="BAKIM_PERIYODU" Type="Int32" />
+          <Property Name="YATIRIMYILI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MUTEAHHITADI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TEDARIKCIFIRMA" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MARKA" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="YOL_MSLINK" Type="Int64" />
+          <Property Name="IL_KODU" Type="Int32" />
+          <Property Name="ILCE_KODU" Type="Int32" />
+          <Property Name="FORMNO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MAHALLE_KODU" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="IMALAT_TARIHI" Type="DateTime" Precision="0" />
+          <Property Name="KAIDE" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="TUR_SAYISI" Type="Int32" />
+          <Property Name="ASBUILT_METRAJ" Type="Double" />
+          <Property Name="HAKEDISE_DAHIL" Type="Int16" />
+          <Property Name="BLOFCAP1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BLOFCAP2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BLOFSERINO1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BLOFSERINO2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BAGLANTI_ELEMANLARI_CELIK">
+          <Key>
+            <PropertyRef Name="MSLINK" />
+          </Key>
+          <Property Name="MSLINK" Type="Int32" Nullable="false" />
+          <Property Name="MAPID" Type="Int32" />
+          <Property Name="CINSI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TIPI" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="CAP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="SEBEKE_ELEMANI_MI" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="YATIRIMYILI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MUTEAHHITADI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IMALATTARIHI" Type="DateTime" Precision="0" />
+          <Property Name="FORMNO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VARLIK_KODU" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EKIPNO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MARKA" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FORM_METRAJ" Type="Double" />
+          <Property Name="ASBUILT_METRAJ" Type="Double" />
+          <Property Name="HATNO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="KAPLAMA_TIPI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FROM_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="FROM_MSLINK" Type="Int32" />
+          <Property Name="TO_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TO_MSLINK" Type="Int32" />
+          <Property Name="YERI" Type="Int16" />
+          <Property Name="DERINLIK" Type="Double" />
+          <Property Name="KONUM_X_KOOR" Type="Double" />
+          <Property Name="KONUM_Y_KOOR" Type="Double" />
+          <Property Name="SEKTOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="GIRIS_BASINCI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ISLETME_BASINCI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SIZINTI_INCELEME_SON_TARIH" Type="DateTime" Precision="0" />
+          <Property Name="SIZINTI_INCELEME_ARALIGI" Type="Int32" />
+          <Property Name="TEST_TARIHI" Type="DateTime" Precision="0" />
+          <Property Name="TEST_SURESI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TEST_BASINCI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DURUM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GAZLANMA_TARIHI" Type="DateTime" Precision="0" />
+          <Property Name="YOL_MSLINK" Type="Decimal" Precision="19" Scale="0" />
+          <Property Name="IL_KODU" Type="Int32" />
+          <Property Name="ILCE_KODU" Type="Int32" />
+          <Property Name="MAHALLE_KODU" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="KULLANILAN_ACI" Type="Double" />
+          <Property Name="HAKEDISE_DAHIL" Type="Int16" />
+          <Property Name="FORM_METRAJ_TEE_KISA_KOL" Type="Decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="ilce">
+          <Key>
+            <PropertyRef Name="ilce_kodu" />
+          </Key>
+          <Property Name="ilce_kodu" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ilce_adi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="mslink" Type="Int64" />
+          <Property Name="mapid" Type="Int32" />
+          <Property Name="il_kodu" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="KargazHaritaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BAGLANTI_ELEMANLARI_PE" EntityType="Self.BAGLANTI_ELEMANLARI_PE" />
+          <EntitySet Name="SERVIS_ELEMANLARI" EntityType="Self.SERVIS_ELEMANLARI" />
+          <EntitySet Name="SERVIS_KUTUSU" EntityType="Self.SERVIS_KUTUSU" />
+          <EntitySet Name="VANA" EntityType="Self.VANA" />
+          <EntitySet Name="BAGLANTI_ELEMANLARI_CELIK" EntityType="Self.BAGLANTI_ELEMANLARI_CELIK" />
+          <EntitySet Name="ilce" EntityType="Self.ilce" />
+          <EntitySet Name="HATLAR" EntityType="KargazHaritaModel.HATLAR" />
+          <EntitySet Name="SERVIS_HATLARI" EntityType="KargazHaritaModel.SERVIS_HATLARI" />
+        </EntityContainer>
+        <EntityType Name="HATLAR">
+          <Key>
+            <PropertyRef Name="MSLINK" />
+          </Key>
+          <Property Name="MSLINK" Type="Int32" Nullable="false" />
+          <Property Name="MAPID" Type="Int32" />
+          <Property Name="MALZEME_CINSI" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="NET_BORU_CAPI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="GAZ_AKIS_YONU" Type="Int32" />
+          <Property Name="FROM_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="FROM_MSLINK" Type="Int32" />
+          <Property Name="TO_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TO_MSLINK" Type="Int32" />
+          <Property Name="VERI_KAYNAGI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DURUM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IMALAT_TARIHI" Type="DateTime" Precision="0" />
+          <Property Name="GAZLANMA_TARIHI" Type="DateTime" Precision="0" />
+          <Property Name="SEKTOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="KAPLAMA_TIPI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SISTEM_GIRIS_BASINCI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SISTEM_STANDART_BASINCI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SISTEM_BASINC_ARALIGI" Type="Double" />
+          <Property Name="SISTEM_STANDART_BASINC_BIRIMI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ACIL_SISTEM_OBJE_ID" Type="Int32" />
+          <Property Name="ACIL_SISTEM_DURUM_TANIMI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SIZINTI_INCELEME_SON_TARIH" Type="DateTime" Precision="0" />
+          <Property Name="SIZINTI_INCELEME_ARALIGI" Type="Int32" />
+          <Property Name="MARKA" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BORU_UZUNLUGU" Type="Double" />
+          <Property Name="ASBUILT_METRAJ" Type="Double" />
+          <Property Name="BORU_SON_TEST_TARIHI" Type="DateTime" Precision="0" />
+          <Property Name="BORU_SON_TEST_SURESI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BORU_SON_TEST_BASINCI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VARLIK_KODU" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WORKORDERID" Type="Int32" />
+          <Property Name="YATIRIMYILI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MUTEAHHITADI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TEDARIKCIFIRMA" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="REGULATOR_MSLINK" Type="Decimal" Precision="19" Scale="0" />
+          <Property Name="YOL_MSLINK" Type="Decimal" Precision="19" Scale="0" />
+          <Property Name="IL_KODU" Type="Int32" />
+          <Property Name="ILCE_KODU" Type="Int32" />
+          <Property Name="FORMNO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LOT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MAHALLE_KODU" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="EKIPNO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="HATNO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="YERI" Type="Int16" />
+          <Property Name="HAKEDISE_DAHIL" Type="Int16" />
+          <Property Name="YATAY_ASBUILT_METRAJ" Type="Double" />
+          <Property Name="KAZI_RUHSATNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KAZI_BOYU" Type="Double" />
+        </EntityType>
+        <EntityType Name="SERVIS_HATLARI">
+          <Key>
+            <PropertyRef Name="MSLINK" />
+          </Key>
+          <Property Name="MSLINK" Type="Int32" Nullable="false" />
+          <Property Name="MAPID" Type="Int32" />
+          <Property Name="TIPI" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="CAP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FROM_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="FROM_MSLINK" Type="Int32" />
+          <Property Name="TO_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TO_MSLINK" Type="Int32" />
+          <Property Name="VARLIK_KODU" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WORKORDERID" Type="Int32" />
+          <Property Name="DURUM" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="YATIRIMYILI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="REGULATOR_MSLINK" Type="Decimal" Precision="19" Scale="0" />
+          <Property Name="SEKTOR" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SHATTIMETRAJ" Type="Double" />
+          <Property Name="IMALATTARIHI" Type="DateTime" Precision="0" />
+          <Property Name="MUTEAHHITADI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MARKAMODEL" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LOTNO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="HAT_MSLINK" Type="Int64" />
+          <Property Name="YOL_MSLINK" Type="Int64" />
+          <Property Name="IL_KODU" Type="Int32" />
+          <Property Name="ILCE_KODU" Type="Int32" />
+          <Property Name="FORMNO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MAHALLE_KODU" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="EKIPNO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="KAZIBOYU" Type="Double" />
+          <Property Name="BORUBOYU" Type="Double" />
+          <Property Name="ASFALTBOYU" Type="Double" />
+          <Property Name="YUZEYKAPLAMA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HAKEDISE_DAHIL" Type="Int16" />
+          <Property Name="YATAY_ASBUILT_METRAJ" Type="Double" />
+          <Property Name="ASFALT" Type="Double" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KargazHaritaModelStoreContainer" CdmEntityContainer="KargazHaritaEntities">
+          <EntitySetMapping Name="BAGLANTI_ELEMANLARI_PE">
+            <EntityTypeMapping TypeName="KargazHaritaModel.BAGLANTI_ELEMANLARI_PE">
+              <MappingFragment StoreEntitySet="BAGLANTI_ELEMANLARI_PE">
+                <ScalarProperty Name="MSLINK" ColumnName="MSLINK" />
+                <ScalarProperty Name="MAPID" ColumnName="MAPID" />
+                <ScalarProperty Name="TIPI" ColumnName="TIPI" />
+                <ScalarProperty Name="CAP" ColumnName="CAP" />
+                <ScalarProperty Name="CINSI" ColumnName="CINSI" />
+                <ScalarProperty Name="SEBEKE_ELEMANI_MI" ColumnName="SEBEKE_ELEMANI_MI" />
+                <ScalarProperty Name="GAZLANMA_TARIHI" ColumnName="GAZLANMA_TARIHI" />
+                <ScalarProperty Name="SERVIS_ID" ColumnName="SERVIS_ID" />
+                <ScalarProperty Name="DERINLIK" ColumnName="DERINLIK" />
+                <ScalarProperty Name="HAT_MSLINK" ColumnName="HAT_MSLINK" />
+                <ScalarProperty Name="ACIL_SISTEM_OBJE_ID" ColumnName="ACIL_SISTEM_OBJE_ID" />
+                <ScalarProperty Name="ACIL_SISTEM_DURUM_TANIMI" ColumnName="ACIL_SISTEM_DURUM_TANIMI" />
+                <ScalarProperty Name="KONUM_X_KOOR" ColumnName="KONUM_X_KOOR" />
+                <ScalarProperty Name="KONUM_Y_KOOR" ColumnName="KONUM_Y_KOOR" />
+                <ScalarProperty Name="KONUM_TESPIT_SEKLI" ColumnName="KONUM_TESPIT_SEKLI" />
+                <ScalarProperty Name="KONUM_MESAFE" ColumnName="KONUM_MESAFE" />
+                <ScalarProperty Name="MALZEME_DURUM" ColumnName="MALZEME_DURUM" />
+                <ScalarProperty Name="BOLGE" ColumnName="BOLGE" />
+                <ScalarProperty Name="SEKTOR" ColumnName="SEKTOR" />
+                <ScalarProperty Name="URETICI_FIRMA" ColumnName="URETICI_FIRMA" />
+                <ScalarProperty Name="VARLIK_KODU" ColumnName="VARLIK_KODU" />
+                <ScalarProperty Name="WORKORDERID" ColumnName="WORKORDERID" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="YATIRIMYILI" ColumnName="YATIRIMYILI" />
+                <ScalarProperty Name="MARKAMODEL" ColumnName="MARKAMODEL" />
+                <ScalarProperty Name="MUTEAHHITADI" ColumnName="MUTEAHHITADI" />
+                <ScalarProperty Name="TEDARIKCIFIRMA" ColumnName="TEDARIKCIFIRMA" />
+                <ScalarProperty Name="IMALATTARIHI" ColumnName="IMALATTARIHI" />
+                <ScalarProperty Name="YOL_MSLINK" ColumnName="YOL_MSLINK" />
+                <ScalarProperty Name="IL_KODU" ColumnName="IL_KODU" />
+                <ScalarProperty Name="ILCE_KODU" ColumnName="ILCE_KODU" />
+                <ScalarProperty Name="FORMNO" ColumnName="FORMNO" />
+                <ScalarProperty Name="MAHALLE_KODU" ColumnName="MAHALLE_KODU" />
+                <ScalarProperty Name="FUZYON" ColumnName="FUZYON" />
+                <ScalarProperty Name="EKIPNO" ColumnName="EKIPNO" />
+                <ScalarProperty Name="KAYNAKCI1" ColumnName="KAYNAKCI1" />
+                <ScalarProperty Name="KAYNAKCI2" ColumnName="KAYNAKCI2" />
+                <ScalarProperty Name="GIRIS_BASINCI" ColumnName="GIRIS_BASINCI" />
+                <ScalarProperty Name="ISLETME_BASINCI" ColumnName="ISLETME_BASINCI" />
+                <ScalarProperty Name="TEST_TARIHI" ColumnName="TEST_TARIHI" />
+                <ScalarProperty Name="TEST_SURESI" ColumnName="TEST_SURESI" />
+                <ScalarProperty Name="TEST_BASINCI" ColumnName="TEST_BASINCI" />
+                <ScalarProperty Name="SIZINTI_INCELEME_SON_TARIH" ColumnName="SIZINTI_INCELEME_SON_TARIH" />
+                <ScalarProperty Name="SIZINTI_INCELEME_ARALIGI" ColumnName="SIZINTI_INCELEME_ARALIGI" />
+                <ScalarProperty Name="KULLANILAN_ACI" ColumnName="KULLANILAN_ACI" />
+                <ScalarProperty Name="HAKEDISE_DAHIL" ColumnName="HAKEDISE_DAHIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVIS_ELEMANLARI">
+            <EntityTypeMapping TypeName="KargazHaritaModel.SERVIS_ELEMANLARI">
+              <MappingFragment StoreEntitySet="SERVIS_ELEMANLARI">
+                <ScalarProperty Name="MSLINK" ColumnName="MSLINK" />
+                <ScalarProperty Name="MAPID" ColumnName="MAPID" />
+                <ScalarProperty Name="TIPI" ColumnName="TIPI" />
+                <ScalarProperty Name="CAP" ColumnName="CAP" />
+                <ScalarProperty Name="CINSI" ColumnName="CINSI" />
+                <ScalarProperty Name="DERINLIK" ColumnName="DERINLIK" />
+                <ScalarProperty Name="HAT_MSLINK" ColumnName="HAT_MSLINK" />
+                <ScalarProperty Name="KONUM_X_KOOR" ColumnName="KONUM_X_KOOR" />
+                <ScalarProperty Name="KONUM_Y_KOOR" ColumnName="KONUM_Y_KOOR" />
+                <ScalarProperty Name="KONUM_TESPIT_SEKLI" ColumnName="KONUM_TESPIT_SEKLI" />
+                <ScalarProperty Name="KONUM_MESAFE" ColumnName="KONUM_MESAFE" />
+                <ScalarProperty Name="BOLGE" ColumnName="BOLGE" />
+                <ScalarProperty Name="SEKTOR" ColumnName="SEKTOR" />
+                <ScalarProperty Name="VARLIK_KODU" ColumnName="VARLIK_KODU" />
+                <ScalarProperty Name="WORKORDERID" ColumnName="WORKORDERID" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="MALZEME_DURUM" ColumnName="MALZEME_DURUM" />
+                <ScalarProperty Name="YATIRIMYILI" ColumnName="YATIRIMYILI" />
+                <ScalarProperty Name="MARKAMODEL" ColumnName="MARKAMODEL" />
+                <ScalarProperty Name="MUTEAHHITADI" ColumnName="MUTEAHHITADI" />
+                <ScalarProperty Name="FORMNO" ColumnName="FORMNO" />
+                <ScalarProperty Name="YOL_MSLINK" ColumnName="YOL_MSLINK" />
+                <ScalarProperty Name="IL_KODU" ColumnName="IL_KODU" />
+                <ScalarProperty Name="ILCE_KODU" ColumnName="ILCE_KODU" />
+                <ScalarProperty Name="MAHALLE_KODU" ColumnName="MAHALLE_KODU" />
+                <ScalarProperty Name="IMALAT_TARIHI" ColumnName="IMALAT_TARIHI" />
+                <ScalarProperty Name="GAZ_STOP" ColumnName="GAZ_STOP" />
+                <ScalarProperty Name="HAKEDISE_DAHIL" ColumnName="HAKEDISE_DAHIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVIS_KUTUSU">
+            <EntityTypeMapping TypeName="KargazHaritaModel.SERVIS_KUTUSU">
+              <MappingFragment StoreEntitySet="SERVIS_KUTUSU">
+                <ScalarProperty Name="MSLINK" ColumnName="MSLINK" />
+                <ScalarProperty Name="MAPID" ColumnName="MAPID" />
+                <ScalarProperty Name="KUTU_TIPI" ColumnName="KUTU_TIPI" />
+                <ScalarProperty Name="CINSI" ColumnName="CINSI" />
+                <ScalarProperty Name="YOL_MSLINK" ColumnName="YOL_MSLINK" />
+                <ScalarProperty Name="AKTIF" ColumnName="AKTIF" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="KUTU_MARKASI" ColumnName="KUTU_MARKASI" />
+                <ScalarProperty Name="REG_NO" ColumnName="REG_NO" />
+                <ScalarProperty Name="REG_TUKETIM" ColumnName="REG_TUKETIM" />
+                <ScalarProperty Name="REG_BASINC" ColumnName="REG_BASINC" />
+                <ScalarProperty Name="REG_KUTUTIPI" ColumnName="REG_KUTUTIPI" />
+                <ScalarProperty Name="REG_KAPASITE" ColumnName="REG_KAPASITE" />
+                <ScalarProperty Name="REG_MONTAJTARIHI" ColumnName="REG_MONTAJTARIHI" />
+                <ScalarProperty Name="REG_KULLANIMTURU" ColumnName="REG_KULLANIMTURU" />
+                <ScalarProperty Name="REG_TIPI" ColumnName="REG_TIPI" />
+                <ScalarProperty Name="REG_MARKASI" ColumnName="REG_MARKASI" />
+                <ScalarProperty Name="REG_ADEDI" ColumnName="REG_ADEDI" />
+                <ScalarProperty Name="VARLIK_KODU" ColumnName="VARLIK_KODU" />
+                <ScalarProperty Name="WORKORDERID" ColumnName="WORKORDERID" />
+                <ScalarProperty Name="YATIRIMYILI" ColumnName="YATIRIMYILI" />
+                <ScalarProperty Name="KUTU_NO" ColumnName="KUTU_NO" />
+                <ScalarProperty Name="SKUTUVANASI" ColumnName="SKUTUVANASI" />
+                <ScalarProperty Name="SKUTUVANAMARKASI" ColumnName="SKUTUVANAMARKASI" />
+                <ScalarProperty Name="CIKISBASINCI" ColumnName="CIKISBASINCI" />
+                <ScalarProperty Name="IMALATTARIHI" ColumnName="IMALATTARIHI" />
+                <ScalarProperty Name="MUTEAHHITADI" ColumnName="MUTEAHHITADI" />
+                <ScalarProperty Name="TEDARIKCIFIRMAREG" ColumnName="TEDARIKCIFIRMAREG" />
+                <ScalarProperty Name="HAT_MSLINK" ColumnName="HAT_MSLINK" />
+                <ScalarProperty Name="IL_KODU" ColumnName="IL_KODU" />
+                <ScalarProperty Name="ILCE_KODU" ColumnName="ILCE_KODU" />
+                <ScalarProperty Name="FORMNO" ColumnName="FORMNO" />
+                <ScalarProperty Name="MAHALLE_KODU" ColumnName="MAHALLE_KODU" />
+                <ScalarProperty Name="HAKEDISE_DAHIL" ColumnName="HAKEDISE_DAHIL" />
+                <ScalarProperty Name="KUTU_YERI" ColumnName="KUTU_YERI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VANA">
+            <EntityTypeMapping TypeName="KargazHaritaModel.VANA">
+              <MappingFragment StoreEntitySet="VANA">
+                <ScalarProperty Name="MSLINK" ColumnName="MSLINK" />
+                <ScalarProperty Name="MAPID" ColumnName="MAPID" />
+                <ScalarProperty Name="VANA_TIPI" ColumnName="VANA_TIPI" />
+                <ScalarProperty Name="CAP" ColumnName="CAP" />
+                <ScalarProperty Name="MALZEME_CINSI" ColumnName="MALZEME_CINSI" />
+                <ScalarProperty Name="VANA_NO" ColumnName="VANA_NO" />
+                <ScalarProperty Name="VANA_ISLETME_DURUMU" ColumnName="VANA_ISLETME_DURUMU" />
+                <ScalarProperty Name="BASINC" ColumnName="BASINC" />
+                <ScalarProperty Name="KAPATMA_YONU" ColumnName="KAPATMA_YONU" />
+                <ScalarProperty Name="KAPATMA_TURU" ColumnName="KAPATMA_TURU" />
+                <ScalarProperty Name="DERINLIK" ColumnName="DERINLIK" />
+                <ScalarProperty Name="HAT_MSLINK" ColumnName="HAT_MSLINK" />
+                <ScalarProperty Name="ACIL_SISTEM_OBJE_ID" ColumnName="ACIL_SISTEM_OBJE_ID" />
+                <ScalarProperty Name="ACIL_SISTEM_DURUM_TANIMI" ColumnName="ACIL_SISTEM_DURUM_TANIMI" />
+                <ScalarProperty Name="KONUM_X_KOOR" ColumnName="KONUM_X_KOOR" />
+                <ScalarProperty Name="KONUM_Y_KOOR" ColumnName="KONUM_Y_KOOR" />
+                <ScalarProperty Name="KONUM_TESPIT_SEKLI" ColumnName="KONUM_TESPIT_SEKLI" />
+                <ScalarProperty Name="KONUM_MESAFE" ColumnName="KONUM_MESAFE" />
+                <ScalarProperty Name="MALZEME_DURUM" ColumnName="MALZEME_DURUM" />
+                <ScalarProperty Name="VANA_ADRES" ColumnName="VANA_ADRES" />
+                <ScalarProperty Name="URETIM_YILI" ColumnName="URETIM_YILI" />
+                <ScalarProperty Name="SERI_NO" ColumnName="SERI_NO" />
+                <ScalarProperty Name="BOLGE" ColumnName="BOLGE" />
+                <ScalarProperty Name="SEKTOR" ColumnName="SEKTOR" />
+                <ScalarProperty Name="URETICI_FIRMA" ColumnName="URETICI_FIRMA" />
+                <ScalarProperty Name="GAZLANMA_TARIHI" ColumnName="GAZLANMA_TARIHI" />
+                <ScalarProperty Name="SERVIS_ID" ColumnName="SERVIS_ID" />
+                <ScalarProperty Name="VARLIK_KODU" ColumnName="VARLIK_KODU" />
+                <ScalarProperty Name="WORKORDERID" ColumnName="WORKORDERID" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="BAKIM_PERIYODU" ColumnName="BAKIM_PERIYODU" />
+                <ScalarProperty Name="YATIRIMYILI" ColumnName="YATIRIMYILI" />
+                <ScalarProperty Name="MUTEAHHITADI" ColumnName="MUTEAHHITADI" />
+                <ScalarProperty Name="TEDARIKCIFIRMA" ColumnName="TEDARIKCIFIRMA" />
+                <ScalarProperty Name="MARKA" ColumnName="MARKA" />
+                <ScalarProperty Name="YOL_MSLINK" ColumnName="YOL_MSLINK" />
+                <ScalarProperty Name="IL_KODU" ColumnName="IL_KODU" />
+                <ScalarProperty Name="ILCE_KODU" ColumnName="ILCE_KODU" />
+                <ScalarProperty Name="FORMNO" ColumnName="FORMNO" />
+                <ScalarProperty Name="MAHALLE_KODU" ColumnName="MAHALLE_KODU" />
+                <ScalarProperty Name="IMALAT_TARIHI" ColumnName="IMALAT_TARIHI" />
+                <ScalarProperty Name="KAIDE" ColumnName="KAIDE" />
+                <ScalarProperty Name="TUR_SAYISI" ColumnName="TUR_SAYISI" />
+                <ScalarProperty Name="ASBUILT_METRAJ" ColumnName="ASBUILT_METRAJ" />
+                <ScalarProperty Name="HAKEDISE_DAHIL" ColumnName="HAKEDISE_DAHIL" />
+                <ScalarProperty Name="BLOFCAP1" ColumnName="BLOFCAP1" />
+                <ScalarProperty Name="BLOFCAP2" ColumnName="BLOFCAP2" />
+                <ScalarProperty Name="BLOFSERINO1" ColumnName="BLOFSERINO1" />
+                <ScalarProperty Name="BLOFSERINO2" ColumnName="BLOFSERINO2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BAGLANTI_ELEMANLARI_CELIK">
+            <EntityTypeMapping TypeName="KargazHaritaModel.BAGLANTI_ELEMANLARI_CELIK">
+              <MappingFragment StoreEntitySet="BAGLANTI_ELEMANLARI_CELIK">
+                <ScalarProperty Name="MSLINK" ColumnName="MSLINK" />
+                <ScalarProperty Name="MAPID" ColumnName="MAPID" />
+                <ScalarProperty Name="CINSI" ColumnName="CINSI" />
+                <ScalarProperty Name="TIPI" ColumnName="TIPI" />
+                <ScalarProperty Name="CAP" ColumnName="CAP" />
+                <ScalarProperty Name="SEBEKE_ELEMANI_MI" ColumnName="SEBEKE_ELEMANI_MI" />
+                <ScalarProperty Name="YATIRIMYILI" ColumnName="YATIRIMYILI" />
+                <ScalarProperty Name="MUTEAHHITADI" ColumnName="MUTEAHHITADI" />
+                <ScalarProperty Name="IMALATTARIHI" ColumnName="IMALATTARIHI" />
+                <ScalarProperty Name="FORMNO" ColumnName="FORMNO" />
+                <ScalarProperty Name="VARLIK_KODU" ColumnName="VARLIK_KODU" />
+                <ScalarProperty Name="EKIPNO" ColumnName="EKIPNO" />
+                <ScalarProperty Name="MARKA" ColumnName="MARKA" />
+                <ScalarProperty Name="FORM_METRAJ" ColumnName="FORM_METRAJ" />
+                <ScalarProperty Name="ASBUILT_METRAJ" ColumnName="ASBUILT_METRAJ" />
+                <ScalarProperty Name="HATNO" ColumnName="HATNO" />
+                <ScalarProperty Name="KAPLAMA_TIPI" ColumnName="KAPLAMA_TIPI" />
+                <ScalarProperty Name="FROM_ID" ColumnName="FROM_ID" />
+                <ScalarProperty Name="FROM_MSLINK" ColumnName="FROM_MSLINK" />
+                <ScalarProperty Name="TO_ID" ColumnName="TO_ID" />
+                <ScalarProperty Name="TO_MSLINK" ColumnName="TO_MSLINK" />
+                <ScalarProperty Name="YERI" ColumnName="YERI" />
+                <ScalarProperty Name="DERINLIK" ColumnName="DERINLIK" />
+                <ScalarProperty Name="KONUM_X_KOOR" ColumnName="KONUM_X_KOOR" />
+                <ScalarProperty Name="KONUM_Y_KOOR" ColumnName="KONUM_Y_KOOR" />
+                <ScalarProperty Name="SEKTOR" ColumnName="SEKTOR" />
+                <ScalarProperty Name="GIRIS_BASINCI" ColumnName="GIRIS_BASINCI" />
+                <ScalarProperty Name="ISLETME_BASINCI" ColumnName="ISLETME_BASINCI" />
+                <ScalarProperty Name="SIZINTI_INCELEME_SON_TARIH" ColumnName="SIZINTI_INCELEME_SON_TARIH" />
+                <ScalarProperty Name="SIZINTI_INCELEME_ARALIGI" ColumnName="SIZINTI_INCELEME_ARALIGI" />
+                <ScalarProperty Name="TEST_TARIHI" ColumnName="TEST_TARIHI" />
+                <ScalarProperty Name="TEST_SURESI" ColumnName="TEST_SURESI" />
+                <ScalarProperty Name="TEST_BASINCI" ColumnName="TEST_BASINCI" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="GAZLANMA_TARIHI" ColumnName="GAZLANMA_TARIHI" />
+                <ScalarProperty Name="YOL_MSLINK" ColumnName="YOL_MSLINK" />
+                <ScalarProperty Name="IL_KODU" ColumnName="IL_KODU" />
+                <ScalarProperty Name="ILCE_KODU" ColumnName="ILCE_KODU" />
+                <ScalarProperty Name="MAHALLE_KODU" ColumnName="MAHALLE_KODU" />
+                <ScalarProperty Name="KULLANILAN_ACI" ColumnName="KULLANILAN_ACI" />
+                <ScalarProperty Name="HAKEDISE_DAHIL" ColumnName="HAKEDISE_DAHIL" />
+                <ScalarProperty Name="FORM_METRAJ_TEE_KISA_KOL" ColumnName="FORM_METRAJ_TEE_KISA_KOL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ilce">
+            <EntityTypeMapping TypeName="KargazHaritaModel.ilce">
+              <MappingFragment StoreEntitySet="ilce">
+                <ScalarProperty Name="ilce_kodu" ColumnName="ilce_kodu" />
+                <ScalarProperty Name="ilce_adi" ColumnName="ilce_adi" />
+                <ScalarProperty Name="mslink" ColumnName="mslink" />
+                <ScalarProperty Name="mapid" ColumnName="mapid" />
+                <ScalarProperty Name="il_kodu" ColumnName="il_kodu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HATLAR">
+            <EntityTypeMapping TypeName="KargazHaritaModel.HATLAR">
+              <MappingFragment StoreEntitySet="HATLAR">
+                <ScalarProperty Name="KAZI_BOYU" ColumnName="KAZI_BOYU" />
+                <ScalarProperty Name="KAZI_RUHSATNO" ColumnName="KAZI_RUHSATNO" />
+                <ScalarProperty Name="YATAY_ASBUILT_METRAJ" ColumnName="YATAY_ASBUILT_METRAJ" />
+                <ScalarProperty Name="HAKEDISE_DAHIL" ColumnName="HAKEDISE_DAHIL" />
+                <ScalarProperty Name="YERI" ColumnName="YERI" />
+                <ScalarProperty Name="HATNO" ColumnName="HATNO" />
+                <ScalarProperty Name="EKIPNO" ColumnName="EKIPNO" />
+                <ScalarProperty Name="MAHALLE_KODU" ColumnName="MAHALLE_KODU" />
+                <ScalarProperty Name="LOT" ColumnName="LOT" />
+                <ScalarProperty Name="FORMNO" ColumnName="FORMNO" />
+                <ScalarProperty Name="ILCE_KODU" ColumnName="ILCE_KODU" />
+                <ScalarProperty Name="IL_KODU" ColumnName="IL_KODU" />
+                <ScalarProperty Name="YOL_MSLINK" ColumnName="YOL_MSLINK" />
+                <ScalarProperty Name="REGULATOR_MSLINK" ColumnName="REGULATOR_MSLINK" />
+                <ScalarProperty Name="TEDARIKCIFIRMA" ColumnName="TEDARIKCIFIRMA" />
+                <ScalarProperty Name="MUTEAHHITADI" ColumnName="MUTEAHHITADI" />
+                <ScalarProperty Name="YATIRIMYILI" ColumnName="YATIRIMYILI" />
+                <ScalarProperty Name="WORKORDERID" ColumnName="WORKORDERID" />
+                <ScalarProperty Name="VARLIK_KODU" ColumnName="VARLIK_KODU" />
+                <ScalarProperty Name="BORU_SON_TEST_BASINCI" ColumnName="BORU_SON_TEST_BASINCI" />
+                <ScalarProperty Name="BORU_SON_TEST_SURESI" ColumnName="BORU_SON_TEST_SURESI" />
+                <ScalarProperty Name="BORU_SON_TEST_TARIHI" ColumnName="BORU_SON_TEST_TARIHI" />
+                <ScalarProperty Name="ASBUILT_METRAJ" ColumnName="ASBUILT_METRAJ" />
+                <ScalarProperty Name="BORU_UZUNLUGU" ColumnName="BORU_UZUNLUGU" />
+                <ScalarProperty Name="MARKA" ColumnName="MARKA" />
+                <ScalarProperty Name="SIZINTI_INCELEME_ARALIGI" ColumnName="SIZINTI_INCELEME_ARALIGI" />
+                <ScalarProperty Name="SIZINTI_INCELEME_SON_TARIH" ColumnName="SIZINTI_INCELEME_SON_TARIH" />
+                <ScalarProperty Name="ACIL_SISTEM_DURUM_TANIMI" ColumnName="ACIL_SISTEM_DURUM_TANIMI" />
+                <ScalarProperty Name="ACIL_SISTEM_OBJE_ID" ColumnName="ACIL_SISTEM_OBJE_ID" />
+                <ScalarProperty Name="SISTEM_STANDART_BASINC_BIRIMI" ColumnName="SISTEM_STANDART_BASINC_BIRIMI" />
+                <ScalarProperty Name="SISTEM_BASINC_ARALIGI" ColumnName="SISTEM_BASINC_ARALIGI" />
+                <ScalarProperty Name="SISTEM_STANDART_BASINCI" ColumnName="SISTEM_STANDART_BASINCI" />
+                <ScalarProperty Name="SISTEM_GIRIS_BASINCI" ColumnName="SISTEM_GIRIS_BASINCI" />
+                <ScalarProperty Name="KAPLAMA_TIPI" ColumnName="KAPLAMA_TIPI" />
+                <ScalarProperty Name="SEKTOR" ColumnName="SEKTOR" />
+                <ScalarProperty Name="GAZLANMA_TARIHI" ColumnName="GAZLANMA_TARIHI" />
+                <ScalarProperty Name="IMALAT_TARIHI" ColumnName="IMALAT_TARIHI" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="VERI_KAYNAGI" ColumnName="VERI_KAYNAGI" />
+                <ScalarProperty Name="TO_MSLINK" ColumnName="TO_MSLINK" />
+                <ScalarProperty Name="TO_ID" ColumnName="TO_ID" />
+                <ScalarProperty Name="FROM_MSLINK" ColumnName="FROM_MSLINK" />
+                <ScalarProperty Name="FROM_ID" ColumnName="FROM_ID" />
+                <ScalarProperty Name="GAZ_AKIS_YONU" ColumnName="GAZ_AKIS_YONU" />
+                <ScalarProperty Name="NET_BORU_CAPI" ColumnName="NET_BORU_CAPI" />
+                <ScalarProperty Name="MALZEME_CINSI" ColumnName="MALZEME_CINSI" />
+                <ScalarProperty Name="MAPID" ColumnName="MAPID" />
+                <ScalarProperty Name="MSLINK" ColumnName="MSLINK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVIS_HATLARI">
+            <EntityTypeMapping TypeName="KargazHaritaModel.SERVIS_HATLARI">
+              <MappingFragment StoreEntitySet="SERVIS_HATLARI">
+                <ScalarProperty Name="ASFALT" ColumnName="ASFALT" />
+                <ScalarProperty Name="YATAY_ASBUILT_METRAJ" ColumnName="YATAY_ASBUILT_METRAJ" />
+                <ScalarProperty Name="HAKEDISE_DAHIL" ColumnName="HAKEDISE_DAHIL" />
+                <ScalarProperty Name="YUZEYKAPLAMA" ColumnName="YUZEYKAPLAMA" />
+                <ScalarProperty Name="ASFALTBOYU" ColumnName="ASFALTBOYU" />
+                <ScalarProperty Name="BORUBOYU" ColumnName="BORUBOYU" />
+                <ScalarProperty Name="KAZIBOYU" ColumnName="KAZIBOYU" />
+                <ScalarProperty Name="EKIPNO" ColumnName="EKIPNO" />
+                <ScalarProperty Name="MAHALLE_KODU" ColumnName="MAHALLE_KODU" />
+                <ScalarProperty Name="FORMNO" ColumnName="FORMNO" />
+                <ScalarProperty Name="ILCE_KODU" ColumnName="ILCE_KODU" />
+                <ScalarProperty Name="IL_KODU" ColumnName="IL_KODU" />
+                <ScalarProperty Name="YOL_MSLINK" ColumnName="YOL_MSLINK" />
+                <ScalarProperty Name="HAT_MSLINK" ColumnName="HAT_MSLINK" />
+                <ScalarProperty Name="LOTNO" ColumnName="LOTNO" />
+                <ScalarProperty Name="MARKAMODEL" ColumnName="MARKAMODEL" />
+                <ScalarProperty Name="MUTEAHHITADI" ColumnName="MUTEAHHITADI" />
+                <ScalarProperty Name="IMALATTARIHI" ColumnName="IMALATTARIHI" />
+                <ScalarProperty Name="SHATTIMETRAJ" ColumnName="SHATTIMETRAJ" />
+                <ScalarProperty Name="SEKTOR" ColumnName="SEKTOR" />
+                <ScalarProperty Name="REGULATOR_MSLINK" ColumnName="REGULATOR_MSLINK" />
+                <ScalarProperty Name="YATIRIMYILI" ColumnName="YATIRIMYILI" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="WORKORDERID" ColumnName="WORKORDERID" />
+                <ScalarProperty Name="VARLIK_KODU" ColumnName="VARLIK_KODU" />
+                <ScalarProperty Name="TO_MSLINK" ColumnName="TO_MSLINK" />
+                <ScalarProperty Name="TO_ID" ColumnName="TO_ID" />
+                <ScalarProperty Name="FROM_MSLINK" ColumnName="FROM_MSLINK" />
+                <ScalarProperty Name="FROM_ID" ColumnName="FROM_ID" />
+                <ScalarProperty Name="CAP" ColumnName="CAP" />
+                <ScalarProperty Name="TIPI" ColumnName="TIPI" />
+                <ScalarProperty Name="MAPID" ColumnName="MAPID" />
+                <ScalarProperty Name="MSLINK" ColumnName="MSLINK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

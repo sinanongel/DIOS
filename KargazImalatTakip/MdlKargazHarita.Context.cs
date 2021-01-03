@@ -13,10 +13,10 @@ namespace KargazImalatTakip
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AybsPlusKargazEntities : DbContext
+    public partial class KargazHaritaEntities : DbContext
     {
-        public AybsPlusKargazEntities()
-            : base("name=AybsPlusKargazEntities")
+        public KargazHaritaEntities()
+            : base("name=KargazHaritaEntities")
         {
         }
     
@@ -25,6 +25,13 @@ namespace KargazImalatTakip
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Tesisat> Tesisat { get; set; }
+        public virtual DbSet<BAGLANTI_ELEMANLARI_PE> BAGLANTI_ELEMANLARI_PE { get; set; }
+        public virtual DbSet<SERVIS_ELEMANLARI> SERVIS_ELEMANLARI { get; set; }
+        public virtual DbSet<SERVIS_KUTUSU> SERVIS_KUTUSU { get; set; }
+        public virtual DbSet<VANA> VANA { get; set; }
+        public virtual DbSet<BAGLANTI_ELEMANLARI_CELIK> BAGLANTI_ELEMANLARI_CELIK { get; set; }
+        public virtual DbSet<ilce> ilce { get; set; }
+        public virtual DbSet<HATLAR> HATLAR { get; set; }
+        public virtual DbSet<SERVIS_HATLARI> SERVIS_HATLARI { get; set; }
     }
 }

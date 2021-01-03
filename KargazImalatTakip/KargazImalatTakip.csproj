@@ -102,14 +102,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="bina.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="BAGLANTI_ELEMANLARI_CELIK.cs">
+      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
     </Compile>
-    <Compile Include="bina_serviskutusu.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="D_YATIRIM.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="BAGLANTI_ELEMANLARI_PE.cs">
+      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
     </Compile>
     <Compile Include="FrmAboOlanKutusuOlmayanBina.cs">
       <SubType>Form</SubType>
@@ -220,67 +217,55 @@
       <DependentUpon>FrmYolKaziRaporu.cs</DependentUpon>
     </Compile>
     <Compile Include="HATLAR.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
     </Compile>
     <Compile Include="ilce.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
     </Compile>
-    <Compile Include="MdlKAybs.Context.cs">
+    <Compile Include="MdlKargazHarita.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MdlKAybs.Context.tt</DependentUpon>
+      <DependentUpon>MdlKargazHarita.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="MdlKAybs.cs">
+    <Compile Include="MdlKargazHarita.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MdlKAybs.tt</DependentUpon>
+      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
     </Compile>
-    <Compile Include="MdlKAybs.Designer.cs">
+    <Compile Include="MdlKargazHarita.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MdlKAybs.edmx</DependentUpon>
+      <DependentUpon>MdlKargazHarita.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model1.Context.cs">
+    <Compile Include="MdlSerhatgazHarita.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>MdlSerhatgazHarita.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model1.cs">
+    <Compile Include="MdlSerhatgazHarita.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MdlSerhatgazHarita.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model1.Designer.cs">
+    <Compile Include="MdlSerhatgazHarita.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model2.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model2.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.edmx</DependentUpon>
+      <DependentUpon>MdlSerhatgazHarita.edmx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SERVIS_ELEMANLARI.cs">
+      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
+    </Compile>
     <Compile Include="SERVIS_HATLARI.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
     </Compile>
     <Compile Include="SERVIS_KUTUSU.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
     </Compile>
     <Compile Include="SqlBaglanti.cs" />
-    <Compile Include="Tesisat.cs">
-      <DependentUpon>MdlKAybs.tt</DependentUpon>
+    <Compile Include="VANA.cs">
+      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FrmAboOlanKutusuOlmayanBina.resx">
       <DependentUpon>FrmAboOlanKutusuOlmayanBina.cs</DependentUpon>
@@ -349,26 +334,19 @@
     </Compile>
     <None Include="app.config" />
     <None Include="ClassDiagram1.cd" />
-    <EntityDeploy Include="Model1.edmx">
+    <EntityDeploy Include="MdlKargazHarita.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>MdlKargazHarita.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <EntityDeploy Include="MdlKAybs.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MdlKAybs.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="MdlKAybs.edmx.diagram">
-      <DependentUpon>MdlKAybs.edmx</DependentUpon>
+    <None Include="MdlKargazHarita.edmx.diagram">
+      <DependentUpon>MdlKargazHarita.edmx</DependentUpon>
     </None>
-    <None Include="Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </None>
-    <EntityDeploy Include="Model2.edmx">
+    <EntityDeploy Include="MdlSerhatgazHarita.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model2.Designer.cs</LastGenOutput>
+      <LastGenOutput>MdlSerhatgazHarita.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model2.edmx.diagram">
-      <DependentUpon>Model2.edmx</DependentUpon>
+    <None Include="MdlSerhatgazHarita.edmx.diagram">
+      <DependentUpon>MdlSerhatgazHarita.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -383,35 +361,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="haticon.ico" />
-    <Content Include="MdlKAybs.Context.tt">
+    <Content Include="MdlKargazHarita.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MdlKAybs.edmx</DependentUpon>
-      <LastGenOutput>MdlKAybs.Context.cs</LastGenOutput>
+      <DependentUpon>MdlKargazHarita.edmx</DependentUpon>
+      <LastGenOutput>MdlKargazHarita.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="MdlKAybs.tt">
+    <Content Include="MdlKargazHarita.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MdlKAybs.edmx</DependentUpon>
-      <LastGenOutput>MdlKAybs.cs</LastGenOutput>
+      <DependentUpon>MdlKargazHarita.edmx</DependentUpon>
+      <LastGenOutput>MdlKargazHarita.cs</LastGenOutput>
     </Content>
-    <Content Include="Model1.Context.tt">
+    <Content Include="MdlSerhatgazHarita.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>MdlSerhatgazHarita.edmx</DependentUpon>
+      <LastGenOutput>MdlSerhatgazHarita.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model1.tt">
+    <Content Include="MdlSerhatgazHarita.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model2.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model2.edmx</DependentUpon>
-      <LastGenOutput>Model2.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model2.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model2.edmx</DependentUpon>
-      <LastGenOutput>Model2.cs</LastGenOutput>
+      <DependentUpon>MdlSerhatgazHarita.edmx</DependentUpon>
+      <LastGenOutput>MdlSerhatgazHarita.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

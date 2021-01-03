@@ -219,7 +219,6 @@
             this.BtnTumImalatlar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11F);
             this.BtnTumImalatlar.ItemAppearance.Normal.Options.UseFont = true;
             this.BtnTumImalatlar.Name = "BtnTumImalatlar";
-            this.BtnTumImalatlar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.BtnTumImalatlar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnTumImalatlar_ItemClick);
             // 
             // BtnStFormDuzeltme

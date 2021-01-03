@@ -33,19 +33,26 @@ namespace KargazImalatTakip
 
                 if (CmbBolge.Text == "TÜMÜ")
                 {
-                    var polietilen = from h in db.HATLAR
-                                where h.MALZEME_CINSI=="Polietilen" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2)
-                                orderby h.NET_BORU_CAPI
-                                group h by new { h.NET_BORU_CAPI } into g
-                                select new
-                                {
-                                    Çap = g.Key.NET_BORU_CAPI,
-                                    BoruUzunluğu = g.Sum(t => t.BORU_UZUNLUGU),
-                                    KazıBoyu = g.Sum(t => t.KAZI_BOYU),
-                                    AsbuiltMetraj = g.Sum(t => t.ASBUILT_METRAJ),
-                                    YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
-                                };
-                    gridControl1.DataSource = polietilen.ToList();
+                    //var polietilen = from h in db.HATLAR
+                    //            where h.MALZEME_CINSI == "Polietilen" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2) && h.ILCE_KODU == ilceKodu
+                    //            orderby h.NET_BORU_CAPI
+                    //            group h by h.NET_BORU_CAPI into g
+                    //            select new
+                    //            {
+                    //                Çap = g.Key,
+                    //                BoruUzunluğu = g.Sum(t => t.BORU_UZUNLUGU),
+                    //                KazıBoyu = g.Sum(t => t.KAZI_BOYU),
+                    //                AsbuiltMetraj = g.Sum(t => t.ASBUILT_METRAJ),
+                    //                YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ),
+                    //            };
+                    //gridControl1.DataSource = polietilen.ToList();
+
+                    SqlDataAdapter daPh = new SqlDataAdapter("SELECT NET_BORU_CAPI, SUM(BORU_UZUNLUGU), SUM(YATAY_ASBUILT_METRAJ), SUM(ASBUILT_METRAJ), SUM(KAZI_BOYU) " +
+                            "FROM dbo.HATLAR WHERE MALZEME_CINSI = 'Polietilen' AND NET_BORU_CAPI NOT LIKE 'TB%' AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "'" +
+                            "GROUP BY NET_BORU_CAPI", bgl.kargazBaglanti());
+                    DataTable dtPh = new DataTable();
+                    daPh.Fill(dtPh);
+                    gridControl1.DataSource = dtPh;
 
                     gridView1.Columns[0].Caption = "ÇAP";
                     gridView1.Columns[1].Caption = "BORU BOYU";
@@ -53,24 +60,37 @@ namespace KargazImalatTakip
                     gridView1.Columns[3].Caption = "ASBUILT METRAJ";
                     gridView1.Columns[4].Caption = "YATAY ASBUILT METRAJ";
 
-                    gridView1.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[0].Width = 60;
 
-                    var celik = from h in db.HATLAR
-                                where h.MALZEME_CINSI == "Çelik" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2)
-                                orderby h.NET_BORU_CAPI
-                                group h by new { h.NET_BORU_CAPI } into g
-                                select new
-                                {
-                                    Çap = g.Key.NET_BORU_CAPI,
-                                    BoruUzunluğu = g.Sum(t => t.BORU_UZUNLUGU),
-                                    KazıBoyu = g.Sum(t => t.KAZI_BOYU),
-                                    AsbuiltMetraj = g.Sum(t => t.ASBUILT_METRAJ),
-                                    YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
-                                };
-                    gridControl2.DataSource = celik.ToList();
+                    gridView1.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[4].SummaryItem.DisplayFormat = "{0}";
+
+                    //var celik = from h in db.HATLAR
+                    //            where h.MALZEME_CINSI == "Çelik" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2) && h.ILCE_KODU == ilceKodu
+                    //            orderby h.NET_BORU_CAPI
+                    //            group h by new { h.NET_BORU_CAPI } into g
+                    //            select new
+                    //            {
+                    //                Çap = g.Key.NET_BORU_CAPI,
+                    //                BoruUzunluğu = g.Sum(t => t.BORU_UZUNLUGU),
+                    //                KazıBoyu = g.Sum(t => t.KAZI_BOYU),
+                    //                AsbuiltMetraj = g.Sum(t => t.ASBUILT_METRAJ),
+                    //                YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
+                    //            };
+                    //gridControl2.DataSource = celik.ToList();
+
+                    SqlDataAdapter daCh = new SqlDataAdapter("SELECT NET_BORU_CAPI, SUM(BORU_UZUNLUGU), SUM(YATAY_ASBUILT_METRAJ), SUM(ASBUILT_METRAJ), SUM(KAZI_BOYU) " +
+                            "FROM dbo.HATLAR WHERE MALZEME_CINSI = 'Çelik' AND NET_BORU_CAPI NOT LIKE 'TB%' AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "'" +
+                            "GROUP BY NET_BORU_CAPI", bgl.kargazBaglanti());
+                    DataTable dtCh = new DataTable();
+                    daCh.Fill(dtCh);
+                    gridControl2.DataSource = dtCh;
 
                     gridView2.Columns[0].Caption = "ÇAP";
                     gridView2.Columns[1].Caption = "BORU BOYU";
@@ -78,24 +98,36 @@ namespace KargazImalatTakip
                     gridView2.Columns[3].Caption = "ASBUILT METRAJ";
                     gridView2.Columns[4].Caption = "YATAY ASBUILT METRAJ";
 
-                    gridView2.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView2.Columns[0].Width = 60;
 
-                    var servis = from s in db.SERVIS_HATLARI
-                                     where (s.IMALATTARIHI >= tarih1 && s.IMALATTARIHI <= tarih2)
-                                     orderby s.CAP
-                                     group s by new { s.CAP } into g
-                                     select new
-                                     {
-                                         Çap = g.Key.CAP,
-                                         BoruUzunluğu = g.Sum(t => t.BORUBOYU),
-                                         KazıBoyu = g.Sum(t => t.KAZIBOYU),
-                                         EğikAsbuiltMetraj = g.Sum(t => t.SHATTIMETRAJ),
-                                         YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
-                                     };
-                    gridControl3.DataSource = servis.ToList();
+                    gridView2.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView2.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView2.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView2.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView2.Columns[4].SummaryItem.DisplayFormat = "{0}";
+
+                    //var serHat = from sh in db.SERVIS_HATLARI
+                    //            where (sh.IMALATTARIHI >= tarih1 && sh.IMALATTARIHI <= tarih2) && sh.ILCE_KODU == ilceKodu
+                    //            orderby sh.CAP
+                    //            group sh by new { sh.CAP } into g
+                    //            select new
+                    //            {
+                    //                Çap = g.Key.CAP,
+                    //                BoruUzunluğu = g.Sum(t => t.BORUBOYU),
+                    //                KazıBoyu = g.Sum(t => t.KAZIBOYU),
+                    //                AsbuiltMetraj = g.Sum(t => t.SHATTIMETRAJ),
+                    //                YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
+                    //            };
+                    //gridControl3.DataSource = serHat.ToList();
+
+                    SqlDataAdapter daSh = new SqlDataAdapter("SELECT CAP, SUM(BORUBOYU), SUM(KAZIBOYU), SUM(SHATTIMETRAJ), SUM(YATAY_ASBUILT_METRAJ) " +
+                            "FROM dbo.SERVIS_HATLARI WHERE IMALATTARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' GROUP BY CAP", bgl.kargazBaglanti());
+                    DataTable dtSh = new DataTable();
+                    daSh.Fill(dtSh);
+                    gridControl3.DataSource = dtSh;
 
                     gridView3.Columns[0].Caption = "ÇAP";
                     gridView3.Columns[1].Caption = "BORU BOYU";
@@ -103,26 +135,168 @@ namespace KargazImalatTakip
                     gridView3.Columns[3].Caption = "EĞİK ASBUİLT METRAJ";
                     gridView3.Columns[4].Caption = "YATAY ASBUILT METRAJ";
 
-                    gridView3.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView3.Columns[0].Width = 60;
 
-                    var kutu = from k in db.SERVIS_KUTUSU
-                                 where (k.IMALATTARIHI >= tarih1 && k.IMALATTARIHI <= tarih2)
-                                 orderby k.CINSI
-                                 group k by new { k.CINSI } into g
-                                 select new
-                                 {
-                                     Cinsi = g.Key.CINSI,
-                                     Adet = g.Count()
-                                 };
-                    gridControl4.DataSource = kutu.ToList();
+                    gridView3.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView3.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView3.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView3.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView3.Columns[4].SummaryItem.DisplayFormat = "{0}";
+
+                    //var bagElemanıPe = from beP in db.BAGLANTI_ELEMANLARI_PE
+                    //                   where (beP.IMALATTARIHI >= tarih1 && beP.IMALATTARIHI <= tarih2) && beP.ILCE_KODU == ilceKodu
+                    //                   orderby beP.CAP
+                    //                   let cinsiPe = beP.TIPI + " " + beP.CAP
+                    //                   group beP by new { cinsiPe } into g
+                    //                   select new
+                    //                   {
+                    //                       Cap = g.Key.cinsiPe,
+                    //                       Adet = g.Count()
+                    //                   };
+                    //gridControl7.DataSource = bagElemanıPe.ToList();
+
+                    SqlDataAdapter daBePe = new SqlDataAdapter("SELECT TIPI + ' ' + CAP AS TIP, COUNT(CAP) FROM dbo.BAGLANTI_ELEMANLARI_PE " +
+                        "WHERE IMALATTARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' GROUP BY TIPI, CAP ORDER BY TIPI, CAP", bgl.kargazBaglanti());
+                    DataTable dtBePe = new DataTable();
+                    daBePe.Fill(dtBePe);
+                    gridControl7.DataSource = dtBePe;
+
+                    gridView7.Columns[0].Caption = "MALZEME TİPİ";
+                    gridView7.Columns[1].Caption = "ADET";
+
+                    gridView7.Columns[1].Width = 50;
+
+                    gridView7.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView7.Columns[1].SummaryItem.DisplayFormat = "{0}";
+
+                    //var bagElemanıC = from beC in db.BAGLANTI_ELEMANLARI_CELIK
+                    //                  where (beC.IMALATTARIHI >= tarih1 && beC.IMALATTARIHI <= tarih2) && beC.ILCE_KODU == ilceKodu
+                    //                  orderby beC.CAP
+                    //                  let cinsiC = beC.TIPI + " " + beC.CAP
+                    //                  group beC by new { cinsiC } into g
+                    //                  select new
+                    //                  {
+                    //                      Cap = g.Key.cinsiC,
+                    //                      Adet = g.Count()
+                    //                  };
+                    //gridControl9.DataSource = bagElemanıC.ToList();
+
+                    SqlDataAdapter daBeCe = new SqlDataAdapter("SELECT TIPI + ' ' + CAP AS TIP, COUNT(CAP) FROM dbo.BAGLANTI_ELEMANLARI_CELIK " +
+                        "WHERE IMALATTARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' GROUP BY TIPI, CAP ORDER BY TIPI, CAP", bgl.kargazBaglanti());
+                    DataTable dtBeCe = new DataTable();
+                    daBeCe.Fill(dtBeCe);
+                    gridControl9.DataSource = dtBeCe;
+
+                    gridView9.Columns[0].Caption = "MALZEME TİPİ";
+                    gridView9.Columns[1].Caption = "ADET";
+
+                    gridView9.Columns[1].Width = 50;
+
+                    gridView9.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView9.Columns[1].SummaryItem.DisplayFormat = "{0}";
+
+                    //var vanaPe = from vP in db.VANA
+                    //             where vP.MALZEME_CINSI == "Polietilen" && (vP.IMALAT_TARIHI >= tarih1 && vP.IMALAT_TARIHI <= tarih2) && vP.ILCE_KODU == ilceKodu
+                    //             orderby vP.CAP
+                    //             group vP by new { vP.CAP } into g
+                    //             select new
+                    //             {
+                    //                 Cap = g.Key.CAP,
+                    //                 Adet = g.Count()
+                    //             };
+                    //gridControl6.DataSource = vanaPe.ToList();
+
+                    SqlDataAdapter daVana = new SqlDataAdapter("SELECT CAP, COUNT(CAP) FROM dbo.VANA WHERE MALZEME_CINSI = 'Polietilen' " +
+                        "AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' GROUP BY CAP ORDER BY CAP", bgl.kargazBaglanti());
+                    DataTable dtVana = new DataTable();
+                    daVana.Fill(dtVana);
+                    gridControl6.DataSource = dtVana;
+
+                    gridView6.Columns[0].Caption = "ÇAP";
+                    gridView6.Columns[1].Caption = "ADET";
+
+                    gridView6.Columns[1].Width = 50;
+
+                    gridView6.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView6.Columns[1].SummaryItem.DisplayFormat = "{0}";
+
+                    //var vanaC = from vC in db.VANA
+                    //            where vC.MALZEME_CINSI == "Çelik" && (vC.IMALAT_TARIHI >= tarih1 && vC.IMALAT_TARIHI <= tarih2) && vC.ILCE_KODU == ilceKodu
+                    //            orderby vC.CAP
+                    //            group vC by new { vC.CAP } into g
+                    //            select new
+                    //            {
+                    //                Cap = g.Key.CAP,
+                    //                Adet = g.Count()
+                    //            };
+                    //gridControl8.DataSource = vanaC.ToList();
+
+                    SqlDataAdapter daCVana = new SqlDataAdapter("SELECT CAP, COUNT(CAP) FROM dbo.VANA WHERE MALZEME_CINSI = 'Çelik' " +
+                        "AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' GROUP BY CAP ORDER BY CAP", bgl.kargazBaglanti());
+                    DataTable dtCVana = new DataTable();
+                    daCVana.Fill(dtCVana);
+                    gridControl8.DataSource = dtCVana;
+
+                    gridView8.Columns[0].Caption = "ÇAP";
+                    gridView8.Columns[1].Caption = "ADET";
+
+                    gridView8.Columns[1].Width = 50;
+
+                    gridView8.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView8.Columns[1].SummaryItem.DisplayFormat = "{0}";
+
+                    //var servisElemani = from se in db.SERVIS_ELEMANLARI
+                    //                    where (se.IMALAT_TARIHI >= tarih1 && se.IMALAT_TARIHI <= tarih2) && se.ILCE_KODU == ilceKodu
+                    //                    orderby se.CAP
+                    //                    group se by new { se.CAP } into g
+                    //                    select new
+                    //                    {
+                    //                        Cap = g.Key.CAP,
+                    //                        Adet = g.Count()
+                    //                    };
+                    //gridControl5.DataSource = servisElemani.ToList();
+
+                    SqlDataAdapter daSe = new SqlDataAdapter("SELECT CAP, COUNT(CAP) FROM dbo.SERVIS_ELEMANLARI WHERE " +
+                        "IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' GROUP BY CAP ORDER BY CAP", bgl.kargazBaglanti());
+                    DataTable dtSe = new DataTable();
+                    daSe.Fill(dtSe);
+                    gridControl5.DataSource = dtSe;
+
+                    gridView5.Columns[0].Caption = "ÇAP";
+                    gridView5.Columns[1].Caption = "ADET";
+
+                    gridView5.Columns[1].Width = 50;
+
+                    gridView5.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView5.Columns[1].SummaryItem.DisplayFormat = "{0}";
+
+                    //var kutu = from k in db.SERVIS_KUTUSU
+                    //           where (k.IMALATTARIHI >= tarih1 && k.IMALATTARIHI <= tarih2) && k.ILCE_KODU == ilceKodu
+                    //           orderby k.CINSI
+                    //           group k by new { k.CINSI } into g
+                    //           select new
+                    //           {
+                    //               Cinsi = g.Key.CINSI,
+                    //               Adet = g.Count()
+                    //           };
+                    //gridControl4.DataSource = kutu.ToList();
+
+                    SqlDataAdapter daSk = new SqlDataAdapter("SELECT CINSI, COUNT(CINSI) FROM dbo.SERVIS_KUTUSU WHERE " +
+                        "IMALATTARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' GROUP BY CINSI ORDER BY CINSI", bgl.kargazBaglanti());
+                    DataTable dtSk = new DataTable();
+                    daSk.Fill(dtSk);
+                    gridControl4.DataSource = dtSk;
 
                     gridView4.Columns[0].Caption = "CİNSİ";
                     gridView4.Columns[1].Caption = "ADET";
 
+                    gridView4.Columns[1].Width = 50;
+
                     gridView4.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView4.Columns[1].SummaryItem.DisplayFormat = "{0}";
 
                     LblBaslik.Text = CmbSirket.Text + " TÜM BÖLGELER İCMALİ";
                     LblTarihAraligi.Text = DtBaslangicTarihi.Text + " - " + DtBitisTarihi.Text;
@@ -130,19 +304,27 @@ namespace KargazImalatTakip
                 else
                 {
                     int ilceKodu = Convert.ToInt32(db.ilce.FirstOrDefault(i => i.ilce_adi == CmbBolge.Text).ilce_kodu);
-                    var polietilen = from h in db.HATLAR
-                                where h.MALZEME_CINSI == "Polietilen" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2) && h.ILCE_KODU == ilceKodu
-                                orderby h.NET_BORU_CAPI
-                                group h by h.NET_BORU_CAPI into g
-                                select new
-                                {
-                                    Çap = g.Key,
-                                    BoruUzunluğu = g.Sum(t => t.BORU_UZUNLUGU),
-                                    KazıBoyu = g.Sum(t => t.KAZI_BOYU),
-                                    AsbuiltMetraj = g.Sum(t => t.ASBUILT_METRAJ),
-                                    YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ),
-                                };
-                    gridControl1.DataSource = polietilen.ToList();
+
+                    //var polietilen = from h in db.HATLAR
+                    //            where h.MALZEME_CINSI == "Polietilen" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2) && h.ILCE_KODU == ilceKodu
+                    //            orderby h.NET_BORU_CAPI
+                    //            group h by h.NET_BORU_CAPI into g
+                    //            select new
+                    //            {
+                    //                Çap = g.Key,
+                    //                BoruUzunluğu = g.Sum(t => t.BORU_UZUNLUGU),
+                    //                KazıBoyu = g.Sum(t => t.KAZI_BOYU),
+                    //                AsbuiltMetraj = g.Sum(t => t.ASBUILT_METRAJ),
+                    //                YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ),
+                    //            };
+                    //gridControl1.DataSource = polietilen.ToList();
+
+                    SqlDataAdapter daPh = new SqlDataAdapter("SELECT NET_BORU_CAPI, SUM(BORU_UZUNLUGU), SUM(YATAY_ASBUILT_METRAJ), SUM(ASBUILT_METRAJ), SUM(KAZI_BOYU) " +
+                            "FROM dbo.HATLAR WHERE MALZEME_CINSI = 'Polietilen' AND NET_BORU_CAPI NOT LIKE 'TB%' AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "'" +
+                            "AND ILCE_KODU = " + ilceKodu + "GROUP BY NET_BORU_CAPI", bgl.kargazBaglanti());
+                    DataTable dtPh = new DataTable();
+                    daPh.Fill(dtPh);
+                    gridControl1.DataSource = dtPh;
 
                     gridView1.Columns[0].Caption = "ÇAP";
                     gridView1.Columns[1].Caption = "BORU BOYU";
@@ -150,24 +332,37 @@ namespace KargazImalatTakip
                     gridView1.Columns[3].Caption = "ASBUILT METRAJ";
                     gridView1.Columns[4].Caption = "YATAY ASBUILT METRAJ";
 
-                    gridView1.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[0].Width = 60;
 
-                    var celik = from h in db.HATLAR
-                                where h.MALZEME_CINSI == "Çelik" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2) && h.ILCE_KODU == ilceKodu
-                                orderby h.NET_BORU_CAPI
-                                group h by new { h.NET_BORU_CAPI } into g
-                                select new
-                                {
-                                    Çap = g.Key.NET_BORU_CAPI,
-                                    BoruUzunluğu = g.Sum(t => t.BORU_UZUNLUGU),
-                                    KazıBoyu = g.Sum(t => t.KAZI_BOYU),
-                                    AsbuiltMetraj = g.Sum(t => t.ASBUILT_METRAJ),
-                                    YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
-                                };
-                    gridControl2.DataSource = celik.ToList();
+                    gridView1.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[4].SummaryItem.DisplayFormat = "{0}";
+
+                    //var celik = from h in db.HATLAR
+                    //            where h.MALZEME_CINSI == "Çelik" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2) && h.ILCE_KODU == ilceKodu
+                    //            orderby h.NET_BORU_CAPI
+                    //            group h by new { h.NET_BORU_CAPI } into g
+                    //            select new
+                    //            {
+                    //                Çap = g.Key.NET_BORU_CAPI,
+                    //                BoruUzunluğu = g.Sum(t => t.BORU_UZUNLUGU),
+                    //                KazıBoyu = g.Sum(t => t.KAZI_BOYU),
+                    //                AsbuiltMetraj = g.Sum(t => t.ASBUILT_METRAJ),
+                    //                YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
+                    //            };
+                    //gridControl2.DataSource = celik.ToList();
+
+                    SqlDataAdapter daCh = new SqlDataAdapter("SELECT NET_BORU_CAPI, SUM(BORU_UZUNLUGU), SUM(YATAY_ASBUILT_METRAJ), SUM(ASBUILT_METRAJ), SUM(KAZI_BOYU) " +
+                            "FROM dbo.HATLAR WHERE MALZEME_CINSI = 'Çelik' AND NET_BORU_CAPI NOT LIKE 'TB%' AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "'" +
+                            "AND ILCE_KODU = " + ilceKodu + "GROUP BY NET_BORU_CAPI", bgl.kargazBaglanti());
+                    DataTable dtCh = new DataTable();
+                    daCh.Fill(dtCh);
+                    gridControl2.DataSource = dtCh;
 
                     gridView2.Columns[0].Caption = "ÇAP";
                     gridView2.Columns[1].Caption = "BORU BOYU";
@@ -175,24 +370,36 @@ namespace KargazImalatTakip
                     gridView2.Columns[3].Caption = "ASBUILT METRAJ";
                     gridView2.Columns[4].Caption = "YATAY ASBUILT METRAJ";
 
-                    gridView2.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView2.Columns[0].Width = 60;
 
-                    var servis = from s in db.SERVIS_HATLARI
-                                 where (s.IMALATTARIHI >= tarih1 && s.IMALATTARIHI <= tarih2) && s.ILCE_KODU == ilceKodu
-                                 orderby s.CAP
-                                 group s by new { s.CAP } into g
-                                 select new
-                                 {
-                                     Çap = g.Key.CAP,
-                                     BoruUzunluğu = g.Sum(t => t.BORUBOYU),
-                                     KazıBoyu = g.Sum(t => t.KAZIBOYU),
-                                     EğikAsbuiltMetraj = g.Sum(t => t.SHATTIMETRAJ),
-                                     YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
-                                 };
-                    gridControl3.DataSource = servis.ToList();
+                    gridView2.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView2.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView2.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView2.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView2.Columns[4].SummaryItem.DisplayFormat = "{0}";
+
+                    //var serHat = from sh in db.SERVIS_HATLARI
+                    //            where (sh.IMALATTARIHI >= tarih1 && sh.IMALATTARIHI <= tarih2) && sh.ILCE_KODU == ilceKodu
+                    //            orderby sh.CAP
+                    //            group sh by new { sh.CAP } into g
+                    //            select new
+                    //            {
+                    //                Çap = g.Key.CAP,
+                    //                BoruUzunluğu = g.Sum(t => t.BORUBOYU),
+                    //                KazıBoyu = g.Sum(t => t.KAZIBOYU),
+                    //                AsbuiltMetraj = g.Sum(t => t.SHATTIMETRAJ),
+                    //                YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
+                    //            };
+                    //gridControl3.DataSource = serHat.ToList();
+
+                    SqlDataAdapter daSh = new SqlDataAdapter("SELECT CAP, SUM(BORUBOYU), SUM(KAZIBOYU), SUM(SHATTIMETRAJ), SUM(YATAY_ASBUILT_METRAJ) " +
+                            "FROM dbo.SERVIS_HATLARI WHERE IMALATTARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' AND ILCE_KODU = " + ilceKodu + " GROUP BY CAP", bgl.kargazBaglanti());
+                    DataTable dtSh = new DataTable();
+                    daSh.Fill(dtSh);
+                    gridControl3.DataSource = dtSh;
 
                     gridView3.Columns[0].Caption = "ÇAP";
                     gridView3.Columns[1].Caption = "BORU BOYU";
@@ -200,26 +407,174 @@ namespace KargazImalatTakip
                     gridView3.Columns[3].Caption = "EĞİK ASBUİLT METRAJ";
                     gridView3.Columns[4].Caption = "YATAY ASBUILT METRAJ";
 
-                    gridView3.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView3.Columns[0].Width = 60;
 
-                    var kutu = from k in db.SERVIS_KUTUSU
-                               where (k.IMALATTARIHI >= tarih1 && k.IMALATTARIHI <= tarih2) && k.ILCE_KODU == ilceKodu
-                               orderby k.CINSI
-                               group k by new { k.CINSI } into g
-                               select new
-                               {
-                                   Cinsi = g.Key.CINSI,
-                                   Adet = g.Count()
-                               };
-                    gridControl4.DataSource = kutu.ToList();
+                    gridView3.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView3.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView3.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView3.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView3.Columns[4].SummaryItem.DisplayFormat = "{0}";
+
+                    //var bagElemanıPe = from beP in db.BAGLANTI_ELEMANLARI_PE
+                    //                   where (beP.IMALATTARIHI >= tarih1 && beP.IMALATTARIHI <= tarih2) && beP.ILCE_KODU == ilceKodu
+                    //                   orderby beP.CAP
+                    //                   let cinsiPe = beP.TIPI + " " + beP.CAP
+                    //                   group beP by new { cinsiPe } into g
+                    //                   select new
+                    //                   {
+                    //                       Cap = g.Key.cinsiPe,
+                    //                       Adet = g.Count()
+                    //                   };
+                    //gridControl7.DataSource = bagElemanıPe.ToList();
+
+                    SqlDataAdapter daBePe = new SqlDataAdapter("SELECT TIPI + ' ' + CAP AS TIP, COUNT(CAP) FROM dbo.BAGLANTI_ELEMANLARI_PE " +
+                        "WHERE IMALATTARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' AND ILCE_KODU = " + ilceKodu +
+                        " GROUP BY TIPI, CAP ORDER BY TIPI, CAP", bgl.kargazBaglanti());
+                    DataTable dtBePe = new DataTable();
+                    daBePe.Fill(dtBePe);
+                    gridControl7.DataSource = dtBePe;
+
+                    gridView7.Columns[0].Caption = "MALZEME TİPİ";
+                    gridView7.Columns[1].Caption = "ADET";
+
+                    gridView7.Columns[1].Width = 50;
+
+                    gridView7.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView7.Columns[1].SummaryItem.DisplayFormat = "{0}";
+
+                    //var bagElemanıC = from beC in db.BAGLANTI_ELEMANLARI_CELIK
+                    //                  where (beC.IMALATTARIHI >= tarih1 && beC.IMALATTARIHI <= tarih2) && beC.ILCE_KODU == ilceKodu
+                    //                  orderby beC.CAP
+                    //                  let cinsiC = beC.TIPI + " " + beC.CAP
+                    //                  group beC by new { cinsiC } into g
+                    //                  select new
+                    //                  {
+                    //                      Cap = g.Key.cinsiC,
+                    //                      Adet = g.Count()
+                    //                  };
+                    //gridControl9.DataSource = bagElemanıC.ToList();
+
+                    SqlDataAdapter daBeCe = new SqlDataAdapter("SELECT TIPI + ' ' + CAP AS TIP, COUNT(CAP) FROM dbo.BAGLANTI_ELEMANLARI_CELIK " +
+                        "WHERE IMALATTARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' AND ILCE_KODU = " + ilceKodu +
+                        " GROUP BY TIPI, CAP ORDER BY TIPI, CAP", bgl.kargazBaglanti());
+                    DataTable dtBeCe = new DataTable();
+                    daBeCe.Fill(dtBeCe);
+                    gridControl9.DataSource = dtBeCe;
+
+                    gridView9.Columns[0].Caption = "MALZEME TİPİ";
+                    gridView9.Columns[1].Caption = "ADET";
+
+                    gridView9.Columns[1].Width = 50;
+
+                    gridView9.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView9.Columns[1].SummaryItem.DisplayFormat = "{0}";
+
+                    //var vanaPe = from vP in db.VANA
+                    //             where vP.MALZEME_CINSI == "Polietilen" && (vP.IMALAT_TARIHI >= tarih1 && vP.IMALAT_TARIHI <= tarih2) && vP.ILCE_KODU == ilceKodu
+                    //             orderby vP.CAP
+                    //             group vP by new { vP.CAP } into g
+                    //             select new
+                    //             {
+                    //                 Cap = g.Key.CAP,
+                    //                 Adet = g.Count()
+                    //             };
+                    //gridControl6.DataSource = vanaPe.ToList();
+
+                    SqlDataAdapter daVana = new SqlDataAdapter("SELECT CAP, COUNT(CAP) FROM dbo.VANA WHERE MALZEME_CINSI = 'Polietilen' " +
+                        "AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' AND ILCE_KODU = " + ilceKodu +
+                        " GROUP BY CAP ORDER BY CAP", bgl.kargazBaglanti());
+                    DataTable dtVana = new DataTable();
+                    daVana.Fill(dtVana);
+                    gridControl6.DataSource = dtVana;
+
+                    gridView6.Columns[0].Caption = "ÇAP";
+                    gridView6.Columns[1].Caption = "ADET";
+
+                    gridView6.Columns[1].Width = 50;
+
+                    gridView6.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView6.Columns[1].SummaryItem.DisplayFormat = "{0}";
+
+                    //var vanaC = from vC in db.VANA
+                    //            where vC.MALZEME_CINSI == "Çelik" && (vC.IMALAT_TARIHI >= tarih1 && vC.IMALAT_TARIHI <= tarih2) && vC.ILCE_KODU == ilceKodu
+                    //            orderby vC.CAP
+                    //            group vC by new { vC.CAP } into g
+                    //            select new
+                    //            {
+                    //                Cap = g.Key.CAP,
+                    //                Adet = g.Count()
+                    //            };
+                    //gridControl8.DataSource = vanaC.ToList();
+
+                    SqlDataAdapter daCVana = new SqlDataAdapter("SELECT CAP, COUNT(CAP) FROM dbo.VANA WHERE MALZEME_CINSI = 'Çelik' " +
+                        "AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' AND ILCE_KODU = " + ilceKodu +
+                        " GROUP BY CAP ORDER BY CAP", bgl.kargazBaglanti());
+                    DataTable dtCVana = new DataTable();
+                    daCVana.Fill(dtCVana);
+                    gridControl8.DataSource = dtCVana;
+
+                    gridView8.Columns[0].Caption = "ÇAP";
+                    gridView8.Columns[1].Caption = "ADET";
+
+                    gridView8.Columns[1].Width = 50;
+
+                    gridView8.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView8.Columns[1].SummaryItem.DisplayFormat = "{0}";
+
+                    //var servisElemani = from se in db.SERVIS_ELEMANLARI
+                    //                    where (se.IMALAT_TARIHI >= tarih1 && se.IMALAT_TARIHI <= tarih2) && se.ILCE_KODU == ilceKodu
+                    //                    orderby se.CAP
+                    //                    group se by new { se.CAP } into g
+                    //                    select new
+                    //                    {
+                    //                        Cap = g.Key.CAP,
+                    //                        Adet = g.Count()
+                    //                    };
+                    //gridControl5.DataSource = servisElemani.ToList();
+
+                    SqlDataAdapter daSe = new SqlDataAdapter("SELECT CAP, COUNT(CAP) FROM dbo.SERVIS_ELEMANLARI WHERE " +
+                        "IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' AND ILCE_KODU = " + ilceKodu +
+                        " GROUP BY CAP ORDER BY CAP", bgl.kargazBaglanti());
+                    DataTable dtSe = new DataTable();
+                    daSe.Fill(dtSe);
+                    gridControl5.DataSource = dtSe;
+
+                    gridView5.Columns[0].Caption = "ÇAP";
+                    gridView5.Columns[1].Caption = "ADET";
+
+                    gridView5.Columns[1].Width = 50;
+
+                    gridView5.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView5.Columns[1].SummaryItem.DisplayFormat = "{0}";
+
+                    //var kutu = from k in db.SERVIS_KUTUSU
+                    //           where (k.IMALATTARIHI >= tarih1 && k.IMALATTARIHI <= tarih2) && k.ILCE_KODU == ilceKodu
+                    //           orderby k.CINSI
+                    //           group k by new { k.CINSI } into g
+                    //           select new
+                    //           {
+                    //               Cinsi = g.Key.CINSI,
+                    //               Adet = g.Count()
+                    //           };
+                    //gridControl4.DataSource = kutu.ToList();
+
+                    SqlDataAdapter daSk = new SqlDataAdapter("SELECT CINSI, COUNT(CINSI) FROM dbo.SERVIS_KUTUSU WHERE " +
+                        "IMALATTARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' AND ILCE_KODU = " + ilceKodu +
+                        " GROUP BY CINSI ORDER BY CINSI", bgl.kargazBaglanti());
+                    DataTable dtSk = new DataTable();
+                    daSk.Fill(dtSk);
+                    gridControl4.DataSource = dtSk;
 
                     gridView4.Columns[0].Caption = "CİNSİ";
                     gridView4.Columns[1].Caption = "ADET";
 
+                    gridView4.Columns[1].Width = 50;
+
                     gridView4.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView4.Columns[1].SummaryItem.DisplayFormat = "{0}";
 
                     LblBaslik.Text = CmbSirket.Text + " - " + CmbBolge.Text + " İCMALİ";
                     LblTarihAraligi.Text = DtBaslangicTarihi.Text + " - " + DtBitisTarihi.Text;
@@ -233,25 +588,34 @@ namespace KargazImalatTakip
 
                 if (CmbBolge.Text == "TÜMÜ")
                 {
-                    var polietilen = from h in dbS.HATLAR
-                                     where h.MALZEME_CINSI == "Polietilen" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2)
-                                     orderby h.NET_BORU_CAPI
-                                     group h by new { h.NET_BORU_CAPI } into g
-                                     select new
-                                     {
-                                         Çap = g.Key.NET_BORU_CAPI,
-                                         BoruUzunluğu = g.Sum(t => t.BORU_UZUNLUGU),
-                                         KazıBoyu = g.Sum(t => t.KAZI_BOYU),
-                                         AsbuiltMetraj = g.Sum(t => t.ASBUILT_METRAJ),
-                                         YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
-                                     };
-                    gridControl1.DataSource = polietilen.ToList();
+                    //var polietilen = from h in dbS.HATLAR
+                    //                 where h.MALZEME_CINSI == "Polietilen" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2)
+                    //                 orderby h.NET_BORU_CAPI
+                    //                 group h by new { h.NET_BORU_CAPI } into g
+                    //                 select new
+                    //                 {
+                    //                     Çap = g.Key.NET_BORU_CAPI,
+                    //                     BoruUzunluğu = g.Sum(t => t.BORU_UZUNLUGU),
+                    //                     KazıBoyu = g.Sum(t => t.KAZI_BOYU),
+                    //                     AsbuiltMetraj = g.Sum(t => t.ASBUILT_METRAJ),
+                    //                     YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
+                    //                 };
+                    //gridControl1.DataSource = polietilen.ToList();
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT NET_BORU_CAPI, SUM(BORU_UZUNLUGU), SUM(YATAY_ASBUILT_METRAJ), SUM(ASBUILT_METRAJ), SUM(KAZI_BOYU) " +
+                            "FROM dbo.HATLAR H " +
+                            "WHERE H.MALZEME_CINSI = 'Polietilen' AND NOT LIKE 'TB%' AND H.IMALAT_TARIHI BETWEEN " + tarih1 + " AND " + tarih2 +
+                            "GROUP BY H.NET_BORU_CAPI", bgl.serhatgazBaglanti());
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    gridControl1.DataSource = dt;
 
                     gridView1.Columns[0].Caption = "ÇAP";
                     gridView1.Columns[1].Caption = "BORU BOYU";
                     gridView1.Columns[2].Caption = "KAZI BOYU";
                     gridView1.Columns[3].Caption = "ASBUILT METRAJ";
                     gridView1.Columns[4].Caption = "YATAY ASBUILT METRAJ";
+
+                    gridView1.Columns[0].Width = 60;
 
                     gridView1.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                     gridView1.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
@@ -278,6 +642,8 @@ namespace KargazImalatTakip
                     gridView2.Columns[3].Caption = "ASBUILT METRAJ";
                     gridView2.Columns[4].Caption = "YATAY ASBUILT METRAJ";
 
+                    gridView1.Columns[0].Width = 60;
+
                     gridView2.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                     gridView2.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                     gridView2.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
@@ -302,6 +668,8 @@ namespace KargazImalatTakip
                     gridView3.Columns[2].Caption = "KAZI BOYU";
                     gridView3.Columns[3].Caption = "EĞİK ASBUİLT METRAJ";
                     gridView3.Columns[4].Caption = "YATAY ASBUILT METRAJ";
+
+                    gridView1.Columns[0].Width = 60;
 
                     gridView3.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                     gridView3.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
@@ -330,19 +698,29 @@ namespace KargazImalatTakip
                 else
                 {
                     int ilceKodu = Convert.ToInt32(dbS.ilce.FirstOrDefault(i => i.ilce_adi == CmbBolge.Text).ilce_kodu);
-                    var polietilen = from h in dbS.HATLAR
-                                     where h.MALZEME_CINSI == "Polietilen" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2) && h.ILCE_KODU == ilceKodu
-                                     orderby h.NET_BORU_CAPI
-                                     group h by h.NET_BORU_CAPI into g
-                                     select new
-                                     {
-                                         Çap = g.Key,
-                                         BoruUzunluğu = g.Sum(t => t.BORU_UZUNLUGU),
-                                         KazıBoyu = g.Sum(t => t.KAZI_BOYU),
-                                         AsbuiltMetraj = g.Sum(t => t.ASBUILT_METRAJ),
-                                         YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ),
-                                     };
-                    gridControl1.DataSource = polietilen.ToList();
+
+                    //var polietilen = from h in dbS.HATLAR
+                    //                 where h.MALZEME_CINSI == "Polietilen" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2) && h.ILCE_KODU == ilceKodu
+                    //                 orderby h.NET_BORU_CAPI
+                    //                 group h by h.NET_BORU_CAPI into g
+                    //                 select new
+                    //                 {
+                    //                     Çap = g.Key,
+                    //                     BoruUzunluğu = g.Sum(t => t.BORU_UZUNLUGU),
+                    //                     KazıBoyu = g.Sum(t => t.KAZI_BOYU),
+                    //                     AsbuiltMetraj = g.Sum(t => t.ASBUILT_METRAJ),
+                    //                     YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ),
+                    //                 };
+                    //gridControl1.DataSource = polietilen.ToList();
+
+                    SqlDataAdapter daPh = new SqlDataAdapter("SELECT NET_BORU_CAPI, SUM(BORU_UZUNLUGU), SUM(YATAY_ASBUILT_METRAJ), SUM(ASBUILT_METRAJ), SUM(KAZI_BOYU) " +
+                            "FROM dbo.HATLAR " +
+                            "WHERE MALZEME_CINSI = 'Polietilen' AND NET_BORU_CAPI NOT LIKE 'TB%' AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "'" +
+                            "AND ILCE_KODU = " + ilceKodu + 
+                            "GROUP BY NET_BORU_CAPI", bgl.serhatgazBaglanti());
+                    DataTable dtPh = new DataTable();
+                    daPh.Fill(dtPh);
+                    gridControl1.DataSource = dtPh;
 
                     gridView1.Columns[0].Caption = "ÇAP";
                     gridView1.Columns[1].Caption = "BORU BOYU";
@@ -350,24 +728,39 @@ namespace KargazImalatTakip
                     gridView1.Columns[3].Caption = "ASBUILT METRAJ";
                     gridView1.Columns[4].Caption = "YATAY ASBUILT METRAJ";
 
-                    gridView1.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[0].Width = 60;
 
-                    var celik = from h in dbS.HATLAR
-                                where h.MALZEME_CINSI == "Çelik" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2) && h.ILCE_KODU == ilceKodu
-                                orderby h.NET_BORU_CAPI
-                                group h by new { h.NET_BORU_CAPI } into g
-                                select new
-                                {
-                                    Çap = g.Key.NET_BORU_CAPI,
-                                    BoruUzunluğu = g.Sum(t => t.BORU_UZUNLUGU),
-                                    KazıBoyu = g.Sum(t => t.KAZI_BOYU),
-                                    AsbuiltMetraj = g.Sum(t => t.ASBUILT_METRAJ),
-                                    YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
-                                };
-                    gridControl2.DataSource = celik.ToList();
+                    gridView1.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView1.Columns[4].SummaryItem.DisplayFormat = "{0}";
+
+                    //var celik = from h in dbS.HATLAR
+                    //            where h.MALZEME_CINSI == "Çelik" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2) && h.ILCE_KODU == ilceKodu
+                    //            orderby h.NET_BORU_CAPI
+                    //            group h by new { h.NET_BORU_CAPI } into g
+                    //            select new
+                    //            {
+                    //                Çap = g.Key.NET_BORU_CAPI,
+                    //                BoruUzunluğu = g.Sum(t => t.BORU_UZUNLUGU),
+                    //                KazıBoyu = g.Sum(t => t.KAZI_BOYU),
+                    //                AsbuiltMetraj = g.Sum(t => t.ASBUILT_METRAJ),
+                    //                YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
+                    //            };
+                    //gridControl2.DataSource = celik.ToList();
+
+                    SqlDataAdapter daCh = new SqlDataAdapter("SELECT NET_BORU_CAPI, SUM(BORU_UZUNLUGU), SUM(YATAY_ASBUILT_METRAJ), SUM(ASBUILT_METRAJ), SUM(KAZI_BOYU) " +
+                            "FROM dbo.HATLAR " +
+                            "WHERE MALZEME_CINSI = 'Çelik' AND NET_BORU_CAPI NOT LIKE 'TB%' AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "'" +
+                            "AND ILCE_KODU = " + ilceKodu +
+                            "GROUP BY NET_BORU_CAPI", bgl.serhatgazBaglanti());
+                    DataTable dtCh = new DataTable();
+                    daCh.Fill(dtCh);
+                    gridControl2.DataSource = dtCh;
 
                     gridView2.Columns[0].Caption = "ÇAP";
                     gridView2.Columns[1].Caption = "BORU BOYU";
@@ -375,24 +768,36 @@ namespace KargazImalatTakip
                     gridView2.Columns[3].Caption = "ASBUILT METRAJ";
                     gridView2.Columns[4].Caption = "YATAY ASBUILT METRAJ";
 
-                    gridView2.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView2.Columns[0].Width = 60;
 
-                    var servis = from s in dbS.SERVIS_HATLARI
-                                 where (s.IMALATTARIHI >= tarih1 && s.IMALATTARIHI <= tarih2) && s.ILCE_KODU == ilceKodu
-                                 orderby s.CAP
-                                 group s by new { s.CAP } into g
-                                 select new
-                                 {
-                                     Çap = g.Key.CAP,
-                                     BoruUzunluğu = g.Sum(t => t.BORUBOYU),
-                                     KazıBoyu = g.Sum(t => t.KAZIBOYU),
-                                     EğikAsbuiltMetraj = g.Sum(t => t.SHATTIMETRAJ),
-                                     YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
-                                 };
-                    gridControl3.DataSource = servis.ToList();
+                    gridView2.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView2.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView2.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView2.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView2.Columns[4].SummaryItem.DisplayFormat = "{0}";
+
+                    //var servis = from s in dbS.SERVIS_HATLARI
+                    //             where (s.IMALATTARIHI >= tarih1 && s.IMALATTARIHI <= tarih2) && s.ILCE_KODU == ilceKodu
+                    //             orderby s.CAP
+                    //             group s by new { s.CAP } into g
+                    //             select new
+                    //             {
+                    //                 Çap = g.Key.CAP,
+                    //                 BoruUzunluğu = g.Sum(t => t.BORUBOYU),
+                    //                 KazıBoyu = g.Sum(t => t.KAZIBOYU),
+                    //                 EğikAsbuiltMetraj = g.Sum(t => t.SHATTIMETRAJ),
+                    //                 YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
+                    //             };
+                    //gridControl3.DataSource = servis.ToList();
+
+                    SqlDataAdapter daSh = new SqlDataAdapter("SELECT CAP, SUM(BORUBOYU), SUM(KAZIBOYU), SUM(SHATTIMETRAJ), SUM(YATAY_ASBUILT_METRAJ) " +
+                            "FROM dbo.SERVIS_HATLARI WHERE IMALATTARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' AND ILCE_KODU = " + ilceKodu + " GROUP BY CAP", bgl.serhatgazBaglanti());
+                    DataTable dtSh = new DataTable();
+                    daSh.Fill(dtSh);
+                    gridControl3.DataSource = dtSh;
 
                     gridView3.Columns[0].Caption = "ÇAP";
                     gridView3.Columns[1].Caption = "BORU BOYU";
@@ -400,30 +805,183 @@ namespace KargazImalatTakip
                     gridView3.Columns[3].Caption = "EĞİK ASBUİLT METRAJ";
                     gridView3.Columns[4].Caption = "YATAY ASBUILT METRAJ";
 
-                    gridView3.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView3.Columns[0].Width = 60;
 
-                    var kutu = from k in dbS.SERVIS_KUTUSU
-                               where (k.IMALATTARIHI >= tarih1 && k.IMALATTARIHI <= tarih2) && k.ILCE_KODU == ilceKodu
-                               orderby k.CINSI
-                               group k by new { k.CINSI } into g
-                               select new
-                               {
-                                   Cinsi = g.Key.CINSI,
-                                   Adet = g.Count()
-                               };
-                    gridControl4.DataSource = kutu.ToList();
+                    gridView3.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView3.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView3.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView3.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView3.Columns[4].SummaryItem.DisplayFormat = "{0}";
+
+                    //var bagElemanıPe = from beP in dbS.BAGLANTI_ELEMANLARI_PE
+                    //                   where (beP.IMALATTARIHI >= tarih1 && beP.IMALATTARIHI <= tarih2) && beP.ILCE_KODU == ilceKodu
+                    //                   orderby beP.CAP
+                    //                   let cinsiPe = beP.TIPI + " " + beP.CAP
+                    //                   group beP by new { cinsiPe } into g
+                    //                   select new
+                    //                   {
+                    //                       Cap = g.Key.cinsiPe,
+                    //                       Adet = g.Count()
+                    //                   };
+                    //gridControl7.DataSource = bagElemanıPe.ToList();
+
+                    SqlDataAdapter daBePe = new SqlDataAdapter("SELECT TIPI + ' ' + CAP AS TIP, COUNT(CAP) FROM dbo.BAGLANTI_ELEMANLARI_PE " +
+                        "WHERE IMALATTARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' AND ILCE_KODU = " + ilceKodu + 
+                        " GROUP BY TIPI, CAP ORDER BY TIPI, CAP", bgl.serhatgazBaglanti());
+                    DataTable dtBePe = new DataTable();
+                    daBePe.Fill(dtBePe);
+                    gridControl7.DataSource = dtBePe;
+
+                    gridView7.Columns[0].Caption = "MALZEME TİPİ";
+                    gridView7.Columns[1].Caption = "ADET";
+
+                    gridView7.Columns[1].Width = 50;
+
+                    gridView7.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView7.Columns[1].SummaryItem.DisplayFormat = "{0}";
+
+                    //var bagElemanıC = from beC in dbS.BAGLANTI_ELEMANLARI_CELIK
+                    //                  where (beC.IMALATTARIHI >= tarih1 && beC.IMALATTARIHI <= tarih2) && beC.ILCE_KODU == ilceKodu
+                    //                  orderby beC.CAP
+                    //                  let cinsiC = beC.TIPI + " " + beC.CAP
+                    //                  group beC by new { cinsiC } into g
+                    //                  select new
+                    //                  {
+                    //                      Cap = g.Key.cinsiC,
+                    //                      Adet = g.Count()
+                    //                  };
+                    //gridControl9.DataSource = bagElemanıC.ToList();
+
+                    SqlDataAdapter daBeCe = new SqlDataAdapter("SELECT TIPI + ' ' + CAP AS TIP, COUNT(CAP) FROM dbo.BAGLANTI_ELEMANLARI_CELIK " +
+                        "WHERE IMALATTARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' AND ILCE_KODU = " + ilceKodu +
+                        " GROUP BY TIPI, CAP ORDER BY TIPI, CAP", bgl.serhatgazBaglanti());
+                    DataTable dtBeCe = new DataTable();
+                    daBeCe.Fill(dtBeCe);
+                    gridControl9.DataSource = dtBeCe;
+
+                    gridView9.Columns[0].Caption = "MALZEME TİPİ";
+                    gridView9.Columns[1].Caption = "ADET";
+
+                    gridView9.Columns[1].Width = 50;
+
+                    gridView9.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView9.Columns[1].SummaryItem.DisplayFormat = "{0}";
+
+                    //var vanaPe = from vP in dbS.VANA
+                    //             where vP.MALZEME_CINSI == "Polietilen" && (vP.IMALAT_TARIHI >= tarih1 && vP.IMALAT_TARIHI <= tarih2) && vP.ILCE_KODU == ilceKodu
+                    //             orderby vP.CAP
+                    //             group vP by new { vP.CAP } into g
+                    //             select new
+                    //             {
+                    //                 Cap = g.Key.CAP,
+                    //                 Adet = g.Count()
+                    //             };
+                    //gridControl6.DataSource = vanaPe.ToList();
+
+                    SqlDataAdapter daVana = new SqlDataAdapter("SELECT CAP, COUNT(CAP) FROM dbo.VANA WHERE MALZEME_CINSI = 'Polietilen' " +
+                        "AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' AND ILCE_KODU = " + ilceKodu +
+                        " GROUP BY CAP ORDER BY CAP", bgl.serhatgazBaglanti());
+                    DataTable dtVana = new DataTable();
+                    daVana.Fill(dtVana);
+                    gridControl6.DataSource = dtVana;
+
+                    gridView6.Columns[0].Caption = "ÇAP";
+                    gridView6.Columns[1].Caption = "ADET";
+
+                    gridView6.Columns[1].Width = 50;
+
+                    gridView6.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView6.Columns[1].SummaryItem.DisplayFormat = "{0}";
+
+                    //var vanaC = from vC in dbS.VANA
+                    //            where vC.MALZEME_CINSI == "Çelik" && (vC.IMALAT_TARIHI >= tarih1 && vC.IMALAT_TARIHI <= tarih2) && vC.ILCE_KODU == ilceKodu
+                    //            orderby vC.CAP
+                    //            group vC by new { vC.CAP } into g
+                    //            select new
+                    //            {
+                    //                Cap = g.Key.CAP,
+                    //                Adet = g.Count()
+                    //            };
+                    //gridControl8.DataSource = vanaC.ToList();
+
+                    SqlDataAdapter daCVana = new SqlDataAdapter("SELECT CAP, COUNT(CAP) FROM dbo.VANA WHERE MALZEME_CINSI = 'Çelik' " +
+                        "AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' AND ILCE_KODU = " + ilceKodu +
+                        " GROUP BY CAP ORDER BY CAP", bgl.serhatgazBaglanti());
+                    DataTable dtCVana = new DataTable();
+                    daCVana.Fill(dtCVana);
+                    gridControl8.DataSource = dtCVana;
+
+                    gridView8.Columns[0].Caption = "ÇAP";
+                    gridView8.Columns[1].Caption = "ADET";
+
+                    gridView8.Columns[1].Width = 50;
+
+                    gridView8.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView8.Columns[1].SummaryItem.DisplayFormat = "{0}";
+
+                    //var servisElemani = from se in dbS.SERVIS_ELEMANLARI
+                    //                    where (se.IMALAT_TARIHI >= tarih1 && se.IMALAT_TARIHI <= tarih2) && se.ILCE_KODU == ilceKodu
+                    //                    orderby se.CAP
+                    //                    group se by new { se.CAP } into g
+                    //                    select new
+                    //                    {
+                    //                        Cap = g.Key.CAP,
+                    //                        Adet = g.Count()
+                    //                    };
+                    //gridControl5.DataSource = servisElemani.ToList();
+
+                    SqlDataAdapter daSe = new SqlDataAdapter("SELECT CAP, COUNT(CAP) FROM dbo.SERVIS_ELEMANLARI WHERE " +
+                        "IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' AND ILCE_KODU = " + ilceKodu +
+                        " GROUP BY CAP ORDER BY CAP", bgl.serhatgazBaglanti());
+                    DataTable dtSe = new DataTable();
+                    daSe.Fill(dtSe);
+                    gridControl5.DataSource = dtSe;
+
+                    gridView5.Columns[0].Caption = "ÇAP";
+                    gridView5.Columns[1].Caption = "ADET";
+
+                    gridView5.Columns[1].Width = 50;
+
+                    gridView5.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView5.Columns[1].SummaryItem.DisplayFormat = "{0}";
+
+                    //var kutu = from k in dbS.SERVIS_KUTUSU
+                    //           where (k.IMALATTARIHI >= tarih1 && k.IMALATTARIHI <= tarih2) && k.ILCE_KODU == ilceKodu
+                    //           orderby k.CINSI
+                    //           group k by new { k.CINSI } into g
+                    //           select new
+                    //           {
+                    //               Cinsi = g.Key.CINSI,
+                    //               Adet = g.Count()
+                    //           };
+                    //gridControl4.DataSource = kutu.ToList();
+
+                    SqlDataAdapter daSk = new SqlDataAdapter("SELECT CINSI, COUNT(CINSI) FROM dbo.SERVIS_KUTUSU WHERE " +
+                        "IMALATTARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' AND ILCE_KODU = " + ilceKodu +
+                        " GROUP BY CINSI ORDER BY CINSI", bgl.serhatgazBaglanti());
+                    DataTable dtSk = new DataTable();
+                    daSk.Fill(dtSk);
+                    gridControl4.DataSource = dtSk;
 
                     gridView4.Columns[0].Caption = "CİNSİ";
                     gridView4.Columns[1].Caption = "ADET";
 
+                    gridView4.Columns[1].Width = 50;
+
                     gridView4.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    gridView4.Columns[1].SummaryItem.DisplayFormat = "{0}";
 
                     LblBaslik.Text = CmbSirket.Text + " - " + CmbBolge.Text + " İCMALİ";
                     LblTarihAraligi.Text = DtBaslangicTarihi.Text + " - " + DtBitisTarihi.Text;
                 }
+            }
+
+            if (gridView1.RowCount == 0 && gridView2.RowCount == 0 && gridView3.RowCount == 0 && gridView4.RowCount == 0 && gridView5.RowCount == 0 && gridView6.RowCount == 0 && gridView7.RowCount == 0 && gridView8.RowCount == 0 && gridView9.RowCount == 0)
+            {
+                MessageBox.Show("Bu tarihler arasında bir veri bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         
@@ -434,8 +992,8 @@ namespace KargazImalatTakip
 
         private void CmbSirket_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //CmbBolge.Text = "";
-            //CmbBolge.Properties.Items.Clear();
+            CmbBolge.Text = "";
+            CmbBolge.Properties.Items.Clear();
 
             if (CmbSirket.Text == "KARGAZ")
             {
@@ -460,6 +1018,11 @@ namespace KargazImalatTakip
                 }
                 bgl.serhatgazBaglanti().Close();
             }
+        }
+
+        private void FrmIcmal_Load(object sender, EventArgs e)
+        {
+            DtBitisTarihi.Text = DateTime.Now.ToString("MM/dd/yyyy");
         }
     }
 }
