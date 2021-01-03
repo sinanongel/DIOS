@@ -583,8 +583,8 @@ namespace KargazImalatTakip
 
             if (CmbSirket.Text == "SERHATGAZ")
             {
-                DateTime tarih1 = DateTime.Parse(DtBaslangicTarihi.Text); //Convert.ToDateTime(DtBaslangicTarihi.Text);
-                DateTime tarih2 = DateTime.Parse(DtBitisTarihi.Text); //Convert.ToDateTime(DtBitisTarihi.Text);
+                DateTime tarih1 = DateTime.Parse(DtBaslangicTarihi.Text); 
+                DateTime tarih2 = DateTime.Parse(DtBitisTarihi.Text); 
 
                 if (CmbBolge.Text == "TÜMÜ")
                 {
