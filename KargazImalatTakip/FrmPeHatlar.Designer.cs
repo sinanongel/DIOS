@@ -91,7 +91,6 @@
             "SERHATGAZ"});
             this.CmbŞirket.Size = new System.Drawing.Size(109, 20);
             this.CmbŞirket.TabIndex = 2;
-            this.CmbŞirket.SelectedIndexChanged += new System.EventHandler(this.CmbŞirket_SelectedIndexChanged);
             // 
             // labelControl1
             // 

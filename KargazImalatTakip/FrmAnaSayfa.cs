@@ -200,11 +200,35 @@ namespace KargazImalatTakip
 
         private void BtnAboneligiOlanKutusuOlmayanBinalar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (fr16 == null || fr15.IsDisposed)
+            if (fr16 == null || fr16.IsDisposed)
             {
                 fr16 = new FrmAboOlanKutusuOlmayanBina();
                 fr16.MdiParent = this;
                 fr16.Show();
+            }
+        }
+
+        FrmMucbirTakip fr17;
+
+        private void BtnMucbirTakip_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (fr17 == null || fr17.IsDisposed)
+            {
+                fr17 = new FrmMucbirTakip();
+                fr17.MdiParent = this;
+                fr17.Show();
+            }
+        }
+
+        FrmMucbir fr18;
+
+        private void BtnMucbir_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (fr18 == null || fr18.IsDisposed)
+            {
+                fr18 = new FrmMucbir();
+                fr18.MdiParent = this;
+                fr18.Show();
             }
         }
     }

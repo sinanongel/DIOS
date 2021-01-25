@@ -27,8 +27,9 @@ namespace KargazImalatTakip
                 if (CmbŞirket.Text == "KARGAZ")
                 {
                     SqlDataAdapter da = new SqlDataAdapter("SELECT ROW_NUMBER() OVER(ORDER BY I.ILCE_ADI) AS SIRANO, H.MSLINK, H.SEKTOR, I.ILCE_ADI AS ILCE_ADI, " +
-                            "M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, YATIRIMYILI, CONVERT(VARCHAR, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, " +
-                            "FORMNO, FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, NET_BORU_CAPI, BORU_UZUNLUGU, YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU " +
+                            "M.MAHALLE_ADI AS MAHALLE, CAST(YOL_KODU AS NVARCHAR) + ' - ' + Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, " +
+                            "YOL_BOYU, YATIRIMYILI, CONVERT(VARCHAR, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, FORMNO, " +
+                            "FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, NET_BORU_CAPI, BORU_UZUNLUGU, YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU " +
                             "FROM dbo.HATLAR H " +
                             "LEFT JOIN DBO.YOL Y ON H.YOL_MSLINK = Y.MSLINK " +
                             "LEFT JOIN DBO.MAHALLE M ON H.MAHALLE_KODU = M.MAHALLE_KODU " +
@@ -38,35 +39,13 @@ namespace KargazImalatTakip
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     gridControl1.DataSource = dt;
-
-                    gridView1.Columns["SIRANO"].Caption = "SIRA NO";
-                    gridView1.Columns["SEKTOR"].Caption = "SEKTÖR";
-                    gridView1.Columns["ILCE_ADI"].Caption = "İL/İLÇE ADI";
-                    gridView1.Columns["YATIRIMYILI"].Caption = "YATIRIM YILI";
-                    gridView1.Columns["IMALAT_TARIHI"].Caption = "İMALAT TARİHİ";
-                    gridView1.Columns["FORMNO"].Caption = "FORM NO";
-                    gridView1.Columns["FROM_ID"].Caption = "FROM ID";
-                    gridView1.Columns["FROM_MSLINK"].Caption = "FROM MSLINK";
-                    gridView1.Columns["TO_ID"].Caption = "TO ID";
-                    gridView1.Columns["TO_MSLINK"].Caption = "TO MSLINK";
-                    gridView1.Columns["NET_BORU_CAPI"].Caption = "BORU ÇAPI";
-                    gridView1.Columns["BORU_UZUNLUGU"].Caption = "FORM METRAJI";
-                    gridView1.Columns["YATAY_ASBUILT_METRAJ"].Caption = "YATAY ASBUILT METRAJ";
-                    gridView1.Columns["ASBUILT_METRAJ"].Caption = "ASBUILT METRAJ";
-                    gridView1.Columns["KAZI_BOYU"].Caption = "KAZI BOYU";
-
-                    gridView1.Columns[0].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
-                    gridView1.Columns[14].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[15].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[16].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[17].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-
                 }
                 else if (CmbŞirket.Text == "SERHATGAZ")
                 {
                     SqlDataAdapter da = new SqlDataAdapter("SELECT ROW_NUMBER() OVER(ORDER BY I.ILCE_ADI) AS SIRANO, H.MSLINK, H.SEKTOR, I.ILCE_ADI AS ILCE_ADI, " +
-                            "M.MAHALLE_ADI AS MAHALLE, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, YATIRIMYILI, CONVERT(VARCHAR, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, " +
-                            "FORMNO, FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, NET_BORU_CAPI, BORU_UZUNLUGU, YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU " +
+                            "M.MAHALLE_ADI AS MAHALLE, CAST(YOL_KODU AS NVARCHAR) + ' - ' + Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, " +
+                            "YOL_BOYU, YATIRIMYILI, CONVERT(VARCHAR, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, FORMNO, " +
+                            "FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, NET_BORU_CAPI, BORU_UZUNLUGU, YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU " +
                             "FROM dbo.HATLAR H " +
                             "LEFT JOIN DBO.YOL Y ON H.YOL_MSLINK = Y.MSLINK " +
                             "LEFT JOIN DBO.MAHALLE M ON H.MAHALLE_KODU = M.MAHALLE_KODU " +
@@ -76,30 +55,33 @@ namespace KargazImalatTakip
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     gridControl1.DataSource = dt;
-
-                    gridView1.Columns["SIRANO"].Caption = "SIRA NO";
-                    gridView1.Columns["SEKTOR"].Caption = "SEKTÖR";
-                    gridView1.Columns["ILCE_ADI"].Caption = "İL/İLÇE ADI";
-                    gridView1.Columns["YATIRIMYILI"].Caption = "YATIRIM YILI";
-                    gridView1.Columns["IMALAT_TARIHI"].Caption = "İMALAT TARİHİ";
-                    gridView1.Columns["FORMNO"].Caption = "FORM NO";
-                    gridView1.Columns["FROM_ID"].Caption = "FROM ID";
-                    gridView1.Columns["FROM_MSLINK"].Caption = "FROM MSLINK";
-                    gridView1.Columns["TO_ID"].Caption = "TO ID";
-                    gridView1.Columns["TO_MSLINK"].Caption = "TO MSLINK";
-                    gridView1.Columns["NET_BORU_CAPI"].Caption = "BORU ÇAPI";
-                    gridView1.Columns["BORU_UZUNLUGU"].Caption = "FORM METRAJI";
-                    gridView1.Columns["YATAY_ASBUILT_METRAJ"].Caption = "YATAY ASBUILT METRAJ";
-                    gridView1.Columns["ASBUILT_METRAJ"].Caption = "ASBUILT METRAJ";
-                    gridView1.Columns["KAZI_BOYU"].Caption = "KAZI BOYU";
-
-                    gridView1.Columns[0].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
-                    gridView1.Columns[14].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[15].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[16].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[17].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-
                 }
+
+                gridView1.Columns["SIRANO"].Caption = "SIRA NO";
+                gridView1.Columns["SEKTOR"].Caption = "SEKTÖR";
+                gridView1.Columns["ILCE_ADI"].Caption = "İL/İLÇE ADI";
+                gridView1.Columns["YOL_BOYU"].Caption = "YOL BOYU";
+                gridView1.Columns["YOL_BOYU"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                gridView1.Columns["YOL_BOYU"].DisplayFormat.FormatString = "{0:n2}";
+                gridView1.Columns["YATIRIMYILI"].Caption = "YATIRIM YILI";
+                gridView1.Columns["IMALAT_TARIHI"].Caption = "İMALAT TARİHİ";
+                gridView1.Columns["FORMNO"].Caption = "FORM NO";
+                gridView1.Columns["FROM_ID"].Caption = "FROM ID";
+                gridView1.Columns["FROM_MSLINK"].Caption = "FROM MSLINK";
+                gridView1.Columns["TO_ID"].Caption = "TO ID";
+                gridView1.Columns["TO_MSLINK"].Caption = "TO MSLINK";
+                gridView1.Columns["NET_BORU_CAPI"].Caption = "BORU ÇAPI";
+                gridView1.Columns["BORU_UZUNLUGU"].Caption = "FORM METRAJI";
+                gridView1.Columns["YATAY_ASBUILT_METRAJ"].Caption = "YATAY ASBUILT METRAJ";
+                gridView1.Columns["ASBUILT_METRAJ"].Caption = "ASBUILT METRAJ";
+                gridView1.Columns["KAZI_BOYU"].Caption = "KAZI BOYU";
+
+                gridView1.Columns[0].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
+                gridView1.Columns[6].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                gridView1.Columns[15].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                gridView1.Columns[16].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                gridView1.Columns[17].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                gridView1.Columns[18].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             }
             catch
             {
@@ -114,67 +96,5 @@ namespace KargazImalatTakip
             //Dosyayı direk varsayılan uygulamayla açmak için.
             Process.Start(yol);
         }
-
-        private void CmbŞirket_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (CmbŞirket.Text == "KARGAZ")
-            //{
-            //    LblBolge.Visible = true;
-            //    CmbBolge.Visible = true;
-            //    bolgeListele();
-            //    mahalleListele();
-            //    sokakListele();
-            //    yilListele();
-            //}
-            //else if (CmbŞirket.Text == "SERHATGAZ")
-            //{
-            //    LblBolge.Visible = false;
-            //    CmbBolge.Visible = false;
-            //}
-        }
-
-        //void bolgeListele()
-        //{
-        //    SqlCommand komutbolge = new SqlCommand("SELECT ILCE_ADI FROM DBO.ILCE", bgl.kargazBaglanti());
-        //    SqlDataReader drBolge = komutbolge.ExecuteReader();
-        //    while (drBolge.Read())
-        //    {
-        //        CmbBolge.Properties.Items.Add(drBolge[0]);
-        //    }
-        //    bgl.kargazBaglanti().Close();
-        //}
-
-        //void mahalleListele()
-        //{
-        //    SqlCommand komutMahalle = new SqlCommand("SELECT MAHALLE_ADI FROM DBO.MAHALLE ORDER BY MAHALLE_ADI", bgl.kargazBaglanti());
-        //    SqlDataReader drMahalle = komutMahalle.ExecuteReader();
-        //    while (drMahalle.Read())
-        //    {
-        //        CmbMahalle.Properties.Items.Add(drMahalle[0]);
-        //    }
-        //    bgl.kargazBaglanti().Close();
-        //}
-
-        //void sokakListele()
-        //{
-        //    SqlCommand komutSokak = new SqlCommand("SELECT YOL_ADI FROM DBO.YOL ORDER BY YOL_ADI", bgl.kargazBaglanti());
-        //    SqlDataReader drSokak = komutSokak.ExecuteReader();
-        //    while (drSokak.Read())
-        //    {
-        //        CmbSokak.Properties.Items.Add(drSokak[0]);
-        //    }
-        //    bgl.kargazBaglanti().Close();
-        //}
-
-        //void yilListele()
-        //{
-        //    SqlCommand komutYil = new SqlCommand("SELECT YATIRIMYILI FROM DBO.D_YATIRIM ORDER BY YATIRIMYILI", bgl.kargazBaglanti());
-        //    SqlDataReader drYil = komutYil.ExecuteReader();
-        //    while (drYil.Read())
-        //    {
-        //        CmbYil.Properties.Items.Add(drYil[0]);
-        //    }
-        //    bgl.kargazBaglanti().Close();
-        //}
     }
 }

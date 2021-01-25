@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Collections;
 using System.Data.Entity;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace KargazImalatTakip
 {
@@ -20,8 +23,6 @@ namespace KargazImalatTakip
             InitializeComponent();
         }
 
-        KargazHaritaEntities db = new KargazHaritaEntities();
-        SerhatgazHaritaEntities dbS = new SerhatgazHaritaEntities();
         SqlBaglanti bgl = new SqlBaglanti();
 
         void listele()
@@ -56,20 +57,28 @@ namespace KargazImalatTakip
 
                     gridView1.Columns[0].Caption = "ÇAP";
                     gridView1.Columns[1].Caption = "BORU BOYU";
+                    gridView1.Columns[1].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView1.Columns[1].DisplayFormat.FormatString = "{0:n2}";
                     gridView1.Columns[2].Caption = "KAZI BOYU";
+                    gridView1.Columns[2].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView1.Columns[2].DisplayFormat.FormatString = "{0:n2}";
                     gridView1.Columns[3].Caption = "ASBUILT METRAJ";
+                    gridView1.Columns[3].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView1.Columns[3].DisplayFormat.FormatString = "{0:n2}";
                     gridView1.Columns[4].Caption = "YATAY ASBUILT METRAJ";
+                    gridView1.Columns[4].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView1.Columns[4].DisplayFormat.FormatString = "{0:n2}";
 
                     gridView1.Columns[0].Width = 60;
 
                     gridView1.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[1].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView1.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[2].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView1.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[3].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView1.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[4].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[4].SummaryItem.DisplayFormat = "{0:0.##}";
 
                     //var celik = from h in db.HATLAR
                     //            where h.MALZEME_CINSI == "Çelik" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2) && h.ILCE_KODU == ilceKodu
@@ -94,20 +103,28 @@ namespace KargazImalatTakip
 
                     gridView2.Columns[0].Caption = "ÇAP";
                     gridView2.Columns[1].Caption = "BORU BOYU";
+                    gridView2.Columns[1].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView2.Columns[1].DisplayFormat.FormatString = "{0:n2}";
                     gridView2.Columns[2].Caption = "KAZI BOYU";
+                    gridView2.Columns[2].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView2.Columns[2].DisplayFormat.FormatString = "{0:n2}";
                     gridView2.Columns[3].Caption = "ASBUILT METRAJ";
+                    gridView2.Columns[3].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView2.Columns[3].DisplayFormat.FormatString = "{0:n2}";
                     gridView2.Columns[4].Caption = "YATAY ASBUILT METRAJ";
+                    gridView2.Columns[4].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView2.Columns[4].DisplayFormat.FormatString = "{0:n2}";
 
                     gridView2.Columns[0].Width = 60;
 
                     gridView2.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[1].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView2.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[2].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView2.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[3].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView2.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[4].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[4].SummaryItem.DisplayFormat = "{0:0.##}";
 
                     //var serHat = from sh in db.SERVIS_HATLARI
                     //            where (sh.IMALATTARIHI >= tarih1 && sh.IMALATTARIHI <= tarih2) && sh.ILCE_KODU == ilceKodu
@@ -131,20 +148,28 @@ namespace KargazImalatTakip
 
                     gridView3.Columns[0].Caption = "ÇAP";
                     gridView3.Columns[1].Caption = "BORU BOYU";
+                    gridView3.Columns[1].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView3.Columns[1].DisplayFormat.FormatString = "{0:n2}";
                     gridView3.Columns[2].Caption = "KAZI BOYU";
+                    gridView3.Columns[2].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView3.Columns[2].DisplayFormat.FormatString = "{0:n2}";
                     gridView3.Columns[3].Caption = "EĞİK ASBUİLT METRAJ";
+                    gridView3.Columns[3].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView3.Columns[3].DisplayFormat.FormatString = "{0:n2}";
                     gridView3.Columns[4].Caption = "YATAY ASBUILT METRAJ";
+                    gridView3.Columns[4].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView3.Columns[4].DisplayFormat.FormatString = "{0:n2}";
 
                     gridView3.Columns[0].Width = 60;
 
                     gridView3.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[1].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView3.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[2].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView3.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[3].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView3.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[4].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[4].SummaryItem.DisplayFormat = "{0:0.##}";
 
                     //var bagElemanıPe = from beP in db.BAGLANTI_ELEMANLARI_PE
                     //                   where (beP.IMALATTARIHI >= tarih1 && beP.IMALATTARIHI <= tarih2) && beP.ILCE_KODU == ilceKodu
@@ -303,7 +328,21 @@ namespace KargazImalatTakip
                 }
                 else
                 {
-                    int ilceKodu = Convert.ToInt32(db.ilce.FirstOrDefault(i => i.ilce_adi == CmbBolge.Text).ilce_kodu);
+                    //int ilceKodu = Convert.ToInt32(db.ilce.FirstOrDefault(i => i.ilce_adi == CmbBolge.Text).ilce_kodu);
+
+
+                    //int ilceKodu = Convert.ToInt32(dr.Read());
+
+                    SqlCommand daIlceKodu = new SqlCommand("SELECT ILCE_KODU FROM ILCE WHERE ILCE_ADI = @ilce", bgl.kargazBaglanti());
+                    daIlceKodu.Parameters.AddWithValue("@ilce", CmbBolge.Text);
+                    SqlDataReader drIlceKodu = daIlceKodu.ExecuteReader();
+                    while (drIlceKodu.Read())
+                    {
+                        labelControl7.Text = drIlceKodu[0].ToString();
+                    }
+                    bgl.kargazBaglanti().Close();
+
+                    int ilceKodu = Convert.ToInt32(labelControl7.Text);
 
                     //var polietilen = from h in db.HATLAR
                     //            where h.MALZEME_CINSI == "Polietilen" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2) && h.ILCE_KODU == ilceKodu
@@ -328,20 +367,28 @@ namespace KargazImalatTakip
 
                     gridView1.Columns[0].Caption = "ÇAP";
                     gridView1.Columns[1].Caption = "BORU BOYU";
+                    gridView1.Columns[1].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView1.Columns[1].DisplayFormat.FormatString = "{0:n2}";
                     gridView1.Columns[2].Caption = "KAZI BOYU";
+                    gridView1.Columns[2].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView1.Columns[2].DisplayFormat.FormatString = "{0:n2}";
                     gridView1.Columns[3].Caption = "ASBUILT METRAJ";
+                    gridView1.Columns[3].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView1.Columns[3].DisplayFormat.FormatString = "{0:n2}";
                     gridView1.Columns[4].Caption = "YATAY ASBUILT METRAJ";
+                    gridView1.Columns[4].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView1.Columns[4].DisplayFormat.FormatString = "{0:n2}";
 
                     gridView1.Columns[0].Width = 60;
 
                     gridView1.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[1].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView1.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[2].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView1.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[3].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView1.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[4].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[4].SummaryItem.DisplayFormat = "{0:0.##}";
 
                     //var celik = from h in db.HATLAR
                     //            where h.MALZEME_CINSI == "Çelik" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2) && h.ILCE_KODU == ilceKodu
@@ -366,20 +413,28 @@ namespace KargazImalatTakip
 
                     gridView2.Columns[0].Caption = "ÇAP";
                     gridView2.Columns[1].Caption = "BORU BOYU";
+                    gridView2.Columns[1].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView2.Columns[1].DisplayFormat.FormatString = "{0:n2}";
                     gridView2.Columns[2].Caption = "KAZI BOYU";
+                    gridView2.Columns[2].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView2.Columns[2].DisplayFormat.FormatString = "{0:n2}";
                     gridView2.Columns[3].Caption = "ASBUILT METRAJ";
+                    gridView2.Columns[3].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView2.Columns[3].DisplayFormat.FormatString = "{0:n2}";
                     gridView2.Columns[4].Caption = "YATAY ASBUILT METRAJ";
+                    gridView2.Columns[4].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView2.Columns[4].DisplayFormat.FormatString = "{0:n2}";
 
                     gridView2.Columns[0].Width = 60;
 
                     gridView2.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[1].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView2.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[2].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView2.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[3].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView2.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[4].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[4].SummaryItem.DisplayFormat = "{0:0.##}";
 
                     //var serHat = from sh in db.SERVIS_HATLARI
                     //            where (sh.IMALATTARIHI >= tarih1 && sh.IMALATTARIHI <= tarih2) && sh.ILCE_KODU == ilceKodu
@@ -403,20 +458,28 @@ namespace KargazImalatTakip
 
                     gridView3.Columns[0].Caption = "ÇAP";
                     gridView3.Columns[1].Caption = "BORU BOYU";
+                    gridView3.Columns[1].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView3.Columns[1].DisplayFormat.FormatString = "{0:n2}";
                     gridView3.Columns[2].Caption = "KAZI BOYU";
+                    gridView3.Columns[2].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView3.Columns[2].DisplayFormat.FormatString = "{0:n2}";
                     gridView3.Columns[3].Caption = "EĞİK ASBUİLT METRAJ";
+                    gridView3.Columns[3].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView3.Columns[3].DisplayFormat.FormatString = "{0:n2}";
                     gridView3.Columns[4].Caption = "YATAY ASBUILT METRAJ";
+                    gridView3.Columns[4].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView3.Columns[4].DisplayFormat.FormatString = "{0:n2}";
 
                     gridView3.Columns[0].Width = 60;
 
                     gridView3.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[1].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView3.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[2].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView3.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[3].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView3.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[4].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[4].SummaryItem.DisplayFormat = "{0:0.##}";
 
                     //var bagElemanıPe = from beP in db.BAGLANTI_ELEMANLARI_PE
                     //                   where (beP.IMALATTARIHI >= tarih1 && beP.IMALATTARIHI <= tarih2) && beP.ILCE_KODU == ilceKodu
@@ -601,103 +664,115 @@ namespace KargazImalatTakip
                     //                     YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
                     //                 };
                     //gridControl1.DataSource = polietilen.ToList();
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT NET_BORU_CAPI, SUM(BORU_UZUNLUGU), SUM(YATAY_ASBUILT_METRAJ), SUM(ASBUILT_METRAJ), SUM(KAZI_BOYU) " +
-                            "FROM dbo.HATLAR H " +
-                            "WHERE H.MALZEME_CINSI = 'Polietilen' AND NOT LIKE 'TB%' AND H.IMALAT_TARIHI BETWEEN " + tarih1 + " AND " + tarih2 +
-                            "GROUP BY H.NET_BORU_CAPI", bgl.serhatgazBaglanti());
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    gridControl1.DataSource = dt;
+                    //SqlDataAdapter da = new SqlDataAdapter("SELECT NET_BORU_CAPI, SUM(BORU_UZUNLUGU), SUM(YATAY_ASBUILT_METRAJ), SUM(ASBUILT_METRAJ), SUM(KAZI_BOYU) " +
+                    //        "FROM dbo.HATLAR H " +
+                    //        "WHERE H.MALZEME_CINSI = 'Polietilen' AND NOT LIKE 'TB%' AND H.IMALAT_TARIHI BETWEEN " + tarih1 + " AND " + tarih2 +
+                    //        "GROUP BY H.NET_BORU_CAPI", bgl.serhatgazBaglanti());
+                    //DataTable dt = new DataTable();
+                    //da.Fill(dt);
+                    //gridControl1.DataSource = dt;
 
-                    gridView1.Columns[0].Caption = "ÇAP";
-                    gridView1.Columns[1].Caption = "BORU BOYU";
-                    gridView1.Columns[2].Caption = "KAZI BOYU";
-                    gridView1.Columns[3].Caption = "ASBUILT METRAJ";
-                    gridView1.Columns[4].Caption = "YATAY ASBUILT METRAJ";
+                    //gridView1.Columns[0].Caption = "ÇAP";
+                    //gridView1.Columns[1].Caption = "BORU BOYU";
+                    //gridView1.Columns[2].Caption = "KAZI BOYU";
+                    //gridView1.Columns[3].Caption = "ASBUILT METRAJ";
+                    //gridView1.Columns[4].Caption = "YATAY ASBUILT METRAJ";
 
-                    gridView1.Columns[0].Width = 60;
+                    //gridView1.Columns[0].Width = 60;
 
-                    gridView1.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    //gridView1.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    //gridView1.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    //gridView1.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    //gridView1.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
 
-                    var celik = from h in dbS.HATLAR
-                                where h.MALZEME_CINSI == "Çelik" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2)
-                                orderby h.NET_BORU_CAPI
-                                group h by new { h.NET_BORU_CAPI } into g
-                                select new
-                                {
-                                    Çap = g.Key.NET_BORU_CAPI,
-                                    BoruUzunluğu = g.Sum(t => t.BORU_UZUNLUGU),
-                                    KazıBoyu = g.Sum(t => t.KAZI_BOYU),
-                                    AsbuiltMetraj = g.Sum(t => t.ASBUILT_METRAJ),
-                                    YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
-                                };
-                    gridControl2.DataSource = celik.ToList();
+                    //var celik = from h in dbS.HATLAR
+                    //            where h.MALZEME_CINSI == "Çelik" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2)
+                    //            orderby h.NET_BORU_CAPI
+                    //            group h by new { h.NET_BORU_CAPI } into g
+                    //            select new
+                    //            {
+                    //                Çap = g.Key.NET_BORU_CAPI,
+                    //                BoruUzunluğu = g.Sum(t => t.BORU_UZUNLUGU),
+                    //                KazıBoyu = g.Sum(t => t.KAZI_BOYU),
+                    //                AsbuiltMetraj = g.Sum(t => t.ASBUILT_METRAJ),
+                    //                YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
+                    //            };
+                    //gridControl2.DataSource = celik.ToList();
 
-                    gridView2.Columns[0].Caption = "ÇAP";
-                    gridView2.Columns[1].Caption = "BORU BOYU";
-                    gridView2.Columns[2].Caption = "KAZI BOYU";
-                    gridView2.Columns[3].Caption = "ASBUILT METRAJ";
-                    gridView2.Columns[4].Caption = "YATAY ASBUILT METRAJ";
+                    //gridView2.Columns[0].Caption = "ÇAP";
+                    //gridView2.Columns[1].Caption = "BORU BOYU";
+                    //gridView2.Columns[2].Caption = "KAZI BOYU";
+                    //gridView2.Columns[3].Caption = "ASBUILT METRAJ";
+                    //gridView2.Columns[4].Caption = "YATAY ASBUILT METRAJ";
 
-                    gridView1.Columns[0].Width = 60;
+                    //gridView1.Columns[0].Width = 60;
 
-                    gridView2.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    //gridView2.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    //gridView2.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    //gridView2.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    //gridView2.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
 
-                    var servis = from s in dbS.SERVIS_HATLARI
-                                 where (s.IMALATTARIHI >= tarih1 && s.IMALATTARIHI <= tarih2)
-                                 orderby s.CAP
-                                 group s by new { s.CAP } into g
-                                 select new
-                                 {
-                                     Çap = g.Key.CAP,
-                                     BoruUzunluğu = g.Sum(t => t.BORUBOYU),
-                                     KazıBoyu = g.Sum(t => t.KAZIBOYU),
-                                     EğikAsbuiltMetraj = g.Sum(t => t.SHATTIMETRAJ),
-                                     YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
-                                 };
-                    gridControl3.DataSource = servis.ToList();
+                    //var servis = from s in dbS.SERVIS_HATLARI
+                    //             where (s.IMALATTARIHI >= tarih1 && s.IMALATTARIHI <= tarih2)
+                    //             orderby s.CAP
+                    //             group s by new { s.CAP } into g
+                    //             select new
+                    //             {
+                    //                 Çap = g.Key.CAP,
+                    //                 BoruUzunluğu = g.Sum(t => t.BORUBOYU),
+                    //                 KazıBoyu = g.Sum(t => t.KAZIBOYU),
+                    //                 EğikAsbuiltMetraj = g.Sum(t => t.SHATTIMETRAJ),
+                    //                 YatayAsbuiltMetraj = g.Sum(t => t.YATAY_ASBUILT_METRAJ)
+                    //             };
+                    //gridControl3.DataSource = servis.ToList();
 
-                    gridView3.Columns[0].Caption = "ÇAP";
-                    gridView3.Columns[1].Caption = "BORU BOYU";
-                    gridView3.Columns[2].Caption = "KAZI BOYU";
-                    gridView3.Columns[3].Caption = "EĞİK ASBUİLT METRAJ";
-                    gridView3.Columns[4].Caption = "YATAY ASBUILT METRAJ";
+                    //gridView3.Columns[0].Caption = "ÇAP";
+                    //gridView3.Columns[1].Caption = "BORU BOYU";
+                    //gridView3.Columns[2].Caption = "KAZI BOYU";
+                    //gridView3.Columns[3].Caption = "EĞİK ASBUİLT METRAJ";
+                    //gridView3.Columns[4].Caption = "YATAY ASBUILT METRAJ";
 
-                    gridView1.Columns[0].Width = 60;
+                    //gridView1.Columns[0].Width = 60;
 
-                    gridView3.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    //gridView3.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    //gridView3.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    //gridView3.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    //gridView3.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
 
-                    var kutu = from k in dbS.SERVIS_KUTUSU
-                               where (k.IMALATTARIHI >= tarih1 && k.IMALATTARIHI <= tarih2)
-                               orderby k.CINSI
-                               group k by new { k.CINSI } into g
-                               select new
-                               {
-                                   Cinsi = g.Key.CINSI,
-                                   Adet = g.Count()
-                               };
-                    gridControl4.DataSource = kutu.ToList();
+                    //var kutu = from k in dbS.SERVIS_KUTUSU
+                    //           where (k.IMALATTARIHI >= tarih1 && k.IMALATTARIHI <= tarih2)
+                    //           orderby k.CINSI
+                    //           group k by new { k.CINSI } into g
+                    //           select new
+                    //           {
+                    //               Cinsi = g.Key.CINSI,
+                    //               Adet = g.Count()
+                    //           };
+                    //gridControl4.DataSource = kutu.ToList();
 
-                    gridView4.Columns[0].Caption = "CİNSİ";
-                    gridView4.Columns[1].Caption = "ADET";
+                    //gridView4.Columns[0].Caption = "CİNSİ";
+                    //gridView4.Columns[1].Caption = "ADET";
 
-                    gridView4.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    //gridView4.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
 
-                    LblBaslik.Text = CmbSirket.Text + " TÜM BÖLGELER İCMALİ";
-                    LblTarihAraligi.Text = DtBaslangicTarihi.Text + " - " + DtBitisTarihi.Text;
+                    //LblBaslik.Text = CmbSirket.Text + " TÜM BÖLGELER İCMALİ";
+                    //LblTarihAraligi.Text = DtBaslangicTarihi.Text + " - " + DtBitisTarihi.Text;
                 }
                 else
                 {
-                    int ilceKodu = Convert.ToInt32(dbS.ilce.FirstOrDefault(i => i.ilce_adi == CmbBolge.Text).ilce_kodu);
+                    //int ilceKodu = Convert.ToInt32(dbS.ilce.FirstOrDefault(i => i.ilce_adi == CmbBolge.Text).ilce_kodu);
+
+
+                    SqlCommand daIlceKodu = new SqlCommand("SELECT ILCE_KODU FROM ILCE WHERE ILCE_ADI = @ilce", bgl.serhatgazBaglanti());
+                    daIlceKodu.Parameters.AddWithValue("@ilce", CmbBolge.Text);
+                    SqlDataReader drIlceKodu = daIlceKodu.ExecuteReader();
+                    while (drIlceKodu.Read())
+                    {
+                        labelControl7.Text = drIlceKodu[0].ToString();
+                    }
+                    bgl.serhatgazBaglanti().Close();
+
+                    int ilceKodu = Convert.ToInt32(labelControl7.Text);
 
                     //var polietilen = from h in dbS.HATLAR
                     //                 where h.MALZEME_CINSI == "Polietilen" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2) && h.ILCE_KODU == ilceKodu
@@ -724,20 +799,28 @@ namespace KargazImalatTakip
 
                     gridView1.Columns[0].Caption = "ÇAP";
                     gridView1.Columns[1].Caption = "BORU BOYU";
+                    gridView1.Columns[1].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView1.Columns[1].DisplayFormat.FormatString = "{0:n2}";
                     gridView1.Columns[2].Caption = "KAZI BOYU";
+                    gridView1.Columns[2].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView1.Columns[2].DisplayFormat.FormatString = "{0:n2}";
                     gridView1.Columns[3].Caption = "ASBUILT METRAJ";
+                    gridView1.Columns[3].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView1.Columns[3].DisplayFormat.FormatString = "{0:n2}";
                     gridView1.Columns[4].Caption = "YATAY ASBUILT METRAJ";
+                    gridView1.Columns[4].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView1.Columns[4].DisplayFormat.FormatString = "{0:n2}";
 
                     gridView1.Columns[0].Width = 60;
 
                     gridView1.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[1].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView1.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[2].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView1.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[3].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView1.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView1.Columns[4].SummaryItem.DisplayFormat = "{0}";
+                    gridView1.Columns[4].SummaryItem.DisplayFormat = "{0:0.##}";
 
                     //var celik = from h in dbS.HATLAR
                     //            where h.MALZEME_CINSI == "Çelik" && !h.NET_BORU_CAPI.Contains("TB") && (h.IMALAT_TARIHI >= tarih1 && h.IMALAT_TARIHI <= tarih2) && h.ILCE_KODU == ilceKodu
@@ -764,20 +847,28 @@ namespace KargazImalatTakip
 
                     gridView2.Columns[0].Caption = "ÇAP";
                     gridView2.Columns[1].Caption = "BORU BOYU";
+                    gridView2.Columns[1].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView2.Columns[1].DisplayFormat.FormatString = "{0:n2}";
                     gridView2.Columns[2].Caption = "KAZI BOYU";
+                    gridView2.Columns[2].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView2.Columns[2].DisplayFormat.FormatString = "{0:n2}";
                     gridView2.Columns[3].Caption = "ASBUILT METRAJ";
+                    gridView2.Columns[3].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView2.Columns[3].DisplayFormat.FormatString = "{0:n2}";
                     gridView2.Columns[4].Caption = "YATAY ASBUILT METRAJ";
+                    gridView2.Columns[4].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView2.Columns[4].DisplayFormat.FormatString = "{0:n2}";
 
                     gridView2.Columns[0].Width = 60;
 
                     gridView2.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[1].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView2.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[2].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView2.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[3].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView2.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView2.Columns[4].SummaryItem.DisplayFormat = "{0}";
+                    gridView2.Columns[4].SummaryItem.DisplayFormat = "{0:0.##}";
 
                     //var servis = from s in dbS.SERVIS_HATLARI
                     //             where (s.IMALATTARIHI >= tarih1 && s.IMALATTARIHI <= tarih2) && s.ILCE_KODU == ilceKodu
@@ -801,20 +892,28 @@ namespace KargazImalatTakip
 
                     gridView3.Columns[0].Caption = "ÇAP";
                     gridView3.Columns[1].Caption = "BORU BOYU";
+                    gridView3.Columns[1].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView3.Columns[1].DisplayFormat.FormatString = "{0:n2}";
                     gridView3.Columns[2].Caption = "KAZI BOYU";
+                    gridView3.Columns[2].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView3.Columns[2].DisplayFormat.FormatString = "{0:n2}";
                     gridView3.Columns[3].Caption = "EĞİK ASBUİLT METRAJ";
+                    gridView3.Columns[3].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView3.Columns[3].DisplayFormat.FormatString = "{0:n2}";
                     gridView3.Columns[4].Caption = "YATAY ASBUILT METRAJ";
+                    gridView3.Columns[4].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    gridView3.Columns[4].DisplayFormat.FormatString = "{0:n2}";
 
                     gridView3.Columns[0].Width = 60;
 
                     gridView3.Columns[1].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[1].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[1].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView3.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[2].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[2].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView3.Columns[3].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[3].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[3].SummaryItem.DisplayFormat = "{0:0.##}";
                     gridView3.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    gridView3.Columns[4].SummaryItem.DisplayFormat = "{0}";
+                    gridView3.Columns[4].SummaryItem.DisplayFormat = "{0:0.##}";
 
                     //var bagElemanıPe = from beP in dbS.BAGLANTI_ELEMANLARI_PE
                     //                   where (beP.IMALATTARIHI >= tarih1 && beP.IMALATTARIHI <= tarih2) && beP.ILCE_KODU == ilceKodu
@@ -1023,6 +1122,10 @@ namespace KargazImalatTakip
         private void FrmIcmal_Load(object sender, EventArgs e)
         {
             DtBitisTarihi.Text = DateTime.Now.ToString("MM/dd/yyyy");
+        }
+        private void BtnPdf_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

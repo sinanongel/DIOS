@@ -50,6 +50,7 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.BtnAboneligiOlanKutusuOlmayanBinalar = new DevExpress.XtraBars.BarButtonItem();
+            this.BtnMucbirTakip = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -66,6 +67,7 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.BtnMucbir = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -96,9 +98,11 @@
             this.barButtonItem1,
             this.barButtonItem2,
             this.barButtonItem3,
-            this.BtnAboneligiOlanKutusuOlmayanBinalar});
+            this.BtnAboneligiOlanKutusuOlmayanBinalar,
+            this.BtnMucbirTakip,
+            this.BtnMucbir});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 26;
+            this.ribbonControl1.MaxItemId = 28;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -219,6 +223,7 @@
             this.BtnTumImalatlar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11F);
             this.BtnTumImalatlar.ItemAppearance.Normal.Options.UseFont = true;
             this.BtnTumImalatlar.Name = "BtnTumImalatlar";
+            this.BtnTumImalatlar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.BtnTumImalatlar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnTumImalatlar_ItemClick);
             // 
             // BtnStFormDuzeltme
@@ -233,7 +238,7 @@
             // 
             // BtnPeYolKazıRaporu
             // 
-            this.BtnPeYolKazıRaporu.Caption = "PE YOL/KAZI RAPORU";
+            this.BtnPeYolKazıRaporu.Caption = "YOL/KAZI RAPORU";
             this.BtnPeYolKazıRaporu.Id = 17;
             this.BtnPeYolKazıRaporu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnPeYolKazıRaporu.ImageOptions.Image")));
             this.BtnPeYolKazıRaporu.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnPeYolKazıRaporu.ImageOptions.LargeImage")));
@@ -288,6 +293,16 @@
             this.BtnAboneligiOlanKutusuOlmayanBinalar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnAboneligiOlanKutusuOlmayanBinalar.ImageOptions.LargeImage")));
             this.BtnAboneligiOlanKutusuOlmayanBinalar.Name = "BtnAboneligiOlanKutusuOlmayanBinalar";
             this.BtnAboneligiOlanKutusuOlmayanBinalar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnAboneligiOlanKutusuOlmayanBinalar_ItemClick);
+            // 
+            // BtnMucbirTakip
+            // 
+            this.BtnMucbirTakip.Caption = "MÜCBİR TAKİP";
+            this.BtnMucbirTakip.Id = 26;
+            this.BtnMucbirTakip.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnMucbirTakip.ImageOptions.LargeImage")));
+            this.BtnMucbirTakip.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.BtnMucbirTakip.ItemAppearance.Normal.Options.UseFont = true;
+            this.BtnMucbirTakip.Name = "BtnMucbirTakip";
+            this.BtnMucbirTakip.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnMucbirTakip_ItemClick);
             // 
             // ribbonPage2
             // 
@@ -351,6 +366,8 @@
             this.ribbonPageGroup5.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroup5.ItemLinks.Add(this.BtnTumImalatlar);
             this.ribbonPageGroup5.ItemLinks.Add(this.BtnPeYolKazıRaporu);
+            this.ribbonPageGroup5.ItemLinks.Add(this.BtnMucbirTakip);
+            this.ribbonPageGroup5.ItemLinks.Add(this.BtnMucbir);
             this.ribbonPageGroup5.ItemLinks.Add(this.BtnIcmalRaporu);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             // 
@@ -414,6 +431,16 @@
             this.ribbonPage3.Name = "ribbonPage3";
             this.ribbonPage3.Text = "ribbonPage3";
             // 
+            // BtnMucbir
+            // 
+            this.BtnMucbir.Caption = "MÜCBİR";
+            this.BtnMucbir.Id = 27;
+            this.BtnMucbir.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnMucbir.ImageOptions.LargeImage")));
+            this.BtnMucbir.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.BtnMucbir.ItemAppearance.Normal.Options.UseFont = true;
+            this.BtnMucbir.Name = "BtnMucbir";
+            this.BtnMucbir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnMucbir_ItemClick);
+            // 
             // FrmAnaSayfa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -476,6 +503,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem BtnAboneligiOlanKutusuOlmayanBinalar;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
+        private DevExpress.XtraBars.BarButtonItem BtnMucbirTakip;
+        private DevExpress.XtraBars.BarButtonItem BtnMucbir;
     }
 }
 

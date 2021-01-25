@@ -41,6 +41,8 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.DtBaslangicTarihi = new DevExpress.XtraEditors.DateEdit();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.BtnPdf = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.DtBitisTarihi = new DevExpress.XtraEditors.DateEdit();
             this.LblBaslik = new DevExpress.XtraEditors.LabelControl();
             this.LblTarihAraligi = new DevExpress.XtraEditors.LabelControl();
@@ -248,6 +250,8 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.Controls.Add(this.BtnPdf);
+            this.panel2.Controls.Add(this.labelControl7);
             this.panel2.Controls.Add(this.DtBitisTarihi);
             this.panel2.Controls.Add(this.DtBaslangicTarihi);
             this.panel2.Controls.Add(this.labelControl1);
@@ -261,6 +265,26 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1349, 30);
             this.panel2.TabIndex = 1;
+            // 
+            // BtnPdf
+            // 
+            this.BtnPdf.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.BtnPdf.Location = new System.Drawing.Point(1091, 3);
+            this.BtnPdf.Name = "BtnPdf";
+            this.BtnPdf.Size = new System.Drawing.Size(111, 23);
+            this.BtnPdf.TabIndex = 75;
+            this.BtnPdf.Text = "PDF";
+            this.BtnPdf.Visible = false;
+            this.BtnPdf.Click += new System.EventHandler(this.BtnPdf_Click);
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(13, 6);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(63, 13);
+            this.labelControl7.TabIndex = 74;
+            this.labelControl7.Text = "labelControl7";
+            this.labelControl7.Visible = false;
             // 
             // DtBitisTarihi
             // 
@@ -894,5 +918,7 @@
         private DevExpress.XtraGrid.GridControl gridControl9;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView9;
         private DevExpress.XtraEditors.DateEdit DtBitisTarihi;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.SimpleButton BtnPdf;
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
+using System.Diagnostics;
 
 namespace KargazImalatTakip
 {
@@ -156,6 +157,9 @@ namespace KargazImalatTakip
 
         private void BtnDetayListele_Click(object sender, EventArgs e)
         {
+            DateTime tarih1 = DateTime.Parse(DtBaslangicTarihi.Text);
+            DateTime tarih2 = DateTime.Parse(DtBitisTarihi.Text);
+
             if (CmbDetaySirket.Text == "KARGAZ")
             {
                 SqlCommand bolgeId = new SqlCommand("SELECT ILCE_KODU FROM DBO.ILCE WHERE ILCE_ADI = '" + CmbDetayBolge.Text + "'", bgl.kargazBaglanti());
@@ -165,7 +169,7 @@ namespace KargazImalatTakip
                     labelControl1.Text = drBolge[0].ToString();
                 }
 
-                SqlDataAdapter daHat = new SqlDataAdapter("SELECT M.MAHALLE_ADI, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, ROUND(Y.YOL_BOYU, 2) AS YOL_BOYU, H.FORMNO, H.SEKTOR, H.NET_BORU_CAPI,  H.BORU_UZUNLUGU, H.KAZI_BOYU FROM HATLAR H INNER JOIN MAHALLE M ON M.MAHALLE_KODU = H.MAHALLE_KODU INNER JOIN YOL Y ON Y.MSLINK = H.YOL_MSLINK WHERE H.ILCE_KODU = '" + labelControl1.Text + "' ORDER BY Y.YOL_ADI", bgl.kargazBaglanti());
+                SqlDataAdapter daHat = new SqlDataAdapter("SELECT M.MAHALLE_ADI, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, ROUND(Y.YOL_BOYU, 2) AS YOL_BOYU, H.IMALAT_TARIHI, H.FORMNO, H.SEKTOR, H.NET_BORU_CAPI,  H.BORU_UZUNLUGU, H.KAZI_BOYU FROM HATLAR H INNER JOIN MAHALLE M ON M.MAHALLE_KODU = H.MAHALLE_KODU INNER JOIN YOL Y ON Y.MSLINK = H.YOL_MSLINK WHERE H.ILCE_KODU = '" + labelControl1.Text + "' AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' ORDER BY Y.YOL_ADI", bgl.kargazBaglanti());
                 DataTable dtHat = new DataTable();
                 daHat.Fill(dtHat);
                 gridControl2.DataSource = dtHat;
@@ -179,16 +183,30 @@ namespace KargazImalatTakip
                 gridView2.Columns["BORU_UZUNLUGU"].Caption = "BORU BOYU";
                 gridView2.Columns["KAZI_BOYU"].Caption = "KAZI BOYU";
 
+                gridView2.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                gridView2.Columns[2].SummaryItem.DisplayFormat = "TOPLAM YOL BOYU={0:0.##}";
+                gridView2.Columns[7].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                gridView2.Columns[7].SummaryItem.DisplayFormat = "GENEL TOPLAM={0:0.##}";
+                gridView2.Columns[8].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                gridView2.Columns[8].SummaryItem.DisplayFormat = "GENEL TOPLAM={0:0.##}";
+
+                GridGroupSummaryItem yolBoyu = new GridGroupSummaryItem();
+                yolBoyu.FieldName = "YOL_BOYU";
+                yolBoyu.DisplayFormat = "YOL BOYU={0:0.##}";
+                yolBoyu.SummaryType = DevExpress.Data.SummaryItemType.Average;
+                yolBoyu.ShowInGroupColumnFooter = gridView2.Columns["YOL_BOYU"];
+                gridView2.GroupSummary.Add(yolBoyu);
+
                 GridGroupSummaryItem boruUzunlugu = new GridGroupSummaryItem();
                 boruUzunlugu.FieldName = "BORU_UZUNLUGU";
-                boruUzunlugu.DisplayFormat = "BORU BOYU TOPLAMI={0:0.##}";
+                boruUzunlugu.DisplayFormat = "TOPLAM={0:0.##}";
                 boruUzunlugu.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                 boruUzunlugu.ShowInGroupColumnFooter = gridView2.Columns["BORU_UZUNLUGU"];
                 gridView2.GroupSummary.Add(boruUzunlugu);
 
                 GridGroupSummaryItem kaziBoyu = new GridGroupSummaryItem();
                 kaziBoyu.FieldName = "KAZI_BOYU";
-                kaziBoyu.DisplayFormat = "KAZI BOYU TOPLAMI={0:0.##}";
+                kaziBoyu.DisplayFormat = "TOPLAM={0:0.##}";
                 kaziBoyu.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                 kaziBoyu.ShowInGroupColumnFooter = gridView2.Columns["KAZI_BOYU"];
                 gridView2.GroupSummary.Add(kaziBoyu);
@@ -202,7 +220,7 @@ namespace KargazImalatTakip
                     labelControl1.Text = drBolge[0].ToString();
                 }
 
-                SqlDataAdapter daHat = new SqlDataAdapter("SELECT M.MAHALLE_ADI, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, ROUND(Y.YOL_BOYU, 2) AS YOL_BOYU, H.FORMNO, H.SEKTOR, H.NET_BORU_CAPI,  H.BORU_UZUNLUGU, H.KAZI_BOYU FROM HATLAR H INNER JOIN MAHALLE M ON M.MAHALLE_KODU = H.MAHALLE_KODU INNER JOIN YOL Y ON Y.MSLINK = H.YOL_MSLINK WHERE H.ILCE_KODU = '" + labelControl1.Text + "' ORDER BY Y.YOL_ADI", bgl.serhatgazBaglanti());
+                SqlDataAdapter daHat = new SqlDataAdapter("SELECT M.MAHALLE_ADI, Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, ROUND(Y.YOL_BOYU, 2) AS YOL_BOYU, H.IMALAT_TARIHI, H.FORMNO, H.SEKTOR, H.NET_BORU_CAPI,  H.BORU_UZUNLUGU, H.KAZI_BOYU FROM HATLAR H INNER JOIN MAHALLE M ON M.MAHALLE_KODU = H.MAHALLE_KODU INNER JOIN YOL Y ON Y.MSLINK = H.YOL_MSLINK WHERE H.ILCE_KODU = '" + labelControl1.Text + "' AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' ORDER BY Y.YOL_ADI", bgl.serhatgazBaglanti());
                 DataTable dtHat = new DataTable();
                 daHat.Fill(dtHat);
                 gridControl2.DataSource = dtHat;
@@ -216,21 +234,73 @@ namespace KargazImalatTakip
                 gridView2.Columns["BORU_UZUNLUGU"].Caption = "BORU BOYU";
                 gridView2.Columns["KAZI_BOYU"].Caption = "KAZI BOYU";
 
+                gridView2.Columns[2].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                gridView2.Columns[2].SummaryItem.DisplayFormat = "TOPLAM YOL BOYU={0:0.##}";
+                gridView2.Columns[7].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                gridView2.Columns[7].SummaryItem.DisplayFormat = "GENEL TOPLAM={0:0.##}";
+                gridView2.Columns[8].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                gridView2.Columns[8].SummaryItem.DisplayFormat = "GENEL TOPLAM={0:0.##}";
+
+                GridGroupSummaryItem yolBoyu = new GridGroupSummaryItem();
+                yolBoyu.FieldName = "YOL_BOYU";
+                yolBoyu.DisplayFormat = "YOL BOYU={0:0.##}";
+                yolBoyu.SummaryType = DevExpress.Data.SummaryItemType.Average;
+                yolBoyu.ShowInGroupColumnFooter = gridView2.Columns["YOL_BOYU"];
+                gridView2.GroupSummary.Add(yolBoyu);
+
                 GridGroupSummaryItem boruUzunlugu = new GridGroupSummaryItem();
                 boruUzunlugu.FieldName = "BORU_UZUNLUGU";
-                boruUzunlugu.DisplayFormat = "BORU BOYU TOPLAMI={0:0.##}";
+                boruUzunlugu.DisplayFormat = "TOPLAM={0:0.##}";
                 boruUzunlugu.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                 boruUzunlugu.ShowInGroupColumnFooter = gridView2.Columns["BORU_UZUNLUGU"];
                 gridView2.GroupSummary.Add(boruUzunlugu);
 
                 GridGroupSummaryItem kaziBoyu = new GridGroupSummaryItem();
                 kaziBoyu.FieldName = "KAZI_BOYU";
-                kaziBoyu.DisplayFormat = "KAZI BOYU TOPLAMI={0:0.##}";
+                kaziBoyu.DisplayFormat = "TOPLAM={0:0.##}";
                 kaziBoyu.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                 kaziBoyu.ShowInGroupColumnFooter = gridView2.Columns["KAZI_BOYU"];
                 gridView2.GroupSummary.Add(kaziBoyu);
             }
             LblDetayBaslik.Text = CmbDetaySirket.Text + " - " + CmbDetayBolge.Text;
+            LblTarihAraligi.Text = DtBaslangicTarihi.Text + " - " + DtBitisTarihi.Text;
+        }
+
+        private void BtnGenelExcel_Click(object sender, EventArgs e)
+        {
+            string yol = "Polietilen Çelik Boy Kazı Raporu.xlsx";
+            gridControl1.ExportToXlsx(yol);
+            //Dosyayı direk varsayılan uygulamayla açmak için...
+            Process.Start(yol);
+        }
+
+        private void BtnDetayExcel_Click(object sender, EventArgs e)
+        {
+            string yol = "Polietilen Çelik Boy Kazı Detay Raporu.xlsx";
+            gridControl2.ExportToXlsx(yol);
+            //Dosyayı direk varsayılan uygulamayla açmak için...
+            Process.Start(yol);
+        }
+
+        private void BtnGenelPdf_Click(object sender, EventArgs e)
+        {
+            string yol = "Polietilen Çelik Boy Kazı Raporu.pdf";
+            gridControl1.ExportToPdf(yol);
+            //Dosyayı direk varsayılan uygulamayla açmak için...
+            Process.Start(yol);
+        }
+
+        private void BtnDetayPdf_Click(object sender, EventArgs e)
+        {
+            string yol = "Polietilen Çelik Boy Kazı Raporu.pdf";
+            gridControl2.ExportToPdf(yol);
+            //Dosyayı direk varsayılan uygulamayla açmak için...
+            Process.Start(yol);
+        }
+
+        private void xtraTabPage2_Paint(object sender, PaintEventArgs e)
+        {
+            DtBitisTarihi.Text = DateTime.Now.ToString("MM/dd/yyyy");
         }
     }
 }

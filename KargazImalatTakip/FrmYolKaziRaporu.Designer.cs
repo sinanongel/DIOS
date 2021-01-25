@@ -30,8 +30,11 @@ namespace KargazImalatTakip
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmYolKaziRaporu));
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.BtnGenelPdf = new DevExpress.XtraEditors.SimpleButton();
+            this.BtnGenelExcel = new DevExpress.XtraEditors.SimpleButton();
             this.LblBaslik = new DevExpress.XtraEditors.LabelControl();
             this.BtnGenelListele = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
@@ -42,6 +45,13 @@ namespace KargazImalatTakip
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.CmbGenelŞirket = new DevExpress.XtraEditors.ComboBoxEdit();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.LblTarihAraligi = new DevExpress.XtraEditors.LabelControl();
+            this.DtBitisTarihi = new DevExpress.XtraEditors.DateEdit();
+            this.DtBaslangicTarihi = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.BtnDetayPdf = new DevExpress.XtraEditors.SimpleButton();
+            this.BtnDetayExcel = new DevExpress.XtraEditors.SimpleButton();
             this.LblDetayBaslik = new DevExpress.XtraEditors.LabelControl();
             this.BtnDetayListele = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
@@ -59,6 +69,10 @@ namespace KargazImalatTakip
             ((System.ComponentModel.ISupportInitialize)(this.CmbGenelBolge.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbGenelŞirket.Properties)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DtBitisTarihi.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtBitisTarihi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtBaslangicTarihi.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtBaslangicTarihi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbDetayBolge.Properties)).BeginInit();
@@ -79,6 +93,8 @@ namespace KargazImalatTakip
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Controls.Add(this.BtnGenelPdf);
+            this.xtraTabPage1.Controls.Add(this.BtnGenelExcel);
             this.xtraTabPage1.Controls.Add(this.LblBaslik);
             this.xtraTabPage1.Controls.Add(this.BtnGenelListele);
             this.xtraTabPage1.Controls.Add(this.gridControl1);
@@ -90,6 +106,24 @@ namespace KargazImalatTakip
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1347, 566);
             this.xtraTabPage1.Text = "Genel Rapor";
+            // 
+            // BtnGenelPdf
+            // 
+            this.BtnGenelPdf.Location = new System.Drawing.Point(22, 243);
+            this.BtnGenelPdf.Name = "BtnGenelPdf";
+            this.BtnGenelPdf.Size = new System.Drawing.Size(188, 24);
+            this.BtnGenelPdf.TabIndex = 67;
+            this.BtnGenelPdf.Text = "PDF";
+            this.BtnGenelPdf.Click += new System.EventHandler(this.BtnGenelPdf_Click);
+            // 
+            // BtnGenelExcel
+            // 
+            this.BtnGenelExcel.Location = new System.Drawing.Point(22, 213);
+            this.BtnGenelExcel.Name = "BtnGenelExcel";
+            this.BtnGenelExcel.Size = new System.Drawing.Size(188, 24);
+            this.BtnGenelExcel.TabIndex = 66;
+            this.BtnGenelExcel.Text = "Excel";
+            this.BtnGenelExcel.Click += new System.EventHandler(this.BtnGenelExcel_Click);
             // 
             // LblBaslik
             // 
@@ -111,7 +145,7 @@ namespace KargazImalatTakip
             // 
             // BtnGenelListele
             // 
-            this.BtnGenelListele.Location = new System.Drawing.Point(22, 129);
+            this.BtnGenelListele.Location = new System.Drawing.Point(22, 183);
             this.BtnGenelListele.Name = "BtnGenelListele";
             this.BtnGenelListele.Size = new System.Drawing.Size(188, 24);
             this.BtnGenelListele.TabIndex = 64;
@@ -197,6 +231,13 @@ namespace KargazImalatTakip
             // 
             // xtraTabPage2
             // 
+            this.xtraTabPage2.Controls.Add(this.LblTarihAraligi);
+            this.xtraTabPage2.Controls.Add(this.DtBitisTarihi);
+            this.xtraTabPage2.Controls.Add(this.DtBaslangicTarihi);
+            this.xtraTabPage2.Controls.Add(this.labelControl2);
+            this.xtraTabPage2.Controls.Add(this.labelControl6);
+            this.xtraTabPage2.Controls.Add(this.BtnDetayPdf);
+            this.xtraTabPage2.Controls.Add(this.BtnDetayExcel);
             this.xtraTabPage2.Controls.Add(this.LblDetayBaslik);
             this.xtraTabPage2.Controls.Add(this.BtnDetayListele);
             this.xtraTabPage2.Controls.Add(this.gridControl2);
@@ -208,6 +249,98 @@ namespace KargazImalatTakip
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1347, 566);
             this.xtraTabPage2.Text = "Detay Rapor";
+            this.xtraTabPage2.Paint += new System.Windows.Forms.PaintEventHandler(this.xtraTabPage2_Paint);
+            // 
+            // LblTarihAraligi
+            // 
+            this.LblTarihAraligi.AllowHtmlString = true;
+            this.LblTarihAraligi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblTarihAraligi.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
+            this.LblTarihAraligi.Appearance.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
+            this.LblTarihAraligi.Appearance.ForeColor = System.Drawing.Color.White;
+            this.LblTarihAraligi.Appearance.Options.UseBackColor = true;
+            this.LblTarihAraligi.Appearance.Options.UseFont = true;
+            this.LblTarihAraligi.Appearance.Options.UseForeColor = true;
+            this.LblTarihAraligi.Appearance.Options.UseTextOptions = true;
+            this.LblTarihAraligi.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.LblTarihAraligi.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.LblTarihAraligi.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.LblTarihAraligi.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.LblTarihAraligi.Location = new System.Drawing.Point(948, 42);
+            this.LblTarihAraligi.Name = "LblTarihAraligi";
+            this.LblTarihAraligi.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.LblTarihAraligi.Size = new System.Drawing.Size(399, 30);
+            this.LblTarihAraligi.TabIndex = 80;
+            // 
+            // DtBitisTarihi
+            // 
+            this.DtBitisTarihi.EditValue = null;
+            this.DtBitisTarihi.Location = new System.Drawing.Point(606, 9);
+            this.DtBitisTarihi.Name = "DtBitisTarihi";
+            this.DtBitisTarihi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.DtBitisTarihi.Properties.Appearance.Options.UseFont = true;
+            this.DtBitisTarihi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DtBitisTarihi.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DtBitisTarihi.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.DtBitisTarihi.Size = new System.Drawing.Size(90, 22);
+            this.DtBitisTarihi.TabIndex = 79;
+            // 
+            // DtBaslangicTarihi
+            // 
+            this.DtBaslangicTarihi.EditValue = null;
+            this.DtBaslangicTarihi.Location = new System.Drawing.Point(444, 9);
+            this.DtBaslangicTarihi.Name = "DtBaslangicTarihi";
+            this.DtBaslangicTarihi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.DtBaslangicTarihi.Properties.Appearance.Options.UseFont = true;
+            this.DtBaslangicTarihi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DtBaslangicTarihi.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DtBaslangicTarihi.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.DtBaslangicTarihi.Size = new System.Drawing.Size(90, 22);
+            this.DtBaslangicTarihi.TabIndex = 78;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(348, 12);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(90, 16);
+            this.labelControl2.TabIndex = 77;
+            this.labelControl2.Text = "Başlangıç Tarihi";
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelControl6.Appearance.Options.UseFont = true;
+            this.labelControl6.Location = new System.Drawing.Point(540, 12);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(60, 16);
+            this.labelControl6.TabIndex = 76;
+            this.labelControl6.Text = "Bitiş Tarihi";
+            // 
+            // BtnDetayPdf
+            // 
+            this.BtnDetayPdf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnDetayPdf.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnDetayPdf.ImageOptions.Image")));
+            this.BtnDetayPdf.Location = new System.Drawing.Point(1310, 6);
+            this.BtnDetayPdf.Name = "BtnDetayPdf";
+            this.BtnDetayPdf.Size = new System.Drawing.Size(34, 30);
+            this.BtnDetayPdf.TabIndex = 75;
+            this.BtnDetayPdf.Click += new System.EventHandler(this.BtnDetayPdf_Click);
+            // 
+            // BtnDetayExcel
+            // 
+            this.BtnDetayExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnDetayExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnDetayExcel.ImageOptions.Image")));
+            this.BtnDetayExcel.Location = new System.Drawing.Point(1270, 6);
+            this.BtnDetayExcel.Name = "BtnDetayExcel";
+            this.BtnDetayExcel.Size = new System.Drawing.Size(34, 30);
+            this.BtnDetayExcel.TabIndex = 74;
+            this.BtnDetayExcel.Click += new System.EventHandler(this.BtnDetayExcel_Click);
             // 
             // LblDetayBaslik
             // 
@@ -221,17 +354,18 @@ namespace KargazImalatTakip
             this.LblDetayBaslik.Appearance.Options.UseForeColor = true;
             this.LblDetayBaslik.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.LblDetayBaslik.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.LblDetayBaslik.Location = new System.Drawing.Point(235, 0);
+            this.LblDetayBaslik.Location = new System.Drawing.Point(0, 42);
             this.LblDetayBaslik.Name = "LblDetayBaslik";
             this.LblDetayBaslik.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.LblDetayBaslik.Size = new System.Drawing.Size(1112, 30);
+            this.LblDetayBaslik.Size = new System.Drawing.Size(948, 30);
             this.LblDetayBaslik.TabIndex = 73;
             // 
             // BtnDetayListele
             // 
-            this.BtnDetayListele.Location = new System.Drawing.Point(22, 129);
+            this.BtnDetayListele.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnDetayListele.Location = new System.Drawing.Point(1151, 6);
             this.BtnDetayListele.Name = "BtnDetayListele";
-            this.BtnDetayListele.Size = new System.Drawing.Size(188, 24);
+            this.BtnDetayListele.Size = new System.Drawing.Size(113, 30);
             this.BtnDetayListele.TabIndex = 72;
             this.BtnDetayListele.Text = "Listele";
             this.BtnDetayListele.Click += new System.EventHandler(this.BtnDetayListele_Click);
@@ -241,10 +375,10 @@ namespace KargazImalatTakip
             this.gridControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl2.Location = new System.Drawing.Point(235, 28);
+            this.gridControl2.Location = new System.Drawing.Point(0, 72);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(1112, 539);
+            this.gridControl2.Size = new System.Drawing.Size(1348, 495);
             this.gridControl2.TabIndex = 71;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -260,7 +394,8 @@ namespace KargazImalatTakip
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(83, 86);
+            this.labelControl3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl3.Location = new System.Drawing.Point(1050, 14);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(69, 13);
             this.labelControl3.TabIndex = 70;
@@ -269,7 +404,7 @@ namespace KargazImalatTakip
             // 
             // CmbDetayBolge
             // 
-            this.CmbDetayBolge.Location = new System.Drawing.Point(70, 58);
+            this.CmbDetayBolge.Location = new System.Drawing.Point(202, 9);
             this.CmbDetayBolge.Name = "CmbDetayBolge";
             this.CmbDetayBolge.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.CmbDetayBolge.Properties.Appearance.Options.UseFont = true;
@@ -282,7 +417,7 @@ namespace KargazImalatTakip
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(22, 61);
+            this.labelControl4.Location = new System.Drawing.Point(165, 12);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(31, 16);
             this.labelControl4.TabIndex = 66;
@@ -292,7 +427,7 @@ namespace KargazImalatTakip
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(22, 37);
+            this.labelControl5.Location = new System.Drawing.Point(22, 12);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(33, 16);
             this.labelControl5.TabIndex = 69;
@@ -300,7 +435,7 @@ namespace KargazImalatTakip
             // 
             // CmbDetaySirket
             // 
-            this.CmbDetaySirket.Location = new System.Drawing.Point(70, 34);
+            this.CmbDetaySirket.Location = new System.Drawing.Point(62, 9);
             this.CmbDetaySirket.Name = "CmbDetaySirket";
             this.CmbDetaySirket.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.CmbDetaySirket.Properties.Appearance.Options.UseFont = true;
@@ -320,7 +455,7 @@ namespace KargazImalatTakip
             this.ClientSize = new System.Drawing.Size(1349, 591);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "FrmYolKaziRaporu";
-            this.Text = "FrmYolKaziRaporu";
+            this.Text = "Yol/Kazı Raporu";
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
@@ -331,6 +466,10 @@ namespace KargazImalatTakip
             ((System.ComponentModel.ISupportInitialize)(this.CmbGenelŞirket.Properties)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DtBitisTarihi.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtBitisTarihi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtBaslangicTarihi.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DtBaslangicTarihi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbDetayBolge.Properties)).EndInit();
@@ -362,5 +501,14 @@ namespace KargazImalatTakip
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.ComboBoxEdit CmbDetaySirket;
+        private DevExpress.XtraEditors.SimpleButton BtnGenelExcel;
+        private DevExpress.XtraEditors.SimpleButton BtnDetayExcel;
+        private DevExpress.XtraEditors.SimpleButton BtnGenelPdf;
+        private DevExpress.XtraEditors.SimpleButton BtnDetayPdf;
+        private DevExpress.XtraEditors.DateEdit DtBitisTarihi;
+        private DevExpress.XtraEditors.DateEdit DtBaslangicTarihi;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.LabelControl LblTarihAraligi;
     }
 }

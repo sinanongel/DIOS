@@ -117,40 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="BtnDetayPdf.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAABGdBTUEAALGPC/xhBQAAAtpJREFUSEu9
-        Vk2I00AYrfgDelBY0Is3Lx48KHoU1IMiazfJCgYR9KJQlGaiPfh70F5FEfwBbWemuCoKK6JHQYqyqCcV
-        f1FEQRC9rKAoq6ysu75v5kv/0m6b7uqDRycv37w3SSZfk2oG3x+c6YRauEI9BUfAiTb8Ap71c4Nz2SIZ
-        XCEHGgw75ZCfKSxgm87gZuUGnjzuhjLfv6+4Ip0rLWlFN6vWoHaU5xCfbN59fhHbtYcj1AWeeIOltvCE
-        elETSHzUK67M59OTA5Nv0iQvkIdYagtX6AcNgcRnvaK0kEtaA4W3zIRAHWCpLVB/n0PqSFfu51QPlzUH
-        Cqct0FKX/fzgHC6NA0VdBOpyfUg9caVHuTQOFCQOdLKlldhsByO6gT6GRZyDzycbKh9zaRzdBLaCG8jt
-        NlC9YSmO6Qx0QunFAqkd0S3pD+UqIi7/HhV5Qp+OtE7YlxtYzJYVNA1EwHMWid/AXzXH33Gl7/E7XKMZ
-        YiN8MOfs+a/gGHUdtjVoEWgNnGxxGUspL5SbsJCfXqBOsIQ7oXrcUB1G7R/wM8sGjpDb2GcnSwaTBrp7
-        9VJHlNZ6QoZWRwMP1XE71ldpckUX6qMdqzR2ZAE78y77JAukxl0N1NergeoH+I7GTqB3YWwDA7XavAZC
-        3mGfZIEsRf8YvxsCX9EYPXYrxiYwAha333gkDewTejlvAqvVBvJrgsAzODaB1EEqtZYJbyluUeWYyIFO
-        pjDP1Fb/+6YUSLcL5lIh8BoXRHzphOoUt6khkHYo6SO0GAQ+5GNDPP8tbGvQPJCuKpSZCoWEsRzG+HKd
-        3oZY2I51+fwstjVoGtgInPy3ra0R/z0Qz8V8YjhCH2Gpa9AztYH6NUtx4EXmjyh9m6Wuwa8QeZVZiqPm
-        M5Ea9CX8pj1RWp+IQXEjQk5i7pj1knvYvjnw/C5GoVMl9dlMpjCbrVthYgb3TPrU51Um4jj4lvps/QdU
-        KvUXN9RLr85pZowAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="BtnDetayExcel.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAABGdBTUEAALGPC/xhBQAAAqpJREFUSEu9
-        lj2IE0EUx4ON+IVYaGElImolqCgKNoIKR5xNrghYiGXQy86uAT1thDSiByJ6opKbmRykEc5KBBE8xEKt
-        BBvF5hAbFcTiCi2U+/D/5uOym13P7O3igx+Z9+bt+09mZme2lMWGeGez1xDHPV+OggceVx+8EbnDdq/c
-        hvj46mog9le4OsO4uu1x+RLMgsUEodplHxvMTlzormOhOoIRhxUuuyjyHvyOFV2OrIJ46FeiSBYgiF8F
-        3vwLFqhrJJheaFCMIE15en+chf8tuFiMoK88LxB1g3qM3fu05wNfXHH5hQja7aANAi0vkGPW1WZnQefH
-        BLFLp8F1Arv2bV/fpI5zeQcsLPXl/Icz9A7SqBgXh1wcQq/1UGEodiOSn38NK75s2trUZwrhdCGf+e3d
-        8OOvEQkG8pbHxTMCg/tEON+gXrn8hCCYHT57f4sVLIPn1CZDoelIniGxhnJs4DV0MC4FJbZarVUnG+qw
-        fiiQp9Jy7RpuLTc72wm024TziQrvHHP5qYJgnjU6+0iIzBtVGxD73JdjyLuGlrkqlwetXqnWnFqD2Me+
-        HEMhgtgEWmjk7nr4e6mN9WOJPIIEMQPlc/c2EXS7EM7XsXDigMtPE5xh9fZaLeKLyxCfojYZdtvDRD4E
-        bbe2lWyaMiXV6u2NaH8H814o9lCsen5yG/yfNs9gikVvi6+W6E3xDuj8mCCmrUuFyfRIe31PbJj+5cVI
-        PN8aQlAfXwT8H7E+X4xTnAXyJvy5pT4SDNRRHIU1DZePNM43hC4/bUqzUcAaZoOK+eI0DotLBI6yF4Tz
-        Tax3/hYjWMCLPzjZBPUnRv6PqMhtsRwVLq6aRcXhix3IcFnitqYLVH5LFP4bENRF8lrKIL4kxIoUTDNz
-        LsY/mocbEztt9wBWKv0BfQRQcF6VHjQAAAAASUVORK5CYII=
-</value>
+  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IkhBVExBUl8xIj48RmllbGQgTmFtZT0iTkVUX0JPUlVfQ0FQSSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJTdW1fQk9SVV9VWlVOTFVHVSIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJTdW1fS0FaSV9CT1lVIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9IlN1bV9BU0JVSUxUX01FVFJBSiIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJTdW1fWUFUQVlfQVNCVUlMVF9NRVRSQUoiIFR5cGU9IkRvdWJsZSIgLz48L1ZpZXc+PFZpZXcgTmFtZT0iU0VSVklTX0hBVExBUklfMSI+PEZpZWxkIE5hbWU9IkNBUCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJTdW1fQk9SVUJPWVUiIFR5cGU9IkRvdWJsZSIgLz48RmllbGQgTmFtZT0iU3VtX0tBWklCT1lVIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9IlN1bV9TSEFUVElNRVRSQUoiIFR5cGU9IkRvdWJsZSIgLz48RmllbGQgTmFtZT0iU3VtX1lBVEFZX0FTQlVJTFRfTUVUUkFKIiBUeXBlPSJEb3VibGUiIC8+PC9WaWV3PjwvRGF0YVNldD4=</value>
   </data>
 </root>
