@@ -10,6 +10,8 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using DevExpress.XtraGrid;
 using DevExpress.Utils;
+using System.IO;
+using DevExpress.XtraEditors.Repository;
 
 namespace KargazImalatTakip
 {
@@ -40,7 +42,7 @@ namespace KargazImalatTakip
                 {
                     SqlDataAdapter da = new SqlDataAdapter("SELECT ROW_NUMBER() OVER(ORDER BY SH.MSLINK DESC) AS SIRANO, SH.MSLINK, SEKTOR, HAT_MSLINK, I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, " +
                         "CAST(YOL_KODU AS NVARCHAR) + ' - ' + Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, YATIRIMYILI, CONVERT(VARCHAR, IMALATTARIHI, 104) AS IMALAT_TARIHI, FORMNO, " +
-                        "FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, CAP, KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, SH.EKIPNO as EKIPNO FROM dbo.SERVIS_HATLARI SH " +
+                        "FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, CAP, KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, SH.EKIPNO as EKIPNO, DOSYA FROM dbo.SERVIS_HATLARI SH " +
                         "LEFT JOIN DBO.YOL Y ON SH.YOL_MSLINK = Y.MSLINK " +
                         "LEFT JOIN DBO.MAHALLE M ON SH.MAHALLE_KODU = M.MAHALLE_KODU " +
                         "LEFT JOIN DBO.ILCE I ON SH.ILCE_KODU = I.ILCE_KODU " +
@@ -53,7 +55,7 @@ namespace KargazImalatTakip
                 {
                     SqlDataAdapter da = new SqlDataAdapter("SELECT ROW_NUMBER() OVER(ORDER BY SH.MSLINK DESC) AS SIRANO, SH.MSLINK, SEKTOR, HAT_MSLINK, I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, " +
                         "CAST(YOL_KODU AS NVARCHAR) + ' - ' + Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, YATIRIMYILI, CONVERT(VARCHAR, IMALATTARIHI, 104) AS IMALAT_TARIHI, FORMNO, " +
-                        "FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, CAP, KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, SH.EKIPNO as EKIPNO FROM dbo.SERVIS_HATLARI SH " +
+                        "FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, CAP, KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, SH.EKIPNO as EKIPNO, DOSYA FROM dbo.SERVIS_HATLARI SH " +
                         "LEFT JOIN DBO.YOL Y ON SH.YOL_MSLINK = Y.MSLINK " +
                         "LEFT JOIN DBO.MAHALLE M ON SH.MAHALLE_KODU = M.MAHALLE_KODU " +
                         "LEFT JOIN DBO.ILCE I ON SH.ILCE_KODU = I.ILCE_KODU " +
@@ -89,6 +91,10 @@ namespace KargazImalatTakip
                 gridView1.Columns["SHATTIMETRAJ"].DisplayFormat.FormatType = FormatType.Numeric;
                 gridView1.Columns["SHATTIMETRAJ"].DisplayFormat.FormatString = "{0:n2}";
                 gridView1.Columns["EKIPNO"].Caption = "MÜTEAHHİT";
+
+                RepositoryItemHyperLinkEdit dosyaYolu = new RepositoryItemHyperLinkEdit();
+                gridView1.Columns["DOSYA"].ColumnEdit = dosyaYolu;
+                dosyaYolu.OpenLink += DosyaYolu_OpenLink;
 
                 gridView1.Columns[0].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
                 gridView1.Columns[0].SummaryItem.DisplayFormat = "{0:0.##} ADET";
@@ -135,6 +141,31 @@ namespace KargazImalatTakip
             }
         }
 
+        string kayitYolu = "";
+
+        private void DosyaYolu_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)
+        {
+            string[] satir = File.ReadAllLines("C:\\SqlBaglanti.txt");
+
+            string yol;
+            string bolge;
+            string dosya;
+
+            DataRow dr = gridView1.GetDataRow(gridView1.FocusedRowHandle);
+            if (dr != null)
+            {
+                dosya = dr["DOSYA"].ToString();
+                bolge = dr["ILCE_ADI"].ToString();
+                kayitYolu = satir[5] + bolge + "\\"; //P klasörü
+                //kayitYolu = satir[6] + bolge + "\\"; //C klasörü
+                yol = kayitYolu + dosya;
+                //yol = dr["DOSYA_YOLU"].ToString();
+                Process.Start(yol);
+            }
+
+            //FileInfo dosyaBilgi = new FileInfo();
+        }
+
         private void BtnPdf_Click(object sender, EventArgs e)
         {
             string yol = "Servis Hattı Listesi.pdf";
@@ -152,7 +183,7 @@ namespace KargazImalatTakip
                 SqlDataAdapter da = new SqlDataAdapter("SELECT ROW_NUMBER() OVER(ORDER BY SH.MSLINK DESC) AS SIRANO, SH.MSLINK, SH.SEKTOR, SH.HAT_MSLINK, I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, " +
                     "CAST(YOL_KODU AS NVARCHAR) + ' - ' + Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, SH.YATIRIMYILI, CONVERT(VARCHAR, IMALATTARIHI, 104) AS IMALAT_TARIHI, SH.FORMNO, " +
                     "SE.KONUM_X_KOOR AS FROM_X, SE.KONUM_Y_KOOR AS FROM_Y, SE.DERINLIK AS FROM_Z, SH.CAP, KAZIBOYU, BORUBOYU, " +
-                    "YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, SH.EKIPNO as EKIPNO FROM dbo.SERVIS_HATLARI SH " +
+                    "YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, SH.EKIPNO as EKIPNO, DOSYA FROM dbo.SERVIS_HATLARI SH " +
                     "LEFT JOIN DBO.YOL Y ON SH.YOL_MSLINK = Y.MSLINK " +
                     "LEFT JOIN DBO.MAHALLE M ON SH.MAHALLE_KODU = M.MAHALLE_KODU " +
                     "LEFT JOIN DBO.ILCE I ON SH.ILCE_KODU = I.ILCE_KODU " +

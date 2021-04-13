@@ -51,15 +51,17 @@
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.BtnAboneligiOlanKutusuOlmayanBinalar = new DevExpress.XtraBars.BarButtonItem();
             this.BtnMucbirTakip = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.BtnMucbir = new DevExpress.XtraBars.BarButtonItem();
+            this.BtnSokBazBinaDaireSay = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
@@ -67,7 +69,6 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.BtnMucbir = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -100,13 +101,14 @@
             this.barButtonItem3,
             this.BtnAboneligiOlanKutusuOlmayanBinalar,
             this.BtnMucbirTakip,
-            this.BtnMucbir});
+            this.BtnMucbir,
+            this.BtnSokBazBinaDaireSay});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 28;
+            this.ribbonControl1.MaxItemId = 29;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPage2,
             this.ribbonPage1,
+            this.ribbonPage2,
             this.ribbonPage4});
             this.ribbonControl1.Size = new System.Drawing.Size(1348, 150);
             // 
@@ -304,6 +306,74 @@
             this.BtnMucbirTakip.Name = "BtnMucbirTakip";
             this.BtnMucbirTakip.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnMucbirTakip_ItemClick);
             // 
+            // BtnMucbir
+            // 
+            this.BtnMucbir.Caption = "MÜCBİR";
+            this.BtnMucbir.Id = 27;
+            this.BtnMucbir.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnMucbir.ImageOptions.LargeImage")));
+            this.BtnMucbir.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.BtnMucbir.ItemAppearance.Normal.Options.UseFont = true;
+            this.BtnMucbir.Name = "BtnMucbir";
+            this.BtnMucbir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnMucbir_ItemClick);
+            // 
+            // BtnSokBazBinaDaireSay
+            // 
+            this.BtnSokBazBinaDaireSay.Caption = "SOKAK BAZINDA BİNA VE DAİRE SAYISI";
+            this.BtnSokBazBinaDaireSay.Id = 28;
+            this.BtnSokBazBinaDaireSay.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnSokBazBinaDaireSay.ImageOptions.LargeImage")));
+            this.BtnSokBazBinaDaireSay.Name = "BtnSokBazBinaDaireSay";
+            this.BtnSokBazBinaDaireSay.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnSokBazBinaDaireSay_ItemClick);
+            // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup3,
+            this.ribbonPageGroup5,
+            this.ribbonPageGroup8,
+            this.ribbonPageGroup4});
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "RAPORLAMA";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonPageGroup1.ItemLinks.Add(this.BtnPeHatlar);
+            this.ribbonPageGroup1.ItemLinks.Add(this.BtnServisHatlar);
+            this.ribbonPageGroup1.ItemLinks.Add(this.BtnCelikHatlar);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "HATLAR";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonPageGroup3.ItemLinks.Add(this.BtnPeVanalar);
+            this.ribbonPageGroup3.ItemLinks.Add(this.BtnCelikVanalar);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "VANALAR";
+            // 
+            // ribbonPageGroup5
+            // 
+            this.ribbonPageGroup5.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonPageGroup5.ItemLinks.Add(this.BtnTumImalatlar);
+            this.ribbonPageGroup5.ItemLinks.Add(this.BtnPeYolKazıRaporu);
+            this.ribbonPageGroup5.ItemLinks.Add(this.BtnMucbirTakip);
+            this.ribbonPageGroup5.ItemLinks.Add(this.BtnMucbir);
+            this.ribbonPageGroup5.ItemLinks.Add(this.BtnIcmalRaporu);
+            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            // 
+            // ribbonPageGroup8
+            // 
+            this.ribbonPageGroup8.ItemLinks.Add(this.BtnAboneligiOlanKutusuOlmayanBinalar);
+            this.ribbonPageGroup8.ItemLinks.Add(this.BtnSokBazBinaDaireSay);
+            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
+            // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonPageGroup4.ItemLinks.Add(this.BtnBolgeRegulator);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -326,55 +396,6 @@
             this.ribbonPageGroup6.ItemLinks.Add(this.BtnShKayitDuzeltme);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             this.ribbonPageGroup6.Text = "KAYIT DÜZELTME";
-            // 
-            // ribbonPage1
-            // 
-            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1,
-            this.ribbonPageGroup3,
-            this.ribbonPageGroup4,
-            this.ribbonPageGroup5,
-            this.ribbonPageGroup8});
-            this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "RAPORLAMA";
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonPageGroup1.ItemLinks.Add(this.BtnPeHatlar);
-            this.ribbonPageGroup1.ItemLinks.Add(this.BtnServisHatlar);
-            this.ribbonPageGroup1.ItemLinks.Add(this.BtnCelikHatlar);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "HATLAR";
-            // 
-            // ribbonPageGroup3
-            // 
-            this.ribbonPageGroup3.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonPageGroup3.ItemLinks.Add(this.BtnPeVanalar);
-            this.ribbonPageGroup3.ItemLinks.Add(this.BtnCelikVanalar);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "VANALAR";
-            // 
-            // ribbonPageGroup4
-            // 
-            this.ribbonPageGroup4.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonPageGroup4.ItemLinks.Add(this.BtnBolgeRegulator);
-            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            // 
-            // ribbonPageGroup5
-            // 
-            this.ribbonPageGroup5.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonPageGroup5.ItemLinks.Add(this.BtnTumImalatlar);
-            this.ribbonPageGroup5.ItemLinks.Add(this.BtnPeYolKazıRaporu);
-            this.ribbonPageGroup5.ItemLinks.Add(this.BtnMucbirTakip);
-            this.ribbonPageGroup5.ItemLinks.Add(this.BtnMucbir);
-            this.ribbonPageGroup5.ItemLinks.Add(this.BtnIcmalRaporu);
-            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
-            // 
-            // ribbonPageGroup8
-            // 
-            this.ribbonPageGroup8.ItemLinks.Add(this.BtnAboneligiOlanKutusuOlmayanBinalar);
-            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
             // 
             // ribbonPage4
             // 
@@ -414,7 +435,7 @@
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(34, 13);
             this.labelControl2.TabIndex = 3;
-            this.labelControl2.Text = "©2019";
+            this.labelControl2.Text = "©2021";
             // 
             // labelControl1
             // 
@@ -430,16 +451,6 @@
             // 
             this.ribbonPage3.Name = "ribbonPage3";
             this.ribbonPage3.Text = "ribbonPage3";
-            // 
-            // BtnMucbir
-            // 
-            this.BtnMucbir.Caption = "MÜCBİR";
-            this.BtnMucbir.Id = 27;
-            this.BtnMucbir.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnMucbir.ImageOptions.LargeImage")));
-            this.BtnMucbir.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.BtnMucbir.ItemAppearance.Normal.Options.UseFont = true;
-            this.BtnMucbir.Name = "BtnMucbir";
-            this.BtnMucbir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnMucbir_ItemClick);
             // 
             // FrmAnaSayfa
             // 
@@ -505,6 +516,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraBars.BarButtonItem BtnMucbirTakip;
         private DevExpress.XtraBars.BarButtonItem BtnMucbir;
+        private DevExpress.XtraBars.BarButtonItem BtnSokBazBinaDaireSay;
     }
 }
 

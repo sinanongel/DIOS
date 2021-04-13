@@ -231,5 +231,17 @@ namespace KargazImalatTakip
                 fr18.Show();
             }
         }
+
+        FrmSokakBazındaBinaDaireSayısı fr19;
+
+        private void BtnSokBazBinaDaireSay_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (fr19 == null || fr19.IsDisposed)
+            {
+                fr19 = new FrmSokakBazındaBinaDaireSayısı();
+                fr19.MdiParent = this;
+                fr19.Show();
+            }
+        }
     }
 }

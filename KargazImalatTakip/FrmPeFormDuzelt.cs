@@ -8,6 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using DevExpress.Utils;
+using System.IO;
+using DevExpress.XtraEditors.Repository;
+using System.Diagnostics;
 
 namespace KargazImalatTakip
 {
@@ -28,8 +31,7 @@ namespace KargazImalatTakip
             TxtBolge.Text = "";
             TxtSektor.Text = "";
             TxtVanaNo.Text = "";
-            //CmbMahalle.Text = "";
-            //CmbSokak.Text = "";
+            TxtDosyaAdi.Text = "";
 
             gridView1.Columns.Clear();
             gridView2.Columns.Clear();
@@ -47,7 +49,7 @@ namespace KargazImalatTakip
                 {
                     SqlDataAdapter daHat = new SqlDataAdapter("SELECT H.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, " +
                         "I.ILCE_ADI AS ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, (Y.YOL_ADI + ' ' + Y.YOL_TIPI) AS YOL, H.SEKTOR, NET_BORU_CAPI, BORU_UZUNLUGU, " +
-                        "YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU, EKIPNO FROM dbo.HATLAR H " +
+                        "YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU, EKIPNO, DOSYA FROM dbo.HATLAR H " +
                         "LEFT JOIN DBO.YOL Y ON H.YOL_MSLINK = Y.MSLINK " +
                         "LEFT JOIN DBO.MAHALLE M ON H.MAHALLE_KODU = M.MAHALLE_KODU " +
                         "LEFT JOIN DBO.ILCE I ON H.ILCE_KODU = I.ILCE_KODU " +
@@ -75,6 +77,11 @@ namespace KargazImalatTakip
                     gridView1.Columns["KAZI_BOYU"].Caption = "KAZI BOYU";
                     gridView1.Columns["SEKTOR"].Caption = "SEKTÖR";
                     gridView1.Columns["EKIPNO"].Caption = "MÜTEAHHİT";
+                    gridView1.Columns["DOSYA"].Caption = "DOSYA";
+
+                    RepositoryItemHyperLinkEdit dosyaYolu = new RepositoryItemHyperLinkEdit();
+                    gridView1.Columns["DOSYA"].ColumnEdit = dosyaYolu;
+                    dosyaYolu.OpenLink += DosyaYolu_OpenLink;
 
                     SqlDataAdapter daMalzeme = new SqlDataAdapter("SELECT B.MSLINK, FORMNO, YATIRIMYILI, convert(varchar, B.IMALATTARIHI, 104) as IMALAT_TARIHI, " +
                         "I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, (Y.YOL_ADI + ' ' + Y.YOL_TIPI) AS YOL, SEKTOR, TIPI, CAP, EKIPNO FROM dbo.BAGLANTI_ELEMANLARI_PE B " +
@@ -189,7 +196,7 @@ namespace KargazImalatTakip
                 {
                     SqlDataAdapter daHat = new SqlDataAdapter("SELECT H.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, " +
                         "I.ILCE_ADI AS ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, (Y.YOL_ADI + ' ' + Y.YOL_TIPI) AS YOL, H.SEKTOR, NET_BORU_CAPI, BORU_UZUNLUGU, " +
-                        "YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU, EKIPNO FROM dbo.HATLAR H " +
+                        "YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU, EKIPNO, DOSYA FROM dbo.HATLAR H " +
                         "LEFT JOIN DBO.YOL Y ON H.YOL_MSLINK = Y.MSLINK " +
                         "LEFT JOIN DBO.MAHALLE M ON H.MAHALLE_KODU = M.MAHALLE_KODU " +
                         "LEFT JOIN DBO.ILCE I ON H.ILCE_KODU = I.ILCE_KODU " +
@@ -198,6 +205,10 @@ namespace KargazImalatTakip
                     DataTable dtHat = new DataTable();
                     daHat.Fill(dtHat);
                     GrCoHat.DataSource = dtHat;
+
+                    RepositoryItemHyperLinkEdit dosyaYolu = new RepositoryItemHyperLinkEdit();
+                    gridView1.Columns["DOSYA"].ColumnEdit = dosyaYolu;
+                    dosyaYolu.OpenLink += DosyaYolu_OpenLink;
 
                     gridView1.Columns["ILCE_ADI"].Caption = "İL/İLÇE ADI";
                     gridView1.Columns["YATIRIMYILI"].Caption = "YATIRIM YILI";
@@ -308,7 +319,31 @@ namespace KargazImalatTakip
             {
                 MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }            
+        }
+
+        string dosyaYolu = "";
+
+        private void DosyaYolu_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)
+        {
+            string[] satir = File.ReadAllLines("C:\\SqlBaglanti.txt");
+
+            string yol;
+            string bolge;
+            string dosya;
+
+            DataRow dr = gridView1.GetDataRow(gridView1.FocusedRowHandle);
+            if (dr != null)
+            {
+                dosya = dr["DOSYA"].ToString();
+                bolge = dr["ILCE_ADI"].ToString();
+                dosyaYolu = satir[5] + bolge + "\\";
+                yol = dosyaYolu + dosya;
+                //yol = dr["DOSYA_YOLU"].ToString();
+                Process.Start(yol);
+            }
+
+            //FileInfo dosyaBilgi = new FileInfo();
+        }
 
         private void BtnBul_Click(object sender, EventArgs e)
         {
@@ -617,41 +652,90 @@ namespace KargazImalatTakip
             }
         }
 
-        //private void CmbMahalle_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    //CmbSokak.Properties.Items.Clear();
+        string kaynakDosyaYolu = "";
+        string kayitYolu = "";
 
-        //    try
-        //    {
-        //        if (CmbŞirket.Text == "KARGAZ")
-        //        {
-        //            SqlCommand komut = new SqlCommand("SELECT yol_adi + ' ' + YOL_TIPI FROM dbo.yol, DBO.mahalle, dbo.yol_mahalle WHERE DBO.yol.mslink=DBO.yol_mahalle.yol_mslink AND DBO.yol_mahalle.mahalle_mslink=DBO.mahalle.mslink AND mahalle_adi =@P1 AND DBO.YOL.ILCE_KODU =@P2", bgl.kargazBaglanti());
-        //            komut.Parameters.AddWithValue("@p1", CmbMahalle.Text);
-        //            komut.Parameters.AddWithValue("@p2", labelControl15.Text);
-        //            SqlDataReader dr = komut.ExecuteReader();
-        //            while (dr.Read())
-        //            {
-        //                CmbSokak.Properties.Items.Add(dr[0]);
-        //            }
-        //            bgl.kargazBaglanti().Close();
-        //        }
-        //        else if (CmbŞirket.Text == "SERHATGAZ")
-        //        {
-        //            SqlCommand komut = new SqlCommand("SELECT yol_adi FROM dbo.yol, DBO.mahalle, dbo.yol_mahalle WHERE DBO.yol.mslink=DBO.yol_mahalle.yol_mslink AND DBO.yol_mahalle.mahalle_mslink=DBO.mahalle.mslink AND mahalle_adi =@P1 AND DBO.YOL.ILCE_KODU =@P2", bgl.serhatgazBaglanti());
-        //            komut.Parameters.AddWithValue("@p1", CmbMahalle.Text);
-        //            komut.Parameters.AddWithValue("@p2", labelControl15.Text);
-        //            SqlDataReader dr = komut.ExecuteReader();
-        //            while (dr.Read())
-        //            {
-        //                CmbSokak.Properties.Items.Add(dr[0]);
-        //            }
-        //            bgl.serhatgazBaglanti().Close();
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }            
-        //}
+        private void BtnDosyaYukle_Click(object sender, EventArgs e)
+        {
+            string[] satir = File.ReadAllLines("C:\\SqlBaglanti.txt");
+            kayitYolu = satir[5] + CmbBolge.Text + "\\";
+
+            var secHat = gridView1.GetSelectedRows();
+            List<int> secHatMslink = new List<int>();
+            foreach (int handle in secHat)
+            {
+                secHatMslink.Add(Convert.ToInt32(gridView1.GetRowCellValue(handle, "MSLINK")));
+            }
+
+            string yatirimYil;
+            string bolge;
+
+            if (secHatMslink.Count == 0)
+            {
+                MessageBox.Show("Lütfen bir seçim yapınız!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                foreach (int hatMslink in secHatMslink)
+                {
+                    if (Directory.Exists(kayitYolu))
+                    {
+                        
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(kayitYolu);
+                    }
+
+                    DataRow dr = gridView1.GetDataRow(gridView1.FocusedRowHandle);
+                    if (dr != null)
+                    {
+                        yatirimYil = dr["YATIRIMYILI"].ToString();
+                        bolge = dr["ILCE_ADI"].ToString();
+                        string dosyaAdi = bolge + "_PE_" + yatirimYil + "_" + TxtFormNoYeni.Text + ".pdf";
+                        string dosyaYolu = kayitYolu + dosyaAdi;
+
+                        if (CmbŞirket.Text == "KARGAZ")
+                        {
+                            SqlCommand komut = new SqlCommand("UPDATE HATLAR SET DOSYA = @p1 WHERE MSLINK = " + hatMslink, bgl.kargazBaglanti());
+                            komut.Parameters.AddWithValue("@p1", dosyaAdi);
+                            komut.ExecuteNonQuery();
+                            bgl.kargazBaglanti().Close();
+                        }
+                        else if (CmbŞirket.Text == "SERHATGAZ")
+                        {
+                            SqlCommand komut = new SqlCommand("UPDATE HATLAR SET DOSYA = @p1 WHERE MSLINK = " + hatMslink, bgl.serhatgazBaglanti());
+                            komut.Parameters.AddWithValue("@p1", dosyaAdi);
+                            komut.ExecuteNonQuery();
+                            bgl.serhatgazBaglanti().Close();
+                        }
+
+                        if (File.Exists(dosyaYolu))
+                        {
+
+                        }
+                        else
+                        {
+                            File.Copy(kaynakDosyaYolu, dosyaYolu);
+                        }
+                    }                    
+                }
+                MessageBox.Show("Kayıt İşlemi Tamamlandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                listele();
+            }            
+        }
+
+        private void BtnDosyaSec_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dosya = new OpenFileDialog();
+            dosya.Filter = "Pdf Dosyası | *.pdf";
+            dosya.FilterIndex = 2;
+            dosya.RestoreDirectory = true;
+            dosya.ShowDialog();
+
+            string secilenDosya = dosya.SafeFileName;
+            kaynakDosyaYolu = dosya.FileName;
+            TxtDosyaAdi.Text = secilenDosya;
+        }
     }
 }

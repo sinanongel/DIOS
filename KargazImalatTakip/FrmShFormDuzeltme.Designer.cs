@@ -28,13 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmShFormDuzeltme));
-            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.CmbŞirket = new DevExpress.XtraEditors.ComboBoxEdit();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
@@ -60,19 +53,20 @@
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.GrCoHat = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.groupControl6 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.GrCoMalzeme = new DevExpress.XtraGrid.GridControl();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.CheTumunuSec = new DevExpress.XtraEditors.CheckEdit();
             this.CmbBolge = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
-            this.groupControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
-            this.groupControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            this.groupControl2.SuspendLayout();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.BtnDosyaSec = new DevExpress.XtraEditors.SimpleButton();
+            this.TxtDosyaAdi = new DevExpress.XtraEditors.TextEdit();
+            this.BtnDosyaYukle = new DevExpress.XtraEditors.SimpleButton();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.CmbŞirket.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
@@ -90,97 +84,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrCoHat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
-            this.groupControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrCoMalzeme)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheTumunuSec.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbBolge.Properties)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
+            this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtDosyaAdi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupControl5
-            // 
-            this.groupControl5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl5.Appearance.BackColor = System.Drawing.Color.White;
-            this.groupControl5.Appearance.Options.UseBackColor = true;
-            this.groupControl5.Controls.Add(this.labelControl10);
-            this.groupControl5.Location = new System.Drawing.Point(290, 443);
-            this.groupControl5.LookAndFeel.SkinName = "Office 2010 Black";
-            this.groupControl5.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.groupControl5.Name = "groupControl5";
-            this.groupControl5.ShowCaption = false;
-            this.groupControl5.Size = new System.Drawing.Size(1057, 26);
-            this.groupControl5.TabIndex = 66;
-            this.groupControl5.Text = "groupControl5";
-            // 
-            // labelControl10
-            // 
-            this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl10.Appearance.Options.UseFont = true;
-            this.labelControl10.Location = new System.Drawing.Point(5, 5);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(116, 16);
-            this.labelControl10.TabIndex = 48;
-            this.labelControl10.Text = "Servis Kutusu Listesi";
-            // 
-            // groupControl4
-            // 
-            this.groupControl4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl4.Appearance.BackColor = System.Drawing.Color.White;
-            this.groupControl4.Appearance.Options.UseBackColor = true;
-            this.groupControl4.Controls.Add(this.labelControl5);
-            this.groupControl4.Location = new System.Drawing.Point(290, 149);
-            this.groupControl4.LookAndFeel.SkinName = "Office 2010 Black";
-            this.groupControl4.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.groupControl4.Name = "groupControl4";
-            this.groupControl4.ShowCaption = false;
-            this.groupControl4.Size = new System.Drawing.Size(1057, 26);
-            this.groupControl4.TabIndex = 65;
-            this.groupControl4.Text = "groupControl4";
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(5, 5);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(78, 16);
-            this.labelControl5.TabIndex = 46;
-            this.labelControl5.Text = "Saddle Listesi";
-            // 
-            // groupControl2
-            // 
-            this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl2.Appearance.BackColor = System.Drawing.Color.White;
-            this.groupControl2.Appearance.Options.UseBackColor = true;
-            this.groupControl2.Controls.Add(this.labelControl7);
-            this.groupControl2.Location = new System.Drawing.Point(290, 2);
-            this.groupControl2.LookAndFeel.SkinName = "Office 2010 Black";
-            this.groupControl2.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.ShowCaption = false;
-            this.groupControl2.Size = new System.Drawing.Size(1057, 26);
-            this.groupControl2.TabIndex = 64;
-            this.groupControl2.Text = "groupControl2";
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(5, 5);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(104, 16);
-            this.labelControl7.TabIndex = 47;
-            this.labelControl7.Text = "Servis Hattı Listesi";
             // 
             // labelControl9
             // 
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl9.Appearance.Options.UseFont = true;
-            this.labelControl9.Location = new System.Drawing.Point(19, 28);
+            this.labelControl9.Location = new System.Drawing.Point(18, 13);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(33, 16);
             this.labelControl9.TabIndex = 63;
@@ -188,7 +110,7 @@
             // 
             // CmbŞirket
             // 
-            this.CmbŞirket.Location = new System.Drawing.Point(80, 25);
+            this.CmbŞirket.Location = new System.Drawing.Point(86, 9);
             this.CmbŞirket.Name = "CmbŞirket";
             this.CmbŞirket.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.CmbŞirket.Properties.Appearance.Options.UseFont = true;
@@ -197,17 +119,22 @@
             this.CmbŞirket.Properties.Items.AddRange(new object[] {
             "KARGAZ",
             "SERHATGAZ"});
-            this.CmbŞirket.Size = new System.Drawing.Size(95, 22);
+            this.CmbŞirket.Size = new System.Drawing.Size(95, 26);
             this.CmbŞirket.TabIndex = 62;
             this.CmbŞirket.SelectedIndexChanged += new System.EventHandler(this.CmbŞirket_SelectedIndexChanged);
             // 
             // groupControl3
             // 
+            this.groupControl3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(72)))));
+            this.groupControl3.Appearance.Options.UseBackColor = true;
             this.groupControl3.Controls.Add(this.labelControl4);
             this.groupControl3.Controls.Add(this.TxtBolge);
-            this.groupControl3.Location = new System.Drawing.Point(5, 282);
+            this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl3.Location = new System.Drawing.Point(3, 270);
+            this.groupControl3.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+            this.groupControl3.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(280, 70);
+            this.groupControl3.Size = new System.Drawing.Size(238, 65);
             this.groupControl3.TabIndex = 8;
             this.groupControl3.Text = "Saddle Bilgileri";
             // 
@@ -215,7 +142,7 @@
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(14, 35);
+            this.labelControl4.Location = new System.Drawing.Point(18, 32);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(31, 16);
             this.labelControl4.TabIndex = 32;
@@ -223,16 +150,16 @@
             // 
             // TxtBolge
             // 
-            this.TxtBolge.Location = new System.Drawing.Point(94, 32);
+            this.TxtBolge.Location = new System.Drawing.Point(101, 28);
             this.TxtBolge.Name = "TxtBolge";
             this.TxtBolge.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtBolge.Properties.Appearance.Options.UseFont = true;
-            this.TxtBolge.Size = new System.Drawing.Size(31, 22);
+            this.TxtBolge.Size = new System.Drawing.Size(31, 26);
             this.TxtBolge.TabIndex = 7;
             // 
             // groupControl1
             // 
-            this.groupControl1.Appearance.BackColor = System.Drawing.Color.White;
+            this.groupControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(72)))));
             this.groupControl1.Appearance.Options.UseBackColor = true;
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.TxtFormNoYeni);
@@ -242,9 +169,12 @@
             this.groupControl1.Controls.Add(this.TxtImalatTarihi);
             this.groupControl1.Controls.Add(this.labelControl8);
             this.groupControl1.Controls.Add(this.TxtSektor);
-            this.groupControl1.Location = new System.Drawing.Point(5, 120);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl1.Location = new System.Drawing.Point(3, 108);
+            this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+            this.groupControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(280, 159);
+            this.groupControl1.Size = new System.Drawing.Size(238, 156);
             this.groupControl1.TabIndex = 3;
             this.groupControl1.Text = "Ana Bilgiler";
             // 
@@ -252,7 +182,7 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(14, 66);
+            this.labelControl2.Location = new System.Drawing.Point(18, 62);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(60, 16);
             this.labelControl2.TabIndex = 17;
@@ -260,28 +190,28 @@
             // 
             // TxtFormNoYeni
             // 
-            this.TxtFormNoYeni.Location = new System.Drawing.Point(94, 35);
+            this.TxtFormNoYeni.Location = new System.Drawing.Point(101, 30);
             this.TxtFormNoYeni.Name = "TxtFormNoYeni";
             this.TxtFormNoYeni.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtFormNoYeni.Properties.Appearance.Options.UseFont = true;
-            this.TxtFormNoYeni.Size = new System.Drawing.Size(61, 22);
+            this.TxtFormNoYeni.Size = new System.Drawing.Size(61, 26);
             this.TxtFormNoYeni.TabIndex = 4;
             this.TxtFormNoYeni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFormNoYeni_KeyPress);
             // 
             // TxtYatirimYili
             // 
-            this.TxtYatirimYili.Location = new System.Drawing.Point(94, 63);
+            this.TxtYatirimYili.Location = new System.Drawing.Point(101, 58);
             this.TxtYatirimYili.Name = "TxtYatirimYili";
             this.TxtYatirimYili.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtYatirimYili.Properties.Appearance.Options.UseFont = true;
-            this.TxtYatirimYili.Size = new System.Drawing.Size(49, 22);
+            this.TxtYatirimYili.Size = new System.Drawing.Size(49, 26);
             this.TxtYatirimYili.TabIndex = 5;
             // 
             // labelControl6
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(14, 38);
+            this.labelControl6.Location = new System.Drawing.Point(18, 34);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(49, 16);
             this.labelControl6.TabIndex = 37;
@@ -291,7 +221,7 @@
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(14, 94);
+            this.labelControl3.Location = new System.Drawing.Point(18, 90);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(73, 16);
             this.labelControl3.TabIndex = 19;
@@ -299,18 +229,18 @@
             // 
             // TxtImalatTarihi
             // 
-            this.TxtImalatTarihi.Location = new System.Drawing.Point(94, 91);
+            this.TxtImalatTarihi.Location = new System.Drawing.Point(101, 86);
             this.TxtImalatTarihi.Name = "TxtImalatTarihi";
             this.TxtImalatTarihi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtImalatTarihi.Properties.Appearance.Options.UseFont = true;
-            this.TxtImalatTarihi.Size = new System.Drawing.Size(76, 22);
+            this.TxtImalatTarihi.Size = new System.Drawing.Size(76, 26);
             this.TxtImalatTarihi.TabIndex = 6;
             // 
             // labelControl8
             // 
             this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl8.Appearance.Options.UseFont = true;
-            this.labelControl8.Location = new System.Drawing.Point(14, 122);
+            this.labelControl8.Location = new System.Drawing.Point(18, 118);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(37, 16);
             this.labelControl8.TabIndex = 29;
@@ -318,21 +248,23 @@
             // 
             // TxtSektor
             // 
-            this.TxtSektor.Location = new System.Drawing.Point(94, 119);
+            this.TxtSektor.Location = new System.Drawing.Point(101, 114);
             this.TxtSektor.Name = "TxtSektor";
             this.TxtSektor.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtSektor.Properties.Appearance.Options.UseFont = true;
-            this.TxtSektor.Size = new System.Drawing.Size(76, 22);
+            this.TxtSektor.Size = new System.Drawing.Size(76, 26);
             this.TxtSektor.TabIndex = 7;
             // 
             // BtnTemizle
             // 
-            this.BtnTemizle.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.BtnTemizle.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Danger;
+            this.BtnTemizle.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.BtnTemizle.Appearance.Options.UseBackColor = true;
             this.BtnTemizle.Appearance.Options.UseFont = true;
-            this.BtnTemizle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnTemizle.ImageOptions.Image")));
-            this.BtnTemizle.Location = new System.Drawing.Point(147, 387);
+            this.BtnTemizle.Location = new System.Drawing.Point(122, 32);
+            this.BtnTemizle.LookAndFeel.UseDefaultLookAndFeel = false;
             this.BtnTemizle.Name = "BtnTemizle";
-            this.BtnTemizle.Size = new System.Drawing.Size(125, 23);
+            this.BtnTemizle.Size = new System.Drawing.Size(100, 30);
             this.BtnTemizle.TabIndex = 11;
             this.BtnTemizle.Text = "Temizle";
             this.BtnTemizle.Click += new System.EventHandler(this.BtnTemizle_Click);
@@ -341,7 +273,7 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(19, 76);
+            this.labelControl1.Location = new System.Drawing.Point(18, 69);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(49, 16);
             this.labelControl1.TabIndex = 55;
@@ -349,45 +281,48 @@
             // 
             // TxtFormNo
             // 
-            this.TxtFormNo.Location = new System.Drawing.Point(80, 73);
+            this.TxtFormNo.Location = new System.Drawing.Point(86, 65);
             this.TxtFormNo.Name = "TxtFormNo";
             this.TxtFormNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtFormNo.Properties.Appearance.Options.UseFont = true;
-            this.TxtFormNo.Size = new System.Drawing.Size(61, 22);
+            this.TxtFormNo.Size = new System.Drawing.Size(61, 26);
             this.TxtFormNo.TabIndex = 1;
             // 
             // BtnGuncelle
             // 
-            this.BtnGuncelle.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.BtnGuncelle.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Success;
+            this.BtnGuncelle.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.BtnGuncelle.Appearance.Options.UseBackColor = true;
             this.BtnGuncelle.Appearance.Options.UseFont = true;
-            this.BtnGuncelle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnGuncelle.ImageOptions.Image")));
-            this.BtnGuncelle.Location = new System.Drawing.Point(19, 387);
+            this.BtnGuncelle.Location = new System.Drawing.Point(18, 32);
+            this.BtnGuncelle.LookAndFeel.UseDefaultLookAndFeel = false;
             this.BtnGuncelle.Name = "BtnGuncelle";
-            this.BtnGuncelle.Size = new System.Drawing.Size(125, 23);
+            this.BtnGuncelle.Size = new System.Drawing.Size(100, 30);
             this.BtnGuncelle.TabIndex = 10;
             this.BtnGuncelle.Text = "Güncelle";
             this.BtnGuncelle.Click += new System.EventHandler(this.BtnGuncelle_Click);
             // 
             // BtnBul
             // 
-            this.BtnBul.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.BtnBul.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Question;
+            this.BtnBul.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.BtnBul.Appearance.Options.UseBackColor = true;
             this.BtnBul.Appearance.Options.UseFont = true;
-            this.BtnBul.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnBul.ImageOptions.Image")));
-            this.BtnBul.Location = new System.Drawing.Point(147, 72);
+            this.BtnBul.Location = new System.Drawing.Point(154, 65);
+            this.BtnBul.LookAndFeel.UseDefaultLookAndFeel = false;
             this.BtnBul.Name = "BtnBul";
-            this.BtnBul.Size = new System.Drawing.Size(130, 23);
+            this.BtnBul.Size = new System.Drawing.Size(68, 24);
             this.BtnBul.TabIndex = 2;
             this.BtnBul.Text = "Bul";
             this.BtnBul.Click += new System.EventHandler(this.BtnBul_Click);
             // 
             // GrCoServisKutusu
             // 
-            this.GrCoServisKutusu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.GrCoServisKutusu.Location = new System.Drawing.Point(290, 469);
+            this.GrCoServisKutusu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GrCoServisKutusu.Location = new System.Drawing.Point(3, 441);
             this.GrCoServisKutusu.MainView = this.gridView3;
             this.GrCoServisKutusu.Name = "GrCoServisKutusu";
-            this.GrCoServisKutusu.Size = new System.Drawing.Size(1057, 119);
+            this.GrCoServisKutusu.Size = new System.Drawing.Size(1087, 141);
             this.GrCoServisKutusu.TabIndex = 54;
             this.GrCoServisKutusu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -403,15 +338,16 @@
             this.gridView3.OptionsSelection.MultiSelect = true;
             this.gridView3.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridView3.OptionsView.ShowGroupPanel = false;
+            this.gridView3.OptionsView.ShowViewCaption = true;
+            this.gridView3.ViewCaption = "Servis Kutusu Listesi";
             // 
             // GrCoSaddle
             // 
-            this.GrCoSaddle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.GrCoSaddle.Location = new System.Drawing.Point(290, 175);
+            this.GrCoSaddle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GrCoSaddle.Location = new System.Drawing.Point(3, 149);
             this.GrCoSaddle.MainView = this.gridView2;
             this.GrCoSaddle.Name = "GrCoSaddle";
-            this.GrCoSaddle.Size = new System.Drawing.Size(1057, 119);
+            this.GrCoSaddle.Size = new System.Drawing.Size(1087, 140);
             this.GrCoSaddle.TabIndex = 53;
             this.GrCoSaddle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -427,15 +363,16 @@
             this.gridView2.OptionsSelection.MultiSelect = true;
             this.gridView2.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridView2.OptionsView.ShowViewCaption = true;
+            this.gridView2.ViewCaption = "Saddle Listesi";
             // 
             // GrCoHat
             // 
-            this.GrCoHat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.GrCoHat.Location = new System.Drawing.Point(290, 28);
+            this.GrCoHat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GrCoHat.Location = new System.Drawing.Point(3, 3);
             this.GrCoHat.MainView = this.gridView1;
             this.GrCoHat.Name = "GrCoHat";
-            this.GrCoHat.Size = new System.Drawing.Size(1057, 119);
+            this.GrCoHat.Size = new System.Drawing.Size(1087, 140);
             this.GrCoHat.TabIndex = 52;
             this.GrCoHat.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -451,41 +388,16 @@
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridView1.OptionsView.ShowGroupPanel = false;
-            // 
-            // groupControl6
-            // 
-            this.groupControl6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl6.Appearance.BackColor = System.Drawing.Color.White;
-            this.groupControl6.Appearance.Options.UseBackColor = true;
-            this.groupControl6.Controls.Add(this.labelControl11);
-            this.groupControl6.Location = new System.Drawing.Point(290, 296);
-            this.groupControl6.LookAndFeel.SkinName = "Office 2010 Black";
-            this.groupControl6.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.groupControl6.Name = "groupControl6";
-            this.groupControl6.ShowCaption = false;
-            this.groupControl6.Size = new System.Drawing.Size(1057, 26);
-            this.groupControl6.TabIndex = 68;
-            this.groupControl6.Text = "groupControl6";
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl11.Appearance.Options.UseFont = true;
-            this.labelControl11.Location = new System.Drawing.Point(5, 5);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(90, 16);
-            this.labelControl11.TabIndex = 46;
-            this.labelControl11.Text = "Malzeme Listesi";
+            this.gridView1.OptionsView.ShowViewCaption = true;
+            this.gridView1.ViewCaption = "Servis Hattı Listesi";
             // 
             // GrCoMalzeme
             // 
-            this.GrCoMalzeme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.GrCoMalzeme.Location = new System.Drawing.Point(290, 322);
+            this.GrCoMalzeme.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GrCoMalzeme.Location = new System.Drawing.Point(3, 295);
             this.GrCoMalzeme.MainView = this.gridView4;
             this.GrCoMalzeme.Name = "GrCoMalzeme";
-            this.GrCoMalzeme.Size = new System.Drawing.Size(1057, 119);
+            this.GrCoMalzeme.Size = new System.Drawing.Size(1087, 140);
             this.GrCoMalzeme.TabIndex = 67;
             this.GrCoMalzeme.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
@@ -501,38 +413,183 @@
             this.gridView4.OptionsSelection.MultiSelect = true;
             this.gridView4.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridView4.OptionsView.ShowGroupPanel = false;
+            this.gridView4.OptionsView.ShowViewCaption = true;
+            this.gridView4.ViewCaption = "Malzeme Listesi";
             // 
             // CheTumunuSec
             // 
-            this.CheTumunuSec.Location = new System.Drawing.Point(19, 361);
+            this.CheTumunuSec.Location = new System.Drawing.Point(18, 9);
             this.CheTumunuSec.Name = "CheTumunuSec";
-            this.CheTumunuSec.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.CheTumunuSec.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.CheTumunuSec.Properties.Appearance.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.CheTumunuSec.Properties.Appearance.Options.UseFont = true;
             this.CheTumunuSec.Properties.Appearance.Options.UseForeColor = true;
             this.CheTumunuSec.Properties.Caption = "Tümünü Seç";
-            this.CheTumunuSec.Size = new System.Drawing.Size(96, 20);
+            this.CheTumunuSec.Size = new System.Drawing.Size(96, 17);
             this.CheTumunuSec.TabIndex = 9;
             this.CheTumunuSec.CheckedChanged += new System.EventHandler(this.CheTumunuSec_CheckedChanged);
             // 
             // CmbBolge
             // 
-            this.CmbBolge.Location = new System.Drawing.Point(80, 49);
+            this.CmbBolge.Location = new System.Drawing.Point(86, 37);
             this.CmbBolge.Name = "CmbBolge";
             this.CmbBolge.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.CmbBolge.Properties.Appearance.Options.UseFont = true;
             this.CmbBolge.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CmbBolge.Size = new System.Drawing.Size(197, 22);
+            this.CmbBolge.Size = new System.Drawing.Size(136, 26);
             this.CmbBolge.TabIndex = 70;
             // 
             // labelControl13
             // 
             this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl13.Appearance.Options.UseFont = true;
-            this.labelControl13.Location = new System.Drawing.Point(19, 52);
+            this.labelControl13.Location = new System.Drawing.Point(174, -108);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(31, 16);
             this.labelControl13.TabIndex = 69;
             this.labelControl13.Text = "Bölge";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1349, 591);
+            this.tableLayoutPanel1.TabIndex = 71;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.GrCoHat, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.GrCoSaddle, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.GrCoMalzeme, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.GrCoServisKutusu, 0, 3);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(253, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1093, 585);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.groupControl4, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.groupControl2, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.groupControl1, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.groupControl3, 0, 2);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 4;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 162F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(244, 585);
+            this.tableLayoutPanel3.TabIndex = 1;
+            // 
+            // groupControl4
+            // 
+            this.groupControl4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(72)))));
+            this.groupControl4.Appearance.Options.UseBackColor = true;
+            this.groupControl4.Controls.Add(this.BtnDosyaSec);
+            this.groupControl4.Controls.Add(this.TxtDosyaAdi);
+            this.groupControl4.Controls.Add(this.BtnDosyaYukle);
+            this.groupControl4.Controls.Add(this.BtnGuncelle);
+            this.groupControl4.Controls.Add(this.CheTumunuSec);
+            this.groupControl4.Controls.Add(this.BtnTemizle);
+            this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl4.Location = new System.Drawing.Point(3, 341);
+            this.groupControl4.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+            this.groupControl4.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.groupControl4.Name = "groupControl4";
+            this.groupControl4.ShowCaption = false;
+            this.groupControl4.Size = new System.Drawing.Size(238, 241);
+            this.groupControl4.TabIndex = 72;
+            this.groupControl4.Text = "Saddle Bilgileri";
+            // 
+            // BtnDosyaSec
+            // 
+            this.BtnDosyaSec.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Success;
+            this.BtnDosyaSec.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.BtnDosyaSec.Appearance.Options.UseBackColor = true;
+            this.BtnDosyaSec.Appearance.Options.UseFont = true;
+            this.BtnDosyaSec.Location = new System.Drawing.Point(18, 100);
+            this.BtnDosyaSec.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.BtnDosyaSec.Name = "BtnDosyaSec";
+            this.BtnDosyaSec.Size = new System.Drawing.Size(100, 30);
+            this.BtnDosyaSec.TabIndex = 60;
+            this.BtnDosyaSec.Text = "Dosya Seç";
+            this.BtnDosyaSec.Click += new System.EventHandler(this.BtnDosyaSec_Click);
+            // 
+            // TxtDosyaAdi
+            // 
+            this.TxtDosyaAdi.Location = new System.Drawing.Point(18, 70);
+            this.TxtDosyaAdi.Name = "TxtDosyaAdi";
+            this.TxtDosyaAdi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.TxtDosyaAdi.Properties.Appearance.Options.UseFont = true;
+            this.TxtDosyaAdi.Size = new System.Drawing.Size(204, 26);
+            this.TxtDosyaAdi.TabIndex = 58;
+            // 
+            // BtnDosyaYukle
+            // 
+            this.BtnDosyaYukle.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Question;
+            this.BtnDosyaYukle.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.BtnDosyaYukle.Appearance.Options.UseBackColor = true;
+            this.BtnDosyaYukle.Appearance.Options.UseFont = true;
+            this.BtnDosyaYukle.Location = new System.Drawing.Point(122, 100);
+            this.BtnDosyaYukle.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.BtnDosyaYukle.Name = "BtnDosyaYukle";
+            this.BtnDosyaYukle.Size = new System.Drawing.Size(100, 30);
+            this.BtnDosyaYukle.TabIndex = 59;
+            this.BtnDosyaYukle.Text = "Dosya Yükle";
+            this.BtnDosyaYukle.Click += new System.EventHandler(this.BtnDosyaYukle_Click);
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(72)))));
+            this.groupControl2.Appearance.Options.UseBackColor = true;
+            this.groupControl2.Controls.Add(this.labelControl12);
+            this.groupControl2.Controls.Add(this.labelControl9);
+            this.groupControl2.Controls.Add(this.CmbŞirket);
+            this.groupControl2.Controls.Add(this.labelControl1);
+            this.groupControl2.Controls.Add(this.CmbBolge);
+            this.groupControl2.Controls.Add(this.BtnBul);
+            this.groupControl2.Controls.Add(this.TxtFormNo);
+            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl2.Location = new System.Drawing.Point(3, 3);
+            this.groupControl2.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+            this.groupControl2.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.ShowCaption = false;
+            this.groupControl2.Size = new System.Drawing.Size(238, 99);
+            this.groupControl2.TabIndex = 72;
+            this.groupControl2.Text = "Saddle Bilgileri";
+            // 
+            // labelControl12
+            // 
+            this.labelControl12.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelControl12.Appearance.Options.UseFont = true;
+            this.labelControl12.Location = new System.Drawing.Point(18, 41);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(31, 16);
+            this.labelControl12.TabIndex = 73;
+            this.labelControl12.Text = "Bölge";
             // 
             // FrmShFormDuzeltme
             // 
@@ -540,38 +597,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1349, 591);
-            this.Controls.Add(this.CmbBolge);
             this.Controls.Add(this.labelControl13);
-            this.Controls.Add(this.CheTumunuSec);
-            this.Controls.Add(this.groupControl6);
-            this.Controls.Add(this.GrCoMalzeme);
-            this.Controls.Add(this.groupControl5);
-            this.Controls.Add(this.groupControl4);
-            this.Controls.Add(this.groupControl2);
-            this.Controls.Add(this.labelControl9);
-            this.Controls.Add(this.CmbŞirket);
-            this.Controls.Add(this.groupControl3);
-            this.Controls.Add(this.groupControl1);
-            this.Controls.Add(this.BtnTemizle);
-            this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.TxtFormNo);
-            this.Controls.Add(this.BtnGuncelle);
-            this.Controls.Add(this.BtnBul);
-            this.Controls.Add(this.GrCoServisKutusu);
-            this.Controls.Add(this.GrCoSaddle);
-            this.Controls.Add(this.GrCoHat);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(1365, 630);
             this.Name = "FrmShFormDuzeltme";
             this.Text = "SH Form Bilgileri Güncelleme";
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
-            this.groupControl5.ResumeLayout(false);
-            this.groupControl5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
-            this.groupControl4.ResumeLayout(false);
-            this.groupControl4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            this.groupControl2.ResumeLayout(false);
-            this.groupControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CmbŞirket.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
@@ -591,26 +621,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrCoHat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).EndInit();
-            this.groupControl6.ResumeLayout(false);
-            this.groupControl6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrCoMalzeme)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheTumunuSec.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbBolge.Properties)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
+            this.groupControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TxtDosyaAdi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            this.groupControl2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.GroupControl groupControl5;
-        private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.GroupControl groupControl4;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.GroupControl groupControl2;
-        private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.ComboBoxEdit CmbŞirket;
         private DevExpress.XtraEditors.GroupControl groupControl3;
@@ -636,12 +665,19 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.GridControl GrCoHat;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraEditors.GroupControl groupControl6;
-        private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraGrid.GridControl GrCoMalzeme;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
         private DevExpress.XtraEditors.CheckEdit CheTumunuSec;
         private DevExpress.XtraEditors.ComboBoxEdit CmbBolge;
         private DevExpress.XtraEditors.LabelControl labelControl13;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private DevExpress.XtraEditors.GroupControl groupControl4;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.LabelControl labelControl12;
+        private DevExpress.XtraEditors.SimpleButton BtnDosyaSec;
+        private DevExpress.XtraEditors.TextEdit TxtDosyaAdi;
+        private DevExpress.XtraEditors.SimpleButton BtnDosyaYukle;
     }
 }

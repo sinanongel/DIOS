@@ -54,6 +54,7 @@ namespace KargazImalatTakip
                     gridControl1.DataSource = dtBina;
 
                     gridView1.Columns[0].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
+
                 }
             }
             catch

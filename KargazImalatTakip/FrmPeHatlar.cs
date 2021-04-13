@@ -10,6 +10,10 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using DevExpress.XtraGrid;
 using DevExpress.Utils;
+using DevExpress.XtraEditors.Repository;
+using System.IO;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraGrid.Views.Base;
 
 namespace KargazImalatTakip
 {
@@ -26,15 +30,15 @@ namespace KargazImalatTakip
         {
             gridView1.Columns.Clear();
 
-            try
-            {
+            //try
+            //{
                 if (CmbŞirket.Text == "KARGAZ")
                 {
                     SqlDataAdapter da = new SqlDataAdapter("SELECT ROW_NUMBER() OVER(ORDER BY I.ILCE_ADI) AS SIRANO, H.MSLINK, H.SEKTOR, I.ILCE_ADI AS ILCE_ADI, " +
                             "M.MAHALLE_ADI AS MAHALLE, CAST(YOL_KODU AS NVARCHAR) + ' - ' + Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, " +
                             "YOL_BOYU, YATIRIMYILI, CONVERT(VARCHAR, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, FORMNO, " +
-                            "FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, NET_BORU_CAPI, BORU_UZUNLUGU, YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU " +
-                            "FROM dbo.HATLAR H " +
+                            "FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, NET_BORU_CAPI, BORU_UZUNLUGU, YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU, " +
+                            "DOSYA FROM dbo.HATLAR H " +
                             "LEFT JOIN DBO.YOL Y ON H.YOL_MSLINK = Y.MSLINK " +
                             "LEFT JOIN DBO.MAHALLE M ON H.MAHALLE_KODU = M.MAHALLE_KODU " +
                             "LEFT JOIN DBO.ILCE I ON H.ILCE_KODU = I.ILCE_KODU " +
@@ -49,8 +53,8 @@ namespace KargazImalatTakip
                     SqlDataAdapter da = new SqlDataAdapter("SELECT ROW_NUMBER() OVER(ORDER BY I.ILCE_ADI) AS SIRANO, H.MSLINK, H.SEKTOR, I.ILCE_ADI AS ILCE_ADI, " +
                             "M.MAHALLE_ADI AS MAHALLE, CAST(YOL_KODU AS NVARCHAR) + ' - ' + Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, " +
                             "YOL_BOYU, YATIRIMYILI, CONVERT(VARCHAR, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, FORMNO, " +
-                            "FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, NET_BORU_CAPI, BORU_UZUNLUGU, YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU " +
-                            "FROM dbo.HATLAR H " +
+                            "FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, NET_BORU_CAPI, BORU_UZUNLUGU, YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU, " +
+                            "DOSYA FROM dbo.HATLAR H " +
                             "LEFT JOIN DBO.YOL Y ON H.YOL_MSLINK = Y.MSLINK " +
                             "LEFT JOIN DBO.MAHALLE M ON H.MAHALLE_KODU = M.MAHALLE_KODU " +
                             "LEFT JOIN DBO.ILCE I ON H.ILCE_KODU = I.ILCE_KODU " +
@@ -87,6 +91,17 @@ namespace KargazImalatTakip
                 gridView1.Columns["KAZI_BOYU"].Caption = "KAZI BOYU";
                 gridView1.Columns["KAZI_BOYU"].DisplayFormat.FormatType = FormatType.Numeric;
                 gridView1.Columns["KAZI_BOYU"].DisplayFormat.FormatString = "{0:n2}";
+
+                RepositoryItemHyperLinkEdit dosyaYolu = new RepositoryItemHyperLinkEdit();
+                gridView1.Columns["DOSYA"].ColumnEdit = dosyaYolu;
+                dosyaYolu.OpenLink += DosyaYolu_OpenLink;
+
+                //RepositoryItemButtonEdit dosyaYolu = new RepositoryItemButtonEdit();
+                //    dosyaYolu.Buttons[0].Kind = ButtonPredefines.Glyph;
+                //    dosyaYolu.Buttons[0].Caption = "Get Sql Query";
+                //    dosyaYolu.ButtonClick += DosyaYolu_ButtonClick;
+                //gridView1.Columns["DOSYA_YOLU"].ShowButtonMode = ShowButtonModeEnum.ShowAlways;
+
 
                 gridView1.Columns[0].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
                 gridView1.Columns[0].SummaryItem.DisplayFormat = "{0:0.##} ADET";
@@ -128,11 +143,35 @@ namespace KargazImalatTakip
                 kaziBoyu.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                 kaziBoyu.ShowInGroupColumnFooter = gridView1.Columns["KAZI_BOYU"];
                 gridView1.GroupSummary.Add(kaziBoyu);
-            }
-            catch
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+        }
+
+        string kayitYolu = "";
+
+        private void DosyaYolu_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)
+        {
+            string[] satir = File.ReadAllLines("C:\\SqlBaglanti.txt");
+
+            string yol;
+            string bolge;
+            string dosya;
+
+            DataRow dr = gridView1.GetDataRow(gridView1.FocusedRowHandle);
+            if (dr != null)
             {
-                MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dosya = dr["DOSYA"].ToString();
+                bolge = dr["ILCE_ADI"].ToString();
+                kayitYolu = satir[5] + bolge + "\\";
+                yol = kayitYolu + dosya;
+                //yol = dr["DOSYA_YOLU"].ToString();
+                Process.Start(yol);
             }
+
+            //FileInfo dosyaBilgi = new FileInfo();
         }
 
         private void BtnExcel_Click(object sender, EventArgs e)
