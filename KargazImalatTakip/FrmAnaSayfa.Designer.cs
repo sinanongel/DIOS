@@ -53,6 +53,17 @@
             this.BtnMucbirTakip = new DevExpress.XtraBars.BarButtonItem();
             this.BtnMucbir = new DevExpress.XtraBars.BarButtonItem();
             this.BtnSokBazBinaDaireSay = new DevExpress.XtraBars.BarButtonItem();
+            this.BarKullaniciAdi = new DevExpress.XtraBars.BarStaticItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.EditKullaniciAdi = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemHypertextLabel1 = new DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel();
+            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemHypertextLabel2 = new DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel();
+            this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.BtnSifreDegistirme = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -64,12 +75,17 @@
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage5 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.LblKullaniciAdi = new DevExpress.XtraEditors.LabelControl();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -102,14 +118,27 @@
             this.BtnAboneligiOlanKutusuOlmayanBinalar,
             this.BtnMucbirTakip,
             this.BtnMucbir,
-            this.BtnSokBazBinaDaireSay});
+            this.BtnSokBazBinaDaireSay,
+            this.BarKullaniciAdi,
+            this.barSubItem1,
+            this.EditKullaniciAdi,
+            this.barEditItem1,
+            this.barEditItem2,
+            this.barButtonItem4,
+            this.barButtonItem5,
+            this.BtnSifreDegistirme});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 29;
+            this.ribbonControl1.MaxItemId = 40;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.ribbonPage2,
-            this.ribbonPage4});
+            this.ribbonPage4,
+            this.ribbonPage5});
+            this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemHypertextLabel1,
+            this.repositoryItemHypertextLabel2,
+            this.repositoryItemTextEdit1});
             this.ribbonControl1.Size = new System.Drawing.Size(1348, 150);
             // 
             // BtnPeHatlar
@@ -324,6 +353,73 @@
             this.BtnSokBazBinaDaireSay.Name = "BtnSokBazBinaDaireSay";
             this.BtnSokBazBinaDaireSay.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnSokBazBinaDaireSay_ItemClick);
             // 
+            // BarKullaniciAdi
+            // 
+            this.BarKullaniciAdi.Caption = "barStaticItem1";
+            this.BarKullaniciAdi.Id = 30;
+            this.BarKullaniciAdi.Name = "BarKullaniciAdi";
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "barSubItem1";
+            this.barSubItem1.Id = 31;
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // EditKullaniciAdi
+            // 
+            this.EditKullaniciAdi.Caption = "barEditItem1";
+            this.EditKullaniciAdi.Edit = this.repositoryItemHypertextLabel1;
+            this.EditKullaniciAdi.Id = 32;
+            this.EditKullaniciAdi.Name = "EditKullaniciAdi";
+            // 
+            // repositoryItemHypertextLabel1
+            // 
+            this.repositoryItemHypertextLabel1.Name = "repositoryItemHypertextLabel1";
+            this.repositoryItemHypertextLabel1.ReadOnly = true;
+            // 
+            // barEditItem1
+            // 
+            this.barEditItem1.Caption = "barEditItem1";
+            this.barEditItem1.Edit = this.repositoryItemHypertextLabel2;
+            this.barEditItem1.Id = 33;
+            this.barEditItem1.Name = "barEditItem1";
+            // 
+            // repositoryItemHypertextLabel2
+            // 
+            this.repositoryItemHypertextLabel2.Name = "repositoryItemHypertextLabel2";
+            // 
+            // barEditItem2
+            // 
+            this.barEditItem2.Caption = "barEditItem2";
+            this.barEditItem2.Edit = this.repositoryItemTextEdit1;
+            this.barEditItem2.Id = 34;
+            this.barEditItem2.Name = "barEditItem2";
+            // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Id = 37;
+            this.barButtonItem4.Name = "barButtonItem4";
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "ŞİFRE DEĞİŞTİRME";
+            this.barButtonItem5.Id = 36;
+            this.barButtonItem5.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
+            this.barButtonItem5.Name = "barButtonItem5";
+            // 
+            // BtnSifreDegistirme
+            // 
+            this.BtnSifreDegistirme.Caption = "ŞİFRE DEĞİŞTİRME";
+            this.BtnSifreDegistirme.Id = 38;
+            this.BtnSifreDegistirme.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnSifreDegistirme.ImageOptions.LargeImage")));
+            this.BtnSifreDegistirme.Name = "BtnSifreDegistirme";
+            this.BtnSifreDegistirme.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnSifreDegistirme_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -411,6 +507,18 @@
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
             this.ribbonPageGroup7.Text = "ribbonPageGroup7";
             // 
+            // ribbonPage5
+            // 
+            this.ribbonPage5.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup10});
+            this.ribbonPage5.Name = "ribbonPage5";
+            this.ribbonPage5.Text = "KULLANICI İŞLEMLERİ";
+            // 
+            // ribbonPageGroup10
+            // 
+            this.ribbonPageGroup10.ItemLinks.Add(this.BtnSifreDegistirme);
+            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            // 
             // xtraTabbedMdiManager1
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
@@ -419,8 +527,7 @@
             // 
             this.groupControl1.Appearance.BackColor = System.Drawing.Color.LightGray;
             this.groupControl1.Appearance.Options.UseBackColor = true;
-            this.groupControl1.Controls.Add(this.labelControl2);
-            this.groupControl1.Controls.Add(this.labelControl1);
+            this.groupControl1.Controls.Add(this.LblKullaniciAdi);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupControl1.Location = new System.Drawing.Point(0, 671);
             this.groupControl1.Name = "groupControl1";
@@ -429,28 +536,29 @@
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "groupControl1";
             // 
-            // labelControl2
+            // LblKullaniciAdi
             // 
-            this.labelControl2.Location = new System.Drawing.Point(5, 7);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(34, 13);
-            this.labelControl2.TabIndex = 3;
-            this.labelControl2.Text = "©2021";
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.LblKullaniciAdi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl1.Location = new System.Drawing.Point(1221, 7);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(117, 13);
-            this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Hazırlayan : Sinan Öngel";
+            this.LblKullaniciAdi.Appearance.Options.UseTextOptions = true;
+            this.LblKullaniciAdi.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.LblKullaniciAdi.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.LblKullaniciAdi.Location = new System.Drawing.Point(1080, 5);
+            this.LblKullaniciAdi.Name = "LblKullaniciAdi";
+            this.LblKullaniciAdi.Size = new System.Drawing.Size(256, 13);
+            this.LblKullaniciAdi.TabIndex = 0;
             // 
             // ribbonPage3
             // 
             this.ribbonPage3.Name = "ribbonPage3";
             this.ribbonPage3.Text = "ribbonPage3";
+            // 
+            // ribbonPageGroup9
+            // 
+            this.ribbonPageGroup9.ItemLinks.Add(this.barButtonItem4);
+            this.ribbonPageGroup9.ItemLinks.Add(this.barButtonItem5);
+            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
+            this.ribbonPageGroup9.Text = "ribbonPageGroup9";
             // 
             // FrmAnaSayfa
             // 
@@ -466,11 +574,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DİOS - DOĞALGAZ İMALAT OTOMASYON SİSTEMİ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmAnaSayfa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
-            this.groupControl1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -485,8 +596,6 @@
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
         private DevExpress.XtraBars.BarButtonItem BtnCelikHatlar;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraBars.BarButtonItem BtnServisHatlar;
         private DevExpress.XtraBars.BarButtonItem BtnPeFormDuzeltme;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
@@ -517,6 +626,21 @@
         private DevExpress.XtraBars.BarButtonItem BtnMucbirTakip;
         private DevExpress.XtraBars.BarButtonItem BtnMucbir;
         private DevExpress.XtraBars.BarButtonItem BtnSokBazBinaDaireSay;
+        private DevExpress.XtraBars.BarStaticItem BarKullaniciAdi;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarEditItem EditKullaniciAdi;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel repositoryItemHypertextLabel1;
+        private DevExpress.XtraBars.BarEditItem barEditItem1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel repositoryItemHypertextLabel2;
+        private DevExpress.XtraBars.BarEditItem barEditItem2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+        private DevExpress.XtraEditors.LabelControl LblKullaniciAdi;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage5;
+        private DevExpress.XtraBars.BarButtonItem BtnSifreDegistirme;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
     }
 }
 

@@ -94,7 +94,7 @@
             this.CmbŞirket.Properties.Items.AddRange(new object[] {
             "KARGAZ",
             "SERHATGAZ"});
-            this.CmbŞirket.Size = new System.Drawing.Size(109, 22);
+            this.CmbŞirket.Size = new System.Drawing.Size(109, 24);
             this.CmbŞirket.TabIndex = 2;
             // 
             // labelControl1
@@ -166,6 +166,7 @@
             this.Controls.Add(this.gridControl1);
             this.Name = "FrmPeHatlar";
             this.Text = "PE Hatlar";
+            this.Load += new System.EventHandler(this.FrmPeHatlar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbŞirket.Properties)).EndInit();

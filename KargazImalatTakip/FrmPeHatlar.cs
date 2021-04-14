@@ -25,6 +25,7 @@ namespace KargazImalatTakip
         }
 
         SqlBaglanti bgl = new SqlBaglanti();
+        public string yetkiGrup;
 
         private void BtnListele_Click(object sender, EventArgs e)
         {
@@ -322,6 +323,11 @@ namespace KargazImalatTakip
             {
                 MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void FrmPeHatlar_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

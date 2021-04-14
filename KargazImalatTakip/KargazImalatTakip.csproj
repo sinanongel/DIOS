@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KargazImalatTakip</RootNamespace>
     <AssemblyName>DİOS - Doğalgaz İmalat Otomasyon Sistemi</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -86,20 +86,45 @@
     <Reference Include="DevExpress.XtraReports.v19.2.Extensions, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraScheduler.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.6.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.4.6.0\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Channels, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.4.7.0\lib\netstandard2.0\System.Threading.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.3\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -113,12 +138,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BAGLANTI_ELEMANLARI_CELIK.cs">
-      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BAGLANTI_ELEMANLARI_PE.cs">
-      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
-    </Compile>
     <Compile Include="FrmAboOlanKutusuOlmayanBina.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,6 +246,12 @@
     <Compile Include="FrmShKayitDuzelt.Designer.cs">
       <DependentUpon>FrmShKayitDuzelt.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSifreDegistir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSifreDegistir.Designer.cs">
+      <DependentUpon>FrmSifreDegistir.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSokakBazındaBinaDaireSayısı.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,9 +276,6 @@
     <Compile Include="FrmYolKaziRaporu.Designer.cs">
       <DependentUpon>FrmYolKaziRaporu.cs</DependentUpon>
     </Compile>
-    <Compile Include="HATLAR.cs">
-      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
-    </Compile>
     <Compile Include="IcmalHatlar.cs" />
     <Compile Include="IcmalRaporu.cs">
       <SubType>Component</SubType>
@@ -261,54 +283,9 @@
     <Compile Include="IcmalRaporu.Designer.cs">
       <DependentUpon>IcmalRaporu.cs</DependentUpon>
     </Compile>
-    <Compile Include="ilce.cs">
-      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MdlKargazHarita.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MdlKargazHarita.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MdlKargazHarita.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MdlKargazHarita.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MdlKargazHarita.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="MdlSerhatgazHarita.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MdlSerhatgazHarita.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MdlSerhatgazHarita.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MdlSerhatgazHarita.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MdlSerhatgazHarita.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MdlSerhatgazHarita.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SERVIS_ELEMANLARI.cs">
-      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SERVIS_HATLARI.cs">
-      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SERVIS_KUTUSU.cs">
-      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
-    </Compile>
     <Compile Include="SqlBaglanti.cs" />
-    <Compile Include="VANA.cs">
-      <DependentUpon>MdlKargazHarita.tt</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="FrmAboOlanKutusuOlmayanBina.resx">
       <DependentUpon>FrmAboOlanKutusuOlmayanBina.cs</DependentUpon>
     </EmbeddedResource>
@@ -363,6 +340,9 @@
     <EmbeddedResource Include="FrmShKayitDuzelt.resx">
       <DependentUpon>FrmShKayitDuzelt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmSifreDegistir.resx">
+      <DependentUpon>FrmSifreDegistir.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmSokakBazındaBinaDaireSayısı.resx">
       <DependentUpon>FrmSokakBazındaBinaDaireSayısı.cs</DependentUpon>
     </EmbeddedResource>
@@ -391,20 +371,6 @@
     </Compile>
     <None Include="app.config" />
     <None Include="ClassDiagram1.cd" />
-    <EntityDeploy Include="MdlKargazHarita.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MdlKargazHarita.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="MdlKargazHarita.edmx.diagram">
-      <DependentUpon>MdlKargazHarita.edmx</DependentUpon>
-    </None>
-    <EntityDeploy Include="MdlSerhatgazHarita.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MdlSerhatgazHarita.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="MdlSerhatgazHarita.edmx.diagram">
-      <DependentUpon>MdlSerhatgazHarita.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -418,26 +384,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="haticon.ico" />
-    <Content Include="MdlKargazHarita.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MdlKargazHarita.edmx</DependentUpon>
-      <LastGenOutput>MdlKargazHarita.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="MdlKargazHarita.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MdlKargazHarita.edmx</DependentUpon>
-      <LastGenOutput>MdlKargazHarita.cs</LastGenOutput>
-    </Content>
-    <Content Include="MdlSerhatgazHarita.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MdlSerhatgazHarita.edmx</DependentUpon>
-      <LastGenOutput>MdlSerhatgazHarita.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="MdlSerhatgazHarita.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MdlSerhatgazHarita.edmx</DependentUpon>
-      <LastGenOutput>MdlSerhatgazHarita.cs</LastGenOutput>
-    </Content>
+    <None Include="Resources\open.svg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

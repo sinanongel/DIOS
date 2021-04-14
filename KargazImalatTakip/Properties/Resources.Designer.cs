@@ -59,5 +59,15 @@ namespace KargazImalatTakip.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   DevExpress.Utils.Svg.SvgImage türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage open {
+            get {
+                object obj = ResourceManager.GetObject("open", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
     }
 }

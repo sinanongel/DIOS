@@ -51,7 +51,7 @@ namespace KargazImalatTakip
                     "LEFT JOIN DBO.YOL Y ON SH.YOL_MSLINK = Y.MSLINK " +
                     "LEFT JOIN DBO.MAHALLE M ON SH.MAHALLE_KODU = M.MAHALLE_KODU " +
                     "LEFT JOIN DBO.ILCE I ON SH.ILCE_KODU = I.ILCE_KODU " +
-                    "WHERE FORMNO = " + TxtFormNo.Text + " AND I.ILCE_ADI ='" + CmbBolge.Text + "'", bgl.kargazBaglanti());
+                    "WHERE FORMNO = '" + TxtFormNo.Text + "' AND I.ILCE_ADI ='" + CmbBolge.Text + "'", bgl.kargazBaglanti());
                 DataTable dtHat = new DataTable();
                 daHat.Fill(dtHat);
                 GrCoHat.DataSource = dtHat;

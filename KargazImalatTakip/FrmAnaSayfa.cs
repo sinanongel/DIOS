@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,11 @@ namespace KargazImalatTakip
             InitializeComponent();
         }
 
+        SqlBaglanti bgl = new SqlBaglanti();
+        public int kullaniciId;
+        public string firma;
+        string yetkiGrup;
+
         FrmPeHatlar fr1;
 
         private void BtnPeHatlar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -24,6 +30,7 @@ namespace KargazImalatTakip
             {
                 fr1 = new FrmPeHatlar();
                 fr1.MdiParent = this;
+                fr1.yetkiGrup = yetkiGrup;
                 fr1.Show();
             }
         }
@@ -241,6 +248,49 @@ namespace KargazImalatTakip
                 fr19 = new FrmSokakBazındaBinaDaireSayısı();
                 fr19.MdiParent = this;
                 fr19.Show();
+            }
+        }
+        private void FrmAnaSayfa_Load(object sender, EventArgs e)
+        {
+            if (firma == "KARGAZ")
+            {
+                SqlCommand komut = new SqlCommand("SELECT AD, SOYAD, YETKIGRUP FROM KULLANICI WHERE KULLANICIID = " + kullaniciId, bgl.kargazBaglanti());
+                SqlDataReader dr = komut.ExecuteReader();
+                while (dr.Read())
+                {
+                    LblKullaniciAdi.Text = dr[0].ToString() + " " + dr[1].ToString();
+                    yetkiGrup = dr[2].ToString();
+                }
+                bgl.kargazBaglanti().Close();
+            }
+            else if (firma == "SERHATGAZ")
+            {
+                SqlCommand komut = new SqlCommand("SELECT AD, SOYAD, YETKIGRUP FROM KULLANICI WHERE KULLANICIID = " + kullaniciId, bgl.serhatgazBaglanti());
+                SqlDataReader dr = komut.ExecuteReader();
+                while (dr.Read())
+                {
+                    LblKullaniciAdi.Text = dr[0].ToString() + " " + dr[1].ToString();
+                    yetkiGrup = dr[2].ToString();
+                }
+                bgl.serhatgazBaglanti().Close();
+            }
+
+            if(yetkiGrup=="SS" || yetkiGrup == "KS")
+            {
+                ribbonPage2.Visible = false;
+            }
+        }
+
+        FrmSifreDegistir fr20;
+
+        private void BtnSifreDegistirme_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (fr20 == null || fr19.IsDisposed)
+            {
+                fr20 = new FrmSifreDegistir();
+                fr20.kullaniciId = kullaniciId;
+                fr20.firma = firma;
+                fr20.Show();
             }
         }
     }
