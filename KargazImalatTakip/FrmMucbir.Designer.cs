@@ -47,6 +47,10 @@ namespace KargazImalatTakip
             // BtnMucbirListele
             // 
             this.BtnMucbirListele.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnMucbirListele.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Success;
+            this.BtnMucbirListele.Appearance.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)), true);
+            this.BtnMucbirListele.Appearance.Options.UseBackColor = true;
+            this.BtnMucbirListele.Appearance.Options.UseFont = true;
             this.BtnMucbirListele.Location = new System.Drawing.Point(1098, 7);
             this.BtnMucbirListele.Name = "BtnMucbirListele";
             this.BtnMucbirListele.Size = new System.Drawing.Size(111, 32);
@@ -58,7 +62,7 @@ namespace KargazImalatTakip
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel2.Controls.Add(this.BtnPdf);
             this.panel2.Controls.Add(this.BtnExcel);
             this.panel2.Controls.Add(this.BtnMucbirListele);
@@ -110,7 +114,7 @@ namespace KargazImalatTakip
             this.CmbFirma.Properties.Items.AddRange(new object[] {
             "KARGAZ",
             "SERHATGAZ"});
-            this.CmbFirma.Size = new System.Drawing.Size(95, 22);
+            this.CmbFirma.Size = new System.Drawing.Size(95, 24);
             this.CmbFirma.TabIndex = 64;
             // 
             // gridControl1

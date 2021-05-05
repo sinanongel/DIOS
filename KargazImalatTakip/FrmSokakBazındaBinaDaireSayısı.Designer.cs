@@ -78,12 +78,13 @@ namespace KargazImalatTakip
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowViewCaption = true;
             this.gridView1.ViewCaption = "YOL BAZINDA BİNA/DAİRE SAYISI";
+            this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
             // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(72)))));
+            this.panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel2.Controls.Add(this.BtnExcelAktar);
             this.panel2.Controls.Add(this.BtnPdf);
             this.panel2.Controls.Add(this.BtnListele);
@@ -150,7 +151,7 @@ namespace KargazImalatTakip
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.panel2);
             this.Name = "FrmSokakBazındaBinaDaireSayısı";
-            this.Text = "FrmSokakBazındaBinaDaireSayısı";
+            this.Text = "Sokak Bazında Bina Daire Sayısı";
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.panel2.ResumeLayout(false);

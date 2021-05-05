@@ -102,5 +102,34 @@ namespace KargazImalatTakip
             //Dosyayı direk varsayılan uygulamayla açmak için...
             Process.Start(yol);
         }
+
+        string bolge;
+        string mahalle;
+        string sokak;
+        private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            FrmSokakBinaDetay fd = new FrmSokakBinaDetay();                       
+
+            DataRow dr = gridView1.GetDataRow(gridView1.FocusedRowHandle);
+            if (dr != null)
+            {
+                bolge = dr["BOLGE"].ToString();
+                mahalle = dr["MAHALLE"].ToString();
+                sokak = dr["YOL"].ToString();
+            }
+
+            if(sokak == "BINA YOL ILISKISI YAPILMAMIS!")
+            {
+                MessageBox.Show("Yol ilişkilendirmesi yapılmadığından liste gösterilemiyor!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                fd.bolge = bolge;
+                fd.mahalle = mahalle;
+                fd.sokak = sokak;
+                fd.firma = CmbŞirket.Text;
+                fd.Show();
+            }
+        }
     }    
 }

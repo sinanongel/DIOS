@@ -125,7 +125,7 @@ namespace KargazImalatTakip
             {
                 dosya = dr["DOSYA"].ToString();
                 bolge = dr["ILCE_ADI"].ToString();
-                kayitYolu = satir[5] + bolge + "\\";
+                kayitYolu = satir[0] + bolge + "\\";
                 yol = kayitYolu + dosya;
                 //yol = dr["DOSYA_YOLU"].ToString();
                 Process.Start(yol);
@@ -134,13 +134,26 @@ namespace KargazImalatTakip
             //FileInfo dosyaBilgi = new FileInfo();
         }
 
-        private void BtnExcelAktar_Click(object sender, EventArgs e)
+        private void BtnExcel_Click(object sender, EventArgs e)
         {
-            SaveFileDialog kayit = new SaveFileDialog();
-            if (kayit.ShowDialog() == DialogResult.OK)
-            {
-                gridView1.ExportToXlsx(kayit.FileName + ".xlsx");
-            }
+            string yol = "Çelik Hat Listesi.xlsx";
+            gridControl1.ExportToXlsx(yol);
+            //Dosyayı direk varsayılan uygulamayla açmak için.
+            Process.Start(yol);
+        }
+
+        private void BtnPdf_Click(object sender, EventArgs e)
+        {
+            string yol = "Çelik Hat Listesi.pdf";
+            gridControl1.ExportToPdf(yol);
+            //Dosyayı direk varsayılan uygulamayla açmak için.
+            Process.Start(yol);
+        }
+
+        private void BtnForDetay_Click(object sender, EventArgs e)
+        {
+            FrmStFormDetay fd = new FrmStFormDetay();
+            fd.Show();
         }
     }
 }

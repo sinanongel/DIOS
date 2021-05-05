@@ -137,8 +137,13 @@ namespace KargazImalatTakip
 
                 if (gridView1.RowCount != 0)
                 {
-                    SqlCommand komutHat = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM DBO.SERVIS_HATLARI WHERE FORMNO=@P1", bgl.kargazBaglanti());
+                    SqlCommand komutHat = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM DBO.SERVIS_HATLARI SE " +
+                        "LEFT JOIN DBO.YOL Y ON SE.YOL_MSLINK = Y.MSLINK " +
+                        "LEFT JOIN DBO.MAHALLE M ON SE.MAHALLE_KODU = M.MAHALLE_KODU " +
+                        "LEFT JOIN DBO.ILCE I ON SE.ILCE_KODU = I.ILCE_KODU " +
+                        "WHERE FORMNO=@P1 AND I.ILCE_ADI=@P2", bgl.kargazBaglanti());
                     komutHat.Parameters.AddWithValue("@P1", TxtFormNo.Text);
+                    komutHat.Parameters.AddWithValue("@P2", CmbBolge.Text);
                     SqlDataReader drHat = komutHat.ExecuteReader();
                     while (drHat.Read())
                     {
@@ -279,8 +284,13 @@ namespace KargazImalatTakip
 
                 if (gridView1.RowCount != 0)
                 {
-                    SqlCommand komutHat = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM DBO.SERVIS_HATLARI WHERE FORMNO=@P1", bgl.serhatgazBaglanti());
+                    SqlCommand komutHat = new SqlCommand("SELECT FORMNO, YATIRIMYILI, convert(varchar, IMALATTARIHI, 104) AS IMALAT_TARIHI, SEKTOR FROM DBO.SERVIS_HATLARI SE " +
+                        "LEFT JOIN DBO.YOL Y ON SE.YOL_MSLINK = Y.MSLINK " +
+                        "LEFT JOIN DBO.MAHALLE M ON SE.MAHALLE_KODU = M.MAHALLE_KODU " +
+                        "LEFT JOIN DBO.ILCE I ON SE.ILCE_KODU = I.ILCE_KODU " +
+                        "WHERE FORMNO=@P1 AND I.ILCE_ADI=@P2", bgl.serhatgazBaglanti());
                     komutHat.Parameters.AddWithValue("@P1", TxtFormNo.Text);
+                    komutHat.Parameters.AddWithValue("@P2", CmbBolge.Text);
                     SqlDataReader drHat = komutHat.ExecuteReader();
                     while (drHat.Read())
                     {
@@ -350,7 +360,7 @@ namespace KargazImalatTakip
             {
                 dosya = dr["DOSYA"].ToString();
                 bolge = dr["ILCE_ADI"].ToString();
-                dosyaYolu = satir[5] + bolge + "\\";
+                dosyaYolu = satir[0] + bolge + "\\";
                 yol = dosyaYolu + dosya;
                 //yol = dr["DOSYA_YOLU"].ToString();
                 Process.Start(yol);
@@ -641,7 +651,7 @@ namespace KargazImalatTakip
         private void BtnDosyaYukle_Click(object sender, EventArgs e)
         {
             string[] satir = File.ReadAllLines("C:\\SqlBaglanti.txt");
-            kayitYolu = satir[5] + CmbBolge.Text + "\\"; //P klasörü kayıt
+            kayitYolu = satir[0] + CmbBolge.Text + "\\"; //P klasörü kayıt
             //kayitYolu = satir[6] + CmbBolge.Text + "\\"; //Masaüstü klasörü kayıt
 
             var secHat = gridView1.GetSelectedRows();
@@ -678,7 +688,7 @@ namespace KargazImalatTakip
                         bolge = dr["ILCE_ADI"].ToString();
                         string dosyaAdi = bolge + "_SH_" + yatirimYil + "_" + TxtFormNoYeni.Text + ".pdf";
                         string dosyaYolu = kayitYolu + dosyaAdi;
-                        
+
                         if (CmbŞirket.Text == "KARGAZ")
                         {
                             SqlCommand komut = new SqlCommand("UPDATE SERVIS_HATLARI SET DOSYA = @p1 WHERE MSLINK = " + hatMslink, bgl.kargazBaglanti());
@@ -693,7 +703,7 @@ namespace KargazImalatTakip
                             komut.ExecuteNonQuery();
                             bgl.serhatgazBaglanti().Close();
                         }
-                        
+
 
                         if (File.Exists(dosyaYolu))
                         {

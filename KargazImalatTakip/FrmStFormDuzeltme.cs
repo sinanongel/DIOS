@@ -477,7 +477,7 @@ namespace KargazImalatTakip
             {
                 dosya = dr["DOSYA"].ToString();
                 bolge = dr["ILCE_ADI"].ToString();
-                dosyaYolu = satir[5] + bolge + "\\";
+                dosyaYolu = satir[0] + bolge + "\\";
                 yol = dosyaYolu + dosya;
                 Process.Start(yol);
             }
@@ -578,7 +578,7 @@ namespace KargazImalatTakip
                             }
                             foreach (int brMslink in secBrMslink)
                             {
-                                SqlCommand komutBr = new SqlCommand("UPDATE dbo.VANA SET FORMNO=@p19, YATIRIMYILI=@p20, IMALAT_TARIHI=@p21 where MSLINK=" + brMslink, bgl.kargazBaglanti());
+                                SqlCommand komutBr = new SqlCommand("UPDATE dbo.BOLGE_REGULATORU SET FORMNO=@p21, YATIRIMYILI=@p22, IMALATTARIHI=@p23, ESKIFORMNO=@p24 where MSLINK=" + brMslink, bgl.kargazBaglanti());
                                 komutBr.Parameters.AddWithValue("@p19", TxtFormNoYeni.Text);
                                 komutBr.Parameters.AddWithValue("@p20", TxtYatirimYili.Text);
                                 komutBr.Parameters.AddWithValue("@p21", Convert.ToDateTime(TxtImalatTarihi.Text));
@@ -814,7 +814,7 @@ namespace KargazImalatTakip
         private void BtnDosyaYukle_Click(object sender, EventArgs e)
         {
             string[] satir = File.ReadAllLines("C:\\SqlBaglanti.txt");
-            kayitYolu = satir[5] + CmbBolge.Text + "\\";
+            kayitYolu = satir[0] + CmbBolge.Text + "\\";
 
             var secHat = gridView1.GetSelectedRows();
             List<int> secHatMslink = new List<int>();

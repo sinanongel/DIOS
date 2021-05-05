@@ -110,7 +110,7 @@
             this.CmbŞirket.Properties.Items.AddRange(new object[] {
             "KARGAZ",
             "SERHATGAZ"});
-            this.CmbŞirket.Size = new System.Drawing.Size(109, 22);
+            this.CmbŞirket.Size = new System.Drawing.Size(109, 24);
             this.CmbŞirket.TabIndex = 0;
             this.CmbŞirket.SelectedIndexChanged += new System.EventHandler(this.CmbŞirket_SelectedIndexChanged);
             // 
@@ -158,7 +158,7 @@
             this.TxtFormNo.Name = "TxtFormNo";
             this.TxtFormNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtFormNo.Properties.Appearance.Options.UseFont = true;
-            this.TxtFormNo.Size = new System.Drawing.Size(61, 22);
+            this.TxtFormNo.Size = new System.Drawing.Size(61, 24);
             this.TxtFormNo.TabIndex = 1;
             // 
             // labelControl3
@@ -182,7 +182,7 @@
             this.TxtMslink.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
             this.TxtMslink.Properties.Appearance.Options.UseFont = true;
             this.TxtMslink.Properties.Appearance.Options.UseForeColor = true;
-            this.TxtMslink.Size = new System.Drawing.Size(61, 22);
+            this.TxtMslink.Size = new System.Drawing.Size(61, 24);
             this.TxtMslink.TabIndex = 6;
             // 
             // BtnTemizle
@@ -204,7 +204,7 @@
             this.BtnListele.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.BtnListele.Appearance.Options.UseFont = true;
             this.BtnListele.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnListele.ImageOptions.Image")));
-            this.BtnListele.Location = new System.Drawing.Point(626, 49);
+            this.BtnListele.Location = new System.Drawing.Point(626, 50);
             this.BtnListele.Name = "BtnListele";
             this.BtnListele.Size = new System.Drawing.Size(125, 23);
             this.BtnListele.TabIndex = 2;
@@ -230,7 +230,7 @@
             this.TxtYatirimYili.Name = "TxtYatirimYili";
             this.TxtYatirimYili.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtYatirimYili.Properties.Appearance.Options.UseFont = true;
-            this.TxtYatirimYili.Size = new System.Drawing.Size(49, 22);
+            this.TxtYatirimYili.Size = new System.Drawing.Size(49, 24);
             this.TxtYatirimYili.TabIndex = 7;
             // 
             // labelControl5
@@ -252,7 +252,7 @@
             this.TxtImalatTarihi.Name = "TxtImalatTarihi";
             this.TxtImalatTarihi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtImalatTarihi.Properties.Appearance.Options.UseFont = true;
-            this.TxtImalatTarihi.Size = new System.Drawing.Size(76, 22);
+            this.TxtImalatTarihi.Size = new System.Drawing.Size(76, 24);
             this.TxtImalatTarihi.TabIndex = 8;
             // 
             // labelControl8
@@ -274,7 +274,7 @@
             this.TxtSektor.Name = "TxtSektor";
             this.TxtSektor.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtSektor.Properties.Appearance.Options.UseFont = true;
-            this.TxtSektor.Size = new System.Drawing.Size(76, 22);
+            this.TxtSektor.Size = new System.Drawing.Size(76, 24);
             this.TxtSektor.TabIndex = 9;
             // 
             // labelControl7
@@ -297,7 +297,7 @@
             this.TxtFormMetraj.Properties.Appearance.Options.UseFont = true;
             this.TxtFormMetraj.Properties.Mask.EditMask = "n";
             this.TxtFormMetraj.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.TxtFormMetraj.Size = new System.Drawing.Size(57, 22);
+            this.TxtFormMetraj.Size = new System.Drawing.Size(57, 24);
             this.TxtFormMetraj.TabIndex = 11;
             // 
             // labelControl6
@@ -320,7 +320,7 @@
             this.TxtKaziBoyu.Properties.Appearance.Options.UseFont = true;
             this.TxtKaziBoyu.Properties.Mask.EditMask = "n";
             this.TxtKaziBoyu.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.TxtKaziBoyu.Size = new System.Drawing.Size(57, 22);
+            this.TxtKaziBoyu.Size = new System.Drawing.Size(57, 24);
             this.TxtKaziBoyu.TabIndex = 12;
             // 
             // BtnSil
@@ -512,7 +512,7 @@
             this.CmbBolge.Properties.Appearance.Options.UseFont = true;
             this.CmbBolge.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CmbBolge.Size = new System.Drawing.Size(144, 22);
+            this.CmbBolge.Size = new System.Drawing.Size(144, 24);
             this.CmbBolge.TabIndex = 62;
             // 
             // labelControl13

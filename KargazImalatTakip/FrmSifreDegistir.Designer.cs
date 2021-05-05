@@ -43,6 +43,7 @@ namespace KargazImalatTakip
             this.TxtSifre = new DevExpress.XtraEditors.TextEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BtnGiris = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.TxtYeniSifreTekrar.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtYeniSifre.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtSifre.Properties)).BeginInit();
@@ -215,12 +216,26 @@ namespace KargazImalatTakip
             this.BtnGiris.Text = "Güncelle";
             this.BtnGiris.Click += new System.EventHandler(this.BtnGiris_Click);
             // 
+            // labelControl4
+            // 
+            this.labelControl4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.LightCoral;
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.Appearance.Options.UseForeColor = true;
+            this.labelControl4.Location = new System.Drawing.Point(289, 260);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(222, 16);
+            this.labelControl4.TabIndex = 58;
+            this.labelControl4.Text = "Yeni şifreniz rakamlardan oluşmalı!";
+            // 
             // FrmSifreDegistir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.LblKullaniciAdi);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.labelControl2);
@@ -262,5 +277,6 @@ namespace KargazImalatTakip
         private DevExpress.XtraEditors.TextEdit TxtSifre;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.SimpleButton BtnGiris;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
     }
 }

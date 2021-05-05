@@ -180,7 +180,7 @@
             this.CmbSirket.Properties.Items.AddRange(new object[] {
             "KARGAZ",
             "SERHATGAZ"});
-            this.CmbSirket.Size = new System.Drawing.Size(95, 22);
+            this.CmbSirket.Size = new System.Drawing.Size(95, 24);
             this.CmbSirket.TabIndex = 64;
             this.CmbSirket.SelectedIndexChanged += new System.EventHandler(this.CmbSirket_SelectedIndexChanged);
             // 
@@ -215,7 +215,7 @@
             this.CmbBolge.Properties.Appearance.Options.UseFont = true;
             this.CmbBolge.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CmbBolge.Size = new System.Drawing.Size(133, 22);
+            this.CmbBolge.Size = new System.Drawing.Size(133, 24);
             this.CmbBolge.TabIndex = 69;
             // 
             // labelControl1
@@ -242,14 +242,14 @@
             this.DtBaslangicTarihi.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.DtBaslangicTarihi.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.DtBaslangicTarihi.Size = new System.Drawing.Size(90, 22);
+            this.DtBaslangicTarihi.Size = new System.Drawing.Size(90, 24);
             this.DtBaslangicTarihi.TabIndex = 72;
             // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel2.Controls.Add(this.BtnPdf);
             this.panel2.Controls.Add(this.labelControl7);
             this.panel2.Controls.Add(this.DtBitisTarihi);
@@ -299,7 +299,7 @@
             this.DtBitisTarihi.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.DtBitisTarihi.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.DtBitisTarihi.Size = new System.Drawing.Size(90, 22);
+            this.DtBitisTarihi.Size = new System.Drawing.Size(90, 24);
             this.DtBitisTarihi.TabIndex = 73;
             // 
             // LblBaslik

@@ -119,13 +119,13 @@
             this.CmbŞirket.Properties.Items.AddRange(new object[] {
             "KARGAZ",
             "SERHATGAZ"});
-            this.CmbŞirket.Size = new System.Drawing.Size(95, 26);
-            this.CmbŞirket.TabIndex = 62;
+            this.CmbŞirket.Size = new System.Drawing.Size(95, 24);
+            this.CmbŞirket.TabIndex = 0;
             this.CmbŞirket.SelectedIndexChanged += new System.EventHandler(this.CmbŞirket_SelectedIndexChanged);
             // 
             // groupControl3
             // 
-            this.groupControl3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(72)))));
+            this.groupControl3.Appearance.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.groupControl3.Appearance.Options.UseBackColor = true;
             this.groupControl3.Controls.Add(this.labelControl4);
             this.groupControl3.Controls.Add(this.TxtBolge);
@@ -154,12 +154,12 @@
             this.TxtBolge.Name = "TxtBolge";
             this.TxtBolge.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtBolge.Properties.Appearance.Options.UseFont = true;
-            this.TxtBolge.Size = new System.Drawing.Size(31, 26);
-            this.TxtBolge.TabIndex = 7;
+            this.TxtBolge.Size = new System.Drawing.Size(31, 24);
+            this.TxtBolge.TabIndex = 8;
             // 
             // groupControl1
             // 
-            this.groupControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(72)))));
+            this.groupControl1.Appearance.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.groupControl1.Appearance.Options.UseBackColor = true;
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.TxtFormNoYeni);
@@ -194,7 +194,7 @@
             this.TxtFormNoYeni.Name = "TxtFormNoYeni";
             this.TxtFormNoYeni.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtFormNoYeni.Properties.Appearance.Options.UseFont = true;
-            this.TxtFormNoYeni.Size = new System.Drawing.Size(61, 26);
+            this.TxtFormNoYeni.Size = new System.Drawing.Size(61, 24);
             this.TxtFormNoYeni.TabIndex = 4;
             this.TxtFormNoYeni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFormNoYeni_KeyPress);
             // 
@@ -204,7 +204,7 @@
             this.TxtYatirimYili.Name = "TxtYatirimYili";
             this.TxtYatirimYili.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtYatirimYili.Properties.Appearance.Options.UseFont = true;
-            this.TxtYatirimYili.Size = new System.Drawing.Size(49, 26);
+            this.TxtYatirimYili.Size = new System.Drawing.Size(49, 24);
             this.TxtYatirimYili.TabIndex = 5;
             // 
             // labelControl6
@@ -233,7 +233,7 @@
             this.TxtImalatTarihi.Name = "TxtImalatTarihi";
             this.TxtImalatTarihi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtImalatTarihi.Properties.Appearance.Options.UseFont = true;
-            this.TxtImalatTarihi.Size = new System.Drawing.Size(76, 26);
+            this.TxtImalatTarihi.Size = new System.Drawing.Size(76, 24);
             this.TxtImalatTarihi.TabIndex = 6;
             // 
             // labelControl8
@@ -252,7 +252,7 @@
             this.TxtSektor.Name = "TxtSektor";
             this.TxtSektor.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtSektor.Properties.Appearance.Options.UseFont = true;
-            this.TxtSektor.Size = new System.Drawing.Size(76, 26);
+            this.TxtSektor.Size = new System.Drawing.Size(76, 24);
             this.TxtSektor.TabIndex = 7;
             // 
             // BtnTemizle
@@ -285,8 +285,8 @@
             this.TxtFormNo.Name = "TxtFormNo";
             this.TxtFormNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtFormNo.Properties.Appearance.Options.UseFont = true;
-            this.TxtFormNo.Size = new System.Drawing.Size(61, 26);
-            this.TxtFormNo.TabIndex = 1;
+            this.TxtFormNo.Size = new System.Drawing.Size(61, 24);
+            this.TxtFormNo.TabIndex = 2;
             // 
             // BtnGuncelle
             // 
@@ -312,7 +312,7 @@
             this.BtnBul.LookAndFeel.UseDefaultLookAndFeel = false;
             this.BtnBul.Name = "BtnBul";
             this.BtnBul.Size = new System.Drawing.Size(68, 24);
-            this.BtnBul.TabIndex = 2;
+            this.BtnBul.TabIndex = 3;
             this.BtnBul.Text = "Bul";
             this.BtnBul.Click += new System.EventHandler(this.BtnBul_Click);
             // 
@@ -437,8 +437,8 @@
             this.CmbBolge.Properties.Appearance.Options.UseFont = true;
             this.CmbBolge.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CmbBolge.Size = new System.Drawing.Size(136, 26);
-            this.CmbBolge.TabIndex = 70;
+            this.CmbBolge.Size = new System.Drawing.Size(136, 24);
+            this.CmbBolge.TabIndex = 1;
             // 
             // labelControl13
             // 
@@ -505,7 +505,7 @@
             // 
             // groupControl4
             // 
-            this.groupControl4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(72)))));
+            this.groupControl4.Appearance.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.groupControl4.Appearance.Options.UseBackColor = true;
             this.groupControl4.Controls.Add(this.BtnDosyaSec);
             this.groupControl4.Controls.Add(this.TxtDosyaAdi);
@@ -543,7 +543,7 @@
             this.TxtDosyaAdi.Name = "TxtDosyaAdi";
             this.TxtDosyaAdi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TxtDosyaAdi.Properties.Appearance.Options.UseFont = true;
-            this.TxtDosyaAdi.Size = new System.Drawing.Size(204, 26);
+            this.TxtDosyaAdi.Size = new System.Drawing.Size(204, 24);
             this.TxtDosyaAdi.TabIndex = 58;
             // 
             // BtnDosyaYukle
@@ -562,7 +562,7 @@
             // 
             // groupControl2
             // 
-            this.groupControl2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(72)))));
+            this.groupControl2.Appearance.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.groupControl2.Appearance.Options.UseBackColor = true;
             this.groupControl2.Controls.Add(this.labelControl12);
             this.groupControl2.Controls.Add(this.labelControl9);

@@ -42,6 +42,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.BtnDosyaSec = new DevExpress.XtraEditors.SimpleButton();
             this.TxtDosyaAdi = new DevExpress.XtraEditors.TextEdit();
             this.BtnDosyaYukle = new DevExpress.XtraEditors.SimpleButton();
@@ -70,7 +71,6 @@
             this.CmbBolge = new DevExpress.XtraEditors.ComboBoxEdit();
             this.BtnBul = new DevExpress.XtraEditors.SimpleButton();
             this.TxtFormNo = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.GrCoKaynak)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrCoVana)).BeginInit();
@@ -287,7 +287,7 @@
             // 
             // groupControl3
             // 
-            this.groupControl3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(72)))));
+            this.groupControl3.Appearance.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.groupControl3.Appearance.Options.UseBackColor = true;
             this.groupControl3.Controls.Add(this.labelControl15);
             this.groupControl3.Controls.Add(this.BtnDosyaSec);
@@ -305,6 +305,15 @@
             this.groupControl3.Size = new System.Drawing.Size(238, 227);
             this.groupControl3.TabIndex = 99;
             this.groupControl3.Text = "Saddle Bilgileri";
+            // 
+            // labelControl15
+            // 
+            this.labelControl15.Location = new System.Drawing.Point(18, 199);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(69, 13);
+            this.labelControl15.TabIndex = 61;
+            this.labelControl15.Text = "labelControl15";
+            this.labelControl15.Visible = false;
             // 
             // BtnDosyaSec
             // 
@@ -386,7 +395,7 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(72)))));
+            this.groupControl1.Appearance.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.groupControl1.Appearance.Options.UseBackColor = true;
             this.groupControl1.Controls.Add(this.TxtVanaNo);
             this.groupControl1.Controls.Add(this.labelControl3);
@@ -441,7 +450,7 @@
             // 
             // groupControl2
             // 
-            this.groupControl2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(72)))));
+            this.groupControl2.Appearance.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.groupControl2.Appearance.Options.UseBackColor = true;
             this.groupControl2.Controls.Add(this.labelControl1);
             this.groupControl2.Controls.Add(this.TxtFormNoYeni);
@@ -538,7 +547,7 @@
             // 
             // groupControl4
             // 
-            this.groupControl4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(72)))));
+            this.groupControl4.Appearance.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.groupControl4.Appearance.Options.UseBackColor = true;
             this.groupControl4.Controls.Add(this.labelControl12);
             this.groupControl4.Controls.Add(this.labelControl5);
@@ -636,15 +645,6 @@
             this.TxtFormNo.Properties.Appearance.Options.UseFont = true;
             this.TxtFormNo.Size = new System.Drawing.Size(61, 26);
             this.TxtFormNo.TabIndex = 1;
-            // 
-            // labelControl15
-            // 
-            this.labelControl15.Location = new System.Drawing.Point(18, 199);
-            this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(69, 13);
-            this.labelControl15.TabIndex = 61;
-            this.labelControl15.Text = "labelControl15";
-            this.labelControl15.Visible = false;
             // 
             // FrmStFormDuzeltme
             // 

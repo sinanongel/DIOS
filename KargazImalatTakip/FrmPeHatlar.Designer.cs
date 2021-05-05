@@ -35,6 +35,7 @@
             this.CmbŞirket = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.BtnForDetay = new DevExpress.XtraEditors.SimpleButton();
             this.BtnKoordinatlıListele = new DevExpress.XtraEditors.SimpleButton();
             this.BtnPdf = new DevExpress.XtraEditors.SimpleButton();
             this.BtnExcel = new DevExpress.XtraEditors.SimpleButton();
@@ -111,7 +112,8 @@
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(72)))));
+            this.panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panel2.Controls.Add(this.BtnForDetay);
             this.panel2.Controls.Add(this.BtnKoordinatlıListele);
             this.panel2.Controls.Add(this.BtnPdf);
             this.panel2.Controls.Add(this.BtnExcel);
@@ -122,6 +124,20 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1293, 50);
             this.panel2.TabIndex = 12;
+            // 
+            // BtnForDetay
+            // 
+            this.BtnForDetay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnForDetay.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Danger;
+            this.BtnForDetay.Appearance.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(1)), true);
+            this.BtnForDetay.Appearance.Options.UseBackColor = true;
+            this.BtnForDetay.Appearance.Options.UseFont = true;
+            this.BtnForDetay.Location = new System.Drawing.Point(851, 8);
+            this.BtnForDetay.Name = "BtnForDetay";
+            this.BtnForDetay.Size = new System.Drawing.Size(115, 34);
+            this.BtnForDetay.TabIndex = 78;
+            this.BtnForDetay.Text = "Form Detay";
+            this.BtnForDetay.Click += new System.EventHandler(this.BtnForDetay_Click);
             // 
             // BtnKoordinatlıListele
             // 
@@ -166,7 +182,6 @@
             this.Controls.Add(this.gridControl1);
             this.Name = "FrmPeHatlar";
             this.Text = "PE Hatlar";
-            this.Load += new System.EventHandler(this.FrmPeHatlar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbŞirket.Properties)).EndInit();
@@ -187,5 +202,6 @@
         private DevExpress.XtraEditors.SimpleButton BtnPdf;
         private DevExpress.XtraEditors.SimpleButton BtnExcel;
         private DevExpress.XtraEditors.SimpleButton BtnKoordinatlıListele;
+        private DevExpress.XtraEditors.SimpleButton BtnForDetay;
     }
 }

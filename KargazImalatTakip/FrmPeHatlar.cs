@@ -97,13 +97,6 @@ namespace KargazImalatTakip
                 gridView1.Columns["DOSYA"].ColumnEdit = dosyaYolu;
                 dosyaYolu.OpenLink += DosyaYolu_OpenLink;
 
-                //RepositoryItemButtonEdit dosyaYolu = new RepositoryItemButtonEdit();
-                //    dosyaYolu.Buttons[0].Kind = ButtonPredefines.Glyph;
-                //    dosyaYolu.Buttons[0].Caption = "Get Sql Query";
-                //    dosyaYolu.ButtonClick += DosyaYolu_ButtonClick;
-                //gridView1.Columns["DOSYA_YOLU"].ShowButtonMode = ShowButtonModeEnum.ShowAlways;
-
-
                 gridView1.Columns[0].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Count;
                 gridView1.Columns[0].SummaryItem.DisplayFormat = "{0:0.##} ADET";
                 gridView1.Columns[6].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
@@ -166,13 +159,11 @@ namespace KargazImalatTakip
             {
                 dosya = dr["DOSYA"].ToString();
                 bolge = dr["ILCE_ADI"].ToString();
-                kayitYolu = satir[5] + bolge + "\\";
+                kayitYolu = satir[0] + bolge + "\\";
                 yol = kayitYolu + dosya;
                 //yol = dr["DOSYA_YOLU"].ToString();
                 Process.Start(yol);
             }
-
-            //FileInfo dosyaBilgi = new FileInfo();
         }
 
         private void BtnExcel_Click(object sender, EventArgs e)
@@ -325,9 +316,10 @@ namespace KargazImalatTakip
             }
         }
 
-        private void FrmPeHatlar_Load(object sender, EventArgs e)
+        private void BtnForDetay_Click(object sender, EventArgs e)
         {
-
+            FrmPeFormDetay fd = new FrmPeFormDetay();
+            fd.Show();
         }
     }
 }

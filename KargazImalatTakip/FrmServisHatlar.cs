@@ -156,7 +156,7 @@ namespace KargazImalatTakip
             {
                 dosya = dr["DOSYA"].ToString();
                 bolge = dr["ILCE_ADI"].ToString();
-                kayitYolu = satir[5] + bolge + "\\"; //P klasörü
+                kayitYolu = satir[0] + bolge + "\\"; //P klasörü
                 //kayitYolu = satir[6] + bolge + "\\"; //C klasörü
                 yol = kayitYolu + dosya;
                 //yol = dr["DOSYA_YOLU"].ToString();
@@ -279,6 +279,12 @@ namespace KargazImalatTakip
             kaziBoyu.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             kaziBoyu.ShowInGroupColumnFooter = gridView1.Columns["KAZIBOYU"];
             gridView1.GroupSummary.Add(kaziBoyu);
+        }
+
+        private void BtnForDetay_Click(object sender, EventArgs e)
+        {
+            FrmShFormDetay fd = new FrmShFormDetay();
+            fd.Show();
         }
     }
 }
