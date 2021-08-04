@@ -14,6 +14,7 @@ using DevExpress.XtraEditors.Repository;
 using System.IO;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Base;
+using System.Net;
 
 namespace KargazImalatTakip
 {
@@ -39,7 +40,7 @@ namespace KargazImalatTakip
                             "M.MAHALLE_ADI AS MAHALLE, CAST(YOL_KODU AS NVARCHAR) + ' - ' + Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, " +
                             "YOL_BOYU, YATIRIMYILI, CONVERT(VARCHAR, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, FORMNO, " +
                             "FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, NET_BORU_CAPI, BORU_UZUNLUGU, YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU, " +
-                            "DOSYA FROM dbo.HATLAR H " +
+                            "DURUM, DOSYA FROM dbo.HATLAR H " +
                             "LEFT JOIN DBO.YOL Y ON H.YOL_MSLINK = Y.MSLINK " +
                             "LEFT JOIN DBO.MAHALLE M ON H.MAHALLE_KODU = M.MAHALLE_KODU " +
                             "LEFT JOIN DBO.ILCE I ON H.ILCE_KODU = I.ILCE_KODU " +
@@ -55,7 +56,7 @@ namespace KargazImalatTakip
                             "M.MAHALLE_ADI AS MAHALLE, CAST(YOL_KODU AS NVARCHAR) + ' - ' + Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, " +
                             "YOL_BOYU, YATIRIMYILI, CONVERT(VARCHAR, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, FORMNO, " +
                             "FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, NET_BORU_CAPI, BORU_UZUNLUGU, YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU, " +
-                            "DOSYA FROM dbo.HATLAR H " +
+                            "DURUM, DOSYA FROM dbo.HATLAR H " +
                             "LEFT JOIN DBO.YOL Y ON H.YOL_MSLINK = Y.MSLINK " +
                             "LEFT JOIN DBO.MAHALLE M ON H.MAHALLE_KODU = M.MAHALLE_KODU " +
                             "LEFT JOIN DBO.ILCE I ON H.ILCE_KODU = I.ILCE_KODU " +
@@ -137,6 +138,8 @@ namespace KargazImalatTakip
                 kaziBoyu.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                 kaziBoyu.ShowInGroupColumnFooter = gridView1.Columns["KAZI_BOYU"];
                 gridView1.GroupSummary.Add(kaziBoyu);
+                
+
             //}
             //catch
             //{
@@ -150,7 +153,7 @@ namespace KargazImalatTakip
         {
             string[] satir = File.ReadAllLines("C:\\SqlBaglanti.txt");
 
-            string yol;
+            //string yol;
             string bolge;
             string dosya;
 
@@ -159,10 +162,20 @@ namespace KargazImalatTakip
             {
                 dosya = dr["DOSYA"].ToString();
                 bolge = dr["ILCE_ADI"].ToString();
-                kayitYolu = satir[0] + bolge + "\\";
-                yol = kayitYolu + dosya;
+                // Create a new WebClient instance.
+                WebClient myWebClient = new WebClient();
+                // Concatenate the domain with the Web resource filename.
+                kayitYolu = satir[0] + bolge + "/" + dosya;
+                Console.WriteLine("Downloading File \"{0}\" from \"{1}\" .......\n\n", dosya, kayitYolu);
+                // Download the Web resource and save it into the current filesystem folder.
+                myWebClient.DownloadFile(kayitYolu, dosya); Console.WriteLine("Successfully Downloaded File \"{0}\" from \"{1}\"", dosya, kayitYolu);
+                Console.WriteLine("\nDownloaded file saved in the following file system folder:\n\t" + Application.StartupPath);
+
+                //bolge = dr["ILCE_ADI"].ToString();
+                //kayitYolu = satir[0] + bolge + "\\";
+                //yol = kayitYolu + dosya;
                 //yol = dr["DOSYA_YOLU"].ToString();
-                Process.Start(yol);
+                //Process.Start(yol);
             }
         }
 

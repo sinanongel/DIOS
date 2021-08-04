@@ -64,6 +64,9 @@
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.BtnSifreDegistirme = new DevExpress.XtraBars.BarButtonItem();
+            this.BtnBinaKutuKontrol = new DevExpress.XtraBars.BarButtonItem();
+            this.BtnPeShAdresKontrol = new DevExpress.XtraBars.BarButtonItem();
+            this.BtnIlisikOlmayanKutular = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -126,9 +129,12 @@
             this.barEditItem2,
             this.barButtonItem4,
             this.barButtonItem5,
-            this.BtnSifreDegistirme});
+            this.BtnSifreDegistirme,
+            this.BtnBinaKutuKontrol,
+            this.BtnPeShAdresKontrol,
+            this.BtnIlisikOlmayanKutular});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 40;
+            this.ribbonControl1.MaxItemId = 43;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -420,6 +426,30 @@
             this.BtnSifreDegistirme.Name = "BtnSifreDegistirme";
             this.BtnSifreDegistirme.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnSifreDegistirme_ItemClick);
             // 
+            // BtnBinaKutuKontrol
+            // 
+            this.BtnBinaKutuKontrol.Caption = "BİNA KUTU ADRES KARŞILAŞTIRMASI";
+            this.BtnBinaKutuKontrol.Id = 40;
+            this.BtnBinaKutuKontrol.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("BtnBinaKutuKontrol.ImageOptions.SvgImage")));
+            this.BtnBinaKutuKontrol.Name = "BtnBinaKutuKontrol";
+            this.BtnBinaKutuKontrol.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnBinaKutuKontrol_ItemClick);
+            // 
+            // BtnPeShAdresKontrol
+            // 
+            this.BtnPeShAdresKontrol.Caption = "PE-SH ADRES KARŞILAŞTIRMASI";
+            this.BtnPeShAdresKontrol.Id = 41;
+            this.BtnPeShAdresKontrol.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnPeShAdresKontrol.ImageOptions.LargeImage")));
+            this.BtnPeShAdresKontrol.Name = "BtnPeShAdresKontrol";
+            this.BtnPeShAdresKontrol.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnPeShAdresKontrol_ItemClick);
+            // 
+            // BtnIlisikOlmayanKutular
+            // 
+            this.BtnIlisikOlmayanKutular.Caption = "BİNA BAĞLANTISI OLMAYAN KUTULAR";
+            this.BtnIlisikOlmayanKutular.Id = 42;
+            this.BtnIlisikOlmayanKutular.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnIlisikOlmayanKutular.ImageOptions.LargeImage")));
+            this.BtnIlisikOlmayanKutular.Name = "BtnIlisikOlmayanKutular";
+            this.BtnIlisikOlmayanKutular.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnIlisikOlmayanKutular_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -437,6 +467,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.BtnPeHatlar);
             this.ribbonPageGroup1.ItemLinks.Add(this.BtnServisHatlar);
             this.ribbonPageGroup1.ItemLinks.Add(this.BtnCelikHatlar);
+            this.ribbonPageGroup1.ItemLinks.Add(this.BtnPeShAdresKontrol);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "HATLAR";
             // 
@@ -462,6 +493,8 @@
             // 
             this.ribbonPageGroup8.ItemLinks.Add(this.BtnAboneligiOlanKutusuOlmayanBinalar);
             this.ribbonPageGroup8.ItemLinks.Add(this.BtnSokBazBinaDaireSay);
+            this.ribbonPageGroup8.ItemLinks.Add(this.BtnIlisikOlmayanKutular);
+            this.ribbonPageGroup8.ItemLinks.Add(this.BtnBinaKutuKontrol);
             this.ribbonPageGroup8.Name = "ribbonPageGroup8";
             // 
             // ribbonPageGroup4
@@ -574,6 +607,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DİOS - DOĞALGAZ İMALAT OTOMASYON SİSTEMİ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmAnaSayfa_FormClosing);
             this.Load += new System.EventHandler(this.FrmAnaSayfa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).EndInit();
@@ -641,6 +675,9 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraEditors.LabelControl LblKullaniciAdi;
         private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraBars.BarButtonItem BtnBinaKutuKontrol;
+        private DevExpress.XtraBars.BarButtonItem BtnPeShAdresKontrol;
+        private DevExpress.XtraBars.BarButtonItem BtnIlisikOlmayanKutular;
     }
 }
 

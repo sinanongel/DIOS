@@ -261,16 +261,15 @@ namespace KargazImalatTakip
                     labelControl15.Text = drBolge[0].ToString();
                 }
 
-                SqlDataAdapter daHat = new SqlDataAdapter("SELECT M.MAHALLE_ADI, CAST(YOL_KODU AS NVARCHAR) + ' - ' + Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, " +
-                    "ROUND(Y.YOL_BOYU, 2) AS YOL_BOYU, SH.IMALATTARIHI, SH.FORMNO, SH.SEKTOR, SH.CAP, SH.BORUBOYU, SH.KAZIBOYU, " +
+                SqlDataAdapter daHat = new SqlDataAdapter("SELECT SH.MSLINK, M.MAHALLE_ADI, CAST(Y.YOL_KODU AS NVARCHAR) + ' - ' + Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, " +
+                    "ROUND(Y.YOL_BOYU, 2) AS YOL_BOYU, SH.IMALATTARIHI, SH.FORMNO, SH.SEKTOR, SH.CAP, SH.BORUBOYU, SH.KAZIBOYU, SH.HAT_MSLINK, SH.TO_MSLINK, B.BINA_KODU, " +
                     "CASE WHEN SH.TO_ID IN ('ServisKutusuS700','ServisKutusuS300','ServisKutusuS200','ServisKutusuCES200') THEN 1 ELSE 0 END AS KUTU, " +
-                    "CASE WHEN H.TO_ID IN ('ServisKutusuS700','ServisKutusuS300','ServisKutusuS200','ServisKutusuCES200') THEN 0 ELSE 1 END AS MALZEME " +
-                    //"CASE SH.TO_ID WHEN 'BE' THEN 'YOK' ELSE SH.TO_ID END AS KUTU, " +
-                    //"CASE WHEN H.TO_ID IN ('ServisKutusuS700','ServisKutusuS300','ServisKutusuS200','ServisKutusuCES200') THEN 'YOK' ELSE H.TO_ID END AS MALZEME " +
-                    "FROM SERVIS_HATLARI SH " +
-                    "INNER JOIN SERVIS_HATLARI H ON H.MSLINK =SH.MSLINK " +
-                    "INNER JOIN MAHALLE M ON M.MAHALLE_KODU = SH.MAHALLE_KODU " +
-                    "INNER JOIN YOL Y ON Y.MSLINK = SH.YOL_MSLINK " +
+                    "CASE WHEN H.TO_ID IN ('ServisKutusuS700','ServisKutusuS300','ServisKutusuS200','ServisKutusuCES200') THEN 0 ELSE 1 END AS MALZEME FROM SERVIS_HATLARI SH " +
+                    "LEFT JOIN SERVIS_HATLARI H ON H.MSLINK =SH.MSLINK " +
+                    "LEFT JOIN MAHALLE M ON M.MAHALLE_KODU = SH.MAHALLE_KODU " +
+                    "LEFT JOIN YOL Y ON Y.MSLINK = SH.YOL_MSLINK " +
+                    "LEFT JOIN BINA_SERVISKUTUSU BS ON BS.SERVISKUTUSU_MSLINK = SH.TO_MSLINK " +
+                    "LEFT JOIN BINA B ON B.MSLINK = BS.BINA_MSLINK " +
                     "WHERE SH.ILCE_KODU = '" + labelControl15.Text + "' AND SH.IMALATTARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' ORDER BY Y.YOL_ADI", bgl.kargazBaglanti());
                 DataTable dtHat = new DataTable();
                 daHat.Fill(dtHat);
@@ -285,16 +284,15 @@ namespace KargazImalatTakip
                     labelControl15.Text = drBolge[0].ToString();
                 }
 
-                SqlDataAdapter daHat = new SqlDataAdapter("SELECT M.MAHALLE_ADI, CAST(YOL_KODU AS NVARCHAR) + ' - ' + Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, " +
-                    "ROUND(Y.YOL_BOYU, 2) AS YOL_BOYU, SH.IMALATTARIHI, SH.FORMNO, SH.SEKTOR, SH.CAP, SH.BORUBOYU, SH.KAZIBOYU, " +
+                SqlDataAdapter daHat = new SqlDataAdapter("SELECT SH.MSLINK, M.MAHALLE_ADI, CAST(Y.YOL_KODU AS NVARCHAR) + ' - ' + Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, " +
+                    "ROUND(Y.YOL_BOYU, 2) AS YOL_BOYU, SH.IMALATTARIHI, SH.FORMNO, SH.SEKTOR, SH.CAP, SH.BORUBOYU, SH.KAZIBOYU, SH.HAT_MSLINK, SH.TO_MSLINK, B.BINA_KODU, " +
                     "CASE WHEN SH.TO_ID IN ('ServisKutusuS700','ServisKutusuS300','ServisKutusuS200','ServisKutusuCES200') THEN 1 ELSE 0 END AS KUTU, " +
-                    "CASE WHEN H.TO_ID IN ('ServisKutusuS700','ServisKutusuS300','ServisKutusuS200','ServisKutusuCES200') THEN 0 ELSE 1 END AS MALZEME " +
-                    //"CASE SH.TO_ID WHEN 'BE' THEN 'YOK' ELSE SH.TO_ID END AS KUTU, " +
-                    //"CASE WHEN H.TO_ID IN ('ServisKutusuS700','ServisKutusuS300','ServisKutusuS200','ServisKutusuCES200') THEN 'YOK' ELSE H.TO_ID END AS MALZEME " +
-                    "FROM SERVIS_HATLARI SH " +
-                    "INNER JOIN SERVIS_HATLARI H ON H.MSLINK =SH.MSLINK " +
-                    "INNER JOIN MAHALLE M ON M.MAHALLE_KODU = SH.MAHALLE_KODU " +
-                    "INNER JOIN YOL Y ON Y.MSLINK = SH.YOL_MSLINK " +
+                    "CASE WHEN H.TO_ID IN ('ServisKutusuS700','ServisKutusuS300','ServisKutusuS200','ServisKutusuCES200') THEN 0 ELSE 1 END AS MALZEME FROM SERVIS_HATLARI SH " +
+                    "LEFT JOIN SERVIS_HATLARI H ON H.MSLINK =SH.MSLINK " +
+                    "LEFT JOIN MAHALLE M ON M.MAHALLE_KODU = SH.MAHALLE_KODU " +
+                    "LEFT JOIN YOL Y ON Y.MSLINK = SH.YOL_MSLINK " +
+                    "LEFT JOIN BINA_SERVISKUTUSU BS ON BS.SERVISKUTUSU_MSLINK = SH.TO_MSLINK " +
+                    "LEFT JOIN BINA B ON B.MSLINK = BS.BINA_MSLINK " +
                     "WHERE SH.ILCE_KODU = '" + labelControl15.Text + "' AND SH.IMALATTARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "' ORDER BY Y.YOL_ADI", bgl.serhatgazBaglanti());
                 DataTable dtHat = new DataTable();
                 daHat.Fill(dtHat);
@@ -309,15 +307,18 @@ namespace KargazImalatTakip
             gridView3.Columns["CAP"].Caption = "ÇAP";
             gridView3.Columns["BORUBOYU"].Caption = "BORU BOYU";
             gridView3.Columns["KAZIBOYU"].Caption = "KAZI BOYU";
+            gridView3.Columns["HAT_MSLINK"].Caption = "HAT MSLINK";
+            gridView3.Columns["TO_MSLINK"].Caption = "KUTU/MALZEME MSLINK";
+            gridView3.Columns["BINA_KODU"].Caption = "BİNA KODU";
 
-            gridView3.Columns[7].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-            gridView3.Columns[7].SummaryItem.DisplayFormat = "GENEL TOPLAM={0:0.##}";
             gridView3.Columns[8].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             gridView3.Columns[8].SummaryItem.DisplayFormat = "GENEL TOPLAM={0:0.##}";
             gridView3.Columns[9].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             gridView3.Columns[9].SummaryItem.DisplayFormat = "GENEL TOPLAM={0:0.##}";
-            gridView3.Columns[10].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-            gridView3.Columns[10].SummaryItem.DisplayFormat = "GENEL TOPLAM={0:0.##}";
+            gridView3.Columns[13].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+            gridView3.Columns[13].SummaryItem.DisplayFormat = "GENEL TOPLAM={0:0.##}";
+            gridView3.Columns[14].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+            gridView3.Columns[14].SummaryItem.DisplayFormat = "GENEL TOPLAM={0:0.##}";
 
             GridGroupSummaryItem yolBoyu = new GridGroupSummaryItem();
             yolBoyu.FieldName = "YOL_BOYU";

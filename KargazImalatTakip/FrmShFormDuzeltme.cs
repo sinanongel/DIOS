@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.IO;
 using DevExpress.XtraEditors.Repository;
 using System.Diagnostics;
+using System.Net;
 
 namespace KargazImalatTakip
 {
@@ -351,7 +352,7 @@ namespace KargazImalatTakip
         {
             string[] satir = File.ReadAllLines("C:\\SqlBaglanti.txt");
 
-            string yol;
+            //string yol;
             string bolge;
             string dosya;
 
@@ -360,10 +361,19 @@ namespace KargazImalatTakip
             {
                 dosya = dr["DOSYA"].ToString();
                 bolge = dr["ILCE_ADI"].ToString();
-                dosyaYolu = satir[0] + bolge + "\\";
-                yol = dosyaYolu + dosya;
+                // Create a new WebClient instance.
+                WebClient myWebClient = new WebClient();
+                // Concatenate the domain with the Web resource filename.
+                dosyaYolu = satir[0] + bolge + "/" + dosya;
+                Console.WriteLine("Downloading File \"{0}\" from \"{1}\" .......\n\n", dosya, dosyaYolu);
+                // Download the Web resource and save it into the current filesystem folder.
+                myWebClient.DownloadFile(dosyaYolu, dosya); Console.WriteLine("Successfully Downloaded File \"{0}\" from \"{1}\"", dosya, dosyaYolu);
+                Console.WriteLine("\nDownloaded file saved in the following file system folder:\n\t" + Application.StartupPath);
+
+                //dosyaYolu = satir[0] + bolge + "\\";
+                //yol = dosyaYolu + dosya;
                 //yol = dr["DOSYA_YOLU"].ToString();
-                Process.Start(yol);
+                //Process.Start(yol);
             }
 
             //FileInfo dosyaBilgi = new FileInfo();

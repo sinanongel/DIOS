@@ -12,6 +12,7 @@ using DevExpress.XtraGrid;
 using DevExpress.Utils;
 using System.IO;
 using DevExpress.XtraEditors.Repository;
+using System.Net;
 
 namespace KargazImalatTakip
 {
@@ -42,7 +43,7 @@ namespace KargazImalatTakip
                 {
                     SqlDataAdapter da = new SqlDataAdapter("SELECT ROW_NUMBER() OVER(ORDER BY SH.MSLINK DESC) AS SIRANO, SH.MSLINK, SEKTOR, HAT_MSLINK, I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, " +
                         "CAST(YOL_KODU AS NVARCHAR) + ' - ' + Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, YATIRIMYILI, CONVERT(VARCHAR, IMALATTARIHI, 104) AS IMALAT_TARIHI, FORMNO, " +
-                        "FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, CAP, KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, SH.EKIPNO as EKIPNO, DOSYA FROM dbo.SERVIS_HATLARI SH " +
+                        "FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, CAP, KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, SH.EKIPNO as EKIPNO, DURUM, DOSYA FROM dbo.SERVIS_HATLARI SH " +
                         "LEFT JOIN DBO.YOL Y ON SH.YOL_MSLINK = Y.MSLINK " +
                         "LEFT JOIN DBO.MAHALLE M ON SH.MAHALLE_KODU = M.MAHALLE_KODU " +
                         "LEFT JOIN DBO.ILCE I ON SH.ILCE_KODU = I.ILCE_KODU " +
@@ -55,7 +56,7 @@ namespace KargazImalatTakip
                 {
                     SqlDataAdapter da = new SqlDataAdapter("SELECT ROW_NUMBER() OVER(ORDER BY SH.MSLINK DESC) AS SIRANO, SH.MSLINK, SEKTOR, HAT_MSLINK, I.ILCE_ADI, M.MAHALLE_ADI AS MAHALLE, " +
                         "CAST(YOL_KODU AS NVARCHAR) + ' - ' + Y.YOL_ADI + ' ' + Y.YOL_TIPI AS YOL, YATIRIMYILI, CONVERT(VARCHAR, IMALATTARIHI, 104) AS IMALAT_TARIHI, FORMNO, " +
-                        "FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, CAP, KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, SH.EKIPNO as EKIPNO, DOSYA FROM dbo.SERVIS_HATLARI SH " +
+                        "FROM_ID, FROM_MSLINK, TO_ID, TO_MSLINK, CAP, KAZIBOYU, BORUBOYU, YATAY_ASBUILT_METRAJ, SHATTIMETRAJ, SH.EKIPNO as EKIPNO, DURUM, DOSYA FROM dbo.SERVIS_HATLARI SH " +
                         "LEFT JOIN DBO.YOL Y ON SH.YOL_MSLINK = Y.MSLINK " +
                         "LEFT JOIN DBO.MAHALLE M ON SH.MAHALLE_KODU = M.MAHALLE_KODU " +
                         "LEFT JOIN DBO.ILCE I ON SH.ILCE_KODU = I.ILCE_KODU " +
@@ -147,7 +148,7 @@ namespace KargazImalatTakip
         {
             string[] satir = File.ReadAllLines("C:\\SqlBaglanti.txt");
 
-            string yol;
+            //string yol;
             string bolge;
             string dosya;
 
@@ -156,11 +157,21 @@ namespace KargazImalatTakip
             {
                 dosya = dr["DOSYA"].ToString();
                 bolge = dr["ILCE_ADI"].ToString();
-                kayitYolu = satir[0] + bolge + "\\"; //P klasörü
+                // Create a new WebClient instance.
+                WebClient myWebClient = new WebClient();
+                // Concatenate the domain with the Web resource filename.
+                kayitYolu = satir[0] + bolge + "/" + dosya;
+                Console.WriteLine("Downloading File \"{0}\" from \"{1}\" .......\n\n", dosya, kayitYolu);
+                // Download the Web resource and save it into the current filesystem folder.
+                myWebClient.DownloadFile(kayitYolu, dosya); Console.WriteLine("Successfully Downloaded File \"{0}\" from \"{1}\"", dosya, kayitYolu);
+                Console.WriteLine("\nDownloaded file saved in the following file system folder:\n\t" + Application.StartupPath);
+
+
+                //kayitYolu = satir[0] + bolge + "\\"; //P klasörü
                 //kayitYolu = satir[6] + bolge + "\\"; //C klasörü
-                yol = kayitYolu + dosya;
+                //yol = kayitYolu + dosya;
                 //yol = dr["DOSYA_YOLU"].ToString();
-                Process.Start(yol);
+                //Process.Start(yol);
             }
 
             //FileInfo dosyaBilgi = new FileInfo();

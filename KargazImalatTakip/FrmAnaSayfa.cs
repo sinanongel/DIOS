@@ -293,5 +293,43 @@ namespace KargazImalatTakip
                 fr20.Show();
             }
         }
+
+        FrmBinaKutuKontrol fr21;
+        private void BtnBinaKutuKontrol_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (fr21 == null || fr21.IsDisposed)
+            {
+                fr21 = new FrmBinaKutuKontrol();
+                fr21.MdiParent = this;
+                fr21.Show();
+            }
+        }
+
+        private void FrmAnaSayfa_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        FrmPeShAdresKontrol fr22;
+        private void BtnPeShAdresKontrol_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (fr22 == null || fr22.IsDisposed)
+            {
+                fr22 = new FrmPeShAdresKontrol();
+                fr22.MdiParent = this;
+                fr22.Show();
+            }
+        }
+
+        FrmIlisikOlmayanKutular fr23;
+        private void BtnIlisikOlmayanKutular_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (fr23 == null || fr23.IsDisposed)
+            {
+                fr23 = new FrmIlisikOlmayanKutular();
+                fr23.MdiParent = this;
+                fr23.Show();
+            }
+        }
     }
 }

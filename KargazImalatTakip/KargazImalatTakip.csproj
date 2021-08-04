@@ -151,6 +151,12 @@
     <Compile Include="FrmAnaSayfa.Designer.cs">
       <DependentUpon>FrmAnaSayfa.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmBinaKutuKontrol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBinaKutuKontrol.Designer.cs">
+      <DependentUpon>FrmBinaKutuKontrol.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmBolgeRegulatoru.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,12 @@
     </Compile>
     <Compile Include="FrmFittingsHat.Designer.cs">
       <DependentUpon>FrmFittingsHat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmIlisikOlmayanKutular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIlisikOlmayanKutular.Designer.cs">
+      <DependentUpon>FrmIlisikOlmayanKutular.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPeFormDetay.cs">
       <SubType>Form</SubType>
@@ -308,6 +320,12 @@
     <Compile Include="IcmalRaporu.Designer.cs">
       <DependentUpon>IcmalRaporu.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPeShAdresKontrol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPeShAdresKontrol.Designer.cs">
+      <DependentUpon>FrmPeShAdresKontrol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlBaglanti.cs" />
@@ -316,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAnaSayfa.resx">
       <DependentUpon>FrmAnaSayfa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBinaKutuKontrol.resx">
+      <DependentUpon>FrmBinaKutuKontrol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBolgeRegulatoru.resx">
       <DependentUpon>FrmBolgeRegulatoru.cs</DependentUpon>
@@ -328,6 +349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFittingsHat.resx">
       <DependentUpon>FrmFittingsHat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmIlisikOlmayanKutular.resx">
+      <DependentUpon>FrmIlisikOlmayanKutular.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPeFormDetay.resx">
       <DependentUpon>FrmPeFormDetay.cs</DependentUpon>
@@ -355,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPeHatlar.resx">
       <DependentUpon>FrmPeHatlar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPeShAdresKontrol.resx">
+      <DependentUpon>FrmPeShAdresKontrol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPeVana.resx">
       <DependentUpon>FrmPeVana.cs</DependentUpon>

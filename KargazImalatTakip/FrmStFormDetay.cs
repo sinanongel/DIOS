@@ -1,11 +1,14 @@
-﻿using DevExpress.XtraGrid;
+﻿using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraGrid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,7 +30,7 @@ namespace KargazImalatTakip
             {
                 SqlDataAdapter daHat = new SqlDataAdapter("SELECT H.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, " +
                     "M.MAHALLE_ADI AS MAHALLE, (Y.YOL_ADI + ' ' + Y.YOL_TIPI) AS YOL, H.SEKTOR, NET_BORU_CAPI, BORU_UZUNLUGU, " +
-                    "YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU, EKIPNO FROM dbo.HATLAR H " +
+                    "YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU, EKIPNO, DOSYA FROM dbo.HATLAR H " +
                     "LEFT JOIN DBO.YOL Y ON H.YOL_MSLINK = Y.MSLINK " +
                     "LEFT JOIN DBO.MAHALLE M ON H.MAHALLE_KODU = M.MAHALLE_KODU " +
                     "LEFT JOIN DBO.ILCE I ON H.ILCE_KODU = I.ILCE_KODU " +
@@ -41,7 +44,7 @@ namespace KargazImalatTakip
             {
                 SqlDataAdapter daHat = new SqlDataAdapter("SELECT H.MSLINK, FORMNO, YATIRIMYILI, CONVERT(VARCHAR, IMALAT_TARIHI, 104) AS IMALAT_TARIHI, " +
                     "M.MAHALLE_ADI AS MAHALLE, (Y.YOL_ADI + ' ' + Y.YOL_TIPI) AS YOL, H.SEKTOR, NET_BORU_CAPI, BORU_UZUNLUGU, " +
-                    "YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU, EKIPNO FROM dbo.HATLAR H " +
+                    "YATAY_ASBUILT_METRAJ, ASBUILT_METRAJ, KAZI_BOYU, EKIPNO, DOSYA FROM dbo.HATLAR H " +
                     "LEFT JOIN DBO.YOL Y ON H.YOL_MSLINK = Y.MSLINK " +
                     "LEFT JOIN DBO.MAHALLE M ON H.MAHALLE_KODU = M.MAHALLE_KODU " +
                     "LEFT JOIN DBO.ILCE I ON H.ILCE_KODU = I.ILCE_KODU " +
@@ -62,6 +65,10 @@ namespace KargazImalatTakip
             gridView1.Columns["KAZI_BOYU"].Caption = "KAZI BOYU";
             gridView1.Columns["SEKTOR"].Caption = "SEKTÖR";
             gridView1.Columns["EKIPNO"].Caption = "MÜTEAHHİT";
+
+            RepositoryItemHyperLinkEdit dosyaYolu = new RepositoryItemHyperLinkEdit();
+            gridView1.Columns["DOSYA"].ColumnEdit = dosyaYolu;
+            dosyaYolu.OpenLink += DosyaYolu_OpenLink;
 
             GridGroupSummaryItem boruUzunlugu = new GridGroupSummaryItem();
             boruUzunlugu.FieldName = "BORU_UZUNLUGU";
@@ -164,6 +171,32 @@ namespace KargazImalatTakip
             }
 
             gridView5.Columns["REGULATORTIPI"].Caption = "REGÜLATÖR TİPİ";
+        }
+
+        string kayitYolu = "";
+
+        private void DosyaYolu_OpenLink(object sender, DevExpress.XtraEditors.Controls.OpenLinkEventArgs e)
+        {
+            string[] satir = File.ReadAllLines("C:\\SqlBaglanti.txt");
+
+            //string yol;
+            string bolge;
+            string dosya;
+
+            DataRow dr = gridView1.GetDataRow(gridView1.FocusedRowHandle);
+            if (dr != null)
+            {
+                dosya = dr["DOSYA"].ToString();
+                bolge = CmbBolge.Text;
+                // Create a new WebClient instance.
+                WebClient myWebClient = new WebClient();
+                // Concatenate the domain with the Web resource filename.
+                kayitYolu = satir[0] + bolge + "/" + dosya;
+                Console.WriteLine("Downloading File \"{0}\" from \"{1}\" .......\n\n", dosya, kayitYolu);
+                // Download the Web resource and save it into the current filesystem folder.
+                myWebClient.DownloadFile(kayitYolu, dosya); Console.WriteLine("Successfully Downloaded File \"{0}\" from \"{1}\"", dosya, kayitYolu);
+                Console.WriteLine("\nDownloaded file saved in the following file system folder:\n\t" + Application.StartupPath);
+            }
         }
 
         private void CmbFirma_SelectedIndexChanged(object sender, EventArgs e)

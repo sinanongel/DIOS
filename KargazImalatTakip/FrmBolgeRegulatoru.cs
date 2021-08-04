@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace KargazImalatTakip
 {
@@ -87,6 +88,14 @@ namespace KargazImalatTakip
                     MessageBox.Show("Veri tabanına bağlanılamıyor, lütfen internet bağlantınızı kontrol ediniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+        }
+
+        private void BtnExcelAktar_Click(object sender, EventArgs e)
+        {
+            string yol = "Bölge Regülatör Listesi.xlsx";
+            gridControl1.ExportToXlsx(yol);
+            //Dosyayı direk varsayılan uygulamayla açmak için.
+            Process.Start(yol);
         }
     }
 }

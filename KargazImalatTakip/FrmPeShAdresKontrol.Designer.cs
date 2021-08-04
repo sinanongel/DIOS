@@ -1,7 +1,7 @@
 ﻿
 namespace KargazImalatTakip
 {
-    partial class FrmSokakBazındaBinaDaireSayısı
+    partial class FrmPeShAdresKontrol
     {
         /// <summary>
         /// Required designer variable.
@@ -29,13 +29,13 @@ namespace KargazImalatTakip
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSokakBazındaBinaDaireSayısı));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPeShAdresKontrol));
             this.BtnExcelAktar = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.BtnPdf = new DevExpress.XtraEditors.SimpleButton();
-            this.BtnListele = new DevExpress.XtraEditors.SimpleButton();
+            this.BtnListe = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.CmbŞirket = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -63,7 +63,7 @@ namespace KargazImalatTakip
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.Size = new System.Drawing.Size(1294, 540);
-            this.gridControl1.TabIndex = 16;
+            this.gridControl1.TabIndex = 18;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
@@ -76,8 +76,7 @@ namespace KargazImalatTakip
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowViewCaption = true;
-            this.gridView1.ViewCaption = "YOL BAZINDA BİNA/DAİRE SAYISI";
-            this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
+            this.gridView1.ViewCaption = "PH/SH ADRES KARŞILAŞTIRMA";
             // 
             // panel2
             // 
@@ -86,13 +85,13 @@ namespace KargazImalatTakip
             this.panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel2.Controls.Add(this.BtnExcelAktar);
             this.panel2.Controls.Add(this.BtnPdf);
-            this.panel2.Controls.Add(this.BtnListele);
+            this.panel2.Controls.Add(this.BtnListe);
             this.panel2.Controls.Add(this.labelControl2);
             this.panel2.Controls.Add(this.CmbŞirket);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1293, 50);
-            this.panel2.TabIndex = 17;
+            this.panel2.TabIndex = 19;
             // 
             // BtnPdf
             // 
@@ -104,19 +103,19 @@ namespace KargazImalatTakip
             this.BtnPdf.TabIndex = 77;
             this.BtnPdf.Click += new System.EventHandler(this.BtnPdf_Click);
             // 
-            // BtnListele
+            // BtnListe
             // 
-            this.BtnListele.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnListele.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Primary;
-            this.BtnListele.Appearance.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(1)), true);
-            this.BtnListele.Appearance.Options.UseBackColor = true;
-            this.BtnListele.Appearance.Options.UseFont = true;
-            this.BtnListele.Location = new System.Drawing.Point(1093, 8);
-            this.BtnListele.Name = "BtnListele";
-            this.BtnListele.Size = new System.Drawing.Size(115, 34);
-            this.BtnListele.TabIndex = 1;
-            this.BtnListele.Text = "Listele";
-            this.BtnListele.Click += new System.EventHandler(this.BtnListele_Click);
+            this.BtnListe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnListe.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Primary;
+            this.BtnListe.Appearance.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(1)), true);
+            this.BtnListe.Appearance.Options.UseBackColor = true;
+            this.BtnListe.Appearance.Options.UseFont = true;
+            this.BtnListe.Location = new System.Drawing.Point(1093, 8);
+            this.BtnListe.Name = "BtnListe";
+            this.BtnListe.Size = new System.Drawing.Size(115, 34);
+            this.BtnListe.TabIndex = 1;
+            this.BtnListe.Text = "Listele";
+            this.BtnListe.Click += new System.EventHandler(this.BtnListe_Click);
             // 
             // labelControl2
             // 
@@ -142,15 +141,15 @@ namespace KargazImalatTakip
             this.CmbŞirket.Size = new System.Drawing.Size(109, 22);
             this.CmbŞirket.TabIndex = 2;
             // 
-            // FrmSokakBazındaBinaDaireSayısı
+            // FrmPeShAdresKontrol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1294, 591);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.panel2);
-            this.Name = "FrmSokakBazındaBinaDaireSayısı";
-            this.Text = "Sokak Bazında Bina Daire Sayısı";
+            this.Name = "FrmPeShAdresKontrol";
+            this.Text = "PE SH Adres Karşılaştırması";
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -167,7 +166,7 @@ namespace KargazImalatTakip
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.SimpleButton BtnPdf;
-        private DevExpress.XtraEditors.SimpleButton BtnListele;
+        private DevExpress.XtraEditors.SimpleButton BtnListe;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.ComboBoxEdit CmbŞirket;
     }

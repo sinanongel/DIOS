@@ -47,6 +47,7 @@
             this.BtnExcelAktar.Size = new System.Drawing.Size(188, 24);
             this.BtnExcelAktar.TabIndex = 29;
             this.BtnExcelAktar.Text = "Excel\'e Aktar";
+            this.BtnExcelAktar.Click += new System.EventHandler(this.BtnExcelAktar_Click);
             // 
             // labelControl1
             // 
@@ -101,7 +102,6 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowFooter = true;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // FrmBolgeRegulatoru
             // 
@@ -114,7 +114,7 @@
             this.Controls.Add(this.BtnListele);
             this.Controls.Add(this.gridControl1);
             this.Name = "FrmBolgeRegulatoru";
-            this.Text = "FrmBolgeRegulatoru";
+            this.Text = "Bölge Regülatörü";
             ((System.ComponentModel.ISupportInitialize)(this.CmbŞirket.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
