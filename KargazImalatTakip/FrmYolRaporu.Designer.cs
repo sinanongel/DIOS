@@ -1,6 +1,7 @@
-﻿namespace KargazImalatTakip
+﻿
+namespace KargazImalatTakip
 {
-    partial class FrmPeHatlar
+    partial class FrmYolRaporu
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +29,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPeHatlar));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmYolRaporu));
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.BtnListele = new DevExpress.XtraEditors.SimpleButton();
-            this.CmbŞirket = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.CmbŞirket = new DevExpress.XtraEditors.ComboBoxEdit();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.BtnForDetay = new DevExpress.XtraEditors.SimpleButton();
-            this.BtnKoordinatlıListele = new DevExpress.XtraEditors.SimpleButton();
             this.BtnPdf = new DevExpress.XtraEditors.SimpleButton();
             this.BtnExcel = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -54,10 +53,9 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.Size = new System.Drawing.Size(1294, 540);
-            this.gridControl1.TabIndex = 0;
+            this.gridControl1.TabIndex = 13;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
             // 
             // gridView1
             // 
@@ -69,7 +67,7 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowViewCaption = true;
-            this.gridView1.ViewCaption = "POLİETİLEN HAT LİSTESİ";
+            this.gridView1.ViewCaption = "YOL RAPORU";
             // 
             // BtnListele
             // 
@@ -78,12 +76,22 @@
             this.BtnListele.Appearance.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(1)), true);
             this.BtnListele.Appearance.Options.UseBackColor = true;
             this.BtnListele.Appearance.Options.UseFont = true;
-            this.BtnListele.Location = new System.Drawing.Point(972, 8);
+            this.BtnListele.Location = new System.Drawing.Point(1094, 8);
             this.BtnListele.Name = "BtnListele";
             this.BtnListele.Size = new System.Drawing.Size(115, 34);
             this.BtnListele.TabIndex = 1;
             this.BtnListele.Text = "Listele";
             this.BtnListele.Click += new System.EventHandler(this.BtnListele_Click);
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(1)), true);
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(18, 16);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(32, 17);
+            this.labelControl1.TabIndex = 3;
+            this.labelControl1.Text = "Firma";
             // 
             // CmbŞirket
             // 
@@ -98,26 +106,12 @@
             "SERHATGAZ"});
             this.CmbŞirket.Size = new System.Drawing.Size(109, 24);
             this.CmbŞirket.TabIndex = 2;
-            this.CmbŞirket.SelectedIndexChanged += new System.EventHandler(this.CmbŞirket_SelectedIndexChanged);
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(1)), true);
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(18, 16);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(32, 17);
-            this.labelControl1.TabIndex = 3;
-            this.labelControl1.Text = "Firma";
-            this.labelControl1.Click += new System.EventHandler(this.labelControl1_Click);
             // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.panel2.Controls.Add(this.BtnForDetay);
-            this.panel2.Controls.Add(this.BtnKoordinatlıListele);
             this.panel2.Controls.Add(this.BtnPdf);
             this.panel2.Controls.Add(this.BtnExcel);
             this.panel2.Controls.Add(this.BtnListele);
@@ -126,36 +120,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1293, 50);
-            this.panel2.TabIndex = 12;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // BtnForDetay
-            // 
-            this.BtnForDetay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnForDetay.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Danger;
-            this.BtnForDetay.Appearance.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(1)), true);
-            this.BtnForDetay.Appearance.Options.UseBackColor = true;
-            this.BtnForDetay.Appearance.Options.UseFont = true;
-            this.BtnForDetay.Location = new System.Drawing.Point(851, 8);
-            this.BtnForDetay.Name = "BtnForDetay";
-            this.BtnForDetay.Size = new System.Drawing.Size(115, 34);
-            this.BtnForDetay.TabIndex = 78;
-            this.BtnForDetay.Text = "Form Detay";
-            this.BtnForDetay.Click += new System.EventHandler(this.BtnForDetay_Click);
-            // 
-            // BtnKoordinatlıListele
-            // 
-            this.BtnKoordinatlıListele.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnKoordinatlıListele.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Success;
-            this.BtnKoordinatlıListele.Appearance.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(1)), true);
-            this.BtnKoordinatlıListele.Appearance.Options.UseBackColor = true;
-            this.BtnKoordinatlıListele.Appearance.Options.UseFont = true;
-            this.BtnKoordinatlıListele.Location = new System.Drawing.Point(1093, 8);
-            this.BtnKoordinatlıListele.Name = "BtnKoordinatlıListele";
-            this.BtnKoordinatlıListele.Size = new System.Drawing.Size(115, 34);
-            this.BtnKoordinatlıListele.TabIndex = 13;
-            this.BtnKoordinatlıListele.Text = "Koordinatlı Liste";
-            this.BtnKoordinatlıListele.Click += new System.EventHandler(this.BtnKoordinatlıListele_Click);
+            this.panel2.TabIndex = 14;
             // 
             // BtnPdf
             // 
@@ -177,15 +142,15 @@
             this.BtnExcel.TabIndex = 76;
             this.BtnExcel.Click += new System.EventHandler(this.BtnExcel_Click);
             // 
-            // FrmPeHatlar
+            // FrmYolRaporu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1294, 591);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.gridControl1);
-            this.Name = "FrmPeHatlar";
-            this.Text = "PE Hatlar";
+            this.Controls.Add(this.panel2);
+            this.Name = "FrmYolRaporu";
+            this.Text = "FrmYolRaporu";
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmbŞirket.Properties)).EndInit();
@@ -198,14 +163,12 @@
         #endregion
 
         private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraEditors.SimpleButton BtnListele;
-        private DevExpress.XtraEditors.ComboBoxEdit CmbŞirket;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.SimpleButton BtnListele;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.ComboBoxEdit CmbŞirket;
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.SimpleButton BtnPdf;
         private DevExpress.XtraEditors.SimpleButton BtnExcel;
-        private DevExpress.XtraEditors.SimpleButton BtnKoordinatlıListele;
-        private DevExpress.XtraEditors.SimpleButton BtnForDetay;
     }
 }

@@ -82,7 +82,7 @@ namespace KargazImalatTakip
 
         private void BtnExcelAktar_Click(object sender, EventArgs e)
         {
-            string yol = "Pe/Sh Adres Kontrol Listesi.xlsx";
+            string yol = "Pe-Sh Adres Kontrol Listesi.xlsx";
             gridControl1.ExportToXlsx(yol);
             //Dosyayı direk varsayılan uygulamayla açmak için...
             Process.Start(yol);
@@ -90,7 +90,7 @@ namespace KargazImalatTakip
 
         private void BtnPdf_Click(object sender, EventArgs e)
         {
-            string yol = "Pe/Sh Adres Kontrol Listesi.pdf";
+            string yol = "Pe-Sh Adres Kontrol Listesi.pdf";
             gridControl1.ExportToPdf(yol);
             //Dosyayı direk varsayılan uygulamayla açmak için...
             Process.Start(yol);

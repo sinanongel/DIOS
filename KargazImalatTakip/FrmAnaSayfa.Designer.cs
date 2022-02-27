@@ -67,6 +67,7 @@
             this.BtnBinaKutuKontrol = new DevExpress.XtraBars.BarButtonItem();
             this.BtnPeShAdresKontrol = new DevExpress.XtraBars.BarButtonItem();
             this.BtnIlisikOlmayanKutular = new DevExpress.XtraBars.BarButtonItem();
+            this.BtnYolRaporu = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -85,6 +86,8 @@
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.LblKullaniciAdi = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.LblCopyright = new DevExpress.XtraEditors.LabelControl();
+            this.LblTarih = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel2)).BeginInit();
@@ -132,9 +135,10 @@
             this.BtnSifreDegistirme,
             this.BtnBinaKutuKontrol,
             this.BtnPeShAdresKontrol,
-            this.BtnIlisikOlmayanKutular});
+            this.BtnIlisikOlmayanKutular,
+            this.BtnYolRaporu});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 43;
+            this.ribbonControl1.MaxItemId = 44;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -450,6 +454,14 @@
             this.BtnIlisikOlmayanKutular.Name = "BtnIlisikOlmayanKutular";
             this.BtnIlisikOlmayanKutular.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnIlisikOlmayanKutular_ItemClick);
             // 
+            // BtnYolRaporu
+            // 
+            this.BtnYolRaporu.Caption = "YOL RAPORU";
+            this.BtnYolRaporu.Id = 43;
+            this.BtnYolRaporu.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnYolRaporu.ImageOptions.LargeImage")));
+            this.BtnYolRaporu.Name = "BtnYolRaporu";
+            this.BtnYolRaporu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnYolRaporu_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -491,6 +503,7 @@
             // 
             // ribbonPageGroup8
             // 
+            this.ribbonPageGroup8.ItemLinks.Add(this.BtnYolRaporu);
             this.ribbonPageGroup8.ItemLinks.Add(this.BtnAboneligiOlanKutusuOlmayanBinalar);
             this.ribbonPageGroup8.ItemLinks.Add(this.BtnSokBazBinaDaireSay);
             this.ribbonPageGroup8.ItemLinks.Add(this.BtnIlisikOlmayanKutular);
@@ -572,26 +585,67 @@
             // 
             this.LblKullaniciAdi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblKullaniciAdi.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.LblKullaniciAdi.Appearance.ForeColor = System.Drawing.Color.White;
+            this.LblKullaniciAdi.Appearance.Options.UseFont = true;
+            this.LblKullaniciAdi.Appearance.Options.UseForeColor = true;
             this.LblKullaniciAdi.Appearance.Options.UseTextOptions = true;
             this.LblKullaniciAdi.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.LblKullaniciAdi.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.LblKullaniciAdi.Location = new System.Drawing.Point(1080, 5);
             this.LblKullaniciAdi.Name = "LblKullaniciAdi";
-            this.LblKullaniciAdi.Size = new System.Drawing.Size(256, 13);
+            this.LblKullaniciAdi.Size = new System.Drawing.Size(256, 17);
             this.LblKullaniciAdi.TabIndex = 0;
             // 
             // groupControl1
             // 
-            this.groupControl1.Appearance.BackColor = System.Drawing.Color.LightGray;
+            this.groupControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(109)))), ((int)(((byte)(156)))));
             this.groupControl1.Appearance.Options.UseBackColor = true;
+            this.groupControl1.Controls.Add(this.LblTarih);
+            this.groupControl1.Controls.Add(this.LblCopyright);
             this.groupControl1.Controls.Add(this.LblKullaniciAdi);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupControl1.Location = new System.Drawing.Point(0, 671);
+            this.groupControl1.Location = new System.Drawing.Point(0, 667);
+            this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+            this.groupControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.ShowCaption = false;
-            this.groupControl1.Size = new System.Drawing.Size(1348, 26);
+            this.groupControl1.Size = new System.Drawing.Size(1348, 30);
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "groupControl1";
+            // 
+            // LblCopyright
+            // 
+            this.LblCopyright.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.LblCopyright.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.LblCopyright.Appearance.ForeColor = System.Drawing.Color.White;
+            this.LblCopyright.Appearance.Options.UseFont = true;
+            this.LblCopyright.Appearance.Options.UseForeColor = true;
+            this.LblCopyright.Appearance.Options.UseTextOptions = true;
+            this.LblCopyright.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.LblCopyright.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.LblCopyright.Location = new System.Drawing.Point(12, 6);
+            this.LblCopyright.Name = "LblCopyright";
+            this.LblCopyright.Size = new System.Drawing.Size(249, 18);
+            this.LblCopyright.TabIndex = 1;
+            // 
+            // LblTarih
+            // 
+            this.LblTarih.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblTarih.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.LblTarih.Appearance.ForeColor = System.Drawing.Color.White;
+            this.LblTarih.Appearance.Options.UseFont = true;
+            this.LblTarih.Appearance.Options.UseForeColor = true;
+            this.LblTarih.Appearance.Options.UseTextOptions = true;
+            this.LblTarih.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.LblTarih.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.LblTarih.Location = new System.Drawing.Point(267, 6);
+            this.LblTarih.Name = "LblTarih";
+            this.LblTarih.Size = new System.Drawing.Size(807, 19);
+            this.LblTarih.TabIndex = 2;
             // 
             // FrmAnaSayfa
             // 
@@ -678,6 +732,9 @@
         private DevExpress.XtraBars.BarButtonItem BtnBinaKutuKontrol;
         private DevExpress.XtraBars.BarButtonItem BtnPeShAdresKontrol;
         private DevExpress.XtraBars.BarButtonItem BtnIlisikOlmayanKutular;
+        private DevExpress.XtraBars.BarButtonItem BtnYolRaporu;
+        private DevExpress.XtraEditors.LabelControl LblCopyright;
+        private DevExpress.XtraEditors.LabelControl LblTarih;
     }
 }
 

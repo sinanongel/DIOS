@@ -33,7 +33,7 @@ namespace KargazImalatTakip
 
                 if (CmbBolge.Text == "TÜMÜ")
                 {
-                    SqlDataAdapter daPh = new SqlDataAdapter("SELECT NET_BORU_CAPI, SUM(BORU_UZUNLUGU), SUM(YATAY_ASBUILT_METRAJ), SUM(ASBUILT_METRAJ), SUM(KAZI_BOYU) " +
+                    SqlDataAdapter daPh = new SqlDataAdapter("SELECT NET_BORU_CAPI, SUM(BORU_UZUNLUGU), SUM(KAZI_BOYU), SUM(ASBUILT_METRAJ), SUM(YATAY_ASBUILT_METRAJ) " +
                             "FROM dbo.HATLAR WHERE MALZEME_CINSI = 'Polietilen' AND NET_BORU_CAPI NOT LIKE 'TB%' AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "'" +
                             "GROUP BY NET_BORU_CAPI", bgl.kargazBaglanti());
                     DataTable dtPh = new DataTable();
@@ -65,7 +65,7 @@ namespace KargazImalatTakip
                     gridView1.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                     gridView1.Columns[4].SummaryItem.DisplayFormat = "{0:0.##}";
 
-                    SqlDataAdapter daCh = new SqlDataAdapter("SELECT NET_BORU_CAPI, SUM(BORU_UZUNLUGU), SUM(YATAY_ASBUILT_METRAJ), SUM(ASBUILT_METRAJ), SUM(KAZI_BOYU) " +
+                    SqlDataAdapter daCh = new SqlDataAdapter("SELECT NET_BORU_CAPI, SUM(BORU_UZUNLUGU), SUM(KAZI_BOYU), SUM(ASBUILT_METRAJ), SUM(YATAY_ASBUILT_METRAJ) " +
                             "FROM dbo.HATLAR WHERE MALZEME_CINSI = 'Çelik' AND NET_BORU_CAPI NOT LIKE 'TB%' AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "'" +
                             "GROUP BY NET_BORU_CAPI", bgl.kargazBaglanti());
                     DataTable dtCh = new DataTable();
@@ -228,7 +228,7 @@ namespace KargazImalatTakip
 
                     int ilceKodu = Convert.ToInt32(labelControl7.Text);
 
-                    SqlDataAdapter daPh = new SqlDataAdapter("SELECT NET_BORU_CAPI, SUM(BORU_UZUNLUGU), SUM(YATAY_ASBUILT_METRAJ), SUM(ASBUILT_METRAJ), SUM(KAZI_BOYU) " +
+                    SqlDataAdapter daPh = new SqlDataAdapter("SELECT NET_BORU_CAPI, SUM(BORU_UZUNLUGU), SUM(KAZI_BOYU), SUM(ASBUILT_METRAJ), SUM(YATAY_ASBUILT_METRAJ) " +
                             "FROM dbo.HATLAR WHERE MALZEME_CINSI = 'Polietilen' AND NET_BORU_CAPI NOT LIKE 'TB%' AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "'" +
                             "AND ILCE_KODU = " + ilceKodu + "GROUP BY NET_BORU_CAPI", bgl.kargazBaglanti());
                     DataTable dtPh = new DataTable();
@@ -260,7 +260,7 @@ namespace KargazImalatTakip
                     gridView1.Columns[4].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                     gridView1.Columns[4].SummaryItem.DisplayFormat = "{0:0.##}";
 
-                    SqlDataAdapter daCh = new SqlDataAdapter("SELECT NET_BORU_CAPI, SUM(BORU_UZUNLUGU), SUM(YATAY_ASBUILT_METRAJ), SUM(ASBUILT_METRAJ), SUM(KAZI_BOYU) " +
+                    SqlDataAdapter daCh = new SqlDataAdapter("SELECT NET_BORU_CAPI, SUM(BORU_UZUNLUGU), SUM(KAZI_BOYU), SUM(ASBUILT_METRAJ), SUM(YATAY_ASBUILT_METRAJ) " +
                             "FROM dbo.HATLAR WHERE MALZEME_CINSI = 'Çelik' AND NET_BORU_CAPI NOT LIKE 'TB%' AND IMALAT_TARIHI BETWEEN '" + tarih1 + "' AND '" + tarih2 + "'" +
                             "AND ILCE_KODU = " + ilceKodu + "GROUP BY NET_BORU_CAPI", bgl.kargazBaglanti());
                     DataTable dtCh = new DataTable();

@@ -95,5 +95,10 @@ namespace KargazImalatTakip
             this.Close();
             Application.Exit();
         }
+
+        private void FrmGiris_Load(object sender, EventArgs e)
+        {
+            labelControl3.Text = "Copyright © "+ DateTime.Today.ToString("yyyy") +" Sinan Öngel";
+        }
     }
 }

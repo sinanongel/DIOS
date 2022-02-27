@@ -334,5 +334,25 @@ namespace KargazImalatTakip
             FrmPeFormDetay fd = new FrmPeFormDetay();
             fd.Show();
         }
+
+        private void gridControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CmbŞirket_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

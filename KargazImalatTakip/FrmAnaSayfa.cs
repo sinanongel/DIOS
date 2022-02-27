@@ -252,6 +252,9 @@ namespace KargazImalatTakip
         }
         private void FrmAnaSayfa_Load(object sender, EventArgs e)
         {
+            LblCopyright.Text = "Copyright © " + DateTime.Today.ToString("yyyy") + " Sinan Öngel";
+            LblTarih.Text = DateTime.Today.ToString("d");
+
             if (firma == "KARGAZ")
             {
                 SqlCommand komut = new SqlCommand("SELECT AD, SOYAD, YETKIGRUP FROM KULLANICI WHERE KULLANICIID = " + kullaniciId, bgl.kargazBaglanti());
@@ -329,6 +332,17 @@ namespace KargazImalatTakip
                 fr23 = new FrmIlisikOlmayanKutular();
                 fr23.MdiParent = this;
                 fr23.Show();
+            }
+        }
+
+        FrmYolRaporu fr24;
+        private void BtnYolRaporu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (fr24 == null || fr24.IsDisposed)
+            {
+                fr24 = new FrmYolRaporu();
+                fr24.MdiParent = this;
+                fr24.Show();
             }
         }
     }

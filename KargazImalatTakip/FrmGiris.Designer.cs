@@ -208,7 +208,6 @@ namespace KargazImalatTakip
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(377, 25);
             this.labelControl3.TabIndex = 12;
-            this.labelControl3.Text = "Copyright © 2021 Sinan Öngel";
             // 
             // BtnCikis
             // 
@@ -309,6 +308,7 @@ namespace KargazImalatTakip
             this.Name = "FrmGiris";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmGiris";
+            this.Load += new System.EventHandler(this.FrmGiris_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TxtKullaniciAdi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
